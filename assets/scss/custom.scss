@@ -1,7 +1,7 @@
-/* 您可以在此添加自己的自定义样式 - 最终优化版 v2 */
+/* 您可以在此添加自己的自定义样式 - 最终优化版 v3 */
 
 /* ==========================================================================
-   内容卡片容器 (About Me 页面)
+   内容卡片容器 (About Me 页面) - 已更新悬浮效果
    ========================================================================== */
 .content-card {
     background: var(--card-background);
@@ -9,15 +9,16 @@
     border-radius: var(--card-border-radius);
     padding: 1.5rem 2rem;
     margin-bottom: 2rem;
-    box-shadow: var(--card-box-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    /* 默认状态下阴影很弱或没有，为悬浮效果做准备 */
+    box-shadow: var(--card-box-shadow-flat, none); 
+    /* 统一使用和 link-card 一致的 transition 属性 */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* 强化悬浮效果 */
+/* 应用和 link-card 一致的 hover 效果 */
 .content-card:hover {
-    transform: translateY(-6px) !important;
-    box-shadow: var(--card-box-shadow-hover, 0 8px 30px rgba(0,0,0,0.12));
-    border-color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: var(--card-box-shadow);
 }
 
 .content-card-title {
@@ -34,8 +35,9 @@
     color: var(--body-font-color);
 }
 
+
 /* ==========================================================================
-   时间线样式 (About Me 页面)
+   时间线样式 (About Me 页面) - 已更新字体
    ========================================================================== */
 .timeline {
     position: relative;
@@ -68,25 +70,21 @@
     gap: 0.5rem;
     margin-bottom: 0.25rem;
 }
-
-/* --- 新增修改：增大时间线标题、副标题和日期的字体 --- */
 .timeline-title {
-    font-size: 1.2em;  /* 从 1.1rem 增大 */
+    font-size: 1.2em;
     font-weight: 600;
     margin: 0;
 }
 .timeline-subtitle {
-    font-size: 1.1em; /* 从 1rem 增大 */
+    font-size: 1.1em;
     font-style: italic;
     color: var(--secondary-font-color);
     margin: 0.25rem 0 0.75rem 0;
 }
 .timeline-date {
-    font-size: 0.95em; /* 从 0.85rem 增大 */
+    font-size: 0.95em;
     color: var(--secondary-font-color);
 }
-
-/* 优化时间线内二级标题（项目简介、我的贡献等） */
 .timeline-body strong {
     color: var(--title-color);
     font-weight: 600;
@@ -94,8 +92,6 @@
     display: block;   
     margin: 1rem 0 0.5rem 0;
 }
-
-/* 优化时间线内列表 */
 .timeline-body { font-size: inherit; }
 .timeline-body ul {
     margin-top: 0.75rem;
@@ -142,7 +138,7 @@
 }
 
 /* ==========================================================================
-   链接页面卡片样式
+   链接页面卡片样式 (保持不变)
    ========================================================================== */
 .links-grid {
     display: grid;
