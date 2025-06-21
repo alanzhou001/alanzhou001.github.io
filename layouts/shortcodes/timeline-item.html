@@ -1,0 +1,17 @@
+{{/*
+    layouts/shortcodes/timeline-item.html
+    定义单个时间线节点的样式和结构。
+*/}}
+<div class="timeline-item">
+    <div class="timeline-marker"></div>
+    <div class="timeline-content">
+        <div class="timeline-header">
+            <h4 class="timeline-title">{{ .Get "title" }}</h4>
+            <span class="timeline-date">{{ .Get "date" }}</span>
+        </div>
+        {{ with .Get "subtitle" }}<h5 class="timeline-subtitle">{{ . }}</h5>{{ end }}
+        <div class="timeline-body">
+            {{ .Inner | .Page.RenderString }}
+        </div>
+    </div>
+</div>
