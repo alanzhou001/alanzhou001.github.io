@@ -1,45 +1,42 @@
-/* a/assets/scss/custom.scss */
+/* 您可以在此添加自己的自定义样式 */
 
-/* 用于友情链接页面的卡片式布局 */
-.links-grid {
-    display: grid;
-    /* 这会让卡片自适应排列，每张卡片最小宽度 240px */
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-}
-
-.link-card {
-    display: block;
-    padding: 1rem;
+/* ==========================================================================
+   内容卡片容器 (用于 About Me 页面)
+   ========================================================================== */
+.content-card {
+    background: var(--card-background);
     border: 1px solid var(--card-border);
     border-radius: var(--card-border-radius);
-    background: var(--card-background);
-    color: var(--body-font-color);
-    text-decoration: none !important;
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.link-card:hover {
-    transform: translateY(-4px);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
     box-shadow: var(--card-box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.link-card h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--title-color);
-    font-weight: bold;
+/* 鼠标悬浮效果 */
+.content-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-box-shadow-hover, 0 8px 30px rgba(0,0,0,0.12));
 }
 
-.link-card p {
-    margin: 0;
-    font-size: 0.9rem;
-    color: var(--secondary-font-color);
+.content-card-title {
+    margin-top: 0;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 1.5rem;
 }
-/* assets/scss/custom.scss */
 
-/* --- 时间线样式 --- */
+.content-card-body {
+    font-size: 16px; 
+    line-height: 1.8; 
+    color: var(--body-font-color);
+}
+
+
+/* ==========================================================================
+   时间线样式 (用于 About Me 页面)
+   ========================================================================== */
 .timeline {
     position: relative;
     padding: 1rem 0;
@@ -53,11 +50,10 @@
     padding-left: 2rem;
 }
 
-/* 时间线上的圆点 */
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -9px; /* (圆点宽度/2) + (边框宽度) */
+    left: -9px;
     top: 5px;
     width: 16px;
     height: 16px;
@@ -97,19 +93,27 @@
     margin: 0 0 0.75rem 0;
 }
 
+/* 时间线内文字和列表的可读性优化 */
 .timeline-body {
-    font-size: 0.95rem;
+    font-size: inherit; 
 }
 .timeline-body ul {
-    margin-top: 0.5rem;
-    padding-left: 1.25rem; /* Indent list items */
+    margin-top: 0.75rem;
+    list-style-position: outside;
+    padding-left: 1.25rem;
 }
-.timeline-body p {
-    margin: 0;
+.timeline-body li {
+    margin-bottom: 0.6rem;
+}
+.timeline-body strong {
+    color: var(--title-color);
+    font-weight: 600;
 }
 
 
-/* --- 技能标签样式 --- */
+/* ==========================================================================
+   技能墙样式 (用于 About Me 页面)
+   ========================================================================== */
 .skills-grid {
     display: flex;
     flex-direction: column;
@@ -146,52 +150,54 @@
     font-size: 0.9rem;
 }
 
-/* --- 联系方式样式 --- */
+
+/* ==========================================================================
+   链接页面卡片样式
+   ========================================================================== */
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.link-card {
+    display: block;
+    padding: 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-border-radius);
+    background: var(--card-background);
+    color: var(--body-font-color);
+    text-decoration: none !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-box-shadow);
+}
+
+.link-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--title-color);
+    font-weight: bold;
+}
+
+.link-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--secondary-font-color);
+}
+
+
+/* ==========================================================================
+   联系方式样式 (用于 About Me 页面)
+   ========================================================================== */
 .contact-info {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem 2rem; /* 垂直间距 | 水平间距 */
+    gap: 0.5rem 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--card-border);
-    margin-bottom: 2rem;
+    margin-bottom: -0.5rem;
 }
-/* assets/scss/custom.scss */
-
-/* --- 内容卡片容器样式 --- */
-.content-card {
-    background: var(--card-background);
-    border: 1px solid var(--card-border);
-    border-radius: var(--card-border-radius);
-    padding: 1.5rem 2rem; /* 增加内边距，让内容更舒展 */
-    margin-bottom: 2rem;
-    box-shadow: var(--card-box-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 鼠标悬浮效果 */
-.content-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--card-box-shadow-hover, 0 8px 30px rgba(0,0,0,0.12));
-}
-
-.content-card-title {
-    margin-top: 0;
-    padding-bottom: 1rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--card-border);
-    font-size: 1.5rem; /* 适中且醒目的标题大小 */
-}
-
-.content-card-body {
-    font-size: 1rem; /* 保证卡片内正文的字体大小适中 */
-    line-height: 1.7; /* 增加行高，提升阅读体验 */
-}
-
-/* 修正嵌套在卡片中组件的边距 */
-.content-card-body .timeline,
-.content-card-body .skills-grid {
-    margin-top: 0;
-}
-/*
-    You can add your own custom styles here.
-*/
