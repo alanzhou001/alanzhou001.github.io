@@ -1,0 +1,17 @@
+{{/*
+    layouts/shortcodes/links.html
+    这个 Shortcode 会读取您在 Markdown 中写入的 YAML 格式的链接数据,
+    并将其渲染为一个卡片网格。
+*/}}
+{{ $links := .Inner | transform.Unmarshal }}
+
+<div class="links-grid">
+    {{ range $links }}
+        <a class="link-card" href="{{ .website }}" target="_blank" rel="noopener noreferrer">
+            <h3>{{ .title }}</h3>
+            {{ with .description }}
+                <p>{{ . }}</p>
+            {{ end }}
+        </a>
+    {{ end }}
+</div>
