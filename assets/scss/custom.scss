@@ -1,3 +1,42 @@
+/* a/assets/scss/custom.scss */
+
+/* 用于友情链接页面的卡片式布局 */
+.links-grid {
+    display: grid;
+    /* 这会让卡片自适应排列，每张卡片最小宽度 240px */
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.link-card {
+    display: block;
+    padding: 1rem;
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-border-radius);
+    background: var(--card-background);
+    color: var(--body-font-color);
+    text-decoration: none !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-box-shadow);
+}
+
+.link-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--title-color);
+    font-weight: bold;
+}
+
+.link-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--secondary-font-color);
+}
 /*
     You can add your own custom styles here.
 */
