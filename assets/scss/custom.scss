@@ -155,6 +155,43 @@
     border-bottom: 1px solid var(--card-border);
     margin-bottom: 2rem;
 }
+/* assets/scss/custom.scss */
+
+/* --- 内容卡片容器样式 --- */
+.content-card {
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-border-radius);
+    padding: 1.5rem 2rem; /* 增加内边距，让内容更舒展 */
+    margin-bottom: 2rem;
+    box-shadow: var(--card-box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 鼠标悬浮效果 */
+.content-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--card-box-shadow-hover, 0 8px 30px rgba(0,0,0,0.12));
+}
+
+.content-card-title {
+    margin-top: 0;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 1.5rem; /* 适中且醒目的标题大小 */
+}
+
+.content-card-body {
+    font-size: 1rem; /* 保证卡片内正文的字体大小适中 */
+    line-height: 1.7; /* 增加行高，提升阅读体验 */
+}
+
+/* 修正嵌套在卡片中组件的边距 */
+.content-card-body .timeline,
+.content-card-body .skills-grid {
+    margin-top: 0;
+}
 /*
     You can add your own custom styles here.
 */
