@@ -1,0 +1,19 @@
+{{/*
+    layouts/shortcodes/skills.html
+    这个 Shortcode 会读取 YAML 格式的技能数据,
+    并将其渲染为一个卡片式的技能墙。
+*/}}
+{{ $skillData := .Inner | transform.Unmarshal }}
+
+<div class="skills-grid">
+    {{ range $skillData }}
+        <div class="skill-card">
+            <span class="skill-category">{{ .category }}:</span>
+            <div class="skill-tags">
+                {{ range .items }}
+                    <span class="skill-tag">{{ . }}</span>
+                {{ end }}
+            </div>
+        </div>
+    {{ end }}
+</div>
