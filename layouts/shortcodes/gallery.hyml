@@ -1,0 +1,42 @@
+{{/*
+    layouts/shortcodes/gallery.html
+    一个强大的图库 Shortcode，可以自动读取并处理页面资源包中所有图片的 EXIF 数据。
+*/}}
+<div class="gallery-grid">
+{{ range .Page.Resources.ByType "image" }}
+    {{ $image := . }}
+    {{/* 尝试获取图片的 EXIF 数据 */}}
+    {{ $exif := "" }}
+    {{ with .Exif }}
+        {{ $exif = . }}
+    {{ end }}
+    
+    {{/* 为 PhotoSwipe 准备数据 */}}
+    {{ $largeImage := $image.Resize "1600x" }}
+    {{ $thumbnail := $image.Resize "400x" }}
+
+    <a href="{{ $largeImage.RelPermalink }}" 
+       class="gallery-item"
+       data-pswp-width="{{ $largeImage.Width }}"
+       data-pswp-height="{{ $largeImage.Height }}"
+       data-pswp-title="{{ .Title }}"
+       {{ with $exif }}
+            {{ with .Date }}
+                data-exif-date="{{ .Format "2006-01-02 15:04" }}"
+            {{ end }}
+            {{ with .Tags.LensModel }}
+                data-exif-lens="{{ . }}"
+            {{ end }}
+            {{ with .Tags.Model }}
+                data-exif-camera="{{ . }}"
+            {{ end }}
+       {{ end }}
+       target="_blank" rel="noopener noreferrer">
+        <img src="{{ $thumbnail.RelPermalink }}" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" alt="{{ .Title }}" loading="lazy">
+    </a>
+{{ end }}
+</div>
+
+{{/* 加载 PhotoSwipe 的 JavaScript，这是必须的 */}}
+{{ $photoswipe := resources.Get "js/photoswipe.js" | js.Build }}
+<script src="{{ $photoswipe.RelPermalink }}"></script>

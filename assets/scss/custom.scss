@@ -192,3 +192,69 @@
     padding-bottom: 1rem;
     margin-bottom: -0.5rem;
 }
+
+/* --- EXIF 图库样式 --- */
+.exif-gallery {
+    display: grid;
+    /* 根据内容自动适配，每列最小宽度 320px */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 1.5rem;
+}
+
+.gallery-figure {
+    margin: 0;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    background: var(--card-background);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-box-shadow-flat, 0 1px 3px rgba(0,0,0,0.05));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-figure:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-box-shadow);
+}
+
+.gallery-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.gallery-figcaption {
+    padding: 1rem 1.25rem;
+    font-size: 14px;
+}
+
+.caption-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--title-color);
+}
+
+.exif-details {
+    display: grid;
+    /* 两列布局，以获得更好的空间利用 */
+    grid-template-columns: 1fr 1fr; 
+    gap: 0.6rem 1rem; /* 垂直和水平间距 */
+    color: var(--secondary-font-color);
+    line-height: 1.5;
+}
+
+.exif-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em; /* 图标和文字的间距 */
+}
+
+.exif-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.exif-item a:hover {
+    text-decoration: underline;
+}
