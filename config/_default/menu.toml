@@ -14,3 +14,11 @@ url = "https://github.com/alanzhou001"
 
 [social.params]
 icon = "brand-github"
+
+[[social]]
+identifier = "bilibili"
+name = "Bilibili"
+url = "https://space.bilibili.com/1896424732"
+
+[social.params]
+icon = "brand-bilibili"
