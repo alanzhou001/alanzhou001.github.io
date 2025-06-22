@@ -1,7 +1,7 @@
-/* 您可以在此添加自己的自定义样式 - 最终优化版 v3 */
+/* 您可以在此添加自己的自定义样式 - 最终版 v5 */
 
 /* ==========================================================================
-   内容卡片容器 (About Me 页面) - 已更新悬浮效果
+   内容卡片容器 (About Me 页面) - 悬浮效果与 link-card 同步
    ========================================================================== */
 .content-card {
     background: var(--card-background);
@@ -9,13 +9,11 @@
     border-radius: var(--card-border-radius);
     padding: 1.5rem 2rem;
     margin-bottom: 2rem;
-    /* 默认状态下阴影很弱或没有，为悬浮效果做准备 */
-    box-shadow: var(--card-box-shadow-flat, none); 
-    /* 统一使用和 link-card 一致的 transition 属性 */
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    /* --- 修改：完全同步 link-card 的 transition --- */
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* 应用和 link-card 一致的 hover 效果 */
+/* --- 修改：完全同步 link-card 的 hover 效果 --- */
 .content-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--card-box-shadow);
@@ -37,7 +35,7 @@
 
 
 /* ==========================================================================
-   时间线样式 (About Me 页面) - 已更新字体
+   时间线样式 (About Me 页面)
    ========================================================================== */
 .timeline {
     position: relative;
@@ -118,6 +116,12 @@
     background: var(--card-background);
     border: 1px solid var(--card-border);
     border-radius: var(--card-border-radius);
+    box-shadow: var(--card-box-shadow-flat, none);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-box-shadow);
 }
 .skill-category {
     font-weight: 600;
@@ -138,7 +142,7 @@
 }
 
 /* ==========================================================================
-   链接页面卡片样式 (保持不变)
+   链接页面卡片样式
    ========================================================================== */
 .links-grid {
     display: grid;
