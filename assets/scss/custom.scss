@@ -1,4 +1,4 @@
-/* 您可以在此添加自己的自定义样式 - 最终版 v6 */
+/* 您可以在此添加自己的自定义样式 - 最终版 v7 */
 
 /* ==========================================================================
    内容卡片容器 (About Me 页面)
@@ -140,36 +140,30 @@
 }
 
 /* ==========================================================================
-   链接页面卡片样式 - 新版立体卡片效果
+   链接页面卡片样式 - 支持 Markdown
    ========================================================================== */
 .links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
 }
-
 .link-card {
     display: flex;
     flex-direction: column;
     background: var(--card-background);
-    /* 强制定义完整的边框，覆盖主题默认的左侧竖线 */
     border: 1px solid var(--card-border);
-    /* 确保左侧边框不会被更高优先级的规则覆盖 */
     border-left: 1px solid var(--card-border) !important; 
     padding: 1.25rem;
     border-radius: var(--card-border-radius);
     color: var(--body-font-color);
     text-decoration: none !important;
-    /* 添加阴影和悬浮动画 */
-    box-shadow: var(--card-box-shadow-flat, none);
+    box-shadow: var(--card-box-shadow-flat, 0 1px 3px rgba(0,0,0,0.05));
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .link-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--card-box-shadow);
 }
-
 .link-card h3 {
     margin: 0 0 0.5rem 0;
     color: var(--title-color);
@@ -177,27 +171,14 @@
     font-size: 1.15em;
 }
 
-.link-card p {
-    margin: 0;
+/* --- 新增修改：处理 Markdown 渲染后的样式 --- */
+.link-description {
     font-size: 0.9em;
     color: var(--secondary-font-color);
-    /* 确保描述文字可以占据剩余空间 */
     flex-grow: 1; 
 }
-
-/* 美化 Links 页面的分区标题 (## Friends) */
-.main-content .article-content > h2 {
-    border-bottom: none;
-    font-size: 1.6rem;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.main-content .article-content > h2:first-of-type {
-    margin-top: 1rem;
+.link-description p {
+    margin: 0;
 }
 
 

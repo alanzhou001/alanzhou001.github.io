@@ -2,15 +2,23 @@
     layouts/shortcodes/links.html
     这个 Shortcode 会读取您在 Markdown 中写入的 YAML 格式的链接数据,
     并将其渲染为一个卡片网格。
+    新版：现在支持在标题和描述中使用 Markdown 语法。
 */}}
 {{ $links := .Inner | transform.Unmarshal }}
 
 <div class="links-grid">
     {{ range $links }}
         <a class="link-card" href="{{ .website }}" target="_blank" rel="noopener noreferrer">
-            <h3>{{ .title }}</h3>
+            {{/* 使用 RenderString 并设置 "display" 为 "inline" 来处理标题。
+                这可以渲染 Markdown 格式，同时避免 Hugo 自动添加 <p> 标签，从而保持标题的行内样式。
+            */}}
+            <h3>{{ .title | $.Page.RenderString (dict "display" "inline") | safeHTML }}</h3>
+            
             {{ with .description }}
-                <p>{{ . }}</p>
+                {{/* 使用标准的 RenderString 来处理描述。
+                    这会将描述中的 Markdown 文本转换为完整的 HTML。
+                */}}
+                <div class="link-description">{{ . | $.Page.RenderString }}</div>
             {{ end }}
         </a>
     {{ end }}
