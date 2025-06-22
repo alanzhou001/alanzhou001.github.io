@@ -7,15 +7,14 @@
             {{- end -}}
         </header>
         
-        {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
-        
-        {{/* --- 核心修改 ---
-            在这里，我们添加一个额外的 'where' 条件来过滤掉我们不希望在归档页显示的特定页面。
-            我们通过页面的 'Kind' 属性来筛选，只保留 'page' 类型的页面，
-            这会排除掉 'home', 'section', 'taxonomy' 等特殊页面。
-            更重要的是，它能有效排除掉那些我们不希望作为“文章”列出的独立页面，如 About, Links 等。
-        */}}
-        {{- $pages = where $pages "Kind" "page" -}}
+        {{/* --- 最终解决方案：通过文件路径进行更精确的过滤 --- */}}
+        {{- $pages := slice -}}
+        {{- range site.RegularPages -}}
+            {{/* 我们只将位于 "post/" 目录下的页面添加到列表中 */}}
+            {{- if (eq .Section "post") -}}
+                {{- $pages = $pages | append . -}}
+            {{- end -}}
+        {{- end -}}
 
         {{- if $pages -}}
             {{- $groupedPages := $pages.GroupByDate "2006" -}}
@@ -28,10 +27,6 @@
                                 <a href="{{ .Permalink }}">{{ .Title }}</a>
                             </h3>
                             <div class="archive-post-meta">
-                                {{/* --- 错误修复 ---
-                                    原来的 partial "article-meta/basic.html" 调用已替换为下面的代码，
-                                    以直接渲染日期，避免 "partial not found" 错误。
-                                */}}
                                 <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
                                     {{ .Date.Format (.Site.Params.dateFormat.published | default "Jan 02, 2006") }}
                                 </time>
