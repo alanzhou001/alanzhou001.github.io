@@ -8,7 +8,4 @@ menu:
         weight: 2
         params: 
             icon: archives
-_build:
-    list: never
-    render: always
 ---

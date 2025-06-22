@@ -7,9 +7,6 @@ menu:
         params:
             icon: link
 comments: false
-_build:
-    list: never
-    render: always
 ---
 
 ## 🤝 Friends & Teachers

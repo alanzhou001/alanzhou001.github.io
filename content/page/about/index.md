@@ -6,9 +6,6 @@ menu:
         weight: 2
         params: 
             icon: user
-_build:
-    list: never
-    render: always
 ---
 
 <div class="contact-info">
