@@ -28,7 +28,13 @@
                                 <a href="{{ .Permalink }}">{{ .Title }}</a>
                             </h3>
                             <div class="archive-post-meta">
-                                {{ partial "article-meta/basic.html" . }}
+                                {{/* --- 错误修复 ---
+                                    原来的 partial "article-meta/basic.html" 调用已替换为下面的代码，
+                                    以直接渲染日期，避免 "partial not found" 错误。
+                                */}}
+                                <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                                    {{ .Date.Format (.Site.Params.dateFormat.published | default "Jan 02, 2006") }}
+                                </time>
                             </div>
                         </div>
                     {{- end -}}
