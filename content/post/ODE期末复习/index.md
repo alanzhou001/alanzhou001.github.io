@@ -1,7 +1,7 @@
 ---
 title: ODE期末复习
 description: SJTU MATH2501期末定理与公式整理
-slug: hello-world
+slug: ODE期末复习
 date: 2025-06-22 20:14:00+0800
 math: true
 categories:
