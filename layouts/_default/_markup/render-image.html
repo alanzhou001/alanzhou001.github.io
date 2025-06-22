@@ -1,18 +1,16 @@
 {{/* 这个模板会覆盖 Hugo 默认的图片渲染行为。
     它会生成一个包含图片及其详细 EXIF 元数据信息的卡片。
+    错误修复版：修正了处理 GPS 坐标时的上下文错误。
 */}}
 {{- $image := .Page.Resources.GetMatch .Destination -}}
 
 {{- if $image -}}
-  {{/* 将图片调整为适合在页面上直接展示的尺寸 */}}
   {{- $resizedImage := $image.Resize "800x" -}}
   {{- $exif := $image.Exif -}}
 
   <figure class="gallery-figure">
-    {{/* 图片本身 */}}
     <img src="{{ $resizedImage.RelPermalink }}" alt="{{ .Text }}" width="{{ $resizedImage.Width }}" height="{{ $resizedImage.Height }}" loading="lazy">
     
-    {{/* 图片下方的元数据区域 */}}
     <figcaption class="gallery-figcaption">
       {{- with .Text }}
         <div class="caption-title"><strong>{{ . }}</strong></div>
@@ -21,12 +19,9 @@
       <div class="exif-details">
         {{- with $exif -}}
           {{- with .Date }}<div class="exif-item">🗓️<span>{{ .Format "2006-01-02 15:04" }}</span></div>{{ end -}}
-          
-          {{/* --- 新增：设备和镜头信息 --- */}}
           {{- with .Tags.Model }}<div class="exif-item">📷<span>{{ . }}</span></div>{{ end -}}
           {{- with .Tags.LensModel }}<div class="exif-item">렌즈<span>{{ . }}</span></div>{{ end -}}
           
-          {{/* --- 新增：光圈和焦距 --- */}}
           {{- with .Tags.FNumber -}}
             {{- $fnumber := lang.FormatNumber 1 . -}}
             <div class="exif-item">⚙️<span>ƒ/{{ $fnumber }}</span></div>
@@ -36,8 +31,8 @@
             <div class="exif-item">🔭<span>{{ $focal }}mm</span></div>
           {{- end -}}
 
-          {{/* --- 新增：可点击的地图链接 --- */}}
-          {{- with and .Lat .Long -}}
+          {{/* --- 核心修复：使用 'if' 代替 'with' 来避免上下文错误 --- */}}
+          {{- if and .Lat .Long -}}
             <div class="exif-item">📍<span><a href="https://www.google.com/maps?q={{ .Lat }},{{ .Long }}" target="_blank" rel="noopener noreferrer">在地图上查看</a></span></div>
           {{- end -}}
         {{- end -}}
@@ -45,6 +40,5 @@
     </figcaption>
   </figure>
 {{- else -}}
-  {{/* 如果找不到图片资源 (例如外部链接)，则正常显示图片 */}}
   <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}">
 {{- end -}}
