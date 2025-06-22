@@ -9,20 +9,25 @@ menu:
 comments: false
 ---
 
-## 🤝 Friends
+## 🤝 Friends & Teachers
 
 {{< links >}}
 - title: wmgg的Blog
   website: https://yevzh.gitHub.io
-  description: "朋友的博客网站"
+  description: "最爱的wmgg，SJTU CS硕士研究生在读"
 - title: Yixiao's Blog
   website: https://wangyixiao.top
-  description: "朋友的博客网站"
+  description: "优秀！交大SE本科在读"
 - title: 豆芽酱的网站
   website: https://dyas.top
-  description: "朋友的博客网站"
+  description: "豆芽酱，很厉害的电院同学"
+- title: RC's Page
+  website: https://xzlim.com
+  description: "我的中级微观经济学老师，非常nice的教授in ACEM！"
+- title: 钱军辉老师的主页
+  website: https://jhqian.org
+  description: "我的中级宏观经济学老师，独特且有用的听课体验！"
 {{< /links >}}
-
 
 ## 🛠️ 有用的链接
 
