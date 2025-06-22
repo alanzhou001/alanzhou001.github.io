@@ -193,11 +193,14 @@
     margin-bottom: -0.5rem;
 }
 
-/* --- EXIF 图库样式 --- */
+/* ==========================================================================
+   EXIF 图库样式 - 居中显示
+   ========================================================================== */
 .exif-gallery {
-    display: grid;
-    /* 根据内容自动适配，每列最小宽度 320px */
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    /* --- 核心修改：使用 Flexbox 布局来实现居中 --- */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* 水平居中所有卡片 */
     gap: 1.5rem;
 }
 
@@ -209,6 +212,11 @@
     border: 1px solid var(--card-border);
     box-shadow: var(--card-box-shadow-flat, 0 1px 3px rgba(0,0,0,0.05));
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* --- 新增：为 Flexbox 布局定义项目尺寸 --- */
+    flex-basis: 320px; /* 卡片的基础宽度 */
+    flex-grow: 1;      /* 允许卡片拉伸以填充额外空间 */
+    max-width: 450px;  /* 限制最大宽度，防止单张图片时卡片过宽 */
 }
 
 .gallery-figure:hover {
@@ -236,9 +244,8 @@
 
 .exif-details {
     display: grid;
-    /* 两列布局，以获得更好的空间利用 */
     grid-template-columns: 1fr 1fr; 
-    gap: 0.6rem 1rem; /* 垂直和水平间距 */
+    gap: 0.6rem 1rem;
     color: var(--secondary-font-color);
     line-height: 1.5;
 }
@@ -246,7 +253,7 @@
 .exif-item {
     display: flex;
     align-items: center;
-    gap: 0.5em; /* 图标和文字的间距 */
+    gap: 0.5em;
 }
 
 .exif-item a {

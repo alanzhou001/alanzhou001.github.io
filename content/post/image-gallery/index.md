@@ -14,6 +14,7 @@ To use this feature, the image must be in the same directory as the Markdown fil
 
 ![Image 2](2.jpg)
 
+### 日本旅行
 {{< gallery >}}
 ![test](test.jpg)
 {{< /gallery >}}
