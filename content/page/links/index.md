@@ -1,6 +1,6 @@
 ---
-title: "links"
-slug: "links"
+title: "Links"
+slug: "Links"
 menu:
     main:
         weight: 5
@@ -17,6 +17,9 @@ comments: false
   description: "朋友的博客网站"
 - title: Yixiao's Blog
   website: https://wangyixiao.top
+  description: "朋友的博客网站"
+- title: 豆芽酱的网站
+  website: https://dyas.top
   description: "朋友的博客网站"
 {{< /links >}}
 
