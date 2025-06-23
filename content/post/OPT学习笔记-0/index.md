@@ -18,18 +18,14 @@ OPT is short for Optimization, and an optimization problem is defined as follow:
 
 **Definition 0** optimization problem
 $$
-\begin{equation}\label{opt1}
-\begin{split}
 min \space f(x) \\
 s.t. \space x\in X
-\end{split}
-\end{equation}
 $$
 where $f: \mathbb{R}^n \to \mathbb{R}$ is called the *objective function (决策函数)*, $x$ is the *decision variable (决策变量)*， and $X$ is the *feasible region (可行域)* . Moreover, $min$ for *minimize* and $s.t.$ for *subject to*. 
 
 **Definition 1** 全局最优解及最优值 (global) optimal solution & optimal value
 
-$x^*$ is an optimal solution of ($\ref{opt1}$) 
+$x^*$ is an optimal solution of 
 $$
 iff.  x^*\in X, f(x^*)\leq f(x), \forall x\in X
 $$
