@@ -25,7 +25,7 @@ icon = "brand-bilibili"
 
 [[social]]
 identifier = "kaggle"
-name = "kaggle"
+name = "Kaggle"
 url = "https://www.kaggle.com/alanz001"
 
 [social.params]

@@ -10,9 +10,10 @@ tags:
     - ODE
     - notes
 ---
-#　线性方程
 
-## 齐次线性微分方程组
+##　线性方程
+
+### 齐次线性微分方程组
 
 - 形式：
   $$
@@ -30,7 +31,7 @@ tags:
 
   - 叠加原理（解的线性组合还是解）
 
-## 非齐次线性微分方程组
+### 非齐次线性微分方程组
 
 - 形式：
   $$
@@ -47,7 +48,7 @@ tags:
     \mathbf{x}^*(t)=\mathbf{X}(t)\int_{t_0}^{t}\mathbf{X}^{-1}(\tau)\mathbf{f}(\tau)d\tau
     $$
 
-## 高阶线性微分方程
+### 高阶线性微分方程
 
 - 形式：
   $$
@@ -105,7 +106,7 @@ tags:
   x(t)=x_1(t)(C_2+C_1\int\frac{1}{x_1^2(t)}e^{-\int a_1(t)dt}dt)
   $$
 
-## 复值解
+### 复值解
 
 - 复值线性方程组
   $$
@@ -122,17 +123,16 @@ tags:
   \frac{d}{dt}\left(\begin{matrix} \mathbf{x} \\ \mathbf{y} \end{matrix}\right)=\left(\begin{matrix} \mathbf{A}_R(t) & -\mathbf{A}_I(t) \\ \mathbf{A}_I(t) & \mathbf{A}_R(t) \end{matrix}\right)\left(\begin{matrix} \mathbf{x} \\ \mathbf{y} \end{matrix}\right)+\left(\begin{matrix} \mathbf{f}_R(t) \\ \mathbf{f}_I(t) \end{matrix}\right)
   $$
   
+## 常系数线性方程
 
-# 常系数线性方程
-
-## 微分算子处理常系数高阶线性方程
+### 微分算子处理常系数高阶线性方程
 
 - $\frac{d^n x}{dt^n}+a_1\frac{d^{n-1} x}{dt^{n-1}}+\cdots+a_nx=f(t)$
 
 - 微分算子: $D=\frac{d}{dt}$, $D^n=\frac{d^n}{dt^n}$
 - 方程可化为算子形式：$P(D)x=f(t)$, $P(D)\overset{def}{=}D^n+a_1D^{n-1}+\cdots+a_{n-1}D+a_n$
 
-### 齐次问题
+#### 齐次问题
 
 - **欧拉待定指数函数法**：寻找形如$x(t)=e^{\lambda t}$的解
 
@@ -152,7 +152,7 @@ tags:
      e^{\alpha_jt}sin\beta_jt,\space te^{\alpha_jt}sin\beta_jt,\space \cdots,\space t^{m_j-1}e^{\alpha_jt}sin\beta_jt \space\space\space\space (j=1,2,\cdots,l)
      $$
 
-### 非齐次问题
+#### 非齐次问题
 
 求出一个特解
 
@@ -185,7 +185,7 @@ tags:
 
     常用技巧：$v(t)=1$
 
-## 常系数线性方程组
+### 常系数线性方程组
 
 $$
 \frac{d}{dt}\left(\begin{matrix}x_1 \\ \vdots \\ x_n \end{matrix}\right)=\left(\begin{matrix}a_{11} & \cdots & a_{1n} \\ \vdots && \vdots \\ a_{n1} & \cdots & a_{nn} \end{matrix}\right)\left(\begin{matrix}x_1 \\ \vdots \\ x_n \end{matrix}\right)+\left(\begin{matrix}f_1(t) \\ \vdots \\ f_n(t) \end{matrix}\right)
@@ -227,7 +227,7 @@ $$
 
     6. 如有复根，直接取实部即可（欧拉公式：$e^{it}=cost+isint$)
 
-# 动力系统
+## 动力系统
 
 - 动力系统概念
   $$
@@ -239,7 +239,7 @@ $$
 
 - **闭轨/周期轨**
 
-## Lyapunov稳定性
+### Lyapunov稳定性
 
 - 各种稳定性的定义：张伟年p162-163
 
@@ -258,7 +258,7 @@ $$
   - 稳定：当且仅当$\mathbf{A}$的全部特征值实部均为非正数，且实部为零的特征值对应的$Jordan$块都是一阶
   - 不稳定：当且仅当$\mathbf{A}$的特征值至少一个实部为正，或至少一个实部为零的特征值对应的$Jordan$块大于一阶
 
-## Lyapunov直接法
+### Lyapunov直接法
 
 构造Lyapunov函数，满足函数定正（至少在一个邻域内）
 
@@ -266,7 +266,7 @@ $$
 - 渐近稳定：导数定 负
 - 不稳定：导数定正
 
-##　平衡点分析
+### 平衡点分析
 
 只考虑平面自治系统：
 $$
@@ -368,7 +368,7 @@ $$
 
    除**中心**以外的**初等平衡点**（非退化）称为**粗的**，其余为**细的**.
 
-##　极限环
+### 极限环
 
 化为极坐标后讨论
 
