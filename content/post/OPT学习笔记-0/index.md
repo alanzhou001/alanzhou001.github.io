@@ -78,7 +78,7 @@ $$
 
    - **linear combinations(线性组合)&span(线性生成空间)**
 
-     $\mathcal{V}=\{\mathcal{v}_1,\mathcal{v}_2,\cdots,\mathcal{v}_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}$, $\sum_{i=1}^ma_i\mathcal{v}_i$is a *linear combination*; 
+     $\mathcal{V}=\{\mathcal{v}_1,\mathcal{v}_2,\cdots,\mathcal{v}_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}$, $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
 
      $span(\mathcal{V}):=\{a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R}\}$
 
