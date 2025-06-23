@@ -1,6 +1,6 @@
 ---
 title: Hello World
-description: Welcome to Hugo Theme Stack
+description: Welcome to Alan's page, using Hugo Stack Theme.
 slug: hello-world
 date: 2025-06-22 20:00:00+0800
 math: true

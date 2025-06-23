@@ -22,3 +22,11 @@ url = "https://space.bilibili.com/1896424732"
 
 [social.params]
 icon = "brand-bilibili"
+
+[[social]]
+identifier = "kaggle"
+name = "kaggle"
+url = "https://www.kaggle.com/alanz001"
+
+[social.params]
+icon = "brand-kaggle"
