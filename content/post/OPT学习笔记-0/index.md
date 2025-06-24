@@ -65,6 +65,7 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
     $$
      \mathcal{V}=\{v_1,v_2,\cdots,v_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}
     $$
+     
      $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
 
     $$
@@ -186,16 +187,20 @@ Let $<\cdot , \cdot>$ be the *Euclidean inner product* on $\mathbb{R}^n \to \mat
 {{< math-block type="proof" >}}
 1. Let $f(x)=<a, x>$, for every $x, y\in \mathbb{R}^n$ and $\alpha, \beta \in \mathbb{R}$
   $$
-  f(\alpha x+ \beta y)=\langle a, \alpha x+ \beta y \rangle \\
-  =\alpha \langle a, x \rangle + \langle a, \beta y \rangle \\
-  =\alpha f(x) + \beta f(y)
+  \begin{align*}
+  f(\alpha x+ \beta y) &= \langle a, \alpha x+ \beta y \rangle \\
+             &= \alpha \langle a, x \rangle + \beta \langle a, y \rangle \\
+             &= \alpha f(x) + \beta f(y)
+  \end{align*}
   $$
   $f(x)$ is a linear function;
 2. Let $f(x)$ be a linear function,
   $$
-  f(x)=f(\sum x_ie_i) \\
-  =\sum x_if(e_i) \\
-  =\langle a, x \rangle
+  \begin{align*}
+  f(x) &=f(\sum x_ie_i) \\
+  &=\sum x_if(e_i) \\
+  &=\langle a, x \rangle
+  \end{align*}
   $$
   in which $a=(f(e_1),\cdots,f(e_n))$.
 {{< /math-block >}}
