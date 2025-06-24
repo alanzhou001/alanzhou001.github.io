@@ -92,7 +92,6 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
 Every linear independent subset of $\mathcal{V}$ can be extended to a basis of $span(\mathcal{V})$. The set of $\mathcal{V}$ can be reduced to a basis of $span(\mathcal{V})$.
 {{< /math-block >}}
 
-{{< math-block type="proof" title="Proof of Theorem 1" >}}
 **(重复加入/减去线性无关向量直到构成基)**
 
 {{< math-block type="theorem" title="Proposition 1" >}}
@@ -155,9 +154,8 @@ Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.
 
 Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis for $\mathcal{W}$.
 {{< /math-block >}}
-{{< /math-block >}}
 
-2. Euclidean inner product, Euclidean norm, orthogonal
+1. Euclidean inner product, Euclidean norm, orthogonal
 
    *To be continued...*
 
