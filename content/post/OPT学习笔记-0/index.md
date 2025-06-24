@@ -52,28 +52,24 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
 
    - **scalar multiplication(数乘)** $a\in \mathbb{R}, x \in \mathbb{R}^n, ax=(ax_1,ax_2,\cdots,ax_n)$
 
-   - **addition(向量加法)**
+   - **addition(向量加法)** $x\in\mathbb{R}^n, y\in\mathbb{R}^n, x+y=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)$
 
-    $x\in\mathbb{R}^n, y\in\mathbb{R}^n, x+y=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)$
-
-   - **linear subspace(线性子空间)**
-
-    A nonempty subset $S$ of $\mathbb{R}^n$ is a *linear subspace* iff.
+   - **linear subspace(线性子空间)** A nonempty subset $S$ of $\mathbb{R}^n$ is a *linear subspace* iff.
     $$
-    x,y\in S, x+y\in S;x\in S,a\in \mathbb{R},ax\in S
+     x,y\in S, x+y\in S;x\in S,a\in \mathbb{R},ax\in S
     $$
-    (对加法和数乘封闭)
+     (对加法和数乘封闭)
 
    - **linear combinations(线性组合) & span(线性生成空间)**
 
-     $$
+    $$
      \mathcal{V}=\{v_1,v_2,\cdots,v_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}
-     $$
+    $$
      $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
 
-     $$
+    $$
      span(\mathcal{V}):=\{ a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R} \}
-     $$
+    $$
 
    - **linear independent(线性无关) & linear dependent(线性相关)**
 
