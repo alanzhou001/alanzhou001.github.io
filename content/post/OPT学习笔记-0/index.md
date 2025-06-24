@@ -202,7 +202,7 @@ Let $<\cdot , \cdot>$ be the *Euclidean inner product* on $\mathbb{R}^n \to \mat
   =\langle a, x \rangle
   $$
   in which $a=(f(e_1),\cdots,f(e_n))$.
-{{< \math-block >}}
+{{< /math-block >}}
 
 Extending Theorem 2 from scalar-valued linear functions $f: \mathbb{R}^n \to \mathbb{R}$ to vector-valued linear functions $f: \mathbb{R}^n \to \mathbb{R}^m$, we derive the following corollary:
 
