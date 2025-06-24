@@ -48,37 +48,37 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
 ### Linear Algebra
 
 1. The space $\mathbb{R}^n$
-   A **vector** (or point) $x$ in $\mathbb{R}^n$ is an ordered collection of $n$ real numbers, which can be given as $x=(x_1,x_2,x_3,\cdots,x_n)$.
+  A **vector** (or point) $x$ in $\mathbb{R}^n$ is an ordered collection of $n$ real numbers, which can be given as $x=(x_1,x_2,x_3,\cdots,x_n)$.
 
    - **scalar multiplication(数乘)** $a\in \mathbb{R}, x \in \mathbb{R}^n, ax=(ax_1,ax_2,\cdots,ax_n)$
 
    - **addition(向量加法)**
 
-     $x\in\mathbb{R}^n, y\in\mathbb{R}^n, x+y=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)$
+    $x\in\mathbb{R}^n, y\in\mathbb{R}^n, x+y=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)$
 
    - **linear subspace(线性子空间)**
 
-     A nonempty subset $S$ of $\mathbb{R}^n$ is a *linear subspace* iff.
-     $$
-     x,y\in S, x+y\in S;x\in S,a\in \mathbb{R},ax\in S
-     $$
-     (对加法和数乘封闭)
+    A nonempty subset $S$ of $\mathbb{R}^n$ is a *linear subspace* iff.
+    $$
+    x,y\in S, x+y\in S;x\in S,a\in \mathbb{R},ax\in S
+    $$
+    (对加法和数乘封闭)
 
    - **linear combinations(线性组合) & span(线性生成空间)**
 
-     $\mathcal{V}=\{\mathcal{v}_1,\mathcal{v}_2,\cdots,\mathcal{v}_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}$, $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
+    $\mathcal{V}=\{\mathcal{v}_1,\mathcal{v}_2,\cdots,\mathcal{v}_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}$, $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
 
-     $span(\mathcal{V}):=\{a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R}\}$
+    $span(\mathcal{V}):=\{a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R}\}$
 
    - **linear independent(线性无关) & linear dependent(线性相关)**
 
-     *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ iff. $a_1=a_2=\cdots=a_m=0$
+    *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ iff. $a_1=a_2=\cdots=a_m=0$
 
-     *linear dependent:* exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.
+    *linear dependent:* exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.
 
    - **Basis(基)**
 
-     $\mathcal{V}$ is a *basis* of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent 
+    $\mathcal{V}$ is a *basis* of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent 
 
    Some useful facts:
 
@@ -91,14 +91,14 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
 Every linear independent subset of $\mathcal{V}$ can be extended to a basis of $span(\mathcal{V})$. The set of $\mathcal{V}$ can be reduced to a basis of $span(\mathcal{V})$.
 {{< /math-block >}}
 
-    **(重复加入/减去线性无关向量直到构成基)**
+**(重复加入/减去线性无关向量直到构成基)**
 
 {{< math-block type="theorem" title="Proposition 1" >}}
 Let $\mathcal{W}$ be a vector space spanned by a finite set $\mathcal{V}$, i.e., $\mathcal{W}=span(\mathcal{V})$. Any linearly independent subset of $\mathcal{W}$ can be extended to form a basis for $\mathcal{W}$ .
 {{< /math-block >}}
 
 {{< math-block type="proof" >}}
-Let $L=\{v_1,v_2,…,v_k\}$ be a linearly independent set of vectors in W. We want to find a set of vectors ${u_1,u_2,…,u_m}⊆\mathcal{V}$ such that the combined set $B=L∪\{u_1,…,u_m\}$ is a basis for $\mathcal{W}$ .
+Let $L=\{v_1,v_2,…,v_k\}$ be a linearly independent set of vectors in W. We want to find a set of vectors ${u_1,u_2,…,u_m}\subseteq \mathcal{V}$ such that the combined set $B=L∪\{u_1,…,u_m\}$ is a basis for $\mathcal{W}$ .
 
 We proceed with the following algorithm:
 
@@ -141,13 +141,13 @@ We can construct the basis $B$ using the following "sifting" algorithm:
 
 The final set $B$ produced by this algorithm is a basis for $\mathcal{W}$. We must prove two properties: that $B$ is linearly independent and that it spans $\mathcal{W}$.
 
-- **Linear Independence:** By construction, a vector is only added to $B$ if it is not in the span of the vectors already in $B$. This condition directly ensures that the resulting set $B$ is linearly independent. If $B=\{b_1,\cdots,b_k\}$ were linearly dependent, then by the properties of linear dependence, some vector $b_j$ would be a linear combination of the preceding vectors, $b_j∈span(\{b_1,…,b_{j−1}\})$. But this contradicts the very rule we used to add $b_j$ to the set. Therefore, $B$ must be linearly independent.
+- **Linear Independence:** By construction, a vector is only added to $B$ if it is not in the span of the vectors already in $B$. This condition directly ensures that the resulting set $B$ is linearly independent. If $B=\{b_1,\cdots,b_k\}$ were linearly dependent, then by the properties of linear dependence, some vector $b_j$ would be a linear combination of the preceding vectors, $b_j\in span(\{b_1,…,b_{j−1}\})$. But this contradicts the very rule we used to add $b_j$ to the set. Therefore, $B$ must be linearly independent.
 - **Spanning Property:** We need to show that $span(B)=span(\mathcal{V})$.
-  - Since $B\subseteq\mathcal{V}$, it is clear that span(B)⊆span(V).
-  - To show span(V)⊆span(B), we must show that every vector $v_i∈\mathcal{V}$ is in $span(B)$.
+  - Since $B\subseteq\mathcal{V}$, it is clear that $span(B)\subseteq span(V)$.
+  - To show $span(V)\subseteq span(B)$, we must show that every vector $v_i\in \mathcal{V}$ is in $span(B)$.
     - If a vector $v_i$ was added to $B$, then $v_i∈B$, so it is trivially in $span(B)$.
-    - If a vector $v_i$ was discarded, it was because at the moment of its consideration, it was already a linear combination of the vectors in the current version of $B$. Since the final set $B$ contains all these vectors, it follows that $v_i∈span(B)$.
-  - Since every vector in the original spanning set $\mathcal{V}$ can be expressed as a linear combination of vectors in $B$, the span of $\mathcal{V}$ cannot be larger than the span of $B$. Thus, $span(\mathcal{V})⊆span(B)$.
+    - If a vector $v_i$ was discarded, it was because at the moment of its consideration, it was already a linear combination of the vectors in the current version of $B$. Since the final set $B$ contains all these vectors, it follows that $v_i\in span(B)$.
+  - Since every vector in the original spanning set $\mathcal{V}$ can be expressed as a linear combination of vectors in $B$, the span of $\mathcal{V}$ cannot be larger than the span of $B$. Thus, $span(\mathcal{V})\subseteq span(B)$.
 
 Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.
 
@@ -157,14 +157,14 @@ Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis 
 2. Euclidean inner product, Euclidean norm, orthogonal
 
 {{< math-block type="definition" title="Definition 3: Euclidean inner product(欧氏内积)" label="def-product">}}
-Given two vectors $x, y \in \mathcal{R}^n$, their **Euclidean inner product** is defined as  
+Given two vectors $x, y \in \mathbb{R}^n$, their **Euclidean inner product** is defined as  
 $$
-<x, y>=\sum_{i=1}^n x_i y_i
+\langle x, y \rangle=\sum_{i=1}^n x_i y_i
 $$
 {{< /math-block >}}
 
 {{< math-block type="theorem" title="Properties of the inner product" >}}
-- **bi-linearity(双线性性):** when $\bar{x}$ is a fixed vector in $\mathcal{R}^n$, the function $<\bar{x}, y>$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathcal{R}^n$, the function $<x, \bar{y}>$ is linear in variable $x$;
-- **symmetry(对称性):** $<x, y>=<y, x>, \forall x, y \in \mathcal{R}^n$;
-- **positive definiteness(正定性):** $\forall x \in \mathcal{R}^n, <x, x>\geq 0$, and is zero $iff. x=\mathbf{0}$
+- **bi-linearity(双线性性):** when $\bar{x}$ is a fixed vector in $\mathbb{R}^n$, the function $<\bar{x}, y>$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathbb{R}^n$, the function $<x, \bar{y}>$ is linear in variable $x$;
+- **symmetry(对称性):** $<x, y>=<y, x>, \forall x, y \in \mathbb{R}^n$;
+- **positive definiteness(正定性):** $\forall x \in \mathbb{R}^n, <x, x>\geq 0$, and is zero $iff. x=\mathbf{0}$
 {{< /math-block >}}
