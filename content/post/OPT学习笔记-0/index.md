@@ -65,13 +65,13 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
      $$
      (对加法和数乘封闭)
 
-   - **linear combinations(线性组合)&span(线性生成空间)**
+   - **linear combinations(线性组合) & span(线性生成空间)**
 
      $\mathcal{V}=\{\mathcal{v}_1,\mathcal{v}_2,\cdots,\mathcal{v}_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}$, $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
 
      $span(\mathcal{V}):=\{a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R}\}$
 
-   - **linear independent(线性无关)&linear dependent(线性相关)**
+   - **linear independent(线性无关) & linear dependent(线性相关)**
 
      *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ iff. $a_1=a_2=\cdots=a_m=0$
 
@@ -156,14 +156,17 @@ Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis 
 {{< /math-block >}}
 
 2. Euclidean inner product, Euclidean norm, orthogonal
-   {{< math-block type="definition" title="Definition 3: Euclidean inner product(欧氏内积)" label="def-product">}}
-   Given two vectors $x, y \in \mathcal{R}^n$, their **Euclidean inner product** is defined as  
-   $$<x, y>=\sum_{i=1}^n x_i y_i$$
-   {{< /math-block >}}
+{{< math-block type="definition" title="Definition 3: Euclidean inner product(欧氏内积)" label="def-product">}}
+Given two vectors $x, y \in \mathcal{R}^n$, their **Euclidean inner product** is defined as  
 
-   {{< math-block type="theorem" title="Properties of the inner product" >}}
-   - bi-linearity(双线性性): when $\bar{x}$ is a fixed vector in $\mathcal{R}^n$, the function $<\bar{x}, y>$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathcal{R}^n$, the function $<x, \bar{y}>$ is linear in variable $x$;
-   - symmetry(对称性): $<x, y>=<y, x>, \forall x, y \in \mathcal{R}^n$;
-   - positive definiteness(正定性): $\forall x \in \mathcal{R}^n, <x, x>\geq 0$, and is zero $iff. x=\mathbf{0}$
-   {{< /math-block >}}
-   
+$$
+<x, y>=\sum_{i=1}^n x_i y_i
+$$
+
+{{< /math-block >}}
+
+{{< math-block type="theorem" title="Properties of the inner product" >}}
+- **bi-linearity(双线性性):** when $\bar{x}$ is a fixed vector in $\mathcal{R}^n$, the function $<\bar{x}, y>$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathcal{R}^n$, the function $<x, \bar{y}>$ is linear in variable $x$;
+- **symmetry(对称性):** $<x, y>=<y, x>, \forall x, y \in \mathcal{R}^n$;
+- **positive definiteness(正定性):** $\forall x \in \mathcal{R}^n, <x, x>\geq 0$, and is zero $iff. x=\mathbf{0}$
+{{< /math-block >}}
