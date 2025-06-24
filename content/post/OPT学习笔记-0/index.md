@@ -158,13 +158,12 @@ Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis 
 2. Euclidean inner product, Euclidean norm, orthogonal
    {{< math-block type="definition" title="Definition 3: Euclidean inner product(欧氏内积)" label="def-product">}}
    Given two vectors $x, y \in \mathcal{R}^n$, their **Euclidean inner product** is defined as  
-   $$
-   <x, y>=\sum_{i=1}^n x_i y_i
-   $$
+   $$<x, y>=\sum_{i=1}^n x_i y_i$$
    {{< /math-block >}}
 
    {{< math-block type="theorem" title="Properties of the inner product" >}}
    - bi-linearity(双线性性): when $\bar{x}$ is a fixed vector in $\mathcal{R}^n$, the function $<\bar{x}, y>$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathcal{R}^n$, the function $<x, \bar{y}>$ is linear in variable $x$;
    - symmetry(对称性): $<x, y>=<y, x>, \forall x, y \in \mathcal{R}^n$;
-   - positive definiteness(正定性): $\forall x \in \mathcal{R}^n, <x, x>\geq 0, and is zero iff. x=\mathbf{0}$
-   {{< /math-block >}} 
+   - positive definiteness(正定性): $\forall x \in \mathcal{R}^n, <x, x>\geq 0$, and is zero $iff. x=\mathbf{0}$
+   {{< /math-block >}}
+   
