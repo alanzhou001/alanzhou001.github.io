@@ -171,7 +171,7 @@ $$
 {{< /math-block >}}
 
 {{< math-block type="definition" title="Definition 4: Linear function" >}}
-A function $f: \mathbb{R}^n \to \mathbb{R}$ is linear if for every $x,y\in \mathbb{R}^n$ and $\apha, \beta \in \mathbb{R}$
+A function $f: \mathbb{R}^n \to \mathbb{R}$ is linear if for every $ x,y \in \mathbb{R}^n $ and $ \alpha, \beta \in \mathbb{R} $, 
 $$
 f(\alpha x+ \beta y)=\alpha f(x)+ \beta f(y)
 $$
@@ -179,8 +179,8 @@ $$
 
 {{< math-block type="theorem" title="Theorem 2 (线性函数可由向量内积唯一表示)" label="theo-func" >}}
 Let $<\cdot , \cdot>$ be the *Euclidean inner product* on $\mathbb{R}^n \to \mathbb{R}$.
-- For every vector $a \in \mathbb{R}^n$, $<a,x>$ is a linear function from $\mathb{R}^n \to \mathbb{R}$,
-- Let $f(x)$ be a linear function from $\mathb{R}^n \to \mathbb{R}$. Then, there exists a unique vector $a\in \mathbb{R}^n$ so that $f(x)=<a, x>$ for every $x\in \mathbb{R}^n$.
+- For every vector $a \in \mathbb{R}^n$, $<a,x>$ is a linear function from $ \mathbb{R}^n \to \mathbb{R} $,
+- Let $f(x)$ be a linear function from $ \mathbb{R}^n \to \mathbb{R} $. Then, there exists a unique vector $a\in \mathbb{R}^n$ so that $f(x)=<a, x>$ for every $x\in \mathbb{R}^n$.
 {{< /math-block >}}
 
 {{< math-block type="proof" >}}
@@ -208,5 +208,5 @@ Extending Theorem 2 from scalar-valued linear functions $f: \mathbb{R}^n \to \ma
 
 {{< math-block type="theorem" title="Collary 3" label="coro-3" >}}
 - Let $A$ be a $m \times n$ matrix whose row vectors are $a_1^T,\cdots,a_m^T$. Then, $Ax$ is a linear function from $\mathbb{R}^n \to \mathbb{R}^m$
-- Let $f(x)$ be a linear function from $\mathbb{R}^n \to \mathbb{R}^m$. Then there exists a unique $m \times n$ matrix $A$ such that $f(x)=AX$.
+- Let $f(x)$ be a linear function from $\mathbb{R}^n \to \mathbb{R}^m$. Then there exists a unique $m \times n$ matrix $A$ such that $f(x)=Ax$.
 {{< /math-block >}}
