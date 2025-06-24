@@ -25,15 +25,15 @@ where $f: \mathbb{R}^n \to \mathbb{R}$ is called the *objective function (决策
 {{< /math-block >}}
 
 {{< math-block type="definition" title="Definition 1: 全局最优解及最优值 (global) optimal solution & optimal value" label="def-optimal">}}
-$x^{*}$ is an optimal solution of [1](#def-opt)
-$$iff. \space x^{*} \in X, f(x^*)\leq f(x), \forall x\in X$$
-where $f(x^{*})$ is the optimal value of [1](#def-opt).
+$x^\*$ is an optimal solution of [1](#def-opt)
+$$iff. \space x^\* \in X, f(x^\*)\leq f(x), \forall x\in X$$
+where $f(x^\*)$ is the optimal value of [1](#def-opt).
 
 Some special cases:
 
 - *infeasible(不可行)：* $X = \emptyset$;
 - *unbounded(无界)：*$(x^n)_{n=1}^{\infin}\in X$, $f(x^n)\to \infty$;
-- *not achieved(无法取得):* not exist $x^*\in X$, so that $f(x^*)=inf\{f(x)|x\in X\}$
+- *not achieved(无法取得):* not exist $ x^* \in X $, so that $ f(x^*)=inf\{f(x)|x\in X\} $
 {{< /math-block >}}
 
 {{< math-block type="definition" title="Definition 2: 局部极小值点" label="def-min">}}
