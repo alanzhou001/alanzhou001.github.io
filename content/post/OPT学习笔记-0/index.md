@@ -26,7 +26,7 @@ where $f: \mathbb{R}^n \to \mathbb{R}$ is called the *objective function (决策
 
 {{< math-block type="definition" title="Definition 1: 全局最优解及最优值 (global) optimal solution & optimal value" label="def-optimal">}}
 $x^\*$ is an optimal solution of [1](#def-opt)
-$$iff. \space x^\* \in X, f(x^\*)\leq f(x), \forall x\in X$$
+$iff. \space x^\* \in X, f(x^\*)\leq f(x), \forall x\in X$
 where $f(x^\*)$ is the optimal value of [1](#def-opt).
 
 Some special cases:
