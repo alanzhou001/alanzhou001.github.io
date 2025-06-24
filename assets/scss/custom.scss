@@ -312,14 +312,14 @@
 
 /* --- 定理样式 (浅蓝色) --- */
 .math-block--theorem {
-    background-color: #e7f5fe; /* Light blue background */
-    border-left: 5px solid #228be6; /* Blue left border */
+    background-color: #e7f5fe;
+    border-left: 5px solid #228be6;
 }
 
 /* --- 定义样式 (浅黄色) --- */
 .math-block--definition {
-    background-color: #fff9e6; /* Light yellow background */
-    border-left: 5px solid #fab005; /* Yellow/orange left border */
+    background-color: #fff9e6;
+    border-left: 5px solid #fab005;
 }
 
 /* --- 证明样式 (透明带边框) --- */
@@ -330,7 +330,7 @@
 }
 
 .math-block--proof .math-block-content {
-    display: inline; /* 让证明内容和标题在同一行开始 */
+    display: inline;
 }
 
 .math-block--proof em strong {
@@ -338,10 +338,26 @@
     font-weight: 600;
 }
 
-/* 证明结束符号 (Q.E.D.) */
 .qed-symbol {
     float: right;
     font-size: 1.2em;
     line-height: 1;
     color: var(--secondary-font-color);
+}
+
+/* --- 暗色模式下的颜色优化 --- */
+[data-scheme="dark"] {
+    .math-block--theorem {
+        background-color: rgba(34, 139, 230, 0.15); /* 使用带透明度的深蓝色背景 */
+        border-left-color: #3391ff; /* 使用更亮的蓝色作为边框 */
+    }
+
+    .math-block--definition {
+        background-color: rgba(250, 176, 5, 0.15); /* 使用带透明度的深黄色背景 */
+        border-left-color: #fab005; /* 使用更亮的黄色作为边框 */
+    }
+
+    .math-block--proof {
+        border-color: rgba(255, 255, 255, 0.25); /* 使用更亮的灰色作为边框，增加区分度 */
+    }
 }
