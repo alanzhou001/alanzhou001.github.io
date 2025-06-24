@@ -265,3 +265,83 @@
 .exif-item a:hover {
     text-decoration: underline;
 }
+
+/* ==========================================================================
+   自定义数学内容块 (定理、定义、证明)
+   ========================================================================== */
+.math-block {
+    border-radius: var(--card-border-radius);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    box-shadow: var(--card-box-shadow-flat, 0 1px 3px rgba(0,0,0,0.05));
+}
+
+.math-block-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--title-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.math-block-anchor {
+    color: var(--secondary-font-color);
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.math-block:hover .math-block-anchor {
+    opacity: 0.6;
+}
+
+.math-block-anchor:hover {
+    opacity: 1 !important;
+    text-decoration: underline;
+}
+
+.math-block-content {
+    line-height: 1.7;
+}
+
+.math-block-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* --- 定理样式 (浅蓝色) --- */
+.math-block--theorem {
+    background-color: #e7f5fe; /* Light blue background */
+    border-left: 5px solid #228be6; /* Blue left border */
+}
+
+/* --- 定义样式 (浅黄色) --- */
+.math-block--definition {
+    background-color: #fff9e6; /* Light yellow background */
+    border-left: 5px solid #fab005; /* Yellow/orange left border */
+}
+
+/* --- 证明样式 (透明带边框) --- */
+.math-block--proof {
+    background-color: transparent;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--card-border);
+}
+
+.math-block--proof .math-block-content {
+    display: inline; /* 让证明内容和标题在同一行开始 */
+}
+
+.math-block--proof em strong {
+    font-style: italic;
+    font-weight: 600;
+}
+
+/* 证明结束符号 (Q.E.D.) */
+.qed-symbol {
+    float: right;
+    font-size: 1.2em;
+    line-height: 1;
+    color: var(--secondary-font-color);
+}

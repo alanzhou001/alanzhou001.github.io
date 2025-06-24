@@ -1,0 +1,46 @@
+{{/*
+    layouts/shortcodes/math-block.html
+    一个通用的数学内容块 shortcode，支持定理、定义、证明等。
+*/}}
+{{ $type := .Get "type" | default "theorem" }}
+{{ $title := .Get "title" }}
+{{ $label := .Get "label" }}
+
+{{/* 为每种类型维护一个独立的计数器 */}}
+{{ $counterKey := printf "%sCounter" $type }}
+{{ $counter := .Page.Scratch.Get $counterKey | default 0 }}
+{{ $counter = add $counter 1 }}
+{{ .Page.Scratch.Set $counterKey $counter }}
+
+{{/* 根据类型生成默认标题 */}}
+{{ $defaultTitle := "" }}
+{{ if eq $type "theorem" }}
+    {{ $defaultTitle = printf "定理 %d" $counter }}
+{{ else if eq $type "definition" }}
+    {{ $defaultTitle = printf "定义 %d" $counter }}
+{{ else if eq $type "proof" }}
+    {{ $defaultTitle = "证明" }}
+{{ end }}
+
+{{ $finalTitle := $title | default $defaultTitle }}
+
+<div class="math-block math-block--{{ $type }}" {{ with $label }}id="{{ . }}"{{ end }}>
+    {{/* 证明块的标题样式特殊处理 */}}
+    {{ if ne $type "proof" }}
+        <div class="math-block-title">
+            <strong>{{ $finalTitle }}</strong>
+            {{- with $label -}}
+                <a href="#{{ . }}" class="math-block-anchor" aria-label="直接链接到此">¶</a>
+            {{- end -}}
+        </div>
+    {{ end }}
+    <div class="math-block-content">
+        {{ if eq $type "proof" }}
+            <em><strong>{{ $finalTitle }}.</strong></em>&nbsp;
+        {{ end }}
+        {{- .Inner | .Page.RenderString -}}
+        {{ if eq $type "proof" }}
+            <span class="qed-symbol">□</span>
+        {{ end }}
+    </div>
+</div>
