@@ -88,85 +88,86 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
    3. $\mathcal{V}$ is linear independent. If $v\notin span(\mathcal{V})$ the $\mathcal{V}\cup v$ is linear independent;
    4. If $\mathcal{V}$ is linear dependent, there exists a nonzero vector $v\in\mathcal{V}$ such that $v\in span(\mathcal{V\backslash v}), span(\mathcal{V})=span(\mathcal{V\backslash v})$.
 
-{{< math-block type="theorem" title="Theorem 1 (基扩充/缩减定理)" label="theo-basis">}}
-Every linear independent subset of $\mathcal{V}$ can be extended to a basis of $span(\mathcal{V})$. The set of $\mathcal{V}$ can be reduced to a basis of $span(\mathcal{V})$.
-{{< /math-block >}}
+    {{< math-block type="theorem" title="Theorem 1 (基扩充/缩减定理)" label="theo-basis">}}
+        Every linear independent subset of $\mathcal{V}$ can be extended to a basis of $span(\mathcal{V})$. The set of $\mathcal{V}$ can be reduced to a basis of $span(\mathcal{V})$.
+    {{< /math-block >}}
 
-**(重复加入/减去线性无关向量直到构成基)**
+        **(重复加入/减去线性无关向量直到构成基)**
 
-{{< math-block type="theorem" title="Proposition 1" >}}
-Let $\mathcal{W}$ be a vector space spanned by a finite set $\mathcal{V}$, i.e., $\mathcal{W}=span(\mathcal{V})$. Any linearly independent subset of $\mathcal{W}$ can be extended to form a basis for $\mathcal{W}$ .
-{{< /math-block >}}
+    {{< math-block type="theorem" title="Proposition 1" >}}
+        Let $\mathcal{W}$ be a vector space spanned by a finite set $\mathcal{V}$, i.e., $\mathcal{W}=span(\mathcal{V})$. Any linearly independent subset of $\mathcal{W}$ can be extended to form a basis for $\mathcal{W}$ .
+    {{< /math-block >}}
 
-{{< math-block type="proof" >}}
-Let $L=\{v_1,v_2,…,v_k\}$ be a linearly independent set of vectors in W. We want to find a set of vectors ${u_1,u_2,…,u_m}⊆\mathcal{V}$ such that the combined set $B=L∪\{u_1,…,u_m\}$ is a basis for $\mathcal{W}$ .
+    {{< math-block type="proof" >}}
+        Let $L=\{v_1,v_2,…,v_k\}$ be a linearly independent set of vectors in W. We want to find a set of vectors ${u_1,u_2,…,u_m}⊆\mathcal{V}$ such that the combined set $B=L∪\{u_1,…,u_m\}$ is a basis for $\mathcal{W}$ .
 
-We proceed with the following algorithm:
+    We proceed with the following algorithm:
 
-1.  **Check if** $L$ **spans** $\mathcal{W}$ .
-    - If $span(L)=\mathcal{W}$, then $L$ is a linearly independent spanning set, which means $L$ is already a basis for $\mathcal{W}$. The proof is complete.
+      1.  **Check if** $L$ **spans** $\mathcal{W}$ .
+       - If $span(L)=\mathcal{W}$, then $L$ is a linearly independent spanning set, which means $L$ is already a basis for $\mathcal{W}$. The proof is complete.
 
-2.  **If** $L$ **does not span**  $\mathcal{W}$ **.**
-    - If $span(L)\neq\mathcal{W} $, then there must exist at least one vector in $\mathcal{W}$ that is not in the span of $L$. Since $\mathcal{W}=span(\mathcal{V})$, there must be a vector $u_1∈\mathcal{V}$ such that $u_1\notin span(\mathcal{V})$.
-    - Let's form a new set $L_1=L∪\{u_1\}=\{v_1,…,v_k,u_1\}$. We claim this new set is also linearly independent.
-    - To prove this, consider the equation: 
-      $c_1v_1+c_2v_2+⋯+c_kv_k+d_1u_1=0$
-      - Case 1: If $d1\neq 0$, we could rearrange the equation to express u1 as a linear combination of the vectors in $L$: 
-        $u_1=−d_{11}(c_1v_1+⋯+c_kv_k)$
-        This would imply that $u1\in span(L)$, which contradicts our choice of u1.
-      - Case 2: Therefore, we must have $d_1=0$. The equation simplifies to: 
-        $c_1v_1+c_2v_2+⋯+c_kv_k=0$
-        Since $L$ is a linearly independent set, the only solution to this equation is $c_1=c_2=⋯+c_k=0$.
-    - Thus, the only solution is that all coefficients ($c_i$ and $d_1$) are zero. This proves that the set $L_1$ is linearly independent.
+      2.  **If** $L$ **does not span**  $\mathcal{W}$ **.**
+            - If $span(L)\neq\mathcal{W} $, then there must exist at least one vector in $\mathcal{W}$ that is not in the span of $L$. Since $\mathcal{W}=span(\mathcal{V})$, there must be a vector $u_1∈\mathcal{V}$ such that $u_1\notin span(\mathcal{V})$.
+            - Let's form a new set $L_1=L∪\{u_1\}=\{v_1,…,v_k,u_1\}$. We claim this new set is also linearly independent.
+            - To prove this, consider the equation: 
+                $c_1v_1+c_2v_2+⋯+c_kv_k+d_1u_1=0$
+            - Case 1: If $d1\neq 0$, we could rearrange the equation to express u1 as a linear combination of the vectors in $L$: 
+                $u_1=−d_{11}(c_1v_1+⋯+c_kv_k)$
+            This would imply that $u1\in span(L)$, which contradicts our choice of u1.
+            - Case 2: Therefore, we must have $d_1=0$. The equation simplifies to: 
+                $c_1v_1+c_2v_2+⋯+c_kv_k=0$
+            Since $L$ is a linearly independent set, the only solution to this equation is $c_1=c_2=⋯+c_k=0$.
+            - Thus, the only solution is that all coefficients ($c_i$ and $d_1$) are zero. This proves that the set $L_1$ is linearly independent.
 
-3.  **Repeat the process.**
-    - We now repeat the procedure with $L_1$. If $span(L_1)=\mathcal{W}$, we have found our basis. If not, we find another vector $u_2\in V$ such that $u_2\notin span(L_1)$ and form the larger, linearly independent set $L_2=L_1∪\{u_2\}$.
+      3.  **Repeat the process.**
+            - We now repeat the procedure with $L_1$. If $span(L_1)=\mathcal{W}$, we have found our basis. If not, we find another vector $u_2\in V$ such that $u_2\notin span(L_1)$ and form the larger, linearly independent set $L_2=L_1∪\{u_2\}$.
 
-Since W is spanned by a finite set V, it is a finite-dimensional space. Let $dim(\mathcal{W})=n$. Any linearly independent set in $\mathcal{W}$ can contain at most n vectors. Our process starts with a set of k vectors and adds one vector at a time, maintaining linear independence at each step. Therefore, the process is guaranteed to terminate in at most n−k steps, at which point we have a set $B$ that is linearly independent and spans $\mathcal{W}$. By definition, $B$ is a basis for $\mathcal{W}$ that contains the original set $L$.
-{{< /math-block >}}
+        Since W is spanned by a finite set V, it is a finite-dimensional space. Let $dim(\mathcal{W})=n$. Any linearly independent set in $\mathcal{W}$ can contain at most n vectors. Our process starts with a set of k vectors and adds one vector at a time, maintaining linear independence at each step. Therefore, the process is guaranteed to terminate in at most n−k steps, at which point we have a set $B$ that is linearly independent and spans $\mathcal{W}$. By definition, $B$ is a basis for $\mathcal{W}$ that contains the original set $L$.
+    {{< /math-block >}}
 
-{{< math-block type="theorem" title="Proposition 2" >}}
-Any finite set $\mathcal{V}$ that spans a vector space W can be reduced to a basis for $\mathcal{W}$ by removing some of its vectors.
-{{< /math-block >}}
+    {{< math-block type="theorem" title="Proposition 2" >}}
+        Any finite set $\mathcal{V}$ that spans a vector space W can be reduced to a basis for $\mathcal{W}$ by removing some of its vectors.
+    {{< /math-block >}}
 
-{{< math-block type="proof" >}}
-Let $\mathcal{V}=\{v_1,v_2,\cdots,v_m\}$ be a set that spans $\mathcal{W}$, i.e., $\mathcal{W}=span(\mathcal{V})$. We want to find a subset $B\subseteq \mathcal{V}$ that is a basis for $\mathcal{W}$.
+    {{< math-block type="proof" >}}
+        Let $\mathcal{V}=\{v_1,v_2,\cdots,v_m\}$ be a set that spans $\mathcal{W}$, i.e., $\mathcal{W}=span(\mathcal{V})$. We want to find a subset $B\subseteq \mathcal{V}$ that is a basis for $\mathcal{W}$.
 
-We can construct the basis $B$ using the following "sifting" algorithm:
+        We can construct the basis $B$ using the following "sifting" algorithm:
 
-1.  Initialize an empty set, $B=∅$.
-2.  Iterate through each vector $v_i$ in $\mathcal{V}$ for $i=1,\cdots,m$.
-3.  For each $v_i$, check if it is a linear combination of the vectors already in $B$. That is, check if $v_i∈span(B)$.
-    - If **NO**, then $v_i$ is linearly independent of the vectors in $B$. Add $v_i$ to $B$.
-    - If **YES**, then vi is a redundant vector (it depends linearly on other vectors). Discard $v_i$.
+          1.  Initialize an empty set, $B=∅$.
+          2.  Iterate through each vector $v_i$ in $\mathcal{V}$ for $i=1,\cdots,m$.
+          3.  For each $v_i$, check if it is a linear combination of the vectors already in $B$. That is, check if $v_i∈span(B)$.
+           - If **NO**, then $v_i$ is linearly independent of the vectors in $B$. Add $v_i$ to $B$.
+           - If **YES**, then vi is a redundant vector (it depends linearly on other vectors). Discard $v_i$.
 
-The final set $B$ produced by this algorithm is a basis for $\mathcal{W}$. We must prove two properties: that $B$ is linearly independent and that it spans $\mathcal{W}$.
+        The final set $B$ produced by this algorithm is a basis for $\mathcal{W}$. We must prove two properties: that $B$ is linearly independent and that it spans $\mathcal{W}$.
 
--   **Linear Independence:** By construction, a vector is only added to $B$ if it is not in the span of the vectors already in $B$. This condition directly ensures that the resulting set $B$ is linearly independent. If $B=\{b_1,\cdots,b_k\}$ were linearly dependent, then by the properties of linear dependence, some vector $b_j$ would be a linear combination of the preceding vectors, $b_j∈span(\{b_1,…,b_{j−1}\})$. But this contradicts the very rule we used to add $b_j$ to the set. Therefore, $B$ must be linearly independent.
--   **Spanning Property:** We need to show that $span(B)=span(\mathcal{V})$.
-    - Since $B\subseteq\mathcal{V}$, it is clear that span(B)⊆span(V).
-    - To show span(V)⊆span(B), we must show that every vector $v_i∈\mathcal{V}$ is in $span(B)$.
-      - If a vector $v_i$ was added to $B$, then $v_i∈B$, so it is trivially in $span(B)$.
-      - If a vector $v_i$ was discarded, it was because at the moment of its consideration, it was already a linear combination of the vectors in the current version of $B$. Since the final set $B$ contains all these vectors, it follows that $v_i∈span(B)$.
-    - Since every vector in the original spanning set $\mathcal{V}$ can be expressed as a linear combination of vectors in $B$, the span of $\mathcal{V}$ cannot be larger than the span of $B$. Thus, $span(\mathcal{V})⊆span(B)$.
+          -   **Linear Independence:** By construction, a vector is only added to $B$ if it is not in the span of the vectors already in $B$. This condition directly ensures that the resulting set $B$ is linearly independent. If $B=\{b_1,\cdots,b_k\}$ were linearly dependent, then by the properties of linear dependence, some vector $b_j$ would be a linear combination of the preceding vectors, $b_j∈span(\{b_1,…,b_{j−1}\})$. But this contradicts the very rule we used to add $b_j$ to the set. Therefore, $B$ must be linearly independent.
+          -   **Spanning Property:** We need to show that $span(B)=span(\mathcal{V})$.
+               - Since $B\subseteq\mathcal{V}$, it is clear that span(B)⊆span(V).
+               - To show span(V)⊆span(B), we must show that every vector $v_i∈\mathcal{V}$ is in $span(B)$.
+                  - If a vector $v_i$ was added to $B$, then $v_i∈B$, so it is trivially in $span(B)$.
+                  - If a vector $v_i$ was discarded, it was because at the moment of its consideration, it was already a linear combination of the vectors in the current version of $B$. Since the final set $B$ contains all these vectors, it follows that $v_i∈span(B)$.
+          - Since every vector in the original spanning set $\mathcal{V}$ can be expressed as a linear combination of vectors in $B$, the span of $\mathcal{V}$ cannot be larger than the span of $B$. Thus, $span(\mathcal{V})⊆span(B)$.
 
-Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.
+        Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.
 
-Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis for $\mathcal{W}$.
-{{< /math-block >}}
+        Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis for $\mathcal{W}$.
+    {{< /math-block >}}
 
 2. Euclidean inner product, Euclidean norm, orthogonal
-{{< math-block type="definition" title="Definition 3: Euclidean inner product(欧氏内积)" label="def-product">}}
-Given two vectors $x, y \in \mathcal{R}^n$, their **Euclidean inner product** is defined as  
 
-$$
-<x, y>=\sum_{i=1}^n x_i y_i
-$$
+    {{< math-block type="definition" title="Definition 3: Euclidean inner product(欧氏内积)" label="def-product">}}
+        Given two vectors $x, y \in \mathcal{R}^n$, their **Euclidean inner product** is defined as  
 
-{{< /math-block >}}
+        $$
+            <x, y>=\sum_{i=1}^n x_i y_i
+        $$
 
-{{< math-block type="theorem" title="Properties of the inner product" >}}
-- **bi-linearity(双线性性):** when $\bar{x}$ is a fixed vector in $\mathcal{R}^n$, the function $<\bar{x}, y>$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathcal{R}^n$, the function $<x, \bar{y}>$ is linear in variable $x$;
-- **symmetry(对称性):** $<x, y>=<y, x>, \forall x, y \in \mathcal{R}^n$;
-- **positive definiteness(正定性):** $\forall x \in \mathcal{R}^n, <x, x>\geq 0$, and is zero $iff. x=\mathbf{0}$
-{{< /math-block >}}
+    {{< /math-block >}}
+
+    {{< math-block type="theorem" title="Properties of the inner product" >}}
+      - **bi-linearity(双线性性):** when $\bar{x}$ is a fixed vector in $\mathcal{R}^n$, the function $<\bar{x}, y>$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathcal{R}^n$, the function $<x, \bar{y}>$ is linear in variable $x$;
+      - **symmetry(对称性):** $<x, y>=<y, x>, \forall x, y \in \mathcal{R}^n$;
+      - **positive definiteness(正定性):** $\forall x \in \mathcal{R}^n, <x, x>\geq 0$, and is zero $iff. x=\mathbf{0}$
+    {{< /math-block >}}
