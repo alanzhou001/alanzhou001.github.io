@@ -38,7 +38,8 @@
         {{ if eq $type "proof" }}
             <em><strong>{{ $finalTitle }}.</strong></em>&nbsp;
         {{ end }}
-        {{- .Inner | .Page.RenderString -}}
+        {{/* --- 核心修改：使用 .InnerDeindent 来支持缩进 --- */}}
+        {{- .InnerDeindent | .Page.RenderString -}}
         {{ if eq $type "proof" }}
             <span class="qed-symbol">□</span>
         {{ end }}
