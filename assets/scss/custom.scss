@@ -324,7 +324,7 @@
 
 /* --- 证明样式 (透明带边框) --- */
 .math-block--proof {
-    background-color: transparent;
+    background-color: #f1f3f5; 
     padding: 1.25rem 1.5rem;
     border: 1px solid var(--card-border);
 }
@@ -358,6 +358,7 @@
     }
 
     .math-block--proof {
+        background-color: rgba(108, 117, 125, 0.15);
         border-color: rgba(255, 255, 255, 0.25); /* 使用更亮的灰色作为边框，增加区分度 */
     }
 }

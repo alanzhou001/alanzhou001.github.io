@@ -155,7 +155,7 @@ Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.
 Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis for $\mathcal{W}$.
 {{< /math-block >}}
 
-1. Euclidean inner product, Euclidean norm, orthogonal
+2. Euclidean inner product, Euclidean norm, orthogonal
 
    *To be continued...*
 
