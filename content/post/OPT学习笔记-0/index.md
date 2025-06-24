@@ -66,19 +66,24 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
 
    - **linear combinations(线性组合) & span(线性生成空间)**
 
-    $\mathcal{V}=\{\mathcal{v}_1,\mathcal{v}_2,\cdots,\mathcal{v}_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}$, $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
+     $$
+     \mathcal{V}=\{v_1,v_2,\cdots,v_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}
+     $$
+     $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
 
-    $span(\mathcal{V}):=\{a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R}\}$
+     $$
+     span(\mathcal{V}):=\{ a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R} \}
+     $$
 
    - **linear independent(线性无关) & linear dependent(线性相关)**
 
-    *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ iff. $a_1=a_2=\cdots=a_m=0$
+     *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ iff. $a_1=a_2=\cdots=a_m=0$
 
-    *linear dependent:* exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.
+     *linear dependent:* exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.
 
    - **Basis(基)**
 
-    $\mathcal{V}$ is a *basis* of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent 
+     $\mathcal{V}$ is a *basis* of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent 
 
    Some useful facts:
 
