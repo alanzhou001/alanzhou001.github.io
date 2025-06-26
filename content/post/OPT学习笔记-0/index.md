@@ -156,7 +156,7 @@ Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.
 Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis for $\mathcal{W}$.
 {{< /math-block >}}
 
-### Euclidean inner product, Euclidean norm, orthogonal
+#### Euclidean inner product, Euclidean norm, orthogonal
 
 1. **Euclidean inner product**
 
@@ -232,7 +232,7 @@ $$
 
 $x$ and $y$ are orthogonal *iff.* $<x,y>=0$.
 
-### Four fundamental subspaces
+#### Four fundamental subspaces
 
 {{< math-block type="definition" title="Column Space" label="def-col" >}}
 The column space of matrix $ A $, denoted $ Col(A) $, is the subspace spanned by the linear combinations of its column vectors.
@@ -275,5 +275,5 @@ This is equivalent to the null space of $ A^T $.
   - $ \dim(\text{Null}(A^T)) = m - \text{rank}(A) $
 {{< /math-block >}}
 
-### Eigenvalues and eigenvectors
+#### Eigenvalues and eigenvectors
 
