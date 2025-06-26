@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on 周陈序 ( Alan Zhou )</title><link>https://cxzhou.com/page/</link><description>Recent content in Pages on 周陈序 ( Alan Zhou )</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://cxzhou.com/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Archives</title><link>https://cxzhou.com/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://cxzhou.com/archives/</guid><description/></item><item><title>About me</title><link>https://cxzhou.com/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://cxzhou.com/about/</guid><description>&lt;div class="contact-info">
+&lt;span>📞 &lt;strong>电话:&lt;/strong> 19951806670&lt;/span>
+&lt;span>📧 &lt;strong>邮件:&lt;/strong> &lt;a href="mailto:alanzhou@sjtu.edu.cn">alanzhou@sjtu.edu.cn&lt;/a>&lt;/span>
+&lt;/div>
+&lt;h2 id="教育背景">教育背景
+&lt;/h2>
+&lt;div class="timeline">
+&lt;div class="timeline-item">
+&lt;div class="timeline-marker">&lt;/div>
+&lt;div class="timeline-content">
+&lt;div class="timeline-header">
+&lt;h4 class="timeline-title">学士：经济学-数学与应用数学&lt;/h4>
+&lt;span class="timeline-date">2027年 毕业&lt;/span>
+&lt;/div>
+&lt;h5 class="timeline-subtitle">上海交通大学&lt;/h5>
+&lt;div class="timeline-body">
+&lt;ul>
+&lt;li>&lt;strong>主修课程&lt;/strong>: 实变函数, 常微分方程, 概率论, 微观经济学, 宏观经济学, 计量经济学, 货币金融学, 数据结构&lt;/li>
+&lt;li>&lt;strong>荣誉&lt;/strong>:
+&lt;ul>
+&lt;li>全国中学生物理竞赛江苏省一等奖&lt;/li>
+&lt;li>美国大学生数学建模大赛H奖&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>To be continued&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="项目经历">项目经历
+&lt;/h2>
+&lt;div class="timeline">
+&lt;div class="timeline-item">
+&lt;div class="timeline-marker">&lt;/div>
+&lt;div class="timeline-content">
+&lt;div class="timeline-header">
+&lt;h4 class="timeline-title">数据资产入表暑期科研&lt;/h4>
+&lt;span class="timeline-date">&lt;/span>
+&lt;/div>
+&lt;div class="timeline-body">
+&lt;p>&lt;strong>项目简介&lt;/strong>：调研数据资产入表现状，参与撰写数据资产一书，系统介绍数据资产及其入表工作。&lt;br>
+&lt;strong>我的贡献&lt;/strong>：&lt;/p>
+&lt;ul>
+&lt;li>带领本科生团队参与彭娟教授的科研课题研究，从零开始研究数据资产入表课题暑期科研课题。&lt;/li>
+&lt;li>多次进行访谈、调研等工作，与团队成员合作完成包含理论框架、相关法律、实际案例等共约10万字的报告，参与《数据资产》一书的写作。&lt;/li>
+&lt;/ul>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="timeline-item">
+&lt;div class="timeline-marker">&lt;/div>
+&lt;div class="timeline-content">
+&lt;div class="timeline-header">
+&lt;h4 class="timeline-title">“深海牧场”大创项目&lt;/h4>
+&lt;span class="timeline-date">&lt;/span>
+&lt;/div>
+&lt;div class="timeline-body">
+&lt;strong>项目简介&lt;/strong>: 依托于深海勇士号采集的数据进行图像拼接，统计分析，建立预测模型。&lt;br>
+&lt;strong>技术栈&lt;/strong>: dust3r, YOLO, LASSO回归, 贝叶斯推断, 小样本迁移学习。&lt;br>
+&lt;strong>我的贡献&lt;/strong>: 担任组长，统筹小组工作，控制研究进度和方向，主要进行目标检测算法的实现以及数据分析和建模工作。
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div class="timeline-item">
+&lt;div class="timeline-marker">&lt;/div>
+&lt;div class="timeline-content">
+&lt;div class="timeline-header">
+&lt;h4 class="timeline-title">股市波动对早产的影响（在研）&lt;/h4>
+&lt;span class="timeline-date">&lt;/span>
+&lt;/div>
+&lt;div class="timeline-body">
+&lt;strong>项目简介&lt;/strong>: 使用计量方法研究股市波动对早产的影响，宏观经济不确定性如何转化为个体层面，揭示社会经济压力对母婴健康的深远影响。&lt;br>
+&lt;strong>技术栈&lt;/strong>: OLS, 2SLS, Logit回归, 因果推断。
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;h2 id="专业技能">专业技能
+&lt;/h2>
+&lt;div class="skills-grid">
+&lt;div class="skill-card">
+&lt;span class="skill-category">编程语言:&lt;/span>
+&lt;div class="skill-tags">
+&lt;span class="skill-tag">Python&lt;/span>
+&lt;span class="skill-tag">C&amp;#43;&amp;#43;&lt;/span>
+&lt;span class="skill-tag">Rust&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;div class="skill-card">
+&lt;span class="skill-category">数据分析:&lt;/span>
+&lt;div class="skill-tags">
+&lt;span class="skill-tag">STATA&lt;/span>
+&lt;span class="skill-tag">Matlab&lt;/span>
+&lt;span class="skill-tag">R&lt;/span>
+&lt;span class="skill-tag">Wolfram&lt;/span>
+&lt;span class="skill-tag">MySQL&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;div class="skill-card">
+&lt;span class="skill-category">其他技能:&lt;/span>
+&lt;div class="skill-tags">
+&lt;span class="skill-tag">回归分析&lt;/span>
+&lt;span class="skill-tag">机器学习&lt;/span>
+&lt;span class="skill-tag">因果推断&lt;/span>
+&lt;span class="skill-tag">CET-6&lt;/span>
+&lt;/div>
+&lt;/div>
+&lt;/div></description></item><item><title>Links</title><link>https://cxzhou.com/links/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://cxzhou.com/links/</guid><description>&lt;h2 id="-friends--teachers">🤝 Friends &amp;amp; Teachers
+&lt;/h2>
+&lt;div class="links-grid">
+&lt;a class="link-card" href="https://yevzh.gitHub.io" target="_blank" rel="noopener noreferrer">
+&lt;h3>wmgg的Blog&lt;/h3>
+&lt;div class="link-description">最爱的wmgg，SJTU CS硕士研究生在读&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://wangyixiao.top" target="_blank" rel="noopener noreferrer">
+&lt;h3>Yixiao&amp;rsquo;s Blog&lt;/h3>
+&lt;div class="link-description">优秀！交大SE本科在读&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://dyas.top" target="_blank" rel="noopener noreferrer">
+&lt;h3>豆芽酱的网站&lt;/h3>
+&lt;div class="link-description">豆芽酱，很厉害的电院同学&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://xzlim.com" target="_blank" rel="noopener noreferrer">
+&lt;h3>RC&amp;rsquo;s Page&lt;/h3>
+&lt;div class="link-description">我的中级微观经济学老师，非常nice的教授in ACEM！&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://jhqian.org" target="_blank" rel="noopener noreferrer">
+&lt;h3>钱军辉老师的主页&lt;/h3>
+&lt;div class="link-description">我的中级宏观经济学老师，独特且有用的听课体验！&lt;/div>
+&lt;/a>
+&lt;/div>
+&lt;h2 id="-有用的链接">🛠️ 有用的链接
+&lt;/h2>
+&lt;div class="links-grid">
+&lt;a class="link-card" href="https://github.com" target="_blank" rel="noopener noreferrer">
+&lt;h3>GitHub&lt;/h3>
+&lt;div class="link-description">全球最大的&lt;del>代码托管&lt;/del>男性交友平台。&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">
+&lt;h3>Google Gemini&lt;/h3>
+&lt;div class="link-description">好用的ai&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">
+&lt;h3>ChatGPT&lt;/h3>
+&lt;div class="link-description">好用的ai&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://claude.ai/" target="_blank" rel="noopener noreferrer">
+&lt;h3>Claude&lt;/h3>
+&lt;div class="link-description">好用的ai&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://liaox.ai/ic/ZRKW3U" target="_blank" rel="noopener noreferrer">
+&lt;h3>liaoxAI&lt;/h3>
+&lt;div class="link-description">划算的镜像站&lt;/div>
+&lt;/a>
+&lt;/div>
+&lt;h2 id="-ecy蒸鹅心">🌸 ecy蒸鹅心
+&lt;/h2>
+&lt;div class="links-grid">
+&lt;a class="link-card" href="https://www.bilibili.com" target="_blank" rel="noopener noreferrer">
+&lt;h3>Bilibili&lt;/h3>
+&lt;div class="link-description">国内领先的年轻人文化社区。&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://www.pixiv.net" target="_blank" rel="noopener noreferrer">
+&lt;h3>Pixiv&lt;/h3>
+&lt;div class="link-description">一个以插图、漫画和小说艺术为中心的社交网络服务。&lt;/div>
+&lt;/a>
+&lt;a class="link-card" href="https://bgm.tv/" target="_blank" rel="noopener noreferrer">
+&lt;h3>Bangumi&lt;/h3>
+&lt;div class="link-description">ecy资料库&lt;/div>
+&lt;/a>
+&lt;/div></description></item><item><title>Search</title><link>https://cxzhou.com/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://cxzhou.com/search/</guid><description/></item></channel></rss>
