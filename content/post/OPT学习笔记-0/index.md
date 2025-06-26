@@ -26,7 +26,7 @@ where $f: \mathbb{R}^n \to \mathbb{R}$ is called the *objective function (决策
 
 {{< math-block type="definition" title="Definition 1: 全局最优解及最优值 (global) optimal solution & optimal value" label="def-optimal">}}
 $x^\*$ is an optimal solution of [1](#def-opt)
-$iff. \space x^\* \in X, f(x^\*)\leq f(x), \forall x\in X$
+*iff.* $ \space x^\* \in X, f(x^\*)\leq f(x), \forall x\in X$
 where $f(x^\*)$ is the optimal value of [1](#def-opt).
 
 Some special cases:
@@ -47,14 +47,15 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
 
 ### Linear Algebra
 
-1. The space $\mathbb{R}^n$
+#### The space $\mathbb{R}^n$
+
   A **vector** (or point) $x$ in $\mathbb{R}^n$ is an ordered collection of $n$ real numbers, which can be given as $x=(x_1,x_2,x_3,\cdots,x_n)$.
 
    - **scalar multiplication(数乘)** $a\in \mathbb{R}, x \in \mathbb{R}^n, ax=(ax_1,ax_2,\cdots,ax_n)$
 
    - **addition(向量加法)** $x\in\mathbb{R}^n, y\in\mathbb{R}^n, x+y=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)$
 
-   - **linear subspace(线性子空间)** A nonempty subset $S$ of $\mathbb{R}^n$ is a *linear subspace* iff.
+   - **linear subspace(线性子空间)** A nonempty subset $S$ of $\mathbb{R}^n$ is a *linear subspace* *iff.*
     $$
      x,y\in S, x+y\in S;x\in S,a\in \mathbb{R},ax\in S
     $$
@@ -73,7 +74,7 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
 
    - **linear independent(线性无关) & linear dependent(线性相关)**
 
-     *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ iff. $a_1=a_2=\cdots=a_m=0$
+     *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ *iff.* $a_1=a_2=\cdots=a_m=0$
 
      *linear dependent:* exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.
 
@@ -155,7 +156,9 @@ Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.
 Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis for $\mathcal{W}$.
 {{< /math-block >}}
 
-2. Euclidean inner product, Euclidean norm, orthogonal
+### Euclidean inner product, Euclidean norm, orthogonal
+
+1. **Euclidean inner product**
 
 {{< math-block type="definition" title="Definition 3: Euclidean inner product(欧氏内积)" label="def-product">}}
 Given two vectors $x, y \in \mathbb{R}^n$, their **Euclidean inner product** is defined as  
@@ -167,7 +170,7 @@ $$
 {{< math-block type="theorem" title="Properties of the inner product" >}}
 - **bi-linearity(双线性性):** when $\bar{x}$ is a fixed vector in $\mathbb{R}^n$, the function $<\bar{x}, y>$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathbb{R}^n$, the function $<x, \bar{y}>$ is linear in variable $x$;
 - **symmetry(对称性):** $<x, y>=<y, x>, \forall x, y \in \mathbb{R}^n$;
-- **positive definiteness(正定性):** $\forall x \in \mathbb{R}^n, <x, x>\geq 0$, and is zero $iff. x=\mathbf{0}$
+- **positive definiteness(正定性):** $\forall x \in \mathbb{R}^n, <x, x>\geq 0$, and is zero *iff.* $x=\mathbf{0}$
 {{< /math-block >}}
 
 {{< math-block type="definition" title="Definition 4: Linear function" >}}
@@ -206,7 +209,71 @@ Let $<\cdot , \cdot>$ be the *Euclidean inner product* on $\mathbb{R}^n \to \mat
 
 Extending Theorem 2 from scalar-valued linear functions $f: \mathbb{R}^n \to \mathbb{R}$ to vector-valued linear functions $f: \mathbb{R}^n \to \mathbb{R}^m$, we derive the following corollary:
 
-{{< math-block type="theorem" title="Collary 3" label="coro-3" >}}
-- Let $A$ be a $m \times n$ matrix whose row vectors are $a_1^T,\cdots,a_m^T$. Then, $Ax$ is a linear function from $\mathbb{R}^n \to \mathbb{R}^m$
+{{< math-block type="theorem" title="Corollary 3" label="coro-3" >}}
+- Let $A$ be a $m \times n$ matrix whose row vectors are $a_1^T,\cdots,a_m^T$. Then, $Ax$ is a linear function from $\mathbb{R}^n \to \mathbb{R}^m$;
 - Let $f(x)$ be a linear function from $\mathbb{R}^n \to \mathbb{R}^m$. Then there exists a unique $m \times n$ matrix $A$ such that $f(x)=Ax$.
 {{< /math-block >}}
+
+2. **Euclidean norm**
+
+{{< math-blovk type="definition" title="Euclidean norm(欧几里得范数)" label="def-norm" >}}
+The **Euclidean norm** of $x\in \mathbb{R}^n$ is defined as 
+$$
+||x||_2=\sqrt{\langle x,x \rangle}=\sqrt{\sum_{i=1}^n x_i^2}.
+$$
+{{< /math-block >}}
+
+An important inequality: **Cauchy-Schwarz inequality(柯西施瓦茨不等式)**
+$$
+|\langle x,y \rangle|\leq||x||_2\cdot ||y||_2.
+$$
+
+3. **orthogonal(正交)**
+
+$x$ and $y$ are orthogonal *iff.* $<x,y>=0$.
+
+### Four fundamental subspaces
+
+{{< math-block type="definition" title="Column Space" label="def-col" >}}
+The column space of matrix $ A $, denoted $ Col(A) $, is the subspace spanned by the linear combinations of its column vectors.
+$$
+Col(A) = \{ A\mathbf{x} \mid \mathbf{x} \in \mathbb{R}^n \}
+$$
+where $ A $ is an $ m \times n $ matrix and $ \mathbf{x} $ is an $ n $-dimensional vector.
+{{< /math-block >}}
+
+{{< math-block type="definition" title="Row Space" label="def-row" >}}
+The row space of matrix $ A $, denoted $ \text{Row}(A) $, is the subspace spanned by the linear combinations of its row vectors.
+$$
+\text{Row}(A) = \{ \mathbf{y}^T A \mid \mathbf{y} \in \mathbb{R}^m \}
+$$
+Equivalently, it is the column space of $ A^T $ ($ \text{Col}(A^T) $).
+{{< /math-block >}}
+
+{{< math-block type="definition" title="Null Space" label="def-null" >}}
+The null space of matrix $ A $, denoted $ \text{Null}(A) $, is the set of all vectors $ \mathbf{x} $ such that $ A\mathbf{x} = \mathbf{0} $.
+$$
+\text{Null}(A) = \{ \mathbf{x} \in \mathbb{R}^n \mid A\mathbf{x} = \mathbf{0} \}
+$$
+{{< /math-block >}}
+
+{{< math-block type="definition" title="Left Null Space" label="def-null" >}}
+The left null space of matrix $ A $, denoted $ \text{Null}(A^T) $, is the set of all vectors $ \mathbf{y} $ such that $ \mathbf{y}^T A = \mathbf{0} $.
+$$
+\text{Null}(A^T) = \{ \mathbf{y} \in \mathbb{R}^m \mid \mathbf{y}^T A = \mathbf{0} \}
+$$
+This is equivalent to the null space of $ A^T $.
+{{< /math-block >}}
+
+{{< math-block type="theorem" title="Relationships Between the Subspaces" label="subspaces" >}}
+- **Orthogonality**:
+  - The column space $ \text{Col}(A) $ is orthogonal to the left null space $ \text{Null}(A^T) $ (in $ \mathbb{R}^m $).
+  - The row space $ \text{Row}(A) $ is orthogonal to the null space $ \text{Null}(A) $ (in $ \mathbb{R}^n $).
+- **Dimension Relationships**:
+  - $ \text{rank}(A) = \dim(\text{Col}(A)) = \dim(\text{Row}(A)) $
+  - $ \dim(\text{Null}(A)) = n - \text{rank}(A) $
+  - $ \dim(\text{Null}(A^T)) = m - \text{rank}(A) $
+{{< /math-block >}}
+
+### Eigenvalues and eigenvectors
+
