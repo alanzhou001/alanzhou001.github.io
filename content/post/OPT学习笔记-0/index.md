@@ -69,7 +69,7 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
       $\sum_{i=1}^ma_i\mathcal{v}_i$ is a *linear combination*;
 
     $$
-     span(\mathcal{V}):=\{ a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R} \}
+      span(\mathcal{V}):=\{ a_1\mathcal{v}_1+a_2\mathcal{v}_2+\cdots+a_m\mathcal{v}_m|a_1,a_2,\cdots,a_m\in\mathbb{R} \}
     $$
 
    - **linear independent(线性无关) & linear dependent(线性相关)**
