@@ -66,7 +66,7 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
       \mathcal{V}=\{v_1,v_2,\cdots,v_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}
     $$
 
-      $\sum_{i=1}^ma_iv_i$ is a *linear combination*;
+    $\sum_{i=1}^ma_iv_i$ is a *linear combination*;
 
     $$
       span(\mathcal{V}):=\{ a_1v_1+a_2v_2+\cdots+a_mv_m \mid a_1,a_2,\cdots,a_m\in\mathbb{R} \}
