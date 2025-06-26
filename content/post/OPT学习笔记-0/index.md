@@ -72,15 +72,15 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
       span(\mathcal{V}):=\{ a_1v_1+a_2v_2+\cdots+a_mv_m \mid a_1,a_2,\cdots,a_m\in\mathbb{R} \}
     $$
 
-   - **linear independent(线性无关) & linear dependent(线性相关)**
+- **linear independent(线性无关) & linear dependent(线性相关)**
 
-     *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ *iff.* $a_1=a_2=\cdots=a_m=0$
+    *linear independent:* $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ *iff.* $a_1=a_2=\cdots=a_m=0$
 
-     *linear dependent:* exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.
+    *linear dependent:* exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.
 
-   - **Basis(基)**
+- **Basis(基)**
 
-     $\mathcal{V}$ is a *basis* of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent 
+    $\mathcal{V}$ is a *basis* of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent 
 
    Some useful facts:
 
