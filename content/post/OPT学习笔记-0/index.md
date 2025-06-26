@@ -82,12 +82,12 @@ $$f(\bar{x})< f(x), \forall x\in X, ||x-\bar{x}||_2<\delta\space and\space x\neq
 
     $\mathcal{V}$ is a *basis* of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent 
 
-   Some useful facts:
+Some useful facts:
 
-   1. The span of $\mathcal{V}$ is a linear subspace of $\mathbb{R}^n$;
-   2. $\mathcal{V}$ is linear independent if and only if every $v\in span(\mathcal{V})$ can be uniquely represented as a linear combination of $\mathcal{V}$;
-   3. $\mathcal{V}$ is linear independent. If $v\notin span(\mathcal{V})$ the $\mathcal{V}\cup v$ is linear independent;
-   4. If $\mathcal{V}$ is linear dependent, there exists a nonzero vector $v\in\mathcal{V}$ such that $v\in span(\mathcal{V\backslash v}), span(\mathcal{V})=span(\mathcal{V\backslash v})$.
+  1. The span of $\mathcal{V}$ is a linear subspace of $\mathbb{R}^n$;
+  2. $\mathcal{V}$ is linear independent if and only if every $v\in span(\mathcal{V})$ can be uniquely represented as a linear combination of $\mathcal{V}$;
+  3. $\mathcal{V}$ is linear independent. If $v\notin span(\mathcal{V})$ the $\mathcal{V}\cup v$ is linear independent;
+  4. If $\mathcal{V}$ is linear dependent, there exists a nonzero vector $v\in\mathcal{V}$ such that $v\in span(\mathcal{V\backslash v}), span(\mathcal{V})=span(\mathcal{V\backslash v})$.
 
 {{< math-block type="theorem" title="Theorem 1 (基扩充/缩减定理)" label="theo-basis">}}
 Every linear independent subset of $\mathcal{V}$ can be extended to a basis of $span(\mathcal{V})$. The set of $\mathcal{V}$ can be reduced to a basis of $span(\mathcal{V})$.
