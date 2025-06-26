@@ -216,7 +216,7 @@ Extending Theorem 2 from scalar-valued linear functions $f: \mathbb{R}^n \to \ma
 
 2. **Euclidean norm**
 
-{{< math-blovk type="definition" title="Euclidean norm(欧几里得范数)" label="def-norm" >}}
+{{< math-block type="definition" title="Euclidean norm(欧几里得范数)" label="def-norm" >}}
 The **Euclidean norm** of $x\in \mathbb{R}^n$ is defined as 
 $$
 ||x||_2=\sqrt{\langle x,x \rangle}=\sqrt{\sum_{i=1}^n x_i^2}.
