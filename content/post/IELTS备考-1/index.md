@@ -4,7 +4,7 @@ description: IELTS Writing Task 1
 slug: IELTS-1
 date: 2025-07-06 15:20:00+0800
 math: true
-image: cover.jpg
+image: cover.png
 categories:
     - IELTS
 tags:
