@@ -38,7 +38,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
   通常两张图表，每张总结一个；一张图表则横纵对比、找极值等。  
   - 常用句式：
     - Overall, there are 2 key points (to note).  
-    - First,..And secondly,.. *OR* Overall, the main point to note is that…. Overall, the main points to note are that XXX and YYY.
+    - First,..And secondly,.. *OR* Overall, the main point to note is that…. *OR* Overall, the main points to note are that XXX and YYY.
 - para.3 & 4 详细讲两个要点
   - 常用句式：
     - Looking at the first graph in more detail, it can be seen that(we can see that) ...  
