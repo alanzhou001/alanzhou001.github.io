@@ -18,13 +18,11 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 （1）动词
 
-  - 小幅增长：rise, grow, increase, climb
+  - 小幅增长：rise, grow, increase, climb  
+  e.g. The number of students grew slightly from 200 to 250.
 
-   e.g. The number of students grew slightly from 200 to 250.
-
-  - 显著增长：surge, jump, rocket, soar
-
-   e.g. The population soared to 10 million in 2020.
+  - 显著增长：surge, jump, rocket, soar  
+  e.g. The population soared to 10 million in 2020.
 
 （2）名词
 
@@ -46,7 +44,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
          e.g. The sales increased dramatically after the new product launch.
 
-2. 表示减少（Decrease）
+1. 表示减少（Decrease）
 
 （1）动词
 
