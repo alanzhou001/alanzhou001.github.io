@@ -1,7 +1,7 @@
 ---
 title: IELTS备考-2
 description: IELTS Writing Task 1
-slug: IELTS-1
+slug: IELTS-2
 date: 2025-07-16 15:27:00+0800
 math: true
 image: cover.png
