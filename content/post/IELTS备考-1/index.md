@@ -540,7 +540,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
     e.g. The GDP growth rates of the two countries diverged significantly after 2015.
 
-## 介绍数据/图表
+## 六、介绍数据/图表
 
 在小作文的开头，通常需要介绍图表类型和主要内容。
 
