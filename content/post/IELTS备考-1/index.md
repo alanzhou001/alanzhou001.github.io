@@ -345,19 +345,19 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
     somewhere between… and…（介于……和……之间）
 
-    示例句：
+  示例句：
 
-      The population was just over 10 million in 2021.
+    The population was just over 10 million in 2021.
 
-      （2021 年人口 略高于 1,000 万。）
+    （2021 年人口 略高于 1,000 万。）
 
-      The unemployment rate was just under 5%.
+    The unemployment rate was just under 5%.
 
-      （失业率 略低于 5%。）
+    （失业率 略低于 5%。）
 
-      The price was somewhere between $10and10 and $15.
+    The price was somewhere between $10and10 and $15.
 
-      （价格在 10 到 15 美元之间。）
+    （价格在 10 到 15 美元之间。）
 
 ## 四、进一步阐释的衔接词
 
