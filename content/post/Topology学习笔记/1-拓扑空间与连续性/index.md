@@ -21,36 +21,36 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 设$X$是一非空集合. $X$的一个**子集族**$\tau$称为$X$的一个**拓扑**，如果它满足
 
-（1） $X$，$\emptyset$都包含在$ \tau $ 中；
-（2） $ \tau $ 中任意多个成员的并集仍在$ \tau $ 中；
-（3） $ \tau $ 中有限多个成员的交集仍在$ \tau $ 中.
+（1） $X$，$\emptyset$都包含在$ \tau $ 中；  
+（2） $ \tau $ 中任意多个成员的并集仍在$ \tau $ 中；  
+（3） $ \tau $ 中有限多个成员的交集仍在$ \tau $ 中.  
 
 集合$X$和它的一个拓扑$ \tau $一起称为一个**拓扑空间**，记作$(X, \tau)$. 称$\tau $中的成员为这个拓扑空间的**开集**.
 
 {{< /math-block >}}
 
-定义$\ref{def-topol}$中三个条件称为**拓扑公理**. 其中（3）可等价为（3'）
+定义$\ref{def-topol}$中三个条件称为**拓扑公理**. 其中（3）可等价为（3'）  
     （3'）$\tau $中两个成员的交集仍在$\tau $ 中.
 
 证明如下：
 
 {{< math-block type="proof">}}
 
-“$\tau$ 对\textbf{有限个}成员的交闭” $\Leftrightarrow$ “$\tau$ 对\textbf{两个}成员的交闭”.
+“$\tau$ 对**有限个**成员的交闭” $\Leftrightarrow$ “$\tau$ 对**任意两个**成员的交闭”.
 
-\textbf{(⇒)} 假设 $\tau$ 中任意有限个集合的交仍在 $\tau$ 中。则特别地，任取 $U, V \in \tau$，$U \cap V$ 也是有限交，故 $U \cap V \in \tau$.
+$\Rightarrow$ 假设 $\tau$ 中任意有限个集合的交仍在 $\tau$ 中。则特别地，任取 $U, V \in \tau$，$U \cap V$ 也是有限交，故 $U \cap V \in \tau$.
 
-\textbf{(⇐)} 反过来，假设 $\tau$ 中任意两个集合的交仍在 $\tau$ 中，即如果 $U, V \in \tau$，则 $U \cap V \in \tau$. 我们将证明 $\tau$ 对任意有限个集合的交闭.  
-归纳地证明：
+$\Leftarrow$ 反过来，假设 $\tau$ 中任意两个集合的交仍在 $\tau$ 中，即如果 $U, V \in \tau$，则 $U \cap V \in \tau$. 我们将证明 $\tau$ 对任意有限个集合的交闭.  
+归纳地证明：  
 
 当 $n = 2$ 时，结论显然成立（即假设中的条件）.
 
 假设任意 $n$ 个开集 $U_1, \dots, U_n \in \tau$ 有 $\bigcap_{i=1}^n U_i \in \tau$.  
-考虑 $n+1$ 个开集 $U_1, \dots, U_n, U_{n+1} \in \tau$. 由归纳假设，$V := \bigcap_{i=1}^n U_i \in \tau$。  
-再利用两个集合的交闭性，得到：
-\[
+考虑 $n+1$ 个开集 $U_1, \dots, U_n, U_{n+1} \in \tau$. 由归纳假设，$V := \bigcap_{i=1}^n U_i \in \tau$.  
+再利用两个集合的交闭性，得到：  
+$$
 \bigcap_{i=1}^{n+1} U_i = V \cap U_{n+1} \in \tau.
-\]
+$$
 因此，对任意有限个开集，其交仍在 $\tau$ 中.
 
 由此，两者等价.
