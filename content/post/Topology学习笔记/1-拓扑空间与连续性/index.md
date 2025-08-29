@@ -77,22 +77,22 @@ $\varnothing\in\tau$ 由定义可知；且 $X\in\tau$，因为 $X\setminus X=\va
 (2)
 设 $\{U_i\}_{i\in I}\subseteq\tau$. 若存在 $i_0$ 使 $U_{i_0}=\varnothing$，不影响并集的开性，故不妨设对每个 $i$，$U_i\neq\varnothing$ 且 $X\setminus U_i$ 有限.
 则
-\[
+$$
 X\setminus \bigcup_{i\in I} U_i
 = \bigcap_{i\in I} (X\setminus U_i).
-\]
+$$
 右侧是（可能是无限个）有限集的\emph{交集}. 任取 $j\in I$，有
-\[
+$$
 \bigcap_{i\in I} (X\setminus U_i)\ \subseteq\ X\setminus U_j,
-\]
+$$
 因此该交集是某个有限集的子集，从而也是有限集. 于是 $X\setminus \bigcup_{i\in I} U_i$ 有限，即 $\bigcup_{i\in I} U_i\in\tau$.
 
 (3)
 取有限个 $U_1,\dots,U_n\in\tau$. 同理有
-\[
+$$
 X\setminus \bigcap_{k=1}^n U_k
 = \bigcup_{k=1}^n (X\setminus U_k),
-\]
+$$
 右侧为有限个有限集的并，仍为有限集. 故 $\bigcap_{k=1}^n U_k\in\tau$.
 
 综上，$\tau$ 满足拓扑的三条公理，故为 $X$ 上的一个拓扑.
