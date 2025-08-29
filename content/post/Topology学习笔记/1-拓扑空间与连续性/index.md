@@ -4,7 +4,7 @@ description: 介绍拓扑空间，连续映射，同胚映射，拓扑基与乘�
 slug: topol-1
 date: 2025-08-29 16:00:00+0800
 math: true
-image: cover.jpg
+image: cover.png
 categories:
     - Math
 tags:
