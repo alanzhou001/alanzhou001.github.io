@@ -36,7 +36,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 {{< math-block type="proof">}}
 
-“$\tau$ 对**有限个**成员的交闭” $\Leftrightarrow$ “$\tau$ 对**任意两个**成员的交闭”.
+“$\tau$ 对**有限个**成员的交封闭” $\Leftrightarrow$ “$\tau$ 对**任意两个**成员的交封闭”.
 
 $\Rightarrow$ 假设 $\tau$ 中任意有限个集合的交仍在 $\tau$ 中。则特别地，任取 $U, V \in \tau$，$U \cap V$ 也是有限交，故 $U \cap V \in \tau$.
 
@@ -61,9 +61,9 @@ $$
 - 一些例子：
   - $2^X$，**离散拓扑**，记作$\tau_t$；
   - $(X, \emptyset)$，**平凡拓扑**，记作$\tau_s$;
-  - $X$是无穷集合，$\tau_f={A^c \mid A是X的有限子集}\cup{\emptyset}$, **余有限拓扑**；
-  - $X$是不可数无穷集合，$\tau_c={A^c \mid A是X的可数子集}\cup{\emptyset}$, **余可数拓扑**；
-  - $\mathbf{R}$是全体实数集，$\tau_e={U \mid U是若干个开区间的并集}$，“若干个”可以是无穷、有限、零，**欧氏拓扑**，记作$\mathbf{E}^1=(\mathbf{R}, \tau_e)$
+  - $X$是无穷集合，$\tau_f=\{A^c \mid A是X的有限子集\}\cup\{\emptyset\}$, **余有限拓扑**；
+  - $X$是不可数无穷集合，$\tau_c=\{A^c \mid A是X的可数子集\}\cup\{\emptyset\}$, **余可数拓扑**；
+  - $\mathbf{R}$是全体实数集，$\tau_e=\{U \mid U是若干个开区间的并集\}$，“若干个”可以是无穷、有限、零，**欧氏拓扑**，记作$\mathbf{E}^1=(\mathbf{R}, \tau_e)$
 
 给出**余有限拓扑**的证明:
 
@@ -72,16 +72,17 @@ $$
 验证拓扑三公理.
 
 (1)
-$\varnothing\in\tau$ 由定义可知；且 $X\in\tau$，因为 $X\setminus X=\varnothing$ 为有限集.
+由定义可知$\emptyset\in\tau$ ；  
+$X\in\tau$，因为 $X^c=\emptyset\in\tau$ .
 
 (2)
-设 $\{U_i\}_{i\in I}\subseteq\tau$. 若存在 $i_0$ 使 $U_{i_0}=\varnothing$，不影响并集的开性，故不妨设对每个 $i$，$U_i\neq\varnothing$ 且 $X\setminus U_i$ 有限.
+设 $U_{i, i\in I}\subseteq\tau$. 若存在 $i_0$ 使 $U_{i_0}=\emptyset$，不影响并集的开性，故不妨设对每个 $i$，$U_i\neq\emptyset$ 且 $X\setminus U_i$ 有限.
 则
 $$
 X\setminus \bigcup_{i\in I} U_i
 = \bigcap_{i\in I} (X\setminus U_i).
 $$
-右侧是（可能是无限个）有限集的\emph{交集}. 任取 $j\in I$，有
+右侧是（可能是无限个）有限集的交集. 任取 $j\in I$，有
 $$
 \bigcap_{i\in I} (X\setminus U_i)\ \subseteq\ X\setminus U_j,
 $$
