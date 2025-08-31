@@ -6,9 +6,10 @@ date: 2025-06-23 20:00:00+0800
 math: true
 image: cover.jpg
 categories:
-    - OPT
+    - Math
 tags:
     - notes
+    - OPT
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 

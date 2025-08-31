@@ -29,7 +29,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 {{< /math-block >}}
 
-定义$\ref{def-topol}$中三个条件称为**拓扑公理**. 其中（3）可等价为（3'）  
+定义[1.1](#def-topol)中三个条件称为**拓扑公理**. 其中（3）可等价为（3'）  
     （3'）$\tau $中两个成员的交集仍在$\tau $ 中.
 
 证明如下：
@@ -97,5 +97,62 @@ $$
 右侧为有限个有限集的并，仍为有限集. 故 $\bigcap_{k=1}^n U_k\in\tau$.
 
 综上，$\tau$ 满足拓扑的三条公理，故为 $X$ 上的一个拓扑.
+
+{{< /math-block >}}
+
+## 度量拓扑
+
+**回忆：**度量空间三条性质（定义）  
+
+- 正定性
+- 对称性
+- 三角不等式
+
+{{< math-block type="definition" title="度量空间中的开球" label="circle">}}
+
+设$(X, d)$是一个度量空间，$x_0 \in X，$\epsilon $是一正数，称$X$的子集
+$$
+B(x_0, \epsilon) := \{x_0\in X \mid d(x_0, x)<\epsilon \}
+$$
+为以$x_0$为心，$\epsilon$为半径的**球形邻域**.
+
+{{< /math-block >}}
+
+{{< math-block type="theorem" title="引理" label="circle-capcup">}}
+
+$(X, d)$的任意两个球形邻域的交集是若干个球形邻域的并集.
+
+{{< /math-block >}}
+
+{{< math-block type="proof">}}
+
+设$U=B(x_1, \epsilon_1)\cap B(x_2, \epsilon_2)$. $\forall x\in U$，则$\epsilon_i-d(x, x_i)>0(i=1, 2)$. 记$\epsilon_x =min\{\epsilon_1-d(x, x_1), \epsilon_2-d(x, x_2)\}$，有$B(x, \epsilon_x)\subset U$. 于是
+$$
+U=\bigcap_{x\in U}B(x, \epsilon_x).
+$$
+
+{{< /math-block >}}
+
+规定$X$的子集族$\tau_d=\{U \mid U是若干个开球的并集\}$.
+
+{{< math-block type="theorem" title="命题1.1 度量空间上的拓扑" label="measure-topol">}}
+
+$\tau_d$是$X$上的一个拓扑
+
+{{< /math-block >}}
+
+{{< math-block type="proof">}}
+
+验证三条公理.
+（1），（2）均由定义可直接验证. 下证公理（3）.
+设$U_{\alpha}, U_{\beta} \in \tau_d$， $U_{\alpha}=\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}), U_{\beta}=\bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta})$，则有
+$$
+U_{\alpha}\cap U_{\beta}=(\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}))\cap \bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta})
+=\bigcup_{\alpha, \beta}(B(x_{\alpha}, \epsilon_{\alpha})\cap B(x_{\beta}, \epsilon_{\beta})).
+
+由[引理](#circle-capcup), B(x_{\alpha}, \epsilon_{\alpha})\cap B(x_{\beta}, \epsilon_{\beta}) \in \tau_d
+
+U_{\alpha}\cap U_{\beta} \in \tau_d.
+$$
 
 {{< /math-block >}}
