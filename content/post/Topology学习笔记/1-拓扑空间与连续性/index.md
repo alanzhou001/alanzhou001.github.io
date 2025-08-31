@@ -114,6 +114,7 @@ $$
 $$
 B(x_0, \epsilon) := \{x_0\in X \mid d(x_0, x)<\epsilon \}
 $$
+
 为以$x_0$为心，$\epsilon$为半径的**球形邻域**.
 
 {{< /math-block >}}
@@ -137,7 +138,7 @@ $$
 
 {{< math-block type="theorem" title="命题1.1 度量空间上的拓扑" label="measure-topol">}}
 
-$\tau_d$是$X$上的一个拓扑
+$\tau_d$是$X$上的一个拓扑.
 
 {{< /math-block >}}
 
@@ -145,9 +146,12 @@ $\tau_d$是$X$上的一个拓扑
 
 验证三条公理.
 （1），（2）均由定义可直接验证. 下证公理（3）.
-设$U_{\alpha}, U_{\beta} \in \tau_d$， $U_{\alpha}=\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}), U_{\beta}=\bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta})$，则有
+
+设$U_{\alpha}, U_{\beta} \in \tau_d$， $$U_{\alpha}=\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}), U_{\beta}=\bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta})$$，则有
+
 $$
 U_{\alpha}\cap U_{\beta}=(\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}))\cap \bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta})
+
 =\bigcup_{\alpha, \beta}(B(x_{\alpha}, \epsilon_{\alpha})\cap B(x_{\beta}, \epsilon_{\beta})).
 $$
 
