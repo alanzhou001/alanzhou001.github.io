@@ -1,6 +1,6 @@
 ---
-title: 拓扑空间与连续性
-description: 介绍拓扑空间，连续映射，同胚映射，拓扑基与乘积空间
+title: 拓扑空间初步认识
+description: 介绍拓扑空间及拓扑空间中基本概念
 slug: topol-1
 date: 2025-08-29 16:00:00+0800
 math: true
@@ -26,6 +26,8 @@ weight: 1       # You can add weight to some posts to override the default sorti
 （3） $ \tau $ 中有限多个成员的交集仍在$ \tau $ 中.  
 
 集合$X$和它的一个拓扑$ \tau $一起称为一个**拓扑空间**，记作$(X, \tau)$. 称$\tau $中的成员为这个拓扑空间的**开集**.
+
+(*注*：这里定义了拓扑空间中的**开集**)
 
 {{< /math-block >}}
 
@@ -159,3 +161,13 @@ $$
 因此，$U_{\alpha}\cap U_{\beta} \in \tau_d$.
 
 {{< /math-block >}}
+
+## 拓扑空间中的基本概念
+
+下述概念在是分析中均出现过，替换开集概念为拓扑空间中的[开集](#def-topol)即可.
+
+1. 闭集
+2. 领域、内点和内部
+3. 聚点和闭包
+4. 序列收敛性
+
