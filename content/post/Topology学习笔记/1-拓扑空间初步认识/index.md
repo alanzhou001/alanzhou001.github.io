@@ -104,7 +104,7 @@ $$
 
 ## 度量拓扑
 
-**回忆：**度量空间三条性质（定义）  
+**回忆：** 度量空间三条性质（定义）  
 
 - 正定性
 - 对称性
@@ -166,10 +166,49 @@ $$
 
 ## 拓扑空间中的基本概念
 
-下述概念在是分析中均出现过，替换开集概念为拓扑空间中的[开集](#def-topol)即可.
+下述概念在实分析中均出现过，替换开集概念为拓扑空间中的[开集](#def-topol)即可.
 
 1. 闭集
 2. 领域、内点和内部
 3. 聚点和闭包
 4. 序列收敛性
 
+### 重要性质
+
+
+{{< math-block type="theorem" title="命题1.2 拓扑空间中闭集的性质" label="close">}}
+
+1. $X$与$\emptyset$都是闭集；
+2. **任意多**个闭集的**交集**都是闭集；
+3. **有限个**闭集的**并集**是闭集.
+
+{{< /math-block >}}
+
+{{< math-block type="theorem" title="命题1.3" label="close">}}
+
+1. 若$A \subset B$，则$A^{\circ} \subset B^{\circ}$；
+2. $A^{\circ}$是包含在$A$中所有开集的并集，是包含在$A$中的最大开集；
+3. $A^{\circ}=A \iff A$是开集；
+4. $(A\cap B)^{\circ}=A^{\circ}\cap B^{\circ}$
+5. $(A\cup B)^{\circ} \supset A^{\circ}\cup B^{\circ}$
+
+{{< /math-block >}}
+
+{{< math-block type="definition" title="笛卡尔积" label="c-product">}}
+
+$X_1 \times X_2 \times \cdots X_n:=\{(x_1, x_2, \cdots x_n) | x_i\in X_i\} $
+
+{{< /math-block >}}
+
+{{< math-block type="theorem" title="笛卡尔积分配律" label="c-distribute">}}
+
+$$1. A\cup(\bigcap_{\lambda \in \Lambda}B_\lambda)= \bigcap_{\lambda \in \Lambda}(A\cup B_\lambda) \\
+2. A\cap(\bigcup_{\lambda \in \Lambda}B_\lambda)= \bigcup_{\lambda \in \Lambda}(A\cap B_\lambda) \\
+3. A\times(\bigcap_{\lambda \in \Lambda}B_\lambda)= \bigcap_{\lambda \in \Lambda}(A\times B_\lambda) \\
+4. A\times(\bigcup_{\lambda \in \Lambda}B_\lambda)= \bigcup_{\lambda \in \Lambda}(A\times B_\lambda) \\
+5. A\times(B_1 \backslash B_2)=(A\times B_1)\backslash (A\times B_2)
+$$
+
+{{< /math-block >}}
+
+ 
