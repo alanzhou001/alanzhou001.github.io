@@ -61,11 +61,11 @@ $$
 
 - 总结：给出集合的一个拓扑即规定哪些子集是开集，同时满足三条公理。
 - 一些例子：
-  - $2^X$，**离散拓扑**，记作$\tau_t$；
-  - $(X, \emptyset)$，**平凡拓扑**，记作$\tau_s$;
-  - $X$是无穷集合，$\tau_f= \{ A^c \mid A是X的有限子集 \} \cup \{ \emptyset \} $, **余有限拓扑**；
-  - $X$是不可数无穷集合，$\tau_c= \{ A^c \mid A是X的可数子集 \} \cup \{ \emptyset \} $, **余可数拓扑**；
-  - $\mathbf{R}$是全体实数集，$\tau_e= \{ U \mid U是若干个开区间的并集 \} $，“若干个”可以是无穷、有限、零，**欧氏拓扑**，记作$\mathbf{E}^1=(\mathbf{R}, \tau_e)$
+  - **离散拓扑**: $2^X$，记作$\tau_t$；
+  - **平凡拓扑**: $(X, \emptyset)$，记作$\tau_s$;
+  - **余有限拓扑**: $X$是无穷集合，$\tau_f= \{ A^c \mid A是X的有限子集 \} \cup \{ \emptyset \} $；
+  - **余可数拓扑**: $X$是不可数无穷集合，$\tau_c= \{ A^c \mid A是X的可数子集 \} \cup \{ \emptyset \} $；
+  - **欧氏拓扑（标准拓扑）**: $\mathbf{R}$是全体实数集，$\tau_e= \{ U \mid U是若干个开区间的并集 \} $，“若干个”可以是无穷、有限、零，记作$\mathbf{E}^1=(\mathbf{R}, \tau_e)$
 
 给出**余有限拓扑**的证明:
 
@@ -161,6 +161,23 @@ $$
 由[引理](#circle-capcup), $B(x_{\alpha}, \epsilon_{\alpha})\cap B(x_{\beta}, \epsilon_{\beta}) \in \tau_d$,
 
 因此，$U_{\alpha}\cap U_{\beta} \in \tau_d$.
+
+{{< /math-block >}}
+
+## 拓扑“大小”的比较
+
+{{< math-block type="definition" title="拓扑的比较" label="measure-topol">}}
+
+设 $(X, \mathcal{T}_1)$ 和 $(X, \mathcal{T}_2)$ 是定义在同一集合 $X$ 上的两个拓扑空间.
+
+如果 $\mathcal{T}_1$ 中的每一个开集都是 $\mathcal{T}_2$ 中的开集，则称拓扑 $\mathcal{T}_2$ **比拓扑 $\mathcal{T}_1$ 更精细（finer）**.
+
+用集合论的记号表示为：
+$$ \mathcal{T}_1 \subseteq \mathcal{T}_2 $$
+
+在这种情况下，我们也称 $\mathcal{T}_1$ **比 $\mathcal{T}_2$ 更粗糙（coarser）**.
+
+会出现两个拓扑无法比较的情况.
 
 {{< /math-block >}}
 
