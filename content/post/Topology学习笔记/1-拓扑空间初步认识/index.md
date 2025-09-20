@@ -102,7 +102,7 @@ $$
 
 {{< /math-block >}}
 
-## 度量拓扑
+### 度量拓扑
 
 **回忆：** 度量空间三条性质（定义）  
 
@@ -164,7 +164,7 @@ $$
 
 {{< /math-block >}}
 
-## 拓扑“大小”的比较
+### 拓扑“大小”的比较
 
 {{< math-block type="definition" title="拓扑的比较" label="measure-topol">}}
 
