@@ -40,7 +40,8 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 常见时间复杂度关系：
 
-$$O(1)<O(logn)<O(n)<O(nlogn)<O(n^2)<O(n^3)<O(2^n)<O(n)<O(n^n)$$
+$$O(1)<O(logn)<O(n)<O(nlogn)<O(n^2)\\
+<O(n^3)<O(2^n)<O(n)<O(n^n)$$  
 
 ### 复杂度计算规则
 
