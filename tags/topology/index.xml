@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Topology on 周陈序 ( Alan Zhou )</title><link>https://cxzhou.com/tags/topology/</link><description>Recent content in Topology on 周陈序 ( Alan Zhou )</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 29 Aug 2025 23:00:00 +0800</lastBuildDate><atom:link href="https://cxzhou.com/tags/topology/index.xml" rel="self" type="application/rss+xml"/><item><title>拓扑基</title><link>https://cxzhou.com/p/topol-2/</link><pubDate>Fri, 29 Aug 2025 23:00:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-2/</guid><description>&lt;img src="https://cxzhou.com/p/topol-2/cover.png" alt="Featured image of post 拓扑基" /&gt;&lt;h2 id="拓扑基basis"&gt;拓扑基(Basis)
+&lt;/h2&gt;</description></item><item><title>拓扑空间初步认识</title><link>https://cxzhou.com/p/topol-1/</link><pubDate>Fri, 29 Aug 2025 16:00:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-1/</guid><description>&lt;img src="https://cxzhou.com/p/topol-1/cover.png" alt="Featured image of post 拓扑空间初步认识" /&gt;&lt;p&gt;笔记主要参考尤承业《基础拓扑学讲义》，为便于查找，所有定义、定理等编号与原书保持一致。&lt;/p&gt;
+&lt;h2 id="拓扑空间"&gt;拓扑空间
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-topol"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 1.1 拓扑空间 &lt;/strong&gt;&lt;a href="#def-topol" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设$X$是一非空集合. $X$的一个&lt;strong&gt;子集族&lt;/strong&gt;$\tau$称为$X$的一个&lt;strong&gt;拓扑&lt;/strong&gt;，如果它满足&lt;/p&gt;
+&lt;p&gt;（1） $X$，$\emptyset$都包含在$ \tau $ 中；&lt;br&gt;
+（2） $ \tau $ 中任意多个成员的并集仍在$ \tau $ 中；&lt;br&gt;
+（3） $ \tau $ 中有限多个成员的交集仍在$ \tau $ 中.&lt;/p&gt;
+&lt;p&gt;集合$X$和它的一个拓扑$ \tau $一起称为一个&lt;strong&gt;拓扑空间&lt;/strong&gt;，记作$(X, \tau)$. 称$\tau $中的成员为这个拓扑空间的&lt;strong&gt;开集&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;(&lt;em&gt;注&lt;/em&gt;：这里定义了拓扑空间中的&lt;strong&gt;开集&lt;/strong&gt;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;定义&lt;a class="link" href="#def-topol" &gt;1.1&lt;/a&gt;中三个条件称为&lt;strong&gt;拓扑公理&lt;/strong&gt;. 其中（3）可等价为（3&amp;rsquo;）&lt;br&gt;
+（3&amp;rsquo;）$\tau $中两个成员的交集仍在$\tau $ 中.&lt;/p&gt;
+&lt;p&gt;证明如下：&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;“$\tau$ 对&lt;strong&gt;有限个&lt;/strong&gt;成员的交封闭” $\Leftrightarrow$ “$\tau$ 对&lt;strong&gt;任意两个&lt;/strong&gt;成员的交封闭”.&lt;/p&gt;
+&lt;p&gt;$\Rightarrow$ 假设 $\tau$ 中任意有限个集合的交仍在 $\tau$ 中。则特别地，任取 $U, V \in \tau$，$U \cap V$ 也是有限交，故 $U \cap V \in \tau$.&lt;/p&gt;
+&lt;p&gt;$\Leftarrow$ 反过来，假设 $\tau$ 中任意两个集合的交仍在 $\tau$ 中，即如果 $U, V \in \tau$，则 $U \cap V \in \tau$. 我们将证明 $\tau$ 对任意有限个集合的交闭.&lt;br&gt;
+归纳地证明：&lt;/p&gt;
+&lt;p&gt;当 $n = 2$ 时，结论显然成立（即假设中的条件）.&lt;/p&gt;
+&lt;p&gt;假设任意 $n$ 个开集 $U_1, \dots, U_n \in \tau$ 有 $\bigcap_{i=1}^n U_i \in \tau$.&lt;br&gt;
+考虑 $n+1$ 个开集 $U_1, \dots, U_n, U_{n+1} \in \tau$. 由归纳假设，$V := \bigcap_{i=1}^n U_i \in \tau$.&lt;br&gt;
+再利用两个集合的交闭性，得到：&lt;br&gt;
+&lt;/p&gt;
+$$
+\bigcap_{i=1}^{n+1} U_i = V \cap U_{n+1} \in \tau.
+$$&lt;p&gt;
+因此，对任意有限个开集，其交仍在 $\tau$ 中.&lt;/p&gt;
+&lt;p&gt;由此，两者等价.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;总结：给出集合的一个拓扑即规定哪些子集是开集，同时满足三条公理。&lt;/li&gt;
+&lt;li&gt;一些例子：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;离散拓扑&lt;/strong&gt;: $2^X$，记作$\tau_t$；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;平凡拓扑&lt;/strong&gt;: $(X, \emptyset)$，记作$\tau_s$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;余有限拓扑&lt;/strong&gt;: $X$是无穷集合，$\tau_f= \{ A^c \mid A是X的有限子集 \} \cup \{ \emptyset \} $；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;余可数拓扑&lt;/strong&gt;: $X$是不可数无穷集合，$\tau_c= \{ A^c \mid A是X的可数子集 \} \cup \{ \emptyset \} $；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;欧氏拓扑（标准拓扑）&lt;/strong&gt;: $\mathbf{R}$是全体实数集，$\tau_e= \{ U \mid U是若干个开区间的并集 \} $，“若干个”可以是无穷、有限、零，记作$\mathbf{E}^1=(\mathbf{R}, \tau_e)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;给出&lt;strong&gt;余有限拓扑&lt;/strong&gt;的证明:&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;验证拓扑三公理.&lt;/p&gt;
+&lt;p&gt;(1)
+由定义可知$\emptyset\in\tau$ ；&lt;br&gt;
+$X\in\tau$，因为 $X^c=\emptyset\in\tau$ .&lt;/p&gt;
+&lt;p&gt;(2)
+设 $U_{i, i\in I}\subseteq\tau$. 若存在 $i_0$ 使 $U_{i_0}=\emptyset$，不影响并集的开性，故不妨设对每个 $i$，$U_i\neq\emptyset$ 且 $X\setminus U_i$ 有限.
+则
+&lt;/p&gt;
+$$
+X\setminus \bigcup_{i\in I} U_i
+= \bigcap_{i\in I} (X\setminus U_i).
+$$&lt;p&gt;
+右侧是（可能是无限个）有限集的交集. 任取 $j\in I$，有
+&lt;/p&gt;
+$$
+\bigcap_{i\in I} (X\setminus U_i)\ \subseteq\ X\setminus U_j,
+$$&lt;p&gt;
+因此该交集是某个有限集的子集，从而也是有限集. 于是 $X\setminus \bigcup_{i\in I} U_i$ 有限，即 $\bigcup_{i\in I} U_i\in\tau$.&lt;/p&gt;
+&lt;p&gt;(3)
+取有限个 $U_1,\dots,U_n\in\tau$. 同理有
+&lt;/p&gt;
+$$
+X\setminus \bigcap_{k=1}^n U_k
+= \bigcup_{k=1}^n (X\setminus U_k),
+$$&lt;p&gt;
+右侧为有限个有限集的并，仍为有限集. 故 $\bigcap_{k=1}^n U_k\in\tau$.&lt;/p&gt;
+&lt;p&gt;综上，$\tau$ 满足拓扑的三条公理，故为 $X$ 上的一个拓扑.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="度量拓扑"&gt;度量拓扑
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;回忆：&lt;/strong&gt; 度量空间三条性质（定义）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正定性&lt;/li&gt;
+&lt;li&gt;对称性&lt;/li&gt;
+&lt;li&gt;三角不等式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="math-block math-block--definition" id="circle"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;度量空间中的开球&lt;/strong&gt;&lt;a href="#circle" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设$(X, d)$是一个度量空间，$x_0 \in X，$\epsilon $是一正数，称$X$的子集
+$$
+B(x_0, \epsilon) := \{x_0\in X \mid d(x_0, x)&lt;\epsilon \}
+$$&lt;/p&gt;
+&lt;p&gt;为以$x_0$为心，$\epsilon$为半径的&lt;strong&gt;球形邻域&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="circle-capcup"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理&lt;/strong&gt;&lt;a href="#circle-capcup" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$(X, d)$的任意两个球形邻域的交集是若干个球形邻域的并集.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;设$U=B(x_1, \epsilon_1)\cap B(x_2, \epsilon_2)$. $\forall x\in U$，则$\epsilon_i-d(x, x_i)&gt;0(i=1, 2)$. 记$\epsilon_x =min\{\epsilon_1-d(x, x_1), \epsilon_2-d(x, x_2)\}$，有$B(x, \epsilon_x)\subset U$. 于是
+&lt;/p&gt;
+$$
+U=\bigcap_{x\in U}B(x, \epsilon_x).
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;规定$X$的子集族$\tau_d=\{U \mid U是若干个开球的并集\}$.&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="measure-topol"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题1.1 度量空间上的拓扑&lt;/strong&gt;&lt;a href="#measure-topol" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$\tau_d$是$X$上的一个拓扑.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;验证三条公理.
+（1），（2）均由定义可直接验证. 下证公理（3）.&lt;/p&gt;
+&lt;p&gt;设$U_{\alpha}, U_{\beta} \in \tau_d$， &lt;/p&gt;
+$$U_{\alpha}=\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}), U_{\beta}=\bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta})$$&lt;p&gt;，则有&lt;/p&gt;
+$$
+\begin{align*}
+U_{\alpha}\cap U_{\beta}=(\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}))\cap \bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta}) \\
+=\bigcup_{\alpha, \beta}(B(x_{\alpha}, \epsilon_{\alpha})\cap B(x_{\beta}, \epsilon_{\beta})).
+\end{align*}
+$$&lt;p&gt;由&lt;a class="link" href="#circle-capcup" &gt;引理&lt;/a&gt;, $B(x_{\alpha}, \epsilon_{\alpha})\cap B(x_{\beta}, \epsilon_{\beta}) \in \tau_d$,&lt;/p&gt;
+&lt;p&gt;因此，$U_{\alpha}\cap U_{\beta} \in \tau_d$.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="拓扑大小的比较"&gt;拓扑“大小”的比较
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="measure-topol"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;拓扑的比较&lt;/strong&gt;&lt;a href="#measure-topol" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $(X, \mathcal{T}_1)$ 和 $(X, \mathcal{T}_2)$ 是定义在同一集合 $X$ 上的两个拓扑空间.&lt;/p&gt;
+&lt;p&gt;如果 $\mathcal{T}_1$ 中的每一个开集都是 $\mathcal{T}_2$ 中的开集，则称拓扑 $\mathcal{T}_2$ &lt;strong&gt;比拓扑 $\mathcal{T}_1$ 更精细（finer）&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;用集合论的记号表示为：
+&lt;/p&gt;
+$$ \mathcal{T}_1 \subseteq \mathcal{T}_2 $$&lt;p&gt;在这种情况下，我们也称 $\mathcal{T}_1$ &lt;strong&gt;比 $\mathcal{T}_2$ 更粗糙（coarser）&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;会出现两个拓扑无法比较的情况.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="拓扑空间中的基本概念"&gt;拓扑空间中的基本概念
+&lt;/h2&gt;&lt;p&gt;下述概念在实分析中均出现过，替换开集概念为拓扑空间中的&lt;a class="link" href="#def-topol" &gt;开集&lt;/a&gt;即可.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;闭集&lt;/li&gt;
+&lt;li&gt;领域、内点和内部&lt;/li&gt;
+&lt;li&gt;聚点和闭包&lt;/li&gt;
+&lt;li&gt;序列收敛性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="重要性质"&gt;重要性质
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" id="close"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题1.2 拓扑空间中闭集的性质&lt;/strong&gt;&lt;a href="#close" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ol&gt;
+&lt;li&gt;$X$与$\emptyset$都是闭集；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;任意多&lt;/strong&gt;个闭集的&lt;strong&gt;交集&lt;/strong&gt;都是闭集；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;有限个&lt;/strong&gt;闭集的&lt;strong&gt;并集&lt;/strong&gt;是闭集.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="close"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题1.3&lt;/strong&gt;&lt;a href="#close" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ol&gt;
+&lt;li&gt;若$A \subset B$，则$A^{\circ} \subset B^{\circ}$；&lt;/li&gt;
+&lt;li&gt;$A^{\circ}$是包含在$A$中所有开集的并集，是包含在$A$中的最大开集；&lt;/li&gt;
+&lt;li&gt;$A^{\circ}=A \iff A$是开集；&lt;/li&gt;
+&lt;li&gt;$(A\cap B)^{\circ}=A^{\circ}\cap B^{\circ}$&lt;/li&gt;
+&lt;li&gt;$(A\cup B)^{\circ} \supset A^{\circ}\cup B^{\circ}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="c-product"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;笛卡尔积&lt;/strong&gt;&lt;a href="#c-product" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$X_1 \times X_2 \times \cdots X_n:=\{(x_1, x_2, \cdots x_n) | x_i\in X_i\} $
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="c-distribute"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;笛卡尔积分配律&lt;/strong&gt;&lt;a href="#c-distribute" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$$1. A\cup(\bigcap_{\lambda \in \Lambda}B_\lambda)= \bigcap_{\lambda \in \Lambda}(A\cup B_\lambda) \\
+2. A\cap(\bigcup_{\lambda \in \Lambda}B_\lambda)= \bigcup_{\lambda \in \Lambda}(A\cap B_\lambda) \\
+3. A\times(\bigcap_{\lambda \in \Lambda}B_\lambda)= \bigcap_{\lambda \in \Lambda}(A\times B_\lambda) \\
+4. A\times(\bigcup_{\lambda \in \Lambda}B_\lambda)= \bigcup_{\lambda \in \Lambda}(A\times B_\lambda) \\
+5. A\times(B_1 \backslash B_2)=(A\times B_1)\backslash (A\times B_2)
+$$
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>
