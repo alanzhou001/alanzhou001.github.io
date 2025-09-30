@@ -150,7 +150,7 @@ $$ \mathcal{B}_Y = \{ B \cap Y | B \in \mathcal{B} \} $$
 {{< math-block type="proof" >}}
 
 $\forall$ 开集 $V \in Y$,  $\exist$ 开集 $U \in X$, 使得 $V=U \cap Y$. $\mathcal{B}$ 为拓扑空间 $(X, \mathcal{T})$ 的一个基, $\exist \mathcal{B}_U \subset \mathcal{B}$, $s.t.$ $U = \bigcup_{B \in \mathcal{B}_U}$. 因此
-$$V = (\bigcup_{B \in \mathcal{B}_U} B) \cap Y = \bigcuo_{B \in \mathcal{B}_U} (B \cap Y)$$.
+$$V = (\bigcup_{B \in \mathcal{B}_U} B) \cap Y = \bigcup_{B \in \mathcal{B}_U} (B \cap Y)$$.
 
 {{< /math-block >}}
 
