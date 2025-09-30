@@ -1,6 +1,6 @@
 ---
 title: 拓扑基
-description: 补充映射相关性质，介绍拓扑基相关，定理参照雷逢春《基础拓扑学与应用》
+description: 介绍拓扑基相关，t拓扑子空间，Hausdoff性质，定理参照雷逢春《基础拓扑学与应用》
 slug: topol-2
 date: 2025-09-30 12:31:00+0800
 math: true
