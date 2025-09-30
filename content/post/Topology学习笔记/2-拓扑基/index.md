@@ -107,10 +107,8 @@ $$\mathcal{T} = \left\{ \bigcup_{i \in I} B_i \mid B_i \in \mathcal{B}, I \text{
 
 设$(X,\mathcal{T})$为一个拓扑空间，$\mathcal{B} \subset \mathcal{T}$，则$\mathcal{B}$是生成拓扑 $\mathcal{T}$的一个拓扑基当且仅当
 
-$$
-    & (1) \quad X = \bigcup_{B\in\mathcal{B}}B \\
-    & (2) \quad \text{对于 } U\in\mathcal{T} \text{ 和任意 } x\in U \text{，存在 } B_x\in \mathcal{B} \text{，使得 } x\in B_x \subset U.
-$$
+$$(1) \quad X = \bigcup_{B\in\mathcal{B}}B \\
+(2) \quad \text{对于 } U\in\mathcal{T} \text{ 和任意 } x\in U \text{，存在 } B_x\in \mathcal{B} \text{，使得 } x\in B_x \subset U.$$
 
 {{< /math-block >}}
 
@@ -128,12 +126,10 @@ $$
 
 {{< math-block type="proof" >}}
 
-$$
-    & (i) \phi \in \mathcal{T}_A, A=X \cap A \in \mathcal{T}_A
-    & (ii) U_{\lambda} \cap A, \lambda \in \Lambda, U_{\lambda} \in \mathcal{T}. \\
-    \bigcup_{\lambda \in \Lambda}(U_{\lambda} \cap A) =(\bigcup_{\lambda \in \Lambda}U_{\lambda})\cap A \in \mathcal{T}_A, since \bigcup_{\lambda \in \Lambda}U_{\lambda} \in \mathcal{T}. 
-    & (iii) (U_1 \cap A) \cap (U_2 \cap A) = (U_1 \cap U_2) \cap A \in \mathcal{T}_A, U_1, U_2 \in \mathcal{T}. 
-$$
+$$(i) \phi \in \mathcal{T}_A, A=X \cap A \in \mathcal{T}_A \\
+(ii) U_{\lambda} \cap A, \lambda \in \Lambda, U_{\lambda} \in \mathcal{T}. \\
+\bigcup_{\lambda \in \Lambda}(U_{\lambda} \cap A) =(\bigcup_{\lambda \in \Lambda}U_{\lambda})\cap A \in \mathcal{T}_A, since \bigcup_{\lambda \in \Lambda}U_{\lambda} \in \mathcal{T}. \\
+(iii) (U_1 \cap A) \cap (U_2 \cap A) = (U_1 \cap U_2) \cap A \in \mathcal{T}_A, U_1, U_2 \in \mathcal{T}.$$
 
 {{< /math-block >}}
 
@@ -154,7 +150,7 @@ $$ \mathcal{B}_Y = \{ B \cap Y | B \in \mathcal{B} \} $$
 {{< math-block type="proof" >}}
 
 $\forall$ 开集 $V \in Y$,  $\exist$ 开集 $U \in X$, 使得 $V=U \cap Y$. $\mathcal{B}$ 为拓扑空间 $(X, \mathcal{T})$ 的一个基, $\exist \mathcal{B}_U \subset \mathcal{B}$, $s.t.$ $U = \bigcup_{B \in \mathcal{B}_U}$. 因此
-$$ V = (\bigcup_{B \in \mathcal{B}_U} B) \cap Y = \bigcuo_{B \in \mathcal{B}_U} (B \cap Y) $$.
+$$V = (\bigcup_{B \in \mathcal{B}_U} B) \cap Y = \bigcuo_{B \in \mathcal{B}_U} (B \cap Y)$$.
 
 {{< /math-block >}}
 
@@ -208,7 +204,7 @@ $$ \mathcal{B} = \{ U \times V | U \in \mathcal{T}_1, V \in \mathcal{T}_2 \}.　
 
 设 $(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$ 是两个拓扑空间, 称
 $$ \mathcal{B} = \{ U \times V | U \in \mathcal{T}_1, V \in \mathcal{T}_2 \}　$$
-所生成的$X_1 \times X_2$ 的拓扑 $\mathcal{T}$ 为\textbf{乘积拓扑}，称 $(X_1 \times X_2, \mathcal{T})$ 为 $(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$ 的 \textbf{乘积拓扑空间}，简称为$(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$的 \textbf{积空间}.
+所生成的$X_1 \times X_2$ 的拓扑 $\mathcal{T}$ 为**乘积拓扑**，称 $(X_1 \times X_2, \mathcal{T})$ 为 $(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$ 的 **乘积拓扑空间**，简称为$(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$的 **积空间**.
 
 {{< /math-block >}}
 
