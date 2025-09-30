@@ -107,10 +107,10 @@ $$\mathcal{T} = \left\{ \bigcup_{i \in I} B_i \mid B_i \in \mathcal{B}, I \text{
 
 设$(X,\mathcal{T})$为一个拓扑空间，$\mathcal{B} \subset \mathcal{T}$，则$\mathcal{B}$是生成拓扑 $\mathcal{T}$的一个拓扑基当且仅当
 
-\begin{align}
+$$
     & (1) \quad X = \bigcup_{B\in\mathcal{B}}B \\
     & (2) \quad \text{对于 } U\in\mathcal{T} \text{ 和任意 } x\in U \text{，存在 } B_x\in \mathcal{B} \text{，使得 } x\in B_x \subset U.
-\end{align}
+$$
 
 {{< /math-block >}}
 
@@ -128,14 +128,12 @@ $$\mathcal{T} = \left\{ \bigcup_{i \in I} B_i \mid B_i \in \mathcal{B}, I \text{
 
 {{< math-block type="proof" >}}
 
-\begin{align}
-
+$$
     & (i) \phi \in \mathcal{T}_A, A=X \cap A \in \mathcal{T}_A
     & (ii) U_{\lambda} \cap A, \lambda \in \Lambda, U_{\lambda} \in \mathcal{T}. \\
     \bigcup_{\lambda \in \Lambda}(U_{\lambda} \cap A) =(\bigcup_{\lambda \in \Lambda}U_{\lambda})\cap A \in \mathcal{T}_A, since \bigcup_{\lambda \in \Lambda}U_{\lambda} \in \mathcal{T}. 
     & (iii) (U_1 \cap A) \cap (U_2 \cap A) = (U_1 \cap U_2) \cap A \in \mathcal{T}_A, U_1, U_2 \in \mathcal{T}. 
-
-\end{align}
+$$
 
 {{< /math-block >}}
 
@@ -155,7 +153,7 @@ $$ \mathcal{B}_Y = \{ B \cap Y | B \in \mathcal{B} \} $$
 
 {{< math-block type="proof" >}}
 
-$\forall$ 开集 $V \in Y$,  $$\exist$ 开集 $U \in X$, 使得 $V=U \cap Y$. $\mathcal{B}$ 为拓扑空间 $(X, \mathcal{T})$ 的一个基, $\exist \mathcal{B}_U \subset \mathcal{B}$, $s.t.$ $U = \bigcup_{B \in \mathcal{B}_U}$. 因此
+$\forall$ 开集 $V \in Y$,  $\exist$ 开集 $U \in X$, 使得 $V=U \cap Y$. $\mathcal{B}$ 为拓扑空间 $(X, \mathcal{T})$ 的一个基, $\exist \mathcal{B}_U \subset \mathcal{B}$, $s.t.$ $U = \bigcup_{B \in \mathcal{B}_U}$. 因此
 $$ V = (\bigcup_{B \in \mathcal{B}_U} B) \cap Y = \bigcuo_{B \in \mathcal{B}_U} (B \cap Y) $$.
 
 {{< /math-block >}}
@@ -172,7 +170,7 @@ $$ V = (\bigcup_{B \in \mathcal{B}_U} B) \cap Y = \bigcuo_{B \in \mathcal{B}_U} 
 
 {{< math-block type="proof" >}}
 
-\item[``$\subset$'' $:$] ($\mathcal{T}_B$ 包含 $(\mathcal{T}_A)_B$)
+$\subset$ $:$ ($\mathcal{T}_B$ 包含 $(\mathcal{T}_A)_B$)
     任取 $U \in (\mathcal{T}_A)_B$，则存在一个 $A$ 中的开集 $U_1 \in \mathcal{T}_A$，使得 $U = U_1 \cap B$。
     由于 $U_1 \in \mathcal{T}_A$ 是 $A$ 中的开集，故存在一个 $X$ 中的开集 $U_2 \in \mathcal{T}$，使得 $U_1 = U_2 \cap A$。
     因此，
@@ -182,7 +180,7 @@ $$ V = (\bigcup_{B \in \mathcal{B}_U} B) \cap Y = \bigcuo_{B \in \mathcal{B}_U} 
     因为 $U_2 \in \mathcal{T}$ 是 $X$ 中的开集，所以 $U = U_2 \cap B$ 表明 $U$ 是 $B$ 中相对于 $X$ 拓扑 $\mathcal{T}$ 的开集。
     因此，$U \in \mathcal{T}_B$。
 
-\item[``$\supset$'' $:$] ( $(\mathcal{T}_A)_B$ 包含 $\mathcal{T}_B$)
+$\supset$ $:$ ( $(\mathcal{T}_A)_B$ 包含 $\mathcal{T}_B$)
     任取 $U \in \mathcal{T}_B$，则存在一个 $X$ 中的开集 $U_2 \in \mathcal{T}$，使得 $U = U_2 \cap B$。
     令 $U_1 = U_2 \cap A$。由于 $U_2 \in \mathcal{T}$，根据子空间拓扑的定义，我们有 $U_1 \in \mathcal{T}_A$。
     现在，将 $U$ 表示为 $U_1$ 与 $B$ 的交集：
