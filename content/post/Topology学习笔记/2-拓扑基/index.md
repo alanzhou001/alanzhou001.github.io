@@ -235,3 +235,61 @@ $$
 
 - $\mathbb{R}$上，$\mathcal{B}=\{(n,n+1)|n\in\mathbb{Z}\}$生成的拓扑不是Hausdoff的.
 - $\mathbb{R}_{fc}$不是Hausdoff, 但是其上的每一个单点集都是闭的.
+
+### Hausdoff Space
+
+{{< math-block type="definition" title="Hausdoff Space" label="hausdoff-space">}}
+
+一个拓扑空间 $X$ 是 **Hausdorff 空间**（或 $T_2$ 空间），如果对于任意两个不同的点 $a, b \in X$ ($a \ne b$)，都存在 $a$ 的一个邻域 $U_a$ 和 $b$ 的一个邻域 $U_b$，使得 $U_a$ 和 $U_b$ 不相交，即 $U_a \cap U_b = \emptyset$。
+
+{{< /math-block >}}
+
+{{< math-block type="theorem" title="Hausdorff 子空间" >}}
+
+如果 $X$ 是一个 **Hausdorff 空间**，且 $A \subset X$ 是 $X$ 的一个子空间 (subspace)，则 $A$ 也是 **Hausdorff 空间**
+
+{{< /math-block >}}
+
+{{< math-block type="proof" >}}
+
+取 $A$ 中任意两个不等的点 $a, b \in A$，且 $a \ne b$。
+
+因为 $X$ 是 Hausdorff 空间，存在 $X$ 中 $a$ 的邻域 $U_a$ 和 $b$ 的邻域 $U_b$，使得 $U_a \cap U_b = \emptyset$ 。
+
+$U_a \cap A$ 是 $a$ 在 $A$ 中的一个邻域，$U_b \cap A$ 是 $b$ 在 $A$ 中的一个邻域。
+
+它们的交集为：
+
+$$(U_a \cap A) \cap (U_b \cap A) = (U_a \cap U_b) \cap A = \emptyset \cap A = \emptyset$$
+
+因此 $A$ 是 **Hausdorff 空间**。
+
+{{< /math-block >}}
+
+{{< math-block type="theorem" title="Hausdorff 积空间" >}}
+
+如果 $X$ 和 $Y$ 是两个 **Hausdorff 空间**，则它们的积空间 $X \times Y$ 也是 **Hausdorff 空间**
+
+{{< /math-block >}}
+
+{{< math-block type="proof" >}}
+
+取 $X \times Y$ 中任意两个不等的点 $(x_1, y_1), (x_2, y_2) \in X \times Y$ 。
+
+因为 $(x_1, y_1) \ne (x_2, y_2)$，所以 **要么** $x_1 \ne x_2$，**要么** $y_1 \ne y_2$。
+
+**假设** $x_1 \ne x_2$。
+
+因为 $X$ 是 Hausdorff 空间，存在 $x_1$ 的邻域 $U_{x_1}$ 和 $x_2$ 的邻域 $U_{x_2}$，使得 $U_{x_1} \cap U_{x_2} = \emptyset$。
+
+则 $U_{x_1} \times Y$ 是 $(x_1, y_1)$ 在 $X \times Y$ 中的一个邻域，$U_{x_2} \times Y$ 是 $(x_2, y_2)$ 在 $X \times Y$ 中的一个邻域。
+
+它们的交集为：
+
+$$(U_{x_1} \times Y) \cap (U_{x_2} \times Y) = (U_{x_1} \cap U_{x_2}) \times Y = \emptyset \times Y = \emptyset$$
+
+因此 $X \times Y$ 是 **Hausdorff 空间**。
+
+{{< /math-block >}}
+
+**推论：** 欧氏空间 $E^n$ 的任何子空间都是 **Hausdorff 空间**
