@@ -227,5 +227,3 @@ $$1. A\cup(\bigcap_{\lambda \in \Lambda}B_\lambda)= \bigcap_{\lambda \in \Lambda
 $$
 
 {{< /math-block >}}
-
- 
