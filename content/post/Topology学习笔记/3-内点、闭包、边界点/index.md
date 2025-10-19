@@ -273,7 +273,7 @@ $\forall x \in A^{\circ} \cap B^{\circ}$。存在 $x$ 的邻域 $U_1$ 和 $U_2$�
 
 ### 极限点 (Limit Point)
 
-{{< math-block type="definition" title="Definition 极限点" label="limit=point">}}
+{{< math-block type="definition" title="Definition 极限点" label="limit-point">}}
 
 设 $X$ 是一个拓扑空间，$A \subset X$ 是一个子集，$x \in X$。
 $x$ 是 $A$ 的一个**极限点**（limit point，或聚点），如果 $x$ 的**每一个邻域**（nbhd）都与 $A$ 在一个**不同于 $x$ 本身**的点上相交。
