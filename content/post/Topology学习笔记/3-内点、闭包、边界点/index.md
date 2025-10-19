@@ -21,7 +21,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 （1）设 $X$ 是一个拓扑空间，$A \subset X$ 是一个子集。$A$ 的**内部**，记为 $A^{\circ}$ 或 $\text{int}(A)$，是**包含在 $A$ 中的所有开集的并集**。
 
-$$A^{\circ}=\bigcup_{U is open, U\subset A}U$$
+$$A^{\circ}=\bigcup_{U~is~open, U\subset A}U$$
 
 **等价描述 (Lemma):**
 
@@ -29,7 +29,7 @@ $$A^{\circ}=\bigcup_{U is open, U\subset A}U$$
 
 （2）设 $X$ 是一个拓扑空间，$A \subset X$ 是一个子集。$A$ 的**闭包**，记为 $\overline{A}$ 或 $\text{cl}(A)$，是**包含 $A$ 的所有闭集的交集**。
 
-$$\overline{A}=\bigcap_{V is closed, A\subset V}V$$
+$$\overline{A}=\bigcap_{V~is~closed, A\subset V}V$$
 
 **等价描述 (Lemma):**
 
@@ -57,7 +57,7 @@ $$\overline{A}=\bigcap_{V is closed, A\subset V}V$$
 
 (ii) 如果 $V$ 在 $X$ 中是**闭集**，$V \supset A$，则 $V \supset \overline{A}$。
 
-(iii) $A \subset B \implies A^{\circ} \subset \dot{B}$。
+(iii) $A \subset B \implies A^{\circ} \subset B^{\circ}$。
 
 (iv) $A \subset B \implies \overline{A} \subset \overline{B}$。
 
@@ -70,7 +70,7 @@ $$\overline{A}=\bigcap_{V is closed, A\subset V}V$$
 {{< math-block type="proof" >}}
 
 * **(iii) 的证明 (Pf.):**
-    $$A^{\circ} \text{ 是开集, } A^{\circ} \subset A \subset B \xrightarrow{(\text{i})} A^{\circ} \subset \dot{B}$$
+    $$A^{\circ} \text{ 是开集, } A^{\circ} \subset A \subset B \xrightarrow{(\text{i})} A^{\circ} \subset B^{\circ}$$
 
 * **(iv) 的证明 (Pf.):**
     $$\overline{B} \text{ 是闭集, } \overline{B} \supset B \supset A \xrightarrow{(\text{ii})} \overline{B} \supset \overline{A}$$
@@ -118,6 +118,7 @@ $$\overline{A}=\bigcap_{V is closed, A\subset V}V$$
 {{< math-block type="proof" >}}
 
 **(i) $\implies$**：$y \in A^{\circ}$ 意味着 $y$ 属于包含在 $A$ 内的所有开集的并集，故 $y$ 必属于其中某个开集 $U$ 且 $U \subset A$。
+
 **(i) $\impliedby$**：显然 (若 $y$ 被包含在 $A$ 内的开集 $U$ 包围，则 $y$ 属于包含在 $A$ 内的最大开集 $A^{\circ}$)。
 
 **(ii) $\implies$**：(反证法) 假设 $y \in \overline{A}$ 但存在邻域 $U$ 使得 $U \cap A = \emptyset$。则 $X-U$ 是一个包含 $A$ 的闭集，故 $\overline{A} \subset X-U$，与 $y \in \overline{A}$ 矛盾。
@@ -142,7 +143,7 @@ $$\partial A = \overline{A} - A^{\circ}$$
 
 {{< math-block type="theorem" title="命题" >}}
 
-设 $X$ 是一个拓扑空间，且 $B \subset A \subset X$。令 $\overline{B}_A$ 和 ${B_A}^{\circ}$ 分别表示 $B$ 在**子空间 $A$** 中的闭包和内部；令 $\overline{B}$ 和 $\dot{B}$ 分别表示 $B$ 在**全空间 $X$** 中的闭包和内部。则以下关系成立：
+设 $X$ 是一个拓扑空间，且 $B \subset A \subset X$。令 $\overline{B}_A$ 和 ${B_A}^{\circ}$ 分别表示 $B$ 在**子空间 $A$** 中的闭包和内部；令 $\overline{B}$ 和 $B^{\circ}$ 分别表示 $B$ 在**全空间 $X$** 中的闭包和内部。则以下关系成立：
 
 (1) **子空间闭包与全空间闭包的关系：**
 $$\overline{B}_A = \overline{B} \cap A$$
@@ -172,14 +173,14 @@ $\forall x \in \overline{B} \cap A$。取 $x$ 在 $A$ 中的任意邻域 $U_A = 
 
 {{< /math-block >}}
 
-**提醒 (Remark)：** **子空间内部与全空间内部的关系不一定成立**，即 ${B_A}^{\circ} \ne \dot{B} \cap A$。
+**提醒 (Remark)：** **子空间内部与全空间内部的关系不一定成立**，即 ${B_A}^{\circ} \ne B^{\circ} \cap A$。
 
 **反例 (Counterexample):**
 
 * $X = \mathbb{R}_{std}, A = B = \mathbb{Q}$。
 * ${B_A}^{\circ} = \mathbb{Q}$。
-* $\dot{B} \cap A = \dot{\mathbb{Q}} \cap \mathbb{Q} = \emptyset \cap \mathbb{Q} = \emptyset$。
-* 故 ${B_A}^{\circ} \ne \dot{B} \cap A$。
+* $B^{\circ} \cap A = \dot{\mathbb{Q}} \cap \mathbb{Q} = \emptyset \cap \mathbb{Q} = \emptyset$。
+* 故 ${B_A}^{\circ} \ne B^{\circ} \cap A$。
 
 {{< math-block type="theorem" title="一些有用的推论-2" >}}
 
@@ -193,10 +194,10 @@ $${(X-A)}^{\circ} = X - \overline{A}$$
 $$\overline{X-A} = X - A^{\circ}$$
 
 (iii) **内部的交集** (Intersection of interiors):
-$$A^{\circ} \cap \dot{B} = \dot{A \cap B}$$
+$$A^{\circ} \cap B^{\circ} = {(A \cap B)}^{\circ}}$$
 
 (iv) **内部的并集** (Union of interiors):
-$$A^{\circ} \cup \dot{B} \subset \dot{A \cup B}$$
+$$A^{\circ} \cup B^{\circ} \subset \dot{A \cup B}$$
 
 (v) **闭包的交集** (Intersection of closures):
 $$\overline{A} \cap \overline{B} \supset \overline{A \cap B}$$
@@ -227,34 +228,34 @@ $\forall x \in X - \overline{A}$。因为 $\overline{A}$ 是闭集，所以 $X -
 
 因此 $X - \overline{A} \subset {(X-A)}^{\circ}$。
 
-(iii) $A^{\circ} \cap \dot{B} = \dot{A \cap B}$
+(iii) $A^{\circ} \cap B^{\circ} = {(A \cap B)}^{\circ}}$
 
 证明 "$\subset$"：
-$\forall x \in A^{\circ} \cap \dot{B}$。存在 $x$ 的邻域 $U_1$ 和 $U_2$，使得 $x \in U_1 \subset A$ 且 $x \in U_2 \subset B$。
+$\forall x \in A^{\circ} \cap B^{\circ}$。存在 $x$ 的邻域 $U_1$ 和 $U_2$，使得 $x \in U_1 \subset A$ 且 $x \in U_2 \subset B$。
 
 因此 $x \in U_1 \cap U_2 \subset A \cap B$。
 
 由于 $U_1$ 和 $U_2$ 都是开集，它们的交集 $U_1 \cap U_2$ 也是开集。
 
-根据内部的等价引理，$x \in \dot{A \cap B}$。
+根据内部的等价引理，$x \in {(A \cap B)}^{\circ}}$。
 
 证明 "$\supset$"：
 
-因为 $A \cap B \subset A$，根据内部运算的单调性，$\dot{A \cap B} \subset A^{\circ}$。
+因为 $A \cap B \subset A$，根据内部运算的单调性，${(A \cap B)}^{\circ} \subset A^{\circ}$。
 
-同理，因为 $A \cap B \subset B$，所以 $\dot{A \cap B} \subset \dot{B}$。
+同理，因为 $A \cap B \subset B$，所以 ${(A \cap B)}^{\circ} \subset B^{\circ}$。
 
-因此，$\dot{A \cap B}$ 包含于它们的交集：$\dot{A \cap B} \subset A^{\circ} \cap \dot{B}$。
+因此，${(A \cap B)}^{\circ}$ 包含于它们的交集：${(A \cap B)}^{\circ} \subset A^{\circ} \cap B^{\circ}$。
 
-(iv) $A^{\circ} \cup \dot{B} \subset \dot{(A \cup B)}$
+(iv) $A^{\circ} \cup B^{\circ} \subset {(A \cup B)}^{\circ}$
 
 证明 "$\subset$"：
 
 因为 $A \subset A \cup B$，根据内部运算的单调性，$A^{\circ} \subset \dot{A \cup B}$。
 
-同理，因为 $B \subset A \cup B$，所以 $\dot{B} \subset \dot{A \cup B}$。
+同理，因为 $B \subset A \cup B$，所以 $B^{\circ} \subset {(A \cup B)}^{\circ}$。
 
-因此，它们的并集 $A^{\circ} \cup \dot{B}$ 包含于 $\dot{A \cup B}$。
+因此，它们的并集 $A^{\circ} \cup B^{\circ}$ 包含于 ${(A \cup B)}^{\circ}$。
 
 {{< /math-block >}}
 
@@ -264,9 +265,9 @@ $\forall x \in A^{\circ} \cap \dot{B}$。存在 $x$ 的邻域 $U_1$ 和 $U_2$，
 
 **反例 (Eg.)：** (说明 (iv) 中不取等号)
 
-设 $X = \mathbb{R}_{std}$（标准拓扑下的实数集）。令 $A=[-1,0]$，$B=(0,1]$。此时$A^{\circ}=(-1,0)$，$\dot{B}=(0,1)$，因此$A^{\circ}\cup\dot{B}=(-1,0)\cup(0,1)$。而$A\cup B=[-1,1]$，故 $\dot{A\cup B}=(-1,1)$。显然$A^{\circ}\cup\dot{B}\neq\dot{A\cup B}$，差了一个点 $\{0\}$。
+设 $X = \mathbb{R}_{std}$（标准拓扑下的实数集）。令 $A=[-1,0]$，$B=(0,1]$。此时$A^{\circ}=(-1,0)$，$B^{\circ}=(0,1)$，因此$A^{\circ} \cup B^{\circ} = (-1,0) \cup (0,1)$。而$A\cup B=[-1,1]$，故 ${(A\cup B)}^{\circ}=(-1,1)$。显然$A^{\circ}\cup B^{\circ}\neq\dot{A\cup B}$，差了一个点 $\{0\}$。
 
-再令 $A=\mathbb{Q}$（有理数集），$B=\mathbb{R}-\mathbb{Q}$（无理数集）。在标准拓扑下，$A^{\circ}=\emptyset$ 且 $\dot{B}=\emptyset$，因此 $A^{\circ}\cup\dot{B}=\emptyset$。但$A\cup B=\mathbb{R}$，所以 $\dot{A\cup B}=\mathbb{R}$，同样说明了$A^{\circ}\cup\dot{B}\neq\dot{A\cup B}$。
+再令 $A=\mathbb{Q}$（有理数集），$B=\mathbb{R}-\mathbb{Q}$（无理数集）。在标准拓扑下，$A^{\circ}=\emptyset$ 且 $B^{\circ}=\emptyset$，因此 $A^{\circ} \cup B^{\circ}=\emptyset$。但$A\cup B=\mathbb{R}$，所以 ${(A\cup B)}^{\circ}=\mathbb{R}$，同样说明了$A^{\circ}\cup B^{\circ}\neq {(A\cup B)}^{\circ}$。
 
 ## 极限点与闭包的关系
 
@@ -328,7 +329,7 @@ $A \subset X$ 是一个**闭集** $\iff A' \subset A$。
 设 $X$ 和 $Y$ 是两个拓扑空间，$A \subset X$，$B \subset Y$。则以下关系成立：
 
 (1) **积集合的内部：**
-$$(A \times B)^\circ = A^{\circ} \times \dot{B}$$
+$$(A \times B)^\circ = A^{\circ} \times B^{\circ}$$
 
 (2) **积集合的闭包：**
 $$\overline{A \times B} = \overline{A} \times \overline{B}$$
@@ -337,15 +338,15 @@ $$\overline{A \times B} = \overline{A} \times \overline{B}$$
 
 {{< math-block type="proof" >}}
 
-(1) 积集合的内部：$(A \times B)^\circ = A^{\circ} \times \dot{B}$
+(1) 积集合的内部：$(A \times B)^\circ = A^{\circ} \times B^{\circ}$
 
 证明 "$\subset$"：
 
-$\forall (x, y) \in (A \times B)^\circ$，存在开集 $W \subset X \times Y$ 使得 $(x, y) \in W \subset A \times B$。存在基元素 $U \times V$ 使得 $(x, y) \in U \times V \subset W$。因此 $x \in U \subset A$ 且 $y \in V \subset B$。根据内部定义， $x \in A^{\circ}$ 且 $y \in \dot{B}$，故 $(x, y) \in A^{\circ} \times \dot{B}$。
+$\forall (x, y) \in (A \times B)^\circ$，存在开集 $W \subset X \times Y$ 使得 $(x, y) \in W \subset A \times B$。存在基元素 $U \times V$ 使得 $(x, y) \in U \times V \subset W$。因此 $x \in U \subset A$ 且 $y \in V \subset B$。根据内部定义， $x \in A^{\circ}$ 且 $y \in B^{\circ}$，故 $(x, y) \in A^{\circ} \times B^{\circ}$。
 
 证明 "$\supset$"：
 
-$\forall (x, y) \in A^{\circ} \times \dot{B}$。则 $x \in A^{\circ}$ 且 $y \in \dot{B}$。因为 $x \in A^{\circ}$，存在 $X$ 中的开集 $U$，使得 $x \in U \subset A$。因为 $y \in \dot{B}$，存在 $Y$ 中的开集 $V$，使得 $y \in V \subset B$。考虑积集 $U \times V$。 $U \times V$ 是 $X \times Y$ 中的一个**开集**。且 $(x, y) \in U \times V$。同时，由于 $U \subset A$ 且 $V \subset B$，故 $U \times V \subset A \times B$。因此，$(x, y)$ 被包含在 $A \times B$ 内的一个开集 $U \times V$ 中。根据内部的定义，$(x, y) \in (A \times B)^\circ$。
+$\forall (x, y) \in A^{\circ} \times B^{\circ}$。则 $x \in A^{\circ}$ 且 $y \in B^{\circ}$。因为 $x \in A^{\circ}$，存在 $X$ 中的开集 $U$，使得 $x \in U \subset A$。因为 $y \in B^{\circ}$，存在 $Y$ 中的开集 $V$，使得 $y \in V \subset B$。考虑积集 $U \times V$。 $U \times V$ 是 $X \times Y$ 中的一个**开集**。且 $(x, y) \in U \times V$。同时，由于 $U \subset A$ 且 $V \subset B$，故 $U \times V \subset A \times B$。因此，$(x, y)$ 被包含在 $A \times B$ 内的一个开集 $U \times V$ 中。根据内部的定义，$(x, y) \in (A \times B)^\circ$。
 
 (2) 积集合的闭包：$\overline{A \times B} = \overline{A} \times \overline{B}$
 
