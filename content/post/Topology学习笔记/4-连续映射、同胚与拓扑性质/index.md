@@ -166,3 +166,141 @@ $$h^{-1}(C) = f^{-1}(C) \cup g^{-1}(C)$$
 
 ## 同胚
 
+{{< math-block type="definition" title="Definition1.3.2 同胚映射" label="homeo">}}
+
+设 $X, Y$ 是拓扑空间 (topol. spaces)，映射 $f: X \rightarrow Y$ 是一个双射 (bijection)，其逆映射为 $f^{-1}: Y \rightarrow X$。
+
+如果 $f$ 和 $f^{-1}$ **都是连续的** (continuous)，则称 $f$ 是一个**同胚** (homeomorphism)。
+
+如果 $X$ 和 $Y$ 之间存在一个同胚 (homeomorphism)，则称 $X$ 和 $Y$ **同胚** (homeomorphic)，记作 $X \cong Y$。
+
+{{< /math-block >}}
+
+**Remark:**
+
+(i) $\forall U$ 是 $X$ 中的开集 (open in $X$)，则 $f(U)$ 是 $Y$ 中的开集 (open in $Y$)。
+> **解释：** 因为 $f^{-1}: Y \rightarrow X$ 是连续的 (continuous)，所以 $(f^{-1})^{-1}(U)$ 是 $Y$ 中的开集 (open in $Y$)，即 $f(U)$ 是 $Y$ 中的开集 (open in $Y$)。
+
+(ii) $\forall V$ 是 $Y$ 中的开集 (open in $Y$)，则 $f^{-1}(V)$ 在 $X$ 中是开集 (open in $X$)。
+> **解释：** 因为 $f: X \rightarrow Y$ 是连续的 (continuous)，所以 $f^{-1}(V)$ 在 $X$ 中是开集 (open in $X$)。
+
+### 同胚的性质
+
+设 $f: X \stackrel{\cong}{\longrightarrow} Y$ 是一个同胚。
+
+1. $f$ 是 $X$ 中的点和 $Y$ 中的点之间的双射 (bijection)。
+2. $f$ 诱导了 $X$ 中的开集和 $Y$ 中的开集之间的双射。
+
+**Remark：**
+“$\cong$” 是拓扑空间 (topol. spaces) 之间的一个**等价关系** (equivalence relation)。
+
+(i) $X \cong X$ (自反性)。
+
+(ii) $X \cong Y \Rightarrow Y \cong X$ (对称性)。
+
+(iii) $X \cong Y, Y \cong Z \Rightarrow X \cong Z$ (传递性)。
+
+**Remark：** 同胚$f$是开映射并且也是闭映射。
+> 开映射：将开集映到开集；
+
+> 闭映射：将闭集映到闭集。
+
+{{< math-block type="theorem" title="命题" >}}
+
+设 $X, Y$ 是拓扑空间 (topol. space)。
+
+$f: X \rightarrow Y$ 是一个同胚 (homeomorphism)
+$$\iff$$
+$f$ 是双射 (bijective)，连续 (continuous) 且是**开映射** (open)
+$$\iff$$
+$f$ 是双射 (bijective)，连续 (continuous) 且是**闭映射** (closed)
+
+**(注：)**
+$$f \text{ 是同胚} \iff \begin{cases} f \text{ 是双射} \\ f \text{ 连续} \\ f^{-1} \text{ 连续} \end{cases}$$
+$$f \text{ 是双射、连续} \text{ 且是开映射}$$
+$$f \text{ 是双射、连续} \text{ 且是闭映射}$$
+
+{{< /math-block >}}
+
+{{< math-block type="proof" >}}
+
+**$f$ 是同胚 $\Rightarrow f$ 是双射、连续且开映射：**
+
+设 $f$ 是同胚。则 $f$ 是双射且连续。
+要证 $f$ 是开映射。
+$\forall$ 开集 $U$ 在 $X$ 中，因为 $f^{-1}: Y \rightarrow X$ 是连续的，所以 $(f^{-1})^{-1}(U)$ (即 $f(U)$) 在 $Y$ 中是开集。因此 $f$ 是一个开映射 (open map)。
+
+**$f$ 是双射、连续且开映射 $\Rightarrow f$ 是同胚：**
+
+设 $f$ 是双射、连续且开映射。
+要证 $f$ 是同胚，只需证 $f^{-1}: Y \rightarrow X$ 连续。
+$\forall$ 开集 $U$ 在 $X$ 中，因为 $f: X \rightarrow Y$ 是开映射，所以 $f(U)$ 在 $Y$ 中是开集。
+又 $f(U) = (f^{-1})^{-1}(U)$。
+根据连续性的定义， $f^{-1}: Y \rightarrow X$ 是连续的。
+
+{{< /math-block >}}
+
+{{< math-block type="theorem" title="Hausdorff性质拓扑不变" >}}
+
+如果 $f: X \rightarrow Y$ 是一个同胚 (Homeomorphism)，且 $X$ 是 Hausdorff 空间，那么 $Y$ 也是 **Hausdorff 空间**。
+
+{{< /math-block >}}
+
+{{< math-block type="proof" >}}
+
+$\forall y_1, y_2 \in Y$，且 $y_1 \neq y_2$。
+由于 $f$ 是双射，则 $f^{-1}(y_1) \neq f^{-1}(y_2)$。
+
+**思路：**
+
+1. 设 $x_1 = f^{-1}(y_1)$， $x_2 = f^{-1}(y_2)$。由于 $X$ 是 Hausdorff 空间，存在 $x_1$ 和 $x_2$ 在 $X$ 中的不相交开邻域 $U_1$ 和 $U_2$。
+2. 因为 $f$ 是同胚，所以 $f$ 是开映射。
+3. $V_1 = f(U_1)$ 和 $V_2 = f(U_2)$ 是 $Y$ 中的开集。
+4. $y_1 = f(x_1) \in f(U_1) = V_1$， $y_2 = f(x_2) \in f(U_2) = V_2$。
+5. 由于 $U_1 \cap U_2 = \emptyset$，且 $f$ 是双射，所以 $V_1 \cap V_2 = f(U_1) \cap f(U_2) = f(U_1 \cap U_2) = f(\emptyset) = \emptyset$。
+6. 因此 $y_1$ 和 $y_2$ 有不相交的开邻域 $V_1$ 和 $V_2$，故 $Y$ 是 Hausdorff 空间。
+
+{{< /math-block >}}
+
+**拓扑性质 (topol. property)：** 拓扑空间的一个性质，如果在同胚下保持不变 (preserved by homeomorphisms)，则称该性质为**拓扑性质**。
+
+### 嵌入（Embedding）
+
+{{< math-block type="definition" title="Definition1.3.3 嵌入映射" label="embedding">}}
+
+拓扑空间 $X$ 在 $Y$ 中的一个**嵌入** (embedding) 是一个连续映射 $f: X \rightarrow Y$，它将 $X$ **同胚**地 (homeomorphically) 映射到 $Y$ 中的子空间 $f(X)$ 上。
+
+{{< /math-block >}}
+
+**注记 (Rmk.)：** 嵌入映射是**单射** (injective)。
+
+{{< math-block type="theorem" title="嵌入的等价条件" >}}
+设 $X, Y$ 是拓扑空间 (topol. spaces)。
+$f: X \rightarrow Y$ 是一个**嵌入** (embedding)
+$$\iff$$
+$f$ 是**内射** (injective)，**连续** (continuous) 且**开映射** (open)
+$$\iff$$
+$f$ 是**内射** (injective)，**连续** (continuous) 且**闭映射** (closed)
+
+**(注：)** 这里的“开映射”和“闭映射”是指 $f: X \rightarrow f(X)$（视 $f(X)$ 为 $Y$ 的子空间）是开映射或闭映射。
+
+{{< /math-block >}}
+
+### 合痕 (isotopy)
+
+{{< math-block type="definition" title="Definition 合痕 (isotopy)" label="isotopy">}}
+
+设 $f_0, f_1: S^1 \rightarrow E^3$ 是两个嵌入 (embeddings)。
+如果存在一个连续映射 $F: S^1 \times [0, 1] \rightarrow E^3$，满足：
+
+* $F(x, 0) = f_0(x)$
+* $F(x, 1) = f_1(x)$
+
+且对于每个 $t \in [0, 1]$，映射 $f_t = F(\cdot, t): S^1 \rightarrow E^3$ (其中 $x \mapsto F(x, t)$) 都是 $E^3$ 中的一个嵌入 (embedding)，则称 $f_0$ 和 $f_1$ 是**同痕的** (isotopic)。
+
+{{< /math-block >}}
+
+**例 (Eg.)：**
+
+* 一个平凡的圆嵌入 (未打结的圆) 和一个三叶结 (Trefoil Knot) **不同痕**。
+* 图示中描绘了两个不同的但**同痕**的嵌入（一个平凡圆和另一个形状略有变化的平凡圆）。
