@@ -1,7 +1,7 @@
 # Change baseurl before deploy
 baseurl = "https://cxzhou.com"
 languageCode = "zh-cn"
-title = "周陈序 ( Alan Zhou )"
+title = "Alan Zhou"
 
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
