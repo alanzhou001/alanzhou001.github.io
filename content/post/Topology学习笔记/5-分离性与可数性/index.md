@@ -13,6 +13,8 @@ tags:
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
+封面画师：[電鬼](https://www.pixiv.net/artworks/67467647)
+
 ## 分离性
 
 {{< math-block type="definition" title="Definition3.1.2-1 T3空间" label="t3">}}

@@ -13,6 +13,8 @@ tags:
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
+封面画师：[Mr.Cat](https://www.pixiv.net/artworks/85649197)
+
 ## 连续映射
 
 {{< math-block type="definition" title="Definition1.3.1 连续映射" label="cont-map">}}

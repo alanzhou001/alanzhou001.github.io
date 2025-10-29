@@ -13,6 +13,8 @@ tags:
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
+封面画师：[リース＠ついった](https://www.pixiv.net/artworks/104538476)
+
 ## 内部、闭包和边界(Interior, Closure and Boundary)
 
 ### 内部和闭包 (Interior&Closure)

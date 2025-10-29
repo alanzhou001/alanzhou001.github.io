@@ -13,6 +13,8 @@ tags:
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
+封面画师：[Novi](https://www.pixiv.net/artworks/113735140)
+
 ## 紧性
 
 {{< math-block type="definition" title="Definition 4.3.1 紧致空间" label="compactness">}}
