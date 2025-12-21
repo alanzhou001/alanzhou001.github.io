@@ -84,102 +84,80 @@
             </h2>
             <div class="grid lg:grid-cols-3 gap-12">
                 <div class="lg:col-span-2 space-y-8">
-                    <p class="text-lg contrast-text font-light">
-                        本问题旨在研究如何利用具有<span class="highlight-bold text-blue-800">长续航能力</span>的无人机，通过投放烟幕干扰弹，设计最佳投放策略，以<span class="highlight-bold">最大化对固定保护目标（圆柱体）的有效遮蔽时间</span>，从而干扰来袭的空地导弹。
-                    </p>
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="glass-card p-6 rounded-2xl border-l-8 border-blue-700">
-                            <h4 class="font-black text-xs uppercase text-blue-800 mb-4 tracking-wider"><i class="fa-solid fa-bullseye mr-2"></i> 目标与导弹关键参数</h4>
-                            <ul class="text-sm space-y-3 text-slate-800 font-medium">
-                                <li><strong>假目标（原点）：</strong> $O=(0, 0, 0)$</li>
-                                <li><strong>真目标中心：</strong> $T_{base}=(0, 200, 0)\text{m}$，半径 $7\text{m}$，高 $10\text{m}$</li>
-                                <li><strong>来袭导弹速度：</strong> $V_M=300\text{ m/s}$，匀速直线攻击</li>
-                                <li><strong>初始位置：</strong> $M_1(20000, 0, 2000)$ 等3枚异向导弹</li>
-                            </ul>
-                        </div>
-                        <div class="glass-card p-6 rounded-2xl border-l-8 border-indigo-700">
-                            <h4 class="font-black text-xs uppercase text-indigo-800 mb-4 tracking-wider"><i class="fa-solid fa-helicopter mr-2"></i> 无人机与烟幕特性</h4>
-                            <ul class="text-sm space-y-3 text-slate-800 font-medium">
-                                <li><strong>无人机速度：</strong> $V_{UAV} \in [70, 140]\text{ m/s}$</li>
-                                <li><strong>投放约束：</strong> 同机投放两枚间隔 $\ge 1 \text{ s}$</li>
-                                <li><strong>烟幕球半径：</strong> 有效半径 $R_{eff}=15\text{ m}$</li>
-                                <li><strong>下沉速度：</strong> $V_{sink}=3\text{ m/s}$，持续 $20\text{ s}$</li>
-                            </ul>
+                    <!-- 竞赛题目详情 -->
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-200">
+                        <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center">
+                            <i class="fa-solid fa-file-lines text-blue-600 mr-3"></i> 竞赛题目：烟幕干扰弹的投放策略 (A题)
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            运用无人机挂载烟幕干扰弹，在来袭导弹与保护目标之间建立遮蔽屏障。需建立数学模型，针对不同战术情景设计最优投放策略（飞行航向、速度、投放点、起爆延时），以最大化有效遮蔽时长。
+                        </p>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="p-5 bg-slate-50 rounded-2xl border-l-4 border-blue-500">
+                                <h4 class="font-black text-xs uppercase text-blue-800 mb-3 tracking-wider">关键约束与参数</h4>
+                                <ul class="text-xs space-y-2 text-slate-700 font-medium">
+                                    <li><strong>保护目标：</strong> 圆柱体 (R=7m, H=10m)，中心 (0, 200, 0)</li>
+                                    <li><strong>来袭导弹：</strong> $V_M=300\text{ m/s}$，直指原点 (0,0,0)</li>
+                                    <li><strong>无人机：</strong> $V \in [70, 140]\text{ m/s}$，双弹间隔 $\ge 1s$</li>
+                                    <li><strong>烟幕弹：</strong> 有效半径 10m，下沉 3m/s，持续 20s</li>
+                                </ul>
+                            </div>
+                            <div class="p-5 bg-slate-50 rounded-2xl border-l-4 border-indigo-500">
+                                <h4 class="font-black text-xs uppercase text-indigo-800 mb-3 tracking-wider">初始态势坐标 (单位: m)</h4>
+                                <div class="space-y-3 text-[10px] font-mono text-slate-600">
+                                    <div>
+                                        <span class="font-bold text-indigo-600">导弹群 (M1-M3):</span>
+                                        <div class="grid grid-cols-1 gap-1 mt-1">
+                                            <span>M1: (20000, 0, 2000)</span>
+                                            <span>M2: (19000, 600, 2100)</span>
+                                            <span>M3: (18000, -600, 1900)</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="font-bold text-indigo-600">无人机群 (FY1-FY5):</span>
+                                        <div class="grid grid-cols-2 gap-1 mt-1">
+                                            <span>FY1: (17800, 0, 1800)</span>
+                                            <span>FY2: (12000, 1400, 1400)</span>
+                                            <span>FY3: (6000, -3000, 700)</span>
+                                            <span>FY4: (11000, 2000, 1800)</span>
+                                            <span>FY5: (13000, -2000, 1300)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div> 
-                <div class="bg-blue-800 text-white p-10 rounded-[2.5rem] shadow-2xl">
-                    <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-6">遮蔽判定逻辑</h4>
-                    <p class="text-sm leading-relaxed mb-6 font-bold">
-                        模型采用了<b>圆柱体表面采样点阵判定法</b>。检查导弹到每个采样点 $P_T \in \mathcal{P}_T$ 的射线是否与任一当前有效的烟幕球体相交。
-                    </p>
-                    <div class="p-6 bg-white/10 rounded-2xl border border-white/20">
-                        <p class="text-[10px] font-black uppercase mb-2 opacity-60 tracking-widest">有效遮蔽判定阈值</p>
-                        <p class="text-3xl font-black">95% <span class="text-xs font-medium">Coverage</span></p>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section id="background" class="scroll-mt-32">
-            <h2 class="text-4xl font-black mb-12 flex items-center text-slate-900">
-                <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">00</span>
-                一、问题背景与参数定义
-            </h2>
-
-            <!-- 竞赛题目详情卡片 -->
-            <div class="mb-12 p-8 bg-white rounded-3xl shadow-lg border border-slate-200">
-                <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center">
-                    <i class="fa-solid fa-file-lines text-blue-600 mr-3"></i> 竞赛题目：烟幕干扰弹的投放策略 (A题)
-                </h3>
-                
-                <div class="space-y-6 text-sm text-slate-600 leading-relaxed">
-                    <div class="p-4 bg-slate-50 rounded-xl border-l-4 border-blue-500">
-                        <h4 class="font-bold text-slate-800 mb-2">任务综述</h4>
-                        <p>运用无人机挂载烟幕干扰弹，在来袭导弹与保护目标之间建立遮蔽屏障。需建立数学模型，针对不同战术情景设计最优投放策略（飞行航向、速度、投放点、起爆延时），以最大化有效遮蔽时长。</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <h4 class="font-bold text-slate-800 mb-2 border-b pb-1">关键约束与参数</h4>
-                            <ul class="list-disc list-inside space-y-1 marker:text-blue-500">
-                                <li><strong>烟幕特性：</strong> 起爆后形成球状云团，半径有效范围 10m，以 3m/s 匀速下沉，有效遮蔽期 20s。</li>
-                                <li><strong>无人机性能：</strong> 速度 70~140 m/s，等高匀速直线飞行。双弹投放间隔 $\ge 1s$。</li>
-                                <li><strong>来袭导弹：</strong> 速度 300 m/s，直指假目标（原点）。</li>
-                                <li><strong>保护目标：</strong> 圆柱体（半径 7m, 高 10m），中心位于 (0, 200, 0)。</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-slate-800 mb-2 border-b pb-1">初始态势信息</h4>
-                            <ul class="list-disc list-inside space-y-1 marker:text-blue-500">
-                                <li><strong>导弹群 (M1-M3)：</strong> 分布于 (18000~20000, -600~600, 1900~2100) 区域。</li>
-                                <li><strong>无人机群 (FY1-FY5)：</strong> 分布于不同空域，FY1 位于 (17800, 0, 1800)。</li>
-                            </ul>
+                <!-- 右侧：逻辑与问题 -->
+                <div class="space-y-6">
+                    <div class="bg-blue-900 text-white p-8 rounded-[2rem] shadow-2xl relative overflow-hidden">
+                        <i class="fa-solid fa-shield-halved absolute -right-4 -bottom-4 text-8xl opacity-10"></i>
+                        <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-4">遮蔽判定逻辑</h4>
+                        <p class="text-xs leading-relaxed mb-4 font-bold opacity-90">
+                            模型采用了<b>圆柱体表面采样点阵判定法</b>。检查导弹到每个采样点 $P_T$ 的射线是否被烟幕球体截断。
+                        </p>
+                        <div class="flex items-baseline">
+                            <span class="text-3xl font-black mr-2">95%</span>
+                            <span class="text-[10px] uppercase opacity-60">Coverage Threshold</span>
                         </div>
                     </div>
 
-                    <div class="space-y-3">
-                        <h4 class="font-bold text-slate-800 border-b pb-1">问题清单</h4>
-                        <div class="grid gap-3">
-                            <div class="flex gap-3 items-baseline">
-                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q1</span>
-                                <span><strong>单机单弹验证：</strong> FY1 (120m/s) 特定策略下的遮蔽时长计算。</span>
+                    <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm">
+                        <h4 class="font-black text-xs text-slate-400 mb-4 uppercase tracking-widest">问题清单</h4>
+                        <div class="space-y-2">
+                            <div class="flex gap-2 items-center text-xs">
+                                <span class="font-black text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Q1-Q3</span>
+                                <span class="text-slate-600">单机单弹/多弹策略优化</span>
                             </div>
-                            <div class="flex gap-3 items-baseline">
-                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q2</span>
-                                <span><strong>单机单弹优化：</strong> 优化 FY1 的航向、速度及投放参数，求最大遮蔽时长。</span>
+                            <div class="flex gap-2 items-center text-xs">
+                                <span class="font-black text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">Q4</span>
+                                <span class="text-slate-600">3机1弹协同拦截 M1</span>
                             </div>
-                            <div class="flex gap-3 items-baseline">
-                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q3</span>
-                                <span><strong>单机多弹策略：</strong> FY1 投放 3 枚烟幕弹的策略优化。</span>
-                            </div>
-                            <div class="flex gap-3 items-baseline">
-                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q4</span>
-                                <span><strong>多机协同干扰：</strong> FY1-FY3 各投 1 枚，协同拦截 M1。</span>
-                            </div>
-                            <div class="flex gap-3 items-baseline">
-                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q5</span>
-                                <span><strong>大规模对抗：</strong> 5 机 (每机 max 3 弹) 对抗 3 枚导弹 (M1-M3)。</span>
+                            <div class="flex gap-2 items-center text-xs">
+                                <span class="font-black text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">Q5</span>
+                                <span class="text-slate-600">5机15弹大规模对抗博弈</span>
                             </div>
                         </div>
                     </div>
@@ -277,7 +255,7 @@
             <div class="grid lg:grid-cols-2 gap-12">
                 <div class="space-y-8">
                     <div class="glass-card p-8 rounded-3xl border-l-8 border-blue-700">
-                        <span class="model-header bg-gray-100 shadow-md text-white">优化模型标准表述</span>
+                        <span class="model-header bg-gray-100 shadow-md text-blue-400">优化模型标准表述</span>
                         <div class="text-sm contrast-text space-y-4">
                             <p><strong>决策变量：</strong> $\boldsymbol{x} = [\theta, V_{UAV}, t_{drop}, \tau]^T \in \mathbb{R}^4$</p>
                             <p><strong>目标函数：</strong> $\min F(\boldsymbol{x}) = - \int_{t_{det}}^{t_{det}+20} \mathbb{I}(\text{Shielded}(t, \boldsymbol{x})) dt$</p>
@@ -641,12 +619,23 @@
 
     <footer class="bg-white py-24 border-t border-slate-200 text-center">
         <div class="flex justify-center space-x-8 mb-10 text-slate-400">
-            <i class="fa-brands fa-github text-2xl hover:text-blue-600 cursor-pointer transition"></i>
-            <i class="fa-solid fa-file-pdf text-2xl hover:text-red-600 cursor-pointer transition"></i>
-            <i class="fa-solid fa-code text-2xl hover:text-emerald-600 cursor-pointer transition"></i>
+            <!-- GitHub 仓库链接 -->
+            <a href="https://github.com/alanzhou001/matlab-2025a" target="_blank" title="访问 GitHub 源代码仓库" class="hover:-translate-y-1 transition-transform duration-300">
+                <i class="fa-brands fa-github text-2xl hover:text-blue-600 cursor-pointer transition"></i>
+            </a>
+            
+            <!-- PDF 报告下载链接 -->
+            <a href="./report.pdf" download="Matlab建模与优化报告.pdf" title="下载解题报告 PDF" class="hover:-translate-y-1 transition-transform duration-300">
+                <i class="fa-solid fa-file-pdf text-2xl hover:text-red-600 cursor-pointer transition"></i>
+            </a>
+            
+            <!-- 源代码/附件下载链接 -->
+            <a href="./SourceCode.zip" download="SourceCode.zip" title="下载算法源码与数据" class="hover:-translate-y-1 transition-transform duration-300">
+                <i class="fa-solid fa-code text-2xl hover:text-emerald-600 cursor-pointer transition"></i>
+            </a>
         </div>
-        <p class="text-xs font-black text-slate-500 uppercase tracking-[0.3em] mb-4">2025 数学建模竞赛解题汇报 | 协同防御课题组</p>
-        <p class="text-[10px] text-slate-400 font-bold uppercase">Developed by Team Members with Professional Excellence</p>
+        <p class="text-xs font-black text-slate-500 uppercase tracking-[0.3em] mb-4">2025 Matlab建模与优化课程作业解题汇报</p>
+        <p class="text-[10px] text-slate-400 font-bold uppercase">Developed by Team Members with Professional Excellence, together with Gemini</p>
     </footer>
 
     <script>
