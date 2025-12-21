@@ -647,7 +647,8 @@
         <p class="text-xs text-slate-400 font-bold uppercase">Developed by Team Members with Professional Excellence, together with Gemini</p>
     </footer>
 
-        // --- 3D 物理交互仿真引擎 (Updated for Q1 Scenario) ---
+    <script> 
+        // --- 3D 物理交互仿真引擎 (Updated for Q1 Scenario - Enhanced Visibility) ---
         let scene, camera, renderer, missile, uav, cylinder, losLine;
         let smokes = [];
         let time = 0;
@@ -676,7 +677,7 @@
             scene = new THREE.Scene();
             scene.background = new THREE.Color(0x020617); // Slate-950
             
-            // Reverted to original perspective as requested
+            // Perspective Camera - Optimized for Overview
             camera = new THREE.PerspectiveCamera(35, width / height, 1, 30000);
             camera.position.set(650, 450, 1300);
             camera.lookAt(0, 100, 0);
@@ -698,35 +699,35 @@
             grid.position.set(1000, 0, 0);
             scene.add(grid);
 
-            // True Target (Cylinder) - Exaggerated Size for Visibility
-            const targetGeo = new THREE.CylinderGeometry(7, 7, 10, 32);
+            // True Target (Cylinder) - DEMO SIZE (Large)
+            const targetGeo = new THREE.CylinderGeometry(15, 15, 30, 32);
             const targetMat = new THREE.MeshPhongMaterial({ color: 0x3b82f6 });
             cylinder = new THREE.Mesh(targetGeo, targetMat);
-            cylinder.position.set(0, 5, 10); // Scene coords
+            cylinder.position.set(0, 15, 10); // Scene coords
             scene.add(cylinder);
             
             // Fake Target (Origin)
-            const fakeGeo = new THREE.SphereGeometry(2, 16, 16);
+            const fakeGeo = new THREE.SphereGeometry(5, 16, 16);
             const fakeMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
             const fakeTarget = new THREE.Mesh(fakeGeo, fakeMat);
             fakeTarget.position.set(0,0,0);
             scene.add(fakeTarget);
 
-            // Missile - Exaggerated Size
-            const mGeo = new THREE.ConeGeometry(4, 25, 16);
+            // Missile - DEMO SIZE (Large)
+            const mGeo = new THREE.ConeGeometry(12, 40, 16);
             const mMat = new THREE.MeshPhongMaterial({ color: 0xef4444 });
             missile = new THREE.Mesh(mGeo, mMat);
             scene.add(missile);
 
-            // UAV - Exaggerated Size
-            const uavGeo = new THREE.BoxGeometry(22, 6, 22);
+            // UAV - DEMO SIZE (Large)
+            const uavGeo = new THREE.BoxGeometry(40, 12, 40);
             const uavMat = new THREE.MeshPhongMaterial({ color: 0x10b981 });
             uav = new THREE.Mesh(uavGeo, uavMat);
             scene.add(uav);
 
             // LOS Line
             const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,0)]);
-            const lineMat = new THREE.LineBasicMaterial({ color: 0xef4444, linewidth: 2 });
+            const lineMat = new THREE.LineBasicMaterial({ color: 0xef4444, linewidth: 3 });
             losLine = new THREE.Line(lineGeo, lineMat);
             scene.add(losLine);
             
@@ -807,7 +808,7 @@
         }
         
         function createProjectile() {
-            const geo = new THREE.SphereGeometry(2, 8, 8); // Visible projectile
+            const geo = new THREE.SphereGeometry(5, 16, 16); // Visible projectile (Large)
             const mat = new THREE.MeshBasicMaterial({ color: 0xffff00 });
             const mesh = new THREE.Mesh(geo, mat);
             scene.add(mesh);
@@ -818,7 +819,7 @@
             const s = smokes[0];
             scene.remove(s.mesh);
             
-            const geo = new THREE.SphereGeometry(15, 32, 32); // Exaggerated Smoke Cloud
+            const geo = new THREE.SphereGeometry(40, 32, 32); // Exaggerated Smoke Cloud (Large)
             const mat = new THREE.MeshPhongMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.6 });
             const mesh = new THREE.Mesh(geo, mat);
             mesh.position.copy(s.mesh.position);
@@ -832,8 +833,7 @@
             const target = cylinder.position;
             const direction = new THREE.Vector3().subVectors(target, origin).normalize();
             const sphereCenter = smokeMesh.position;
-            const sphereRadius = 15; // Use Visual Radius for intersection check
-            
+            const sphereRadius = 40; // Use Visual Radius for intersection check
             const L = new THREE.Vector3().subVectors(sphereCenter, origin);
             const tca = L.dot(direction);
             
