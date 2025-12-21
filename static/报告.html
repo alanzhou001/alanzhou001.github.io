@@ -107,7 +107,7 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div class="bg-blue-800 text-white p-10 rounded-[2.5rem] shadow-2xl">
                     <h4 class="text-xs font-black uppercase tracking-widest opacity-70 mb-6">遮蔽判定逻辑</h4>
                     <p class="text-sm leading-relaxed mb-6 font-bold">
@@ -116,6 +116,72 @@
                     <div class="p-6 bg-white/10 rounded-2xl border border-white/20">
                         <p class="text-[10px] font-black uppercase mb-2 opacity-60 tracking-widest">有效遮蔽判定阈值</p>
                         <p class="text-3xl font-black">95% <span class="text-xs font-medium">Coverage</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="background" class="scroll-mt-32">
+            <h2 class="text-4xl font-black mb-12 flex items-center text-slate-900">
+                <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">00</span>
+                一、问题背景与参数定义
+            </h2>
+
+            <!-- 竞赛题目详情卡片 -->
+            <div class="mb-12 p-8 bg-white rounded-3xl shadow-lg border border-slate-200">
+                <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center">
+                    <i class="fa-solid fa-file-lines text-blue-600 mr-3"></i> 竞赛题目：烟幕干扰弹的投放策略 (A题)
+                </h3>
+                
+                <div class="space-y-6 text-sm text-slate-600 leading-relaxed">
+                    <div class="p-4 bg-slate-50 rounded-xl border-l-4 border-blue-500">
+                        <h4 class="font-bold text-slate-800 mb-2">任务综述</h4>
+                        <p>运用无人机挂载烟幕干扰弹，在来袭导弹与保护目标之间建立遮蔽屏障。需建立数学模型，针对不同战术情景设计最优投放策略（飞行航向、速度、投放点、起爆延时），以最大化有效遮蔽时长。</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-2 border-b pb-1">关键约束与参数</h4>
+                            <ul class="list-disc list-inside space-y-1 marker:text-blue-500">
+                                <li><strong>烟幕特性：</strong> 起爆后形成球状云团，半径有效范围 10m，以 3m/s 匀速下沉，有效遮蔽期 20s。</li>
+                                <li><strong>无人机性能：</strong> 速度 70~140 m/s，等高匀速直线飞行。双弹投放间隔 $\ge 1s$。</li>
+                                <li><strong>来袭导弹：</strong> 速度 300 m/s，直指假目标（原点）。</li>
+                                <li><strong>保护目标：</strong> 圆柱体（半径 7m, 高 10m），中心位于 (0, 200, 0)。</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-2 border-b pb-1">初始态势信息</h4>
+                            <ul class="list-disc list-inside space-y-1 marker:text-blue-500">
+                                <li><strong>导弹群 (M1-M3)：</strong> 分布于 (18000~20000, -600~600, 1900~2100) 区域。</li>
+                                <li><strong>无人机群 (FY1-FY5)：</strong> 分布于不同空域，FY1 位于 (17800, 0, 1800)。</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-slate-800 border-b pb-1">问题清单</h4>
+                        <div class="grid gap-3">
+                            <div class="flex gap-3 items-baseline">
+                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q1</span>
+                                <span><strong>单机单弹验证：</strong> FY1 (120m/s) 特定策略下的遮蔽时长计算。</span>
+                            </div>
+                            <div class="flex gap-3 items-baseline">
+                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q2</span>
+                                <span><strong>单机单弹优化：</strong> 优化 FY1 的航向、速度及投放参数，求最大遮蔽时长。</span>
+                            </div>
+                            <div class="flex gap-3 items-baseline">
+                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q3</span>
+                                <span><strong>单机多弹策略：</strong> FY1 投放 3 枚烟幕弹的策略优化。</span>
+                            </div>
+                            <div class="flex gap-3 items-baseline">
+                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q4</span>
+                                <span><strong>多机协同干扰：</strong> FY1-FY3 各投 1 枚，协同拦截 M1。</span>
+                            </div>
+                            <div class="flex gap-3 items-baseline">
+                                <span class="font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded text-xs">Q5</span>
+                                <span><strong>大规模对抗：</strong> 5 机 (每机 max 3 弹) 对抗 3 枚导弹 (M1-M3)。</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -218,6 +284,17 @@
                             <p><strong>边界条件：</strong> $V_{UAV} \in [70, 140], \theta \in [0, 360], t, \tau \ge 0$</p>
                         </div>
                     </div>
+                    
+                    <!-- 算法选型理由 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-blue-500">
+                        <h4 class="font-black text-slate-800 mb-2 flex items-center">
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded mr-2">Q2</span> 算法选型：PSO 粒子群
+                        </h4>
+                        <p class="text-sm text-slate-600">
+                            <b>选型理由：</b> 目标函数（遮蔽时长）关于飞行参数呈现高度非线性且不可导。PSO 无需梯度信息，能快速在连续空间中收敛到全局次优解，适合单机四维参数的快速搜索。
+                        </p>
+                    </div>
+
                     <!-- PSO 原理补充 -->
                     <div class="theory-block shadow-sm">
                         <h4 class="font-black text-blue-800 mb-3 uppercase tracking-widest"><i class="fa-solid fa-brain mr-2"></i> PSO 算法原理与优势</h4>
@@ -257,15 +334,43 @@
                         <p><strong>目标函数：</strong> $\max L_{union}(\boldsymbol{x}) = \text{measure}(\bigcup_{i=1}^3 \{t \mid \text{Smoke}_i \text{ shields } M_1 \})$</p>
                         <p><strong>线性不等式约束：</strong> $t_{d,2} - t_{d,1} \ge 1, \quad t_{d,3} - t_{d,2} \ge 1$</p>
                     </div>
-                    <h5 class="font-black text-indigo-900 text-lg mb-4">求解逻辑深度解析</h5>
+
+                    <!-- 算法选型理由 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-indigo-500">
+                        <h4 class="font-black text-slate-800 mb-2 flex items-center">
+                            <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded mr-2">Q3</span> 算法选型：SQP 序列二次规划
+                        </h4>
+                        <p class="text-sm text-slate-600">
+                            <b>选型理由：</b> 存在严格的投弹间隔约束 ($t_{i+1}-t_i \ge 1$)。SQP 擅长处理含线性/非线性约束的平滑优化问题，能在满足硬约束的前提下，精细调整投弹时刻以最大化并集覆盖。
+                        </p>
+                    </div>
+
+                    <h5 class="font-black text-indigo-900 text-lg mb-4">两阶段求解逻辑深度解析</h5>
                     <div class="space-y-6">
-                        <div class="logic-step">
-                            <p class="font-black text-indigo-700 text-base">阶段 A：约束域多起点采样与网格搜索</p>
-                            <p class="text-xs contrast-text leading-relaxed"><strong>动机：</strong> 投放间隔约束定义了一个特定的可行域。<strong>执行：</strong> 系统在参数空间内划分多维网格，并在满足 $t_{d,i}$ 间隔要求的范围内生成大量（如 100 组）随机起点。通过评估这些起点的目标函数，筛选出具有“潜力”的局部最优区域种子点，从而极大地降低由于非凸性导致的初始化失败风险。</p>
+                        <!-- Stage A -->
+                        <div class="logic-step p-4 bg-indigo-50/50 rounded-xl border border-indigo-100">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded mr-2">STAGE A</span>
+                                <p class="font-black text-indigo-800 text-sm">全局粗搜：约束域多起点采样</p>
+                            </div>
+                            <div class="text-xs contrast-text space-y-2">
+                                <p><strong><i class="fa-solid fa-lightbulb text-indigo-400 mr-1"></i> 思路：</strong> 目标函数（并集遮蔽时长）具有高度非凸性，存在大量局部极值。直接优化极易陷入局部陷阱。本阶段旨在“鸟瞰”解空间，锁定潜在的全局最优区域。</p>
+                                <p><strong><i class="fa-solid fa-gears text-indigo-400 mr-1"></i> 原理：</strong> 结合蒙特卡洛与网格法。在满足线性约束 $A \mathbf{x} \le \mathbf{b}$ 的多面体可行域内，生成高密度随机点集 $\{\mathbf{x}_0^{(k)}\}_{k=1}^N$。计算每个点的目标函数值，筛选出 Top-K 个“种子点”。</p>
+                                <p><strong><i class="fa-solid fa-bullseye text-indigo-400 mr-1"></i> 作用：</strong> 规避局部最优，为下一阶段提供高质量的初始猜测值，确保算法“赢在起跑线上”。</p>
+                            </div>
                         </div>
-                        <div class="logic-step">
-                            <p class="font-black text-indigo-700 text-base">阶段 B：基于 SQP 的非线性规划精修</p>
-                            <p class="text-xs contrast-text leading-relaxed"><strong>动机：</strong> 追求数值上的精确极值。<strong>执行：</strong> 采用序列二次规划 (Sequential Quadratic Programming, SQP)。在每个迭代步，将非线性问题近似为二次规划子问题，利用雅可比阵信息处理约束边界。SQP 能够高效地在可行域边界“爬行”，直至找到精确到小数点后四位的最优投放窗口。</p>
+
+                        <!-- Stage B -->
+                        <div class="logic-step p-4 bg-indigo-50/50 rounded-xl border border-indigo-100">
+                            <div class="flex items-center mb-2">
+                                <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded mr-2">STAGE B</span>
+                                <p class="font-black text-indigo-800 text-sm">局部精修：SQP 非线性规划</p>
+                            </div>
+                            <div class="text-xs contrast-text space-y-2">
+                                <p><strong><i class="fa-solid fa-lightbulb text-indigo-400 mr-1"></i> 思路：</strong> 在阶段 A 锁定的“高地”上进行精确爬山。利用梯度信息寻找数学上的极值点，同时严格处理硬约束。</p>
+                                <p><strong><i class="fa-solid fa-gears text-indigo-400 mr-1"></i> 原理：</strong> 采用序列二次规划 (SQP)。在每一步迭代中，将原非线性问题近似为二次规划 (QP) 子问题，利用拉格朗日乘子法同时逼近最优解和对偶变量，沿可行域边界高效搜索。</p>
+                                <p><strong><i class="fa-solid fa-bullseye text-indigo-400 mr-1"></i> 作用：</strong> 严格保证 $t_{d,i+1} - t_{d,i} \ge 1$ 等约束不被破坏，并将解的精度提升至 $10^{-4}$ 级别，挖掘最后 0.1s 的遮蔽潜力。</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -315,6 +420,27 @@
                             <p><strong>约束：</strong> 12维边界硬约束，参数解空间范围大幅扩张。</p>
                         </div>
                     </div>
+
+                    <!-- 算法选型与对比 -->
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-emerald-500">
+                        <h4 class="font-black text-slate-800 mb-3 flex items-center justify-between">
+                            <span><span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded mr-2">Q4/5</span> 算法选型：GA vs PSO</span>
+                        </h4>
+                        <div class="text-sm text-slate-600 space-y-3">
+                            <p>
+                                <b>为什么选择 GA ？</b> 虽然 PSO 在单机问题（Q2）表现优异，但在本题的 12 维空间中，核心难点在于寻找多机间的<b>“战术配合模式”</b>（如时序接力）。这种具有组合优化特征的“中等维度多峰问题”，标准 PSO 容易陷入局部战术陷阱。相比之下，GA 的交叉变异机制更擅长在复杂的战术拓扑中进行全局探索，而非单纯的数值逼近。
+                            </p>
+                            <p>
+                                <b>GA 的核心优势：</b>
+                                <ul class="list-disc list-inside mt-1 space-y-1 text-xs text-slate-500">
+                                    <li><strong>全局跳出能力：</strong> 变异算子（Mutation）提供了比 PSO 随机扰动更强的跳出局部最优的能力。</li>
+                                    <li><strong>隐式并行性：</strong> 种群中的个体代表了不同的战术组合（如“接力”或“同步”），GA 能同时搜索多种战术模式。</li>
+                                    <li><strong>稳健性：</strong> 对参数初始值不敏感，更适合解空间地形极其崎岖的多机博弈问题。</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+
                     <!-- GA 原理补充 -->
                     <div class="theory-block bg-emerald-50 border-emerald-200">
                         <h4 class="font-black text-emerald-800 mb-3 uppercase tracking-widest"><i class="fa-solid fa-dna mr-2"></i> GA 算法原理与协同优势</h4>
@@ -361,19 +487,38 @@
             <div class="grid lg:grid-cols-2 gap-12">
                 <!-- 方案一 -->
                 <div class="glass-card p-10 rounded-3xl border-t-8 border-slate-500 shadow-2xl">
-                    <h3 class="text-2xl font-black mb-8 text-slate-900">方案一：多起点混合优化架构</h3>
+                    <h3 class="text-2xl font-black mb-6 text-slate-900">方案一：改进 PSO 混合优化架构</h3>
+                    
+                    <!-- 算法对比 -->
+                    <div class="mb-6 p-4 bg-slate-100 rounded-xl border border-slate-200">
+                        <h4 class="font-black text-xs text-slate-600 mb-2 uppercase tracking-wider">算法选型：改进 PSO vs GA</h4>
+                        <ul class="space-y-2 text-xs text-slate-500">
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-1"></i> <strong>为何本题未选 GA：</strong> 虽然 GA 在 Q4（12维）的战术组合搜索中表现优异，但在 Q5 的 40 维超高维连续空间中，其随机交叉算子难以维持高维参数间的精密耦合（Building Blocks），导致收敛速度显著慢于具有记忆功能的粒子群算法。</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-1"></i> <strong>改进 PSO 优势：</strong> 引入<b>混沌映射初始化</b>与<b>自适应惯性权重</b>。粒子自带记忆（pbest）能有效保留“局部战术经验”，更适合处理连续变量的高维协同问题。</li>
+                        </ul>
+                    </div>
+
                     <div class="space-y-6 text-sm contrast-text">
                         <div class="flex items-start">
-                            <div class="w-10 h-10 bg-slate-200 rounded-xl flex items-center justify-center mr-5 text-slate-700 font-black shadow-inner">1</div>
-                            <p><strong>随机启发式初始化：</strong> 基于导弹攻击轴线预设拦截阵位分布。</p>
+                            <div class="w-10 h-10 bg-slate-200 rounded-xl flex items-center justify-center mr-5 text-slate-700 font-black shadow-inner shrink-0">1</div>
+                            <div>
+                                <p class="font-bold mb-1">混沌初始化 (Chaos Initialization)</p>
+                                <p class="text-xs text-slate-500 leading-relaxed"><strong>设计思路：</strong> 在 40 维超高维空间中，伪随机数生成器容易产生“聚集现象”，导致初始种群覆盖率不足。我们引入 <b>Logistic 混沌映射</b> ($x_{n+1} = \mu x_n(1-x_n)$)，利用其遍历性和非重复性，使初始粒子均匀散布在解空间各处，为全局搜索打下“地基”。</p>
+                            </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-10 h-10 bg-slate-200 rounded-xl flex items-center justify-center mr-5 text-slate-700 font-black shadow-inner">2</div>
-                            <p><strong>PSO 高维探测：</strong> 在超大规模空间内定位多个“极值候选岛屿”。</p>
+                            <div class="w-10 h-10 bg-slate-200 rounded-xl flex items-center justify-center mr-5 text-slate-700 font-black shadow-inner shrink-0">2</div>
+                            <div>
+                                <p class="font-bold mb-1">自适应 PSO 探测 (Adaptive PSO)</p>
+                                <p class="text-xs text-slate-500 leading-relaxed"><strong>设计思路：</strong> 传统固定权重的 PSO 难以平衡“广度”与“精度”。我们设计了<b>非线性动态惯性权重</b>策略：迭代初期赋予较大 $\omega$ 值，鼓励粒子“大胆飞行”以探索未知区域；迭代后期指数级衰减 $\omega$，迫使粒子“小心收敛”于极值附近，防止在最优解附近震荡。</p>
+                            </div>
                         </div>
                         <div class="flex items-start">
-                            <div class="w-10 h-10 bg-slate-200 rounded-xl flex items-center justify-center mr-5 text-slate-700 font-black shadow-inner">3</div>
-                            <p><strong>并行化 SQP 精修：</strong> 通过 <code class="text-blue-700">parfor</code> 开启多核并行，在每个候选区域快速梯度下降。</p>
+                            <div class="w-10 h-10 bg-slate-200 rounded-xl flex items-center justify-center mr-5 text-slate-700 font-black shadow-inner shrink-0">3</div>
+                            <div>
+                                <p class="font-bold mb-1">并行化 SQP 精修 (Parallel SQP)</p>
+                                <p class="text-xs text-slate-500 leading-relaxed"><strong>设计思路：</strong> 这是一个“粗加工”到“精加工”的过程。PSO 擅长锁定全局极值所在的“大致山头”，但难以精确登顶。我们在 PSO 收敛后，提取种群中适应度最高的 Top-K 个精英粒子作为初值，启动<b>多核并行 SQP 算法</b>。利用 SQP 强大的约束处理和二阶梯度利用能力，实现最后 1% 的精度提升。</p>
+                            </div>
                         </div>
                         <div class="p-8 bg-slate-900 rounded-3xl text-white shadow-lg mt-8">
                             <div class="text-[10px] uppercase opacity-50 mb-3 font-black tracking-widest">混合优化最终时长</div>
@@ -394,12 +539,14 @@
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="p-5 bg-white/10 border border-white/20 rounded-2xl">
-                                <h6 class="font-black text-indigo-300 text-xs mb-3">阶段 A：单机单弹预训练</h6>
-                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed"><strong>动机：</strong> 解决基准能力。<strong>任务：</strong> 每架无人机首先在单目标环境中独立学习如何产生最长遮蔽时长，获取基础航迹基因分布。</p>
+                                <h6 class="font-black text-indigo-300 text-xs mb-3">阶段 A：单机单弹预训练 (Pre-training)</h6>
+                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed mb-2"><strong>动机：</strong> 快速获取单机基准能力，避免在 40 维空间盲目搜索。</p>
+                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed"><strong>实现：</strong> 并行启动 5 个独立的 CEM 进程。每个进程仅优化单架 UAV 的 8 维参数，奖励函数设为 $R_i = \text{Coverage}_i$。通过 50 代迭代，获得 5 组高斯分布参数 $\mathcal{N}(\mu_i^*, \Sigma_i^*)$，确保每架飞机都能独立完成基本遮蔽任务。</p>
                             </div>
                             <div class="p-5 bg-white/10 border border-white/20 rounded-2xl">
-                                <h6 class="font-black text-indigo-300 text-xs mb-3">阶段 B：多机协同策略微调</h6>
-                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed"><strong>动机：</strong> 消除冗余。<strong>任务：</strong> 将 5 架机放入联合博弈环境，开启精英竞争。通过重叠惩罚强制进化出“差异化”投放战术。</p>
+                                <h6 class="font-black text-indigo-300 text-xs mb-3">阶段 B：多机协同策略微调 (Fine-tuning)</h6>
+                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed mb-2"><strong>动机：</strong> 消除火力重叠，涌现协同战术。</p>
+                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed"><strong>实现：</strong> 构建 40 维联合分布，初值设为阶段 A 的输出 $\mu_{joint} = [\mu_1^*, \dots, \mu_5^*]$。引入<b>重叠惩罚项</b> $R_{joint} = \bigcup S_i - \lambda \sum (S_i \cap S_j)$。在进化过程中，重叠严重的样本会被淘汰，迫使种群分布中心向“互不干扰”的区域漂移，自动形成分工。</p>
                             </div>
                         </div>
                         <div class="p-8 bg-indigo-700 rounded-3xl flex items-center justify-between shadow-lg border border-indigo-500">
