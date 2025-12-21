@@ -20,7 +20,7 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
-        html { font-size: 18px; }
+        html { font-size: 20px; }
         body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
         .glass-card { background: rgba(255, 255, 255, 1.0); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1); }
         .formula-card { background: #f1f5f9; border-left: 6px solid #1e40af; padding: 1.5rem; margin: 1.25rem 0; border-radius: 0.75rem; color: #0f172a; }
@@ -96,17 +96,17 @@
 
                         <div class="grid md:grid-cols-2 gap-8">
                             <div class="p-5 bg-slate-50 rounded-2xl border-l-4 border-blue-500">
-                                <h4 class="font-black text-xs uppercase text-blue-800 mb-3 tracking-wider">关键约束与参数</h4>
-                                <ul class="text-xs space-y-2 text-slate-700 font-medium">
+                                <h4 class="font-black text-lg uppercase text-blue-800 mb-3 tracking-wider">关键约束与参�?/h4>
+                                <ul class="text-lg space-y-2 text-slate-700 font-medium">
                                     <li><strong>保护目标：</strong> 圆柱体 (R=7m, H=10m)，中心 (0, 200, 0)</li>
                                     <li><strong>来袭导弹：</strong> $V_M=300\text{ m/s}$，直指原点 (0,0,0)</li>
-                                    <li><strong>无人机：</strong> $V \in [70, 140]\text{ m/s}$，双弹间隔 $\ge 1s$</li>
-                                    <li><strong>烟幕弹：</strong> 有效半径 10m，下沉 3m/s，持续 20s</li>
+                                    <li><strong>无人机：</strong> $V \in [70, 140]\text{ m/s}$，双弹间隔$\ge 1s$</li>
+                                    <li><strong>烟幕弹：</strong> 有效半径 10m，下落速度 3m/s，持续时间 20s</li>
                                 </ul>
                             </div>
                             <div class="p-5 bg-slate-50 rounded-2xl border-l-4 border-indigo-500">
-                                <h4 class="font-black text-xs uppercase text-indigo-800 mb-3 tracking-wider">初始态势坐标 (单位: m)</h4>
-                                <div class="space-y-3 text-[10px] font-mono text-slate-600">
+                                <h4 class="font-black text-lg uppercase text-indigo-800 mb-3 tracking-wider">初始态势坐标 (单位: m)</h4>
+                                <div class="space-y-3 text-sm font-mono text-slate-600">
                                     <div>
                                         <span class="font-bold text-indigo-600">导弹群 (M1-M3):</span>
                                         <div class="grid grid-cols-1 gap-1 mt-1">
@@ -131,7 +131,7 @@
                     </div>
                 </div> 
 
-                <!-- 右侧：逻辑与问题 -->
+                <!-- 右侧：逻辑与问题-->
                 <div class="space-y-6">
                     <div class="bg-blue-900 text-white p-8 rounded-[2rem] shadow-2xl relative overflow-hidden">
                         <i class="fa-solid fa-shield-halved absolute -right-4 -bottom-4 text-8xl opacity-10"></i>
@@ -141,7 +141,7 @@
                         </p>
                         <div class="flex items-baseline">
                             <span class="text-3xl font-black mr-2">95%</span>
-                            <span class="text-[10px] uppercase opacity-60">Coverage Threshold</span>
+                            <span class="text-xs uppercase opacity-60">Coverage Threshold</span>
                         </div>
                     </div>
 
@@ -158,7 +158,7 @@
                             </div>
                             <div class="flex gap-2 items-center text-xs">
                                 <span class="font-black text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">Q5</span>
-                                <span class="text-slate-600">5机15弹大规模对抗博弈</span>
+                                <span class="text-slate-600">5机5弹大规模对抗博弈</span>
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                     <span class="model-header">1. 导弹运动模型 $P_M(t)$</span>
                     <p class="text-xs text-slate-600 mb-4">导弹沿直线飞向原点：</p>
                     $$P_M(t) = P_{M0} + V_M \cdot t \cdot \frac{P_O - P_{M0}}{\|P_O - P_{M0}\|}$$
-                    <p class="text-[10px] text-blue-800 mt-2 font-black">对应函数：get_MissilePos.m</p>
+                    <p class="text-xs text-blue-800 mt-2 font-black">对应函数：get_MissilePos.m</p>
                 </div>
                 <div class="formula-card shadow-sm">
                     <span class="model-header">2. 无人机巡航模型 $P_{UAV}(t)$</span>
@@ -185,13 +185,13 @@
                     $$P_{UAV}(t) = P_{UAV0} + [V_{UAV}\cos\theta, V_{UAV}\sin\theta, 0]^T \cdot t$$
                 </div>
                 <div class="formula-card shadow-sm">
-                    <span class="model-header">3. 烟幕弹抛体模型 $P_{Det}$</span>
+                    <span class="model-header">3. 烟幕弹抛体模�?$P_{Det}$</span>
                     <p class="text-xs text-slate-600 mb-4">投放到起爆的动力学轨迹：</p>
                     $$P_{Det} = P_{Drop} + \vec{V}_{UAV} \cdot \tau + \frac{1}{2}\vec{g}\tau^2$$
-                    <p class="text-[10px] text-blue-800 mt-2 font-black">对应函数：get_SmokeDetPos.m</p>
+                    <p class="text-xs text-blue-800 mt-2 font-black">对应函数：get_SmokeDetPos.m</p>
                 </div>
                 <div class="formula-card shadow-sm">
-                    <span class="model-header">4. 烟幕动态沉降 $C(t)$</span>
+                    <span class="model-header">4. 烟幕动态沉�?$C(t)$</span>
                     <p class="text-xs text-slate-600 mb-4">云团随时间线性下沉：</p>
                     $$C(t) = P_{Det} + (t - t_{det}) \cdot [0, 0, -3]^T \quad (t \ge t_{det})$$
                 </div>
@@ -236,7 +236,7 @@
                     <div id="simulation-container" class="shadow-2xl"></div>
                     <div class="mt-6 p-8 bg-white rounded-3xl shadow-xl border border-blue-100 flex items-center justify-between">
                         <div>
-                            <div class="text-[10px] font-black text-slate-500 uppercase tracking-widest">仿真计算结果</div>
+                            <div class="text-xs font-black text-slate-500 uppercase tracking-widest">仿真计算结果</div>
                             <div class="text-4xl font-black text-blue-800 tracking-tighter">1.41 <span class="text-sm font-normal text-slate-400">sec</span></div>
                         </div>
                         <button onclick="startSimulation()" class="bg-blue-700 hover:bg-blue-800 text-white px-8 py-4 rounded-2xl shadow-xl transition-all hover:scale-105 active:scale-95 font-black text-xs uppercase tracking-widest">
@@ -267,7 +267,7 @@
                     <!-- 算法选型理由 -->
                     <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-blue-500">
                         <h4 class="font-black text-slate-800 mb-2 flex items-center">
-                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded mr-2">Q2</span> 算法选型：PSO 粒子群
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded mr-2">Q2</span> 算法选型：PSO 粒子群优化
                         </h4>
                         <p class="text-sm text-slate-600">
                             <b>选型理由：</b> 目标函数（遮蔽时长）关于飞行参数呈现高度非线性且不可导。PSO 无需梯度信息，能快速在连续空间中收敛到全局次优解，适合单机四维参数的快速搜索。
@@ -292,7 +292,7 @@
                         <tr><td class="py-4">起爆延时 $\tau$</td><td class="py-4 text-right text-blue-300 font-black">0.00 s</td></tr>
                     </table>
                     <div class="flex justify-between items-center bg-white/5 p-6 rounded-2xl border border-white/10">
-                        <span class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Max Duration</span>
+                        <span class="text-slate-400 font-bold uppercase tracking-widest text-xs">Max Duration</span>
                         <span class="text-4xl font-black text-blue-400">4.60 <span class="text-lg font-normal">s</span></span>
                     </div>
                 </div>
@@ -329,7 +329,7 @@
                         <!-- Stage A -->
                         <div class="logic-step p-4 bg-indigo-50/50 rounded-xl border border-indigo-100">
                             <div class="flex items-center mb-2">
-                                <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded mr-2">STAGE A</span>
+                                <span class="bg-indigo-600 text-white text-xs font-black px-2 py-1 rounded mr-2">STAGE A</span>
                                 <p class="font-black text-indigo-800 text-sm">全局粗搜：约束域多起点采样</p>
                             </div>
                             <div class="text-xs contrast-text space-y-2">
@@ -342,13 +342,13 @@
                         <!-- Stage B -->
                         <div class="logic-step p-4 bg-indigo-50/50 rounded-xl border border-indigo-100">
                             <div class="flex items-center mb-2">
-                                <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-1 rounded mr-2">STAGE B</span>
+                                <span class="bg-indigo-600 text-white text-xs font-black px-2 py-1 rounded mr-2">STAGE B</span>
                                 <p class="font-black text-indigo-800 text-sm">局部精修：SQP 非线性规划</p>
                             </div>
                             <div class="text-xs contrast-text space-y-2">
                                 <p><strong><i class="fa-solid fa-lightbulb text-indigo-400 mr-1"></i> 思路：</strong> 在阶段 A 锁定的“高地”上进行精确爬山。利用梯度信息寻找数学上的极值点，同时严格处理硬约束。</p>
                                 <p><strong><i class="fa-solid fa-gears text-indigo-400 mr-1"></i> 原理：</strong> 采用序列二次规划 (SQP)。在每一步迭代中，将原非线性问题近似为二次规划 (QP) 子问题，利用拉格朗日乘子法同时逼近最优解和对偶变量，沿可行域边界高效搜索。</p>
-                                <p><strong><i class="fa-solid fa-bullseye text-indigo-400 mr-1"></i> 作用：</strong> 严格保证 $t_{d,i+1} - t_{d,i} \ge 1$ 等约束不被破坏，并将解的精度提升至 $10^{-4}$ 级别，挖掘最后 0.1s 的遮蔽潜力。</p>
+                                <p><strong><i class="fa-solid fa-bullseye text-indigo-400 mr-1"></i> 作用：</strong> 严格保证 $t_{d,i+1} - t_{d,i} \ge 1$ 等约束不被破坏，并将解的精度提升至 $10^{-4}$ 级别，挖掘最优 0.1s 的遮蔽潜力。</p>
                             </div>
                         </div>
                     </div>
@@ -358,24 +358,24 @@
                         <h4 class="font-black text-xs text-indigo-800 mb-8 uppercase tracking-widest">问题三执行策略配置</h4>
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="p-6 bg-white rounded-2xl shadow-sm border border-indigo-100">
-                                <span class="text-[10px] text-slate-400 font-black uppercase tracking-widest">最佳航向角</span>
+                                <span class="text-xs text-slate-400 font-black uppercase tracking-widest">最佳航向角</span>
                                 <div class="font-black text-2xl text-indigo-800">179.5°</div>
                             </div>
                             <div class="p-6 bg-white rounded-2xl shadow-sm border border-indigo-100">
-                                <span class="text-[10px] text-slate-400 font-black uppercase tracking-widest">最佳飞行速度</span>
+                                <span class="text-xs text-slate-400 font-black uppercase tracking-widest">最佳飞行速度</span>
                                 <div class="font-black text-2xl text-indigo-800">131.25 m/s</div>
                             </div>
                         </div>
                         <table class="data-table mb-8 shadow-sm">
-                            <thead><tr><th>烟幕弹 ID</th><th>投放时刻 ($t_{drop}$)</th><th>起爆延时 ($\tau$)</th></tr></thead>
-                            <tbody class="text-[11px] font-bold">
-                                <tr><td>干扰弹 1</td><td>$0.25\text{ s}$</td><td>$3.75\text{ s}$</td></tr>
-                                <tr><td>干扰弹 2</td><td>$4.00\text{ s}$</td><td>$4.88\text{ s}$</td></tr>
-                                <tr><td>干扰弹 3</td><td>$5.92\text{ s}$</td><td>$3.38\text{ s}$</td></tr>
+                            <thead><tr><th>烟幕弹ID</th><th>投放时刻 ($t_{drop}$)</th><th>起爆延时 ($\tau$)</th></tr></thead>
+                            <tbody class="text-xs font-bold">
+                                <tr><td>干扰弹1</td><td>$0.25\text{ s}$</td><td>$3.75\text{ s}$</td></tr>
+                                <tr><td>干扰弹2</td><td>$4.00\text{ s}$</td><td>$4.88\text{ s}$</td></tr>
+                                <tr><td>干扰弹3</td><td>$5.92\text{ s}$</td><td>$3.38\text{ s}$</td></tr>
                             </tbody>
                         </table>
                         <div class="p-8 bg-indigo-800 text-white rounded-3xl text-center shadow-lg">
-                            <span class="text-[10px] uppercase opacity-70 font-black tracking-widest">最终并集遮蔽时长</span>
+                            <span class="text-xs uppercase opacity-70 font-black tracking-widest">最终并集遮蔽时长</span>
                             <div class="text-4xl font-black mt-1">6.10 <span class="text-lg font-normal">sec</span></div>
                         </div>
                     </div>
@@ -394,20 +394,20 @@
                     <div class="glass-card p-8 rounded-3xl border-l-8 border-emerald-700">
                         <span class="model-header bg-gray-100 shadow-md text-blue-400">优化模型标准表述</span>
                         <div class="text-sm contrast-text space-y-4">
-                            <p><strong>决策变量：</strong> $\boldsymbol{x} \in \mathbb{R}^{12}$ (3架 UAV $\times$ 每机 4 个核心参数)</p>
+                            <p><strong>决策变量：</strong> $\boldsymbol{x} \in \mathbb{R}^{12}$ (3架UAV $\times$ 每机 4 个核心参数)</p>
                             <p><strong>目标函数：</strong> $\max \text{measure}(\bigcup_{j=1}^3 \{t \mid \exists i \in \{1,2,3\}, \text{Smoke}_{i,j} \text{ shields } M_1 \})$</p>
                             <p><strong>约束：</strong> 12维边界硬约束，参数解空间范围大幅扩张。</p>
                         </div>
                     </div>
 
-                    <!-- 算法选型与对比 -->
+                    <!-- 算法选型与对�?-->
                     <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-emerald-500">
                         <h4 class="font-black text-slate-800 mb-3 flex items-center justify-between">
                             <span><span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded mr-2">Q4/5</span> 算法选型：GA vs PSO</span>
                         </h4>
                         <div class="text-sm text-slate-600 space-y-3">
                             <p>
-                                <b>为什么选择 GA ？</b> 虽然 PSO 在单机问题（Q2）表现优异，但在本题的 12 维空间中，核心难点在于寻找多机间的<b>“战术配合模式”</b>（如时序接力）。这种具有组合优化特征的“中等维度多峰问题”，标准 PSO 容易陷入局部战术陷阱。相比之下，GA 的交叉变异机制更擅长在复杂的战术拓扑中进行全局探索，而非单纯的数值逼近。
+                                <b>为什么选择 GA ？</b> 虽然 PSO 在单机问题（Q2）表现优异，但在本题中 12 维空间中，核心难点在于寻找多机间<b>“战术配合模式”</b>（如时序接力）。这种具有组合优化特征的“中等维度多峰问题”，标准 PSO 容易陷入局部战术陷阱。相比之下，GA 的交叉变异机制更擅长在复杂的战术拓扑中进行全局探索，而非单纯的数值逼近。
                             </p>
                             <p>
                                 <b>GA 的核心优势：</b>
@@ -422,14 +422,14 @@
 
                     <!-- GA 原理补充 -->
                     <div class="theory-block bg-emerald-50 border-emerald-200">
-                        <h4 class="font-black text-emerald-800 mb-3 uppercase tracking-widest"><i class="fa-solid fa-dna mr-2"></i> GA 算法原理与协同优势</h4>
-                        <p class="mb-3"><strong>算法原理：</strong> 模拟达尔文自然进化过程。通过<b>实值编码</b>生成个体，利用<b>选择算子</b>保留高适应度（遮蔽时长长）个体，通过<b>交叉算子</b>交换优秀航迹基因，利用<b>变异算子</b>引入随机扰动以探索新区域。</p>
-                        <p><strong>协同优势：</strong> <span class="highlight-bold">处理多峰地形：</span> 三机协同导致目标函数极其复杂，GA 的种群并行搜索特性比梯度法更难陷入局部最优。<span class="highlight-bold">时空接力：</span> GA 能够自发进化出“前、中、后”三段接力的投放战术，实现遮蔽效果的无缝衔接。</p>
+                        <h4 class="font-black text-emerald-800 mb-3 uppercase tracking-widest"><i class="fa-solid fa-dna mr-2"></i> GA 算法原理与协同优�?/h4>
+                        <p class="mb-3"><strong>算法原理�?/strong> 模拟达尔文自然进化过程。通过<b>实值编�?/b>生成个体，利�?b>选择算子</b>保留高适应度（遮蔽时长长）个体，通过<b>交叉算子</b>交换优秀航迹基因，利�?b>变异算子</b>引入随机扰动以探索新区域�?/p>
+                        <p><strong>协同优势�?/strong> <span class="highlight-bold">处理多峰地形�?/span> 三机协同导致目标函数极其复杂，GA 的种群并行搜索特性比梯度法更难陷入局部最优�?span class="highlight-bold">时空接力�?/span> GA 能够自发进化出“前、中、后”三段接力的投放战术，实现遮蔽效果的无缝衔接�?/p>
                     </div>
                 </div>
                 <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-200">
-                    <h4 class="font-black text-xs text-slate-400 mb-8 uppercase tracking-widest text-center">三机分布式协同执行方案</h4>
-                    <table class="data-table text-[10px] shadow-sm">
+                    <h4 class="font-black text-xs text-slate-400 mb-8 uppercase tracking-widest text-center">三机分布式协同执行方�?/h4>
+                    <table class="data-table text-xs shadow-sm">
                         <thead><tr><th>机号</th><th>航向 ($\theta$)</th><th>飞行速度 ($V$)</th><th>投放时刻</th><th>起爆延时</th></tr></thead>
                         <tbody>
                             <tr><td class="font-black text-emerald-700">UAV FY1</td><td>5.12°</td><td>100.67 m/s</td><td>0.73 s</td><td>0.46 s</td></tr>
@@ -439,7 +439,7 @@
                     </table>
                     <div class="mt-8 p-6 bg-emerald-700 text-white rounded-2xl flex items-center justify-between shadow-lg">
                         <div>
-                            <div class="text-[10px] font-black opacity-80 uppercase tracking-widest">最优协同总时长</div>
+                            <div class="text-xs font-black opacity-80 uppercase tracking-widest">最优协同总时长</div>
                             <div class="text-4xl font-black">11.29 <span class="text-lg font-normal">s</span></div>
                         </div>
                         <i class="fa-solid fa-dna text-4xl opacity-30 animate-pulse"></i>
@@ -452,14 +452,14 @@
         <section id="prob5" class="scroll-mt-32">
             <h2 class="text-4xl font-black mb-12 flex items-center text-slate-900">
                 <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">06</span>
-                问题五：5机15弹大规模对抗博弈
+                问题五：5机5弹大规模对抗博弈
             </h2>
             <div class="glass-card p-10 rounded-[3rem] border-l-8 border-indigo-900 mb-12 shadow-xl">
                 <h4 class="font-black text-xs text-indigo-900 mb-6 uppercase tracking-widest tracking-tighter shadow-sm inline-block px-3 py-1 bg-indigo-50 rounded">40 维高维寻优标准表述</h4>
                 <div class="contrast-text text-sm space-y-4">
-                    <p><strong>决策变量：</strong> $\boldsymbol{x} \in \mathbb{R}^{40}$ (5 架 UAV $\times$ 每机 8 个投放参数)</p>
-                    <p><strong>目标函数：</strong> $\max \sum_{k=1}^3 L_k(\boldsymbol{x})$，即对三枚目标导弹干扰时间的总和并集测度。</p>
-                    <p><strong>战术背景：</strong> 处理极高维动作空间中的“维数灾难”，需实现机间防区划分与协同。</p>
+                    <p><strong>决策变量：</strong> $\boldsymbol{x} \in \mathbb{R}^{40}$ (5 架UAV $\times$ 每机 8 个投放参数)</p>
+                    <p><strong>目标函数：</strong> $\max \sum_{k=1}^3 L_k(\boldsymbol{x})$，即对三枚目标导弹干扰时间的总和并集测度</p>
+                    <p><strong>战术背景：</strong> 处理极高维动作空间中的“维数灾难”，需实现机间防区划分与协同</p>
                 </div>
             </div>
 
@@ -472,8 +472,8 @@
                     <div class="mb-6 p-4 bg-slate-100 rounded-xl border border-slate-200">
                         <h4 class="font-black text-xs text-slate-600 mb-2 uppercase tracking-wider">算法选型：改进 PSO vs GA</h4>
                         <ul class="space-y-2 text-xs text-slate-500">
-                            <li><i class="fa-solid fa-xmark text-red-500 mr-1"></i> <strong>为何本题未选 GA：</strong> 虽然 GA 在 Q4（12维）的战术组合搜索中表现优异，但在 Q5 的 40 维超高维连续空间中，其随机交叉算子难以维持高维参数间的精密耦合（Building Blocks），导致收敛速度显著慢于具有记忆功能的粒子群算法。</li>
-                            <li><i class="fa-solid fa-check text-green-500 mr-1"></i> <strong>改进 PSO 优势：</strong> 引入<b>混沌映射初始化</b>与<b>自适应惯性权重</b>。粒子自带记忆（pbest）能有效保留“局部战术经验”，更适合处理连续变量的高维协同问题。</li>
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-1"></i> <strong>为何本题未采用 GA？</strong> 虽然 GA 在 Q4（12维）的战术组合搜索中表现优异，但在 Q5 （40 维超高维连续空间中，其随机交叉算子难以维持高维参数间的精密耦合（Building Blocks），导致收敛速度显著慢于具有记忆功能的粒子群算法</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-1"></i> <strong>改进 PSO 优势？</strong> 引入<b>混沌映射初始化</b>和<b>自适应惯性权重</b>。粒子自带记忆（pbest）能有效保留“局部战术经验”，更适合处理连续变量的高维协同问题</li>
                         </ul>
                     </div>
 
@@ -482,14 +482,14 @@
                             <div class="w-10 h-10 bg-slate-200 rounded-xl flex items-center justify-center mr-5 text-slate-700 font-black shadow-inner shrink-0">1</div>
                             <div>
                                 <p class="font-bold mb-1">混沌初始化 (Chaos Initialization)</p>
-                                <p class="text-xs text-slate-500 leading-relaxed"><strong>设计思路：</strong> 在 40 维超高维空间中，伪随机数生成器容易产生“聚集现象”，导致初始种群覆盖率不足。我们引入 <b>Logistic 混沌映射</b> ($x_{n+1} = \mu x_n(1-x_n)$)，利用其遍历性和非重复性，使初始粒子均匀散布在解空间各处，为全局搜索打下“地基”。</p>
+                                <p class="text-xs text-slate-500 leading-relaxed"><strong>设计思路：</strong> 在 40 维超高维空间中，伪随机数生成器容易产生“聚集现象”，导致初始种群覆盖率不足。我们引入<b>Logistic 混沌映射</b> ($x_{n+1} = \mu x_n(1-x_n)$)，利用其遍历性和非重复性，使初始粒子均匀散布在解空间各处，为全局搜索打下“地基”</p>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div class="w-10 h-10 bg-slate-200 rounded-xl flex items-center justify-center mr-5 text-slate-700 font-black shadow-inner shrink-0">2</div>
                             <div>
                                 <p class="font-bold mb-1">自适应 PSO 探测 (Adaptive PSO)</p>
-                                <p class="text-xs text-slate-500 leading-relaxed"><strong>设计思路：</strong> 传统固定权重的 PSO 难以平衡“广度”与“精度”。我们设计了<b>非线性动态惯性权重</b>策略：迭代初期赋予较大 $\omega$ 值，鼓励粒子“大胆飞行”以探索未知区域；迭代后期指数级衰减 $\omega$，迫使粒子“小心收敛”于极值附近，防止在最优解附近震荡。</p>
+                                <p class="text-xs text-slate-500 leading-relaxed"><strong>设计思路：</strong> 传统固定权重 PSO 难以平衡“广度”与“精度”。我们设计了<b>非线性动态惯性权重</b>策略：迭代初期赋予较大 $\omega$ 值，鼓励粒子“大胆飞行”以探索未知区域；迭代后期指数级衰减 $\omega$，迫使粒子“小心收敛”于极值附近，防止在最优解附近震荡</p>
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -500,37 +500,37 @@
                             </div>
                         </div>
                         <div class="p-8 bg-slate-900 rounded-3xl text-white shadow-lg mt-8">
-                            <div class="text-[10px] uppercase opacity-50 mb-3 font-black tracking-widest">混合优化最终时长</div>
+                            <div class="text-xs uppercase opacity-50 mb-3 font-black tracking-widest">混合优化最终时间</div>
                             <div class="text-4xl font-black tracking-tighter">11.2 <span class="text-lg font-normal">sec</span></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 方案二 -->
+                <!-- 方案二-->
                 <div class="bg-indigo-950 text-white p-10 rounded-[3rem] shadow-2xl relative overflow-hidden">
                     <div class="absolute top-0 right-0 p-8 opacity-5 text-[12rem] font-black">RL</div>
                     <h3 class="text-2xl font-black mb-8 text-indigo-300">方案二：协同进化 CEM (RL 架构)</h3>
                     <div class="space-y-8">
                         <div class="p-8 bg-white/5 rounded-2xl border border-white/10 shadow-inner">
-                            <h5 class="font-black mb-4 text-indigo-300 uppercase tracking-widest underline decoration-2 underline-offset-8">强化学习架构与奖励塑造</h5>
-                            <p class="text-xs leading-relaxed text-indigo-100/90 mb-4"><strong>具体架构：</strong> 采用<b>交叉熵方法 (Cross-Entropy Method, CEM)</b> 作为策略优化核心。模型将联合策略参数化为高斯分布 $\mathcal{N}(\mu, \Sigma)$，通过迭代精英采样更新分布中心。</p>
-                            <p class="text-xs leading-relaxed text-indigo-100/90 font-bold italic"><strong>Reward Shaping：</strong> $R = L_{union} - \alpha \cdot L_{overlap} - \beta \cdot N_{lazy}$。严惩“无效重叠（重叠弹云）”和“怠工行为”，迫使无人机群自发进化出分布式防区。</p>
+                            <h5 class="font-black mb-4 text-indigo-300 uppercase tracking-widest underline decoration-2 underline-offset-8">强化学习架构与奖励塑形</h5>
+                            <p class="text-xs leading-relaxed text-indigo-100/90 mb-4"><strong>具体架构：</strong> 采用<b>交叉熵方法 (Cross-Entropy Method, CEM)</b> 作为策略优化核心。模型将联合策略参数化为高斯分布 $\mathcal{N}(\mu, \Sigma)$，通过迭代精英采样更新分布中心</p>
+                            <p class="text-xs leading-relaxed text-indigo-100/90 font-bold italic"><strong>Reward Shaping：</strong> $R = L_{union} - \alpha \cdot L_{overlap} - \beta \cdot N_{lazy}$。严惩“无效重叠（重叠弹云）”和“怠工行为”，迫使无人机群自发进化出分布式防区</p>
                         </div>
                         <div class="grid md:grid-cols-2 gap-6">
                             <div class="p-5 bg-white/10 border border-white/20 rounded-2xl">
                                 <h6 class="font-black text-indigo-300 text-xs mb-3">阶段 A：单机单弹预训练 (Pre-training)</h6>
-                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed mb-2"><strong>动机：</strong> 快速获取单机基准能力，避免在 40 维空间盲目搜索。</p>
-                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed"><strong>实现：</strong> 并行启动 5 个独立的 CEM 进程。每个进程仅优化单架 UAV 的 8 维参数，奖励函数设为 $R_i = \text{Coverage}_i$。通过 50 代迭代，获得 5 组高斯分布参数 $\mathcal{N}(\mu_i^*, \Sigma_i^*)$，确保每架飞机都能独立完成基本遮蔽任务。</p>
+                                <p class="text-xs text-indigo-100 opacity-80 leading-relaxed mb-2"><strong>动机：</strong> 快速获取单机基准能力，避免在 40 维空间盲目搜索</p>
+                                <p class="text-xs text-indigo-100 opacity-80 leading-relaxed"><strong>实现：</strong> 并行启动 5 个独立的 CEM 进程。每个进程仅优化单架 UAV 8 维参数，奖励函数设为 $R_i = \text{Coverage}_i$。通过 50 代迭代，获得 5 组高斯分布参�?$\mathcal{N}(\mu_i^*, \Sigma_i^*)$，确保每架飞机都能独立完成基本遮蔽任务</p>
                             </div>
                             <div class="p-5 bg-white/10 border border-white/20 rounded-2xl">
                                 <h6 class="font-black text-indigo-300 text-xs mb-3">阶段 B：多机协同策略微调 (Fine-tuning)</h6>
-                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed mb-2"><strong>动机：</strong> 消除火力重叠，涌现协同战术。</p>
-                                <p class="text-[10px] text-indigo-100 opacity-80 leading-relaxed"><strong>实现：</strong> 构建 40 维联合分布，初值设为阶段 A 的输出 $\mu_{joint} = [\mu_1^*, \dots, \mu_5^*]$。引入<b>重叠惩罚项</b> $R_{joint} = \bigcup S_i - \lambda \sum (S_i \cap S_j)$。在进化过程中，重叠严重的样本会被淘汰，迫使种群分布中心向“互不干扰”的区域漂移，自动形成分工。</p>
+                                <p class="text-xs text-indigo-100 opacity-80 leading-relaxed mb-2"><strong>动机：</strong> 消除火力重叠，涌现协同战术</p>
+                                <p class="text-xs text-indigo-100 opacity-80 leading-relaxed"><strong>实现：</strong> 构建 40 维联合分布，初值设为阶段 A 的输出$\mu_{joint} = [\mu_1^*, \dots, \mu_5^*]$。引入<b>重叠惩罚</b> $R_{joint} = \bigcup S_i - \lambda \sum (S_i \cap S_j)$。在进化过程中，重叠严重的样本会被淘汰，迫使种群分布中心向“互不干扰”的区域漂移，自动形成分工</p>
                             </div>
                         </div>
                         <div class="p-8 bg-indigo-700 rounded-3xl flex items-center justify-between shadow-lg border border-indigo-500">
                             <div>
-                                <div class="text-[10px] uppercase opacity-80 mb-2 font-black tracking-widest">协同 RL 训练最终时长</div>
+                                <div class="text-xs uppercase opacity-80 mb-2 font-black tracking-widest">协同 RL 训练最终时间</div>
                                 <div class="text-5xl font-black tracking-tighter">21.2 <span class="text-xl font-normal ml-1">sec</span></div>
                             </div>
                             <i class="fa-solid fa-bolt-lightning text-5xl opacity-40 animate-pulse"></i>
@@ -539,13 +539,13 @@
                 </div>
             </div>
 
-            <!-- 数据表 -->
+            <!-- 数据�?-->
             <div class="mt-16 glass-card p-10 rounded-[3rem] shadow-2xl border border-indigo-100">
-                <h4 class="font-black text-sm text-slate-800 mb-8 uppercase tracking-widest text-center underline underline-offset-8 decoration-indigo-600">五机协同：CEM 方案最优执行战术数据</h4>
+                <h4 class="font-black text-sm text-slate-800 mb-8 uppercase tracking-widest text-center underline underline-offset-8 decoration-indigo-600">五机协同：CEM 方案最优执行战术数�?/h4>
                 <div class="overflow-x-auto">
-                    <table class="data-table text-[10px] shadow-lg">
+                    <table class="data-table text-xs shadow-lg">
                         <thead>
-                            <tr><th>无人机 ID</th><th>航向角 ($\theta$)</th><th>飞行速度 ($V$)</th><th>弹1投放</th><th>弹2投放</th><th>弹3投放</th><th>延时1</th><th>延时2</th><th>延时3</th></tr>
+                            <tr><th>无人机ID</th><th>航向角($\theta$)</th><th>飞行速度 ($V$)</th><th>弹投放1</th><th>弹投放2</th><th>弹投放3</th><th>延时1</th><th>延时2</th><th>延时3</th></tr>
                         </thead>
                         <tbody>
                             <tr class="bg-indigo-50/50"><td><strong>UAV FY1</strong></td><td>213.8°</td><td>119.4 m/s</td><td>34.3 s</td><td>38.0 s</td><td>40.8 s</td><td>2.3 s</td><td>6.7 s</td><td>3.9 s</td></tr>
@@ -559,7 +559,7 @@
             </div>
         </section>
 
-        <!-- 7. 总结与反思 -->
+        <!-- 7. 总结与反思-->
         <section id="summary" class="scroll-mt-32">
             <h2 class="text-4xl font-black mb-12 flex items-center text-slate-900">
                 <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">07</span>
@@ -586,13 +586,13 @@
                                 </div>
                                 <div class="contrast-text text-slate-300">
                                     <p class="font-black text-white text-lg mb-2">异构算法矩阵的灵活运用</p>
-                                    <p class="text-xs">针对问题的非凸、非光滑、高维特性，混合使用了 <b>PSO、GA、多起点 SQP 精修</b>。对大规模对抗（Q5）探索了<b>协同强化学习 (CEM)</b>，实现了优于传统算法的资源利用率。</p>
+                                    <p class="text-xs">针对问题的非凸、非光滑、高维特性，混合使用<b>PSO、GA、多起点 SQP 精修</b>。对大规模对抗（Q5）探索了<b>协同强化学习 (CEM)</b>，实现了优于传统算法的资源利用率。</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="space-y-8">
-                        <h3 class="text-3xl font-black text-amber-400 mb-8 border-b border-white/10 pb-4">不足与改进方向</h3>
+                        <h3 class="text-3xl font-black text-amber-400 mb-8 border-b border-white/10 pb-4">不足与改进方案</h3>
                         <div class="space-y-6">
                             <div class="p-8 bg-white/5 border border-white/10 rounded-[2.5rem] hover:bg-white/10 transition-all">
                                 <h5 class="text-amber-400 font-black mb-4 flex items-center uppercase tracking-widest text-sm">
@@ -630,13 +630,13 @@
                 <i class="fa-solid fa-file-pdf text-2xl hover:text-red-600 cursor-pointer transition"></i>
             </a>
             
-            <!-- 源代码/附件下载链接 -->
+            <!-- 源代码附件下载链接 -->
             <a href="./SourceCode.zip" download="SourceCode.zip" title="下载算法源码与数据" class="hover:-translate-y-1 transition-transform duration-300">
                 <i class="fa-solid fa-code text-2xl hover:text-emerald-600 cursor-pointer transition"></i>
             </a>
         </div>
         <p class="text-xs font-black text-slate-500 uppercase tracking-[0.3em] mb-4">2025 Matlab建模与优化课程作业解题汇报</p>
-        <p class="text-[10px] text-slate-400 font-bold uppercase">Developed by Team Members with Professional Excellence, together with Gemini</p>
+        <p class="text-xs text-slate-400 font-bold uppercase">Developed by Team Members with Professional Excellence, together with Gemini</p>
     </footer>
 
     <script>
