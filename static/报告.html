@@ -746,10 +746,13 @@
             
             // UAV: Starts at (17800, 0, 1800) -> Scene (890, 90, 0)
             const startUAV = new THREE.Vector3(890, 90, 0);
-            const dirUAV = new THREE.Vector3().subVectors(new THREE.Vector3(0,0,0), startUAV).normalize();
+            // Horizontal Flight: Target is (0, 90, 0) to maintain altitude
+            const targetUAV = new THREE.Vector3(0, 90, 0);
+            const dirUAV = new THREE.Vector3().subVectors(targetUAV, startUAV).normalize();
+            
             const distUAV = V_UAV_Mag * t * SCALE;
             uav.position.copy(startUAV).add(dirUAV.multiplyScalar(distUAV));
-            uav.lookAt(new THREE.Vector3(0,0,0));
+            uav.lookAt(targetUAV);
             
             // LOS Line
             const positions = losLine.geometry.attributes.position;
@@ -788,7 +791,10 @@
                     
                     // Initial Drop Position (Scene)
                     const startUAV = new THREE.Vector3(890, 90, 0);
-                    const dirUAV = new THREE.Vector3().subVectors(new THREE.Vector3(0,0,0), startUAV).normalize();
+                    // Horizontal Flight Direction
+                    const targetUAV = new THREE.Vector3(0, 90, 0);
+                    const dirUAV = new THREE.Vector3().subVectors(targetUAV, startUAV).normalize();
+                    
                     const dropPos = startUAV.clone().add(dirUAV.clone().multiplyScalar(V_UAV_Mag * T_DROP * SCALE));
                     
                     // Velocity of UAV (Scene)
