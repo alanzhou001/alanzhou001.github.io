@@ -94,9 +94,9 @@
                             运用无人机挂载烟幕干扰弹，在来袭导弹与保护目标之间建立遮蔽屏障。需建立数学模型，针对不同战术情景设计最优投放策略（飞行航向、速度、投放点、起爆延时），以最大化有效遮蔽时长。
                         </p>
 
-                        <div class="grid md:grid-cols-2 gap-8">
+                        <div class="grid grid-cols-1 gap-8">
                             <div class="p-5 bg-slate-50 rounded-2xl border-l-4 border-blue-500">
-                                <h4 class="font-black text-lg uppercase text-blue-800 mb-3 tracking-wider">关键约束与参�?/h4>
+                                <h4 class="font-black text-lg uppercase text-blue-800 mb-3 tracking-wider">关键约束与参数</h4>
                                 <ul class="text-lg space-y-2 text-slate-700 font-medium">
                                     <li><strong>保护目标：</strong> 圆柱体 (R=7m, H=10m)，中心 (0, 200, 0)</li>
                                     <li><strong>来袭导弹：</strong> $V_M=300\text{ m/s}$，直指原点 (0,0,0)</li>
@@ -109,7 +109,7 @@
                                 <div class="space-y-3 text-sm font-mono text-slate-600">
                                     <div>
                                         <span class="font-bold text-indigo-600">导弹群 (M1-M3):</span>
-                                        <div class="grid grid-cols-1 gap-1 mt-1">
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-1">
                                             <span>M1: (20000, 0, 2000)</span>
                                             <span>M2: (19000, 600, 2100)</span>
                                             <span>M3: (18000, -600, 1900)</span>
@@ -117,7 +117,7 @@
                                     </div>
                                     <div>
                                         <span class="font-bold text-indigo-600">无人机群 (FY1-FY5):</span>
-                                        <div class="grid grid-cols-2 gap-1 mt-1">
+                                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-1">
                                             <span>FY1: (17800, 0, 1800)</span>
                                             <span>FY2: (12000, 1400, 1400)</span>
                                             <span>FY3: (6000, -3000, 700)</span>
@@ -185,13 +185,13 @@
                     $$P_{UAV}(t) = P_{UAV0} + [V_{UAV}\cos\theta, V_{UAV}\sin\theta, 0]^T \cdot t$$
                 </div>
                 <div class="formula-card shadow-sm">
-                    <span class="model-header">3. 烟幕弹抛体模�?$P_{Det}$</span>
+                    <span class="model-header">3. 烟幕弹抛体模型 $P_{Det}$</span>
                     <p class="text-xs text-slate-600 mb-4">投放到起爆的动力学轨迹：</p>
                     $$P_{Det} = P_{Drop} + \vec{V}_{UAV} \cdot \tau + \frac{1}{2}\vec{g}\tau^2$$
                     <p class="text-xs text-blue-800 mt-2 font-black">对应函数：get_SmokeDetPos.m</p>
                 </div>
                 <div class="formula-card shadow-sm">
-                    <span class="model-header">4. 烟幕动态沉�?$C(t)$</span>
+                    <span class="model-header">4. 烟幕动态沉降模型 $C(t)$</span>
                     <p class="text-xs text-slate-600 mb-4">云团随时间线性下沉：</p>
                     $$C(t) = P_{Det} + (t - t_{det}) \cdot [0, 0, -3]^T \quad (t \ge t_{det})$$
                 </div>
@@ -400,7 +400,7 @@
                         </div>
                     </div>
 
-                    <!-- 算法选型与对�?-->
+                    <!-- 算法选型与对比 -->
                     <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-emerald-500">
                         <h4 class="font-black text-slate-800 mb-3 flex items-center justify-between">
                             <span><span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded mr-2">Q4/5</span> 算法选型：GA vs PSO</span>
@@ -422,13 +422,13 @@
 
                     <!-- GA 原理补充 -->
                     <div class="theory-block bg-emerald-50 border-emerald-200">
-                        <h4 class="font-black text-emerald-800 mb-3 uppercase tracking-widest"><i class="fa-solid fa-dna mr-2"></i> GA 算法原理与协同优�?/h4>
-                        <p class="mb-3"><strong>算法原理�?/strong> 模拟达尔文自然进化过程。通过<b>实值编�?/b>生成个体，利�?b>选择算子</b>保留高适应度（遮蔽时长长）个体，通过<b>交叉算子</b>交换优秀航迹基因，利�?b>变异算子</b>引入随机扰动以探索新区域�?/p>
-                        <p><strong>协同优势�?/strong> <span class="highlight-bold">处理多峰地形�?/span> 三机协同导致目标函数极其复杂，GA 的种群并行搜索特性比梯度法更难陷入局部最优�?span class="highlight-bold">时空接力�?/span> GA 能够自发进化出“前、中、后”三段接力的投放战术，实现遮蔽效果的无缝衔接�?/p>
+                        <h4 class="font-black text-emerald-800 mb-3 uppercase tracking-widest"><i class="fa-solid fa-dna mr-2"></i> GA 算法原理与协同优势</h4>
+                        <p class="mb-3"><strong>算法原理：</strong> 模拟达尔文自然进化过程。通过<b>实值编码</b>生成个体，利用<b>选择算子</b>保留高适应度（遮蔽时长长）个体，通过<b>交叉算子</b>交换优秀航迹基因，利用<b>变异算子</b>引入随机扰动以探索新区域。</p>
+                        <p><strong>协同优势：</strong> <span class="highlight-bold">处理多峰地形</span> 三机协同导致目标函数极其复杂，GA 的种群并行搜索特性比梯度法更难陷入局部最优。<span class="highlight-bold">时空接力</span> GA 能够自发进化出“前、中、后”三段接力的投放战术，实现遮蔽效果的无缝衔接。</p>
                     </div>
                 </div>
                 <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-200">
-                    <h4 class="font-black text-xs text-slate-400 mb-8 uppercase tracking-widest text-center">三机分布式协同执行方�?/h4>
+                    <h4 class="font-black text-xs text-slate-400 mb-8 uppercase tracking-widest text-center">三机分布式协同执行方案</h4>
                     <table class="data-table text-xs shadow-sm">
                         <thead><tr><th>机号</th><th>航向 ($\theta$)</th><th>飞行速度 ($V$)</th><th>投放时刻</th><th>起爆延时</th></tr></thead>
                         <tbody>
@@ -520,7 +520,7 @@
                             <div class="p-5 bg-white/10 border border-white/20 rounded-2xl">
                                 <h6 class="font-black text-indigo-300 text-xs mb-3">阶段 A：单机单弹预训练 (Pre-training)</h6>
                                 <p class="text-xs text-indigo-100 opacity-80 leading-relaxed mb-2"><strong>动机：</strong> 快速获取单机基准能力，避免在 40 维空间盲目搜索</p>
-                                <p class="text-xs text-indigo-100 opacity-80 leading-relaxed"><strong>实现：</strong> 并行启动 5 个独立的 CEM 进程。每个进程仅优化单架 UAV 8 维参数，奖励函数设为 $R_i = \text{Coverage}_i$。通过 50 代迭代，获得 5 组高斯分布参�?$\mathcal{N}(\mu_i^*, \Sigma_i^*)$，确保每架飞机都能独立完成基本遮蔽任务</p>
+                                <p class="text-xs text-indigo-100 opacity-80 leading-relaxed"><strong>实现：</strong> 并行启动 5 个独立的 CEM 进程。每个进程仅优化单架 UAV 8 维参数，奖励函数设为 $R_i = \text{Coverage}_i$。通过 50 代迭代，获得 5 组高斯分布参数$\mathcal{N}(\mu_i^*, \Sigma_i^*)$，确保每架飞机都能独立完成基本遮蔽任务</p>
                             </div>
                             <div class="p-5 bg-white/10 border border-white/20 rounded-2xl">
                                 <h6 class="font-black text-indigo-300 text-xs mb-3">阶段 B：多机协同策略微调 (Fine-tuning)</h6>
@@ -539,9 +539,9 @@
                 </div>
             </div>
 
-            <!-- 数据�?-->
+            <!-- 数据展示 -->
             <div class="mt-16 glass-card p-10 rounded-[3rem] shadow-2xl border border-indigo-100">
-                <h4 class="font-black text-sm text-slate-800 mb-8 uppercase tracking-widest text-center underline underline-offset-8 decoration-indigo-600">五机协同：CEM 方案最优执行战术数�?/h4>
+                <h4 class="font-black text-sm text-slate-800 mb-8 uppercase tracking-widest text-center underline underline-offset-8 decoration-indigo-600">五机协同：CEM 方案最优执行策略</h4>
                 <div class="overflow-x-auto">
                     <table class="data-table text-xs shadow-lg">
                         <thead>
