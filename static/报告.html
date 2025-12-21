@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         window.MathJax = {
             tex: {
@@ -359,24 +360,31 @@
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="p-6 bg-white rounded-2xl shadow-sm border border-indigo-100">
                                 <span class="text-xs text-slate-400 font-black uppercase tracking-widest">最佳航向角</span>
-                                <div class="font-black text-2xl text-indigo-800">179.5°</div>
+                                <div class="font-black text-2xl text-indigo-800">179.7°</div>
                             </div>
                             <div class="p-6 bg-white rounded-2xl shadow-sm border border-indigo-100">
                                 <span class="text-xs text-slate-400 font-black uppercase tracking-widest">最佳飞行速度</span>
-                                <div class="font-black text-2xl text-indigo-800">131.25 m/s</div>
+                                <div class="font-black text-2xl text-indigo-800">140.00 m/s</div>
                             </div>
                         </div>
                         <table class="data-table mb-8 shadow-sm">
                             <thead><tr><th>烟幕弹ID</th><th>投放时刻 ($t_{drop}$)</th><th>起爆延时 ($\tau$)</th></tr></thead>
                             <tbody class="text-xs font-bold">
-                                <tr><td>干扰弹1</td><td>$0.25\text{ s}$</td><td>$3.75\text{ s}$</td></tr>
-                                <tr><td>干扰弹2</td><td>$4.00\text{ s}$</td><td>$4.88\text{ s}$</td></tr>
-                                <tr><td>干扰弹3</td><td>$5.92\text{ s}$</td><td>$3.38\text{ s}$</td></tr>
+                                <tr><td>干扰弹1</td><td>$0.25\text{ s}$</td><td>$3.62\text{ s}$</td></tr>
+                                <tr><td>干扰弹2</td><td>$3.58\text{ s}$</td><td>$5.38\text{ s}$</td></tr>
+                                <tr><td>干扰弹3</td><td>$5.42\text{ s}$</td><td>$6.00\text{ s}$</td></tr>
                             </tbody>
                         </table>
-                        <div class="p-8 bg-indigo-800 text-white rounded-3xl text-center shadow-lg">
+                        <div class="p-8 bg-indigo-800 text-white rounded-3xl text-center shadow-lg mb-8">
                             <span class="text-xs uppercase opacity-70 font-black tracking-widest">最终并集遮蔽时长</span>
-                            <div class="text-4xl font-black mt-1">6.10 <span class="text-lg font-normal">sec</span></div>
+                            <div class="text-4xl font-black mt-1">7.11 <span class="text-lg font-normal">sec</span></div>
+                            <div class="text-xs mt-2 opacity-80 font-mono">遮蔽时段: [5.63, 12.73] s</div>
+                        </div>
+
+                        <!-- Chart Container -->
+                        <div class="bg-white p-4 rounded-2xl shadow-sm border border-indigo-100">
+                             <h5 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-4 text-center">初始起点数量与最优遮蔽时长</h5>
+                             <canvas id="q3Chart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -771,6 +779,7 @@
 
         window.onload = function() {
             initThree();
+            initQ3Chart();
             window.addEventListener('resize', () => {
                 const container = document.getElementById('simulation-container');
                 camera.aspect = container.clientWidth / container.clientHeight;
@@ -779,6 +788,79 @@
                 render();
             });
         };
+
+        function initQ3Chart() {
+            const ctx = document.getElementById('q3Chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['100', '200', '300', '400', '500', '1000', '1500', '2000'],
+                    datasets: [
+                        {
+                            label: 'Iteration 1',
+                            data: [4.0, 4.6, 5.1, 5.1, 5.4, 5.4, 5.4, 5.4],
+                            borderColor: '#3b82f6', // blue-500
+                            backgroundColor: '#3b82f6',
+                            tension: 0.3,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Iteration 2',
+                            data: [5.2, 5.3, 6.1, 6.1, 6.8, 6.9, 6.9, 6.9],
+                            borderColor: '#f97316', // orange-500
+                            backgroundColor: '#f97316',
+                            tension: 0.3,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Iteration 3',
+                            data: [5.61, 5.70, 6.35, 6.35, 6.99, 7.11, 7.11, 7.11],
+                            borderColor: '#eab308', // yellow-500
+                            backgroundColor: '#eab308',
+                            tension: 0.3,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: "'Noto Sans SC', sans-serif",
+                                    size: 12
+                                }
+                            }
+                        },
+                        title: {
+                            display: false,
+                            text: '初始起点数量与最优遮蔽时长'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 8,
+                            title: {
+                                display: true,
+                                text: '遮蔽时长 (s)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '初始起点数量'
+                            }
+                        }
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>
