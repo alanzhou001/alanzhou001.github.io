@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>烟幕干扰弹投放策略 - 深度建模与算法汇报</title>
+    <title>Matlab建模与优化汇报 - 无人机烟幕干扰弹投放策略</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
@@ -20,7 +20,7 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;700;900&family=Bebas+Neue&display=swap');
         html { font-size: 20px; }
         body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
         .glass-card { background: rgba(255, 255, 255, 1.0); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1); }
@@ -36,6 +36,47 @@
         .highlight-bold { font-weight: 900; color: #1e40af; }
         .contrast-text { color: #0f172a; line-height: 1.8; font-size: 1.05rem; }
         .theory-block { @apply bg-slate-50 border border-slate-200 p-6 rounded-2xl my-4 text-base leading-relaxed; }
+        /* EVA style headings */
+        .eva-title {
+            font-family: 'Bebas Neue', 'Noto Sans SC', sans-serif;
+            display: inline-block;
+            padding: 1.4rem 2rem;
+            background: #0b0f19;
+            color: #f8fafc;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-left: 12px solid #e60012;
+            box-shadow: 0 10px 40px -12px rgba(0,0,0,0.45);
+            border-radius: 1rem;
+        }
+        .eva-title .eva-accent { color: #7c3aed; font-style: italic; }
+        .eva-title .eva-sep { color: #e60012; opacity: 0.85; margin: 0 0.35rem; }
+        main h2.text-4xl {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #0b0f19;
+            color: #f8fafc !important;
+            padding: 1rem 1.25rem;
+            border-left: 10px solid #e60012;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            box-shadow: 0 8px 28px -10px rgba(0,0,0,0.4);
+            border-radius: 1rem;
+        }
+        main h2.text-4xl span:first-child {
+            font-family: 'Bebas Neue', 'Noto Sans SC', sans-serif;
+            color: #a5b4fc;
+            font-size: 2.5rem;
+            font-weight: 900;
+            opacity: 0.85;
+            margin-right: 0.25rem;
+        }
+        main h2.text-4xl span:last-child {
+            color: #f8fafc;
+            font-weight: 900;
+            font-size: 1.8rem;
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-slate-900 overflow-x-hidden">
@@ -65,8 +106,8 @@
             <div class="inline-block px-4 py-1.5 mb-8 bg-white border-2 border-blue-600 text-blue-700 rounded-full text-xs font-black tracking-widest uppercase shadow-md">
                 2025 Matlab建模与优化课程作业
             </div>
-            <h1 class="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
-                无人机协同烟幕防御<br><span class="text-blue-700 italic">动态干扰策略报告</span>
+            <h1 class="text-5xl md:text-7xl mb-8 leading-[1.1] eva-title">
+                无人机协同烟幕防御<span class="eva-sep"> //</span><br><span class="eva-accent">动态干扰策略报告</span>
             </h1>
             <div class="flex justify-center items-center space-x-8 text-slate-600 font-extrabold text-sm uppercase tracking-widest">
                 <span>周陈序</span><span>杨仕言</span><span>陈金铭</span><span>邓伊涵</span>
