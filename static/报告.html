@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matlab建模与优化汇报 - 无人机烟幕干扰弹投放策略</title>
+    <title>烟幕干扰弹投放策略 - 深度建模与算法汇报</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
@@ -20,7 +20,7 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;700;900&family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+SC:wght@300;400;700;900&display=swap');
         html { font-size: 20px; }
         body { font-family: 'Noto Sans SC', sans-serif; scroll-behavior: smooth; }
         .glass-card { background: rgba(255, 255, 255, 1.0); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1); }
@@ -36,65 +36,6 @@
         .highlight-bold { font-weight: 900; color: #1e40af; }
         .contrast-text { color: #0f172a; line-height: 1.8; font-size: 1.05rem; }
         .theory-block { @apply bg-slate-50 border border-slate-200 p-6 rounded-2xl my-4 text-base leading-relaxed; }
-        /* EVA style hero with background image */
-        .eva-hero {
-            position: relative;
-            background: #000 url('./eva-title.jpg') center/cover no-repeat;
-            overflow: hidden;
-        }
-        .eva-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.8) 60%, rgba(0,0,0,0.85) 100%);
-            pointer-events: none;
-        }
-        .eva-hero .hero-content {
-            position: relative;
-            color: #f8fafc;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-        /* EVA style headings */
-        .eva-title {
-            font-family: 'Bebas Neue', 'Noto Sans SC', sans-serif;
-            display: inline-block;
-            padding: 1.4rem 2rem;
-            background: #0b0f19;
-            color: #f8fafc;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            border-left: 12px solid #e60012;
-            box-shadow: 0 10px 40px -12px rgba(0,0,0,0.45);
-            border-radius: 1rem;
-        }
-        .eva-title .eva-accent { color: #7c3aed; font-style: italic; }
-        .eva-title .eva-sep { color: #e60012; opacity: 0.85; margin: 0 0.35rem; }
-        main h2.text-4xl {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: #0b0f19;
-            color: #f8fafc !important;
-            padding: 1rem 1.25rem;
-            border-left: 10px solid #e60012;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            box-shadow: 0 8px 28px -10px rgba(0,0,0,0.4);
-            border-radius: 1rem;
-        }
-        main h2.text-4xl span:first-child {
-            font-family: 'Bebas Neue', 'Noto Sans SC', sans-serif;
-            color: #a5b4fc;
-            font-size: 2.5rem;
-            font-weight: 900;
-            opacity: 0.85;
-            margin-right: 0.25rem;
-        }
-        main h2.text-4xl span:last-child {
-            color: #f8fafc;
-            font-weight: 900;
-            font-size: 1.8rem;
-        }
     </style>
 </head>
 <body class="bg-gray-100 text-slate-900 overflow-x-hidden">
@@ -119,18 +60,21 @@
     </nav>
 
     <!-- 主标题区域 -->
-    <header class="eva-hero pt-44 pb-24 px-6">
-        <div class="max-w-6xl mx-auto text-center hero-content">
-            <div class="inline-block px-4 py-1.5 mb-8 bg-white/10 border-2 border-white/30 text-white rounded-full text-xs font-black tracking-widest uppercase shadow-md backdrop-blur">
+    <header class="pt-44 pb-24 px-6 bg-gradient-to-b from-blue-50 to-gray-100 relative">
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="inline-block px-4 py-1.5 mb-8 bg-white border-2 border-blue-600 text-blue-700 rounded-full text-xs font-black tracking-widest uppercase shadow-md">
                 2025 Matlab建模与优化课程作业
             </div>
-            <h1 class="text-5xl md:text-7xl mb-8 leading-[1.1] eva-title">
-                无人机协同烟幕防御<span class="eva-sep"> //</span><br><span class="eva-accent">动态干扰策略报告</span>
+            <div class="flex justify-center mb-8">
+                <img src="./eva-title.jpg" alt="EVA Title" class="w-full max-w-4xl rounded-xl shadow-2xl ring-2 ring-white/40" />
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black text-slate-900 mb-8 tracking-tighter leading-[1.1]">
+                无人机协同烟幕防御<br><span class="text-blue-700 italic">动态干扰策略报告</span>
             </h1>
-            <div class="flex justify-center items-center space-x-8 text-white font-extrabold text-sm uppercase tracking-widest">
+            <div class="flex justify-center items-center space-x-8 text-slate-600 font-extrabold text-sm uppercase tracking-widest">
                 <span>周陈序</span><span>杨仕言</span><span>陈金铭</span><span>邓伊涵</span>
-                <span class="text-white/50">|</span>
-                <span class="text-indigo-200">指导老师：吴瑞佳</span>
+                <span class="text-slate-300">|</span>
+                <span class="text-blue-800">指导老师：吴瑞佳</span>
             </div>
         </div>
     </header>
@@ -805,13 +749,10 @@
             
             // UAV: Starts at (17800, 0, 1800) -> Scene (890, 90, 0)
             const startUAV = new THREE.Vector3(890, 90, 0);
-            // Horizontal Flight: Target is (0, 90, 0) to maintain altitude
-            const targetUAV = new THREE.Vector3(0, 90, 0);
-            const dirUAV = new THREE.Vector3().subVectors(targetUAV, startUAV).normalize();
-            
+            const dirUAV = new THREE.Vector3().subVectors(new THREE.Vector3(0,0,0), startUAV).normalize();
             const distUAV = V_UAV_Mag * t * SCALE;
             uav.position.copy(startUAV).add(dirUAV.multiplyScalar(distUAV));
-            uav.lookAt(targetUAV);
+            uav.lookAt(new THREE.Vector3(0,0,0));
             
             // LOS Line
             const positions = losLine.geometry.attributes.position;
@@ -850,10 +791,7 @@
                     
                     // Initial Drop Position (Scene)
                     const startUAV = new THREE.Vector3(890, 90, 0);
-                    // Horizontal Flight Direction
-                    const targetUAV = new THREE.Vector3(0, 90, 0);
-                    const dirUAV = new THREE.Vector3().subVectors(targetUAV, startUAV).normalize();
-                    
+                    const dirUAV = new THREE.Vector3().subVectors(new THREE.Vector3(0,0,0), startUAV).normalize();
                     const dropPos = startUAV.clone().add(dirUAV.clone().multiplyScalar(V_UAV_Mag * T_DROP * SCALE));
                     
                     // Velocity of UAV (Scene)
