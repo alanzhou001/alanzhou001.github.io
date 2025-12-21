@@ -36,9 +36,82 @@
         .highlight-bold { font-weight: 900; color: #1e40af; }
         .contrast-text { color: #0f172a; line-height: 1.8; font-size: 1.05rem; }
         .theory-block { @apply bg-slate-50 border border-slate-200 p-6 rounded-2xl my-4 text-base leading-relaxed; }
+        /* Splash overlay */
+        #splash {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity .6s ease;
+        }
+        #splash.hidden { opacity: 0; pointer-events: none; }
+        #splash img { 
+            max-width: 92vw; 
+            max-height: 92vh; 
+            object-fit: contain; 
+            animation: evaBlink 1.2s steps(2, end) infinite, evaJitter 8s ease-in-out infinite;
+            filter: contrast(1.02) saturate(1.05);
+        }
+        /* CRT scanline overlay */
+        #splash::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                to bottom,
+                rgba(255,255,255,0.06) 0px,
+                rgba(255,255,255,0.06) 1px,
+                rgba(0,0,0,0) 3px
+            );
+            mix-blend-mode: overlay;
+            opacity: 0.12;
+            animation: scanShift 10s linear infinite;
+        }
+        @keyframes scanShift {
+            0% { background-position-y: 0; }
+            100% { background-position-y: 24px; }
+        }
+        /* White flash on exit */
+        #splash.flash::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #ffffff;
+            pointer-events: none;
+            animation: evaFlash 220ms ease-out forwards;
+        }
+        @keyframes evaFlash {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @keyframes evaBlink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0.85; }
+        }
+        @keyframes evaJitter {
+            0%, 100% { transform: translate3d(0,0,0); }
+            8% { transform: translate3d(-0.25rem,0,0); }
+            12% { transform: translate3d(0.15rem,0,0); }
+            16% { transform: translate3d(-0.1rem,0,0); }
+            20% { transform: translate3d(0,0,0); }
+            60% { transform: translate3d(0.2rem,0,0); }
+            64% { transform: translate3d(-0.15rem,0,0); }
+            68% { transform: translate3d(0,0,0); }
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-slate-900 overflow-x-hidden">
+
+    <!-- Splash Overlay -->
+    <div id="splash">
+        <img src="./eva-title.jpg" alt="EVA Title">
+    </div>
 
     <!-- 顶部导航 -->
     <nav class="fixed top-0 w-full z-[100] glass-card px-8 py-4 flex justify-between items-center shadow-xl">
@@ -863,6 +936,22 @@
         }
 
         function render() { renderer.render(scene, camera); }
+
+        // Splash click-to-enter
+        document.addEventListener('DOMContentLoaded', () => {
+            const splash = document.getElementById('splash');
+            if (splash) {
+                splash.addEventListener('click', () => {
+                    // First, trigger a short white flash
+                    splash.classList.add('flash');
+                    // Then, fade out the splash overlay
+                    setTimeout(() => {
+                        splash.classList.add('hidden');
+                        setTimeout(() => { splash.style.display = 'none'; }, 600);
+                    }, 220);
+                });
+            }
+        });
 
         window.onload = function() {
             initThree();
