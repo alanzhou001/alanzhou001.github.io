@@ -648,122 +648,206 @@
     </footer>
 
     <script>
-        // --- 3D 物理交互仿真引擎 ---
+        // --- 3D 物理交互仿真引擎 (Updated for Q1 Scenario) ---
         let scene, camera, renderer, missile, uav, cylinder, losLine;
         let smokes = [];
         let time = 0;
         let isAnimating = false;
         const clock = new THREE.Clock();
-        const maxSimTime = 13.0; 
-
+        const SCALE = 0.05; // 1m = 0.05 units
+        
+        // Problem Parameters
+        // M1: (20000, 0, 2000) -> Scene: X=1000, Y=100, Z=0
+        // T: (0, 200, 0) -> Scene: X=0, Y=0, Z=10
+        // UAV: (17800, 0, 1800) -> Scene: X=890, Y=90, Z=0
+        
+        const V_M_Mag = 300; // m/s
+        const V_UAV_Mag = 120; // m/s
+        
+        // Events
+        const T_DROP = 1.5;
+        const TAU = 3.6;
+        const T_DET = T_DROP + TAU;
+        
         function initThree() {
             const container = document.getElementById('simulation-container');
             const width = container.clientWidth;
             const height = container.clientHeight;
 
             scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x020617); // Slate-950
             
-            camera = new THREE.PerspectiveCamera(35, width / height, 1, 30000);
-            camera.position.set(650, 450, 1300);
-            camera.lookAt(0, 100, 0);
+            // Camera focused on action area (X ~ 17000-18000 -> Scene 850-900)
+            camera = new THREE.PerspectiveCamera(45, width / height, 1, 50000);
+            camera.position.set(1100, 400, 400); 
+            camera.lookAt(900, 100, 0);
 
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
             renderer.setSize(width, height);
             renderer.setPixelRatio(window.devicePixelRatio);
+            container.innerHTML = '';
             container.appendChild(renderer.domElement);
 
-            scene.add(new THREE.AmbientLight(0xffffff, 0.4));
-            const mainLight = new THREE.DirectionalLight(0xffffff, 1.4);
-            mainLight.position.set(200, 1200, 600);
-            scene.add(mainLight);
+            // Lights
+            scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+            const dirLight = new THREE.DirectionalLight(0xffffff, 1.0);
+            dirLight.position.set(500, 1000, 500);
+            scene.add(dirLight);
 
-            const grid = new THREE.GridHelper(2000, 20, 0x334155, 0x1e293b);
+            // Grid
+            const grid = new THREE.GridHelper(2000, 50, 0x334155, 0x1e293b);
+            grid.position.set(1000, 0, 0);
             scene.add(grid);
 
-            const targetGeo = new THREE.CylinderGeometry(7, 7, 10, 32);
-            const targetMat = new THREE.MeshPhongMaterial({ color: 0x1d4ed8, transparent: true, opacity: 0.75 });
+            // True Target (Cylinder)
+            // R=7m -> 0.35, H=10m -> 0.5
+            const targetGeo = new THREE.CylinderGeometry(0.35, 0.35, 0.5, 32);
+            const targetMat = new THREE.MeshPhongMaterial({ color: 0x3b82f6 });
             cylinder = new THREE.Mesh(targetGeo, targetMat);
-            cylinder.position.set(0, 5, 200);
+            cylinder.position.set(0, 0.25, 10); // Scene coords
             scene.add(cylinder);
+            
+            // Fake Target (Origin)
+            const fakeGeo = new THREE.SphereGeometry(0.5, 16, 16);
+            const fakeMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+            const fakeTarget = new THREE.Mesh(fakeGeo, fakeMat);
+            fakeTarget.position.set(0,0,0);
+            scene.add(fakeTarget);
 
-            const mGeo = new THREE.ConeGeometry(4, 25, 16);
-            const mMat = new THREE.MeshPhongMaterial({ color: 0xef4444, shininess: 120 });
+            // Missile
+            const mGeo = new THREE.ConeGeometry(0.5, 2, 16);
+            const mMat = new THREE.MeshPhongMaterial({ color: 0xef4444 });
             missile = new THREE.Mesh(mGeo, mMat);
             scene.add(missile);
 
-            const uavGeo = new THREE.BoxGeometry(22, 6, 22);
-            const uavMat = new THREE.MeshPhongMaterial({ color: 0x6366f1 });
+            // UAV
+            const uavGeo = new THREE.BoxGeometry(2, 0.5, 1.5);
+            const uavMat = new THREE.MeshPhongMaterial({ color: 0x10b981 });
             uav = new THREE.Mesh(uavGeo, uavMat);
             scene.add(uav);
 
-            const pts = [new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,0)];
-            const lineGeo = new THREE.BufferGeometry().setFromPoints(pts);
-            const lineMat = new THREE.LineBasicMaterial({ color: 0xef4444, linewidth: 3 });
+            // LOS Line
+            const lineGeo = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,0)]);
+            const lineMat = new THREE.LineBasicMaterial({ color: 0xef4444, linewidth: 2 });
             losLine = new THREE.Line(lineGeo, lineMat);
             scene.add(losLine);
-
+            
+            updatePositions(0);
             render();
+        }
+        
+        function updatePositions(t) {
+            // Missile: Starts at (20000, 0, 2000) -> Scene (1000, 100, 0)
+            const startM = new THREE.Vector3(1000, 100, 0);
+            const dirM = new THREE.Vector3().subVectors(new THREE.Vector3(0,0,0), startM).normalize();
+            const distM = V_M_Mag * t * SCALE;
+            missile.position.copy(startM).add(dirM.multiplyScalar(distM));
+            missile.lookAt(new THREE.Vector3(0,0,0));
+            missile.rotateX(-Math.PI/2);
+            
+            // UAV: Starts at (17800, 0, 1800) -> Scene (890, 90, 0)
+            const startUAV = new THREE.Vector3(890, 90, 0);
+            const dirUAV = new THREE.Vector3().subVectors(new THREE.Vector3(0,0,0), startUAV).normalize();
+            const distUAV = V_UAV_Mag * t * SCALE;
+            uav.position.copy(startUAV).add(dirUAV.multiplyScalar(distUAV));
+            uav.lookAt(new THREE.Vector3(0,0,0));
+            
+            // LOS Line
+            const positions = losLine.geometry.attributes.position;
+            positions.setXYZ(0, missile.position.x, missile.position.y, missile.position.z);
+            positions.setXYZ(1, cylinder.position.x, cylinder.position.y, cylinder.position.z);
+            positions.needsUpdate = true;
         }
 
         function animate() {
             if (!isAnimating) return;
 
             const delta = clock.getDelta();
-            time += delta * 4.2; 
-
-            if (time > maxSimTime) {
-                isAnimating = false;
-                return;
+            time += delta; 
+            
+            updatePositions(time);
+            
+            // Drop
+            if (time >= T_DROP && smokes.length === 0) {
+                createProjectile();
             }
-
-            requestAnimationFrame(animate);
-
-            const mStart = new THREE.Vector3(1200, 120, 0);
-            missile.position.copy(mStart).add(new THREE.Vector3(-time * 150, 0, 0));
-            missile.lookAt(0, 5, 200);
-            missile.rotateX(Math.PI/2);
-
-            const ang = 120 * Math.PI / 180;
-            uav.position.set(400 + Math.cos(ang)*time*45, 150, Math.sin(ang)*time*45);
-
-            const linePos = losLine.geometry.attributes.position;
-            linePos.setXYZ(0, missile.position.x, missile.position.y, missile.position.z);
-            linePos.setXYZ(1, cylinder.position.x, cylinder.position.y, cylinder.position.z);
-            linePos.needsUpdate = true;
-
-            if (Math.abs(time - 5) < 0.1 && smokes.length === 0) {
-                createSmoke(uav.position.x, uav.position.y, uav.position.z);
+            
+            // Detonate
+            if (time >= T_DET && smokes.length > 0 && !smokes[0].isDetonated) {
+                detonateSmoke();
             }
-
-            let isShielded = false;
+            
+            // Smoke Physics
             smokes.forEach(s => {
-                s.mesh.position.y -= 0.65; 
-                s.mesh.scale.multiplyScalar(1.0025);
-                
-                const dist = checkDist(s.mesh.position, missile.position, cylinder.position);
-                if (dist < 15 * s.mesh.scale.x) isShielded = true;
+                if (s.isDetonated) {
+                    s.mesh.position.y -= (3 * SCALE) * delta; // Sink 3m/s
+                    checkIntersection(s.mesh);
+                } else {
+                    // Projectile Motion
+                    const dt = time - T_DROP;
+                    const g = 9.8 * SCALE;
+                    
+                    // Initial Drop Position (Scene)
+                    const startUAV = new THREE.Vector3(890, 90, 0);
+                    const dirUAV = new THREE.Vector3().subVectors(new THREE.Vector3(0,0,0), startUAV).normalize();
+                    const dropPos = startUAV.clone().add(dirUAV.clone().multiplyScalar(V_UAV_Mag * T_DROP * SCALE));
+                    
+                    // Velocity of UAV (Scene)
+                    const vUAV = dirUAV.clone().multiplyScalar(V_UAV_Mag * SCALE);
+                    
+                    // P = P0 + V*t + 0.5*g*t^2
+                    const pos = dropPos.clone()
+                        .add(vUAV.clone().multiplyScalar(dt));
+                    pos.y -= 0.5 * g * dt * dt;
+                    
+                    s.mesh.position.copy(pos);
+                }
             });
 
-            losLine.material.color.setHex(isShielded ? 0x10b981 : 0xef4444);
-
             render();
+            requestAnimationFrame(animate);
         }
-
-        function checkDist(p, a, b) {
-            const ab = new THREE.Vector3().subVectors(b, a);
-            const ap = new THREE.Vector3().subVectors(p, a);
-            const t = Math.max(0, Math.min(1, ap.dot(ab) / ab.lengthSq()));
-            const proj = a.clone().add(ab.multiplyScalar(t));
-            return p.distanceTo(proj);
-        }
-
-        function createSmoke(x, y, z) {
-            const geo = new THREE.SphereGeometry(15, 32, 32);
-            const mat = new THREE.MeshPhongMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.4 });
+        
+        function createProjectile() {
+            const geo = new THREE.SphereGeometry(0.2, 8, 8);
+            const mat = new THREE.MeshBasicMaterial({ color: 0xffff00 });
             const mesh = new THREE.Mesh(geo, mat);
-            mesh.position.set(x, y, z);
             scene.add(mesh);
-            smokes.push({ mesh });
+            smokes.push({ mesh: mesh, isDetonated: false });
+        }
+        
+        function detonateSmoke() {
+            const s = smokes[0];
+            scene.remove(s.mesh);
+            
+            const geo = new THREE.SphereGeometry(10 * SCALE, 32, 32); // R=10m
+            const mat = new THREE.MeshPhongMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.6 });
+            const mesh = new THREE.Mesh(geo, mat);
+            mesh.position.copy(s.mesh.position);
+            scene.add(mesh);
+            s.mesh = mesh;
+            s.isDetonated = true;
+        }
+        
+        function checkIntersection(smokeMesh) {
+            const origin = missile.position;
+            const target = cylinder.position;
+            const direction = new THREE.Vector3().subVectors(target, origin).normalize();
+            const sphereCenter = smokeMesh.position;
+            const sphereRadius = 10 * SCALE;
+            
+            const L = new THREE.Vector3().subVectors(sphereCenter, origin);
+            const tca = L.dot(direction);
+            
+            let isShielded = false;
+            if (tca > 0) {
+                const d2 = L.dot(L) - tca * tca;
+                if (d2 <= sphereRadius * sphereRadius) {
+                    isShielded = true;
+                }
+            }
+            
+            losLine.material.color.setHex(isShielded ? 0x10b981 : 0xef4444);
         }
 
         function startSimulation() {
