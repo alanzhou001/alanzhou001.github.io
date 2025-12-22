@@ -519,7 +519,7 @@
                 <h5 class="text-xs font-black text-slate-500 uppercase tracking-widest mb-2">问题重述</h5>
                 <p class="text-sm text-slate-600 leading-relaxed">FY1、FY2、FY3 各投放 1 枚烟幕弹干扰 M1，需给出三机的协同投放策略。</p>
             </div>
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
                 <div class="space-y-8">
                     <div class="glass-card p-8 rounded-3xl border-l-8 border-emerald-700">
                         <span class="model-header bg-gray-100 shadow-md text-blue-400">优化模型标准表述</span>
@@ -557,35 +557,37 @@
                         <p><strong>协同优势：</strong> <span class="highlight-bold">处理多峰地形</span> 三机协同导致目标函数极其复杂，GA 的种群并行搜索特性比梯度法更难陷入局部最优。<span class="highlight-bold">时空接力</span> GA 能够自发进化出“前、中、后”三段接力的投放战术，实现遮蔽效果的无缝衔接。</p>
                     </div>
                 </div>
-                <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-200">
-                    <h4 class="font-black text-xs text-slate-400 mb-8 uppercase tracking-widest text-center">三机分布式协同执行方案</h4>
-                    <table class="data-table text-xs shadow-sm">
-                        <thead><tr><th>机号</th><th>航向 ($\theta$)</th><th>飞行速度 ($V$)</th><th>投放时刻</th><th>起爆延时</th></tr></thead>
-                        <tbody>
-                            <tr><td class="font-black text-emerald-700">UAV FY1</td><td>5.12°</td><td>100.67 m/s</td><td>0.73 s</td><td>0.46 s</td></tr>
-                            <tr><td class="font-black text-emerald-700">UAV FY2</td><td>237.36°</td><td>81.95 m/s</td><td>12.30 s</td><td>7.53 s</td></tr>
-                            <tr><td class="font-black text-emerald-700">UAV FY3</td><td>107.64°</td><td>97.09 m/s</td><td>27.19 s</td><td>6.25 s</td></tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-8 p-6 bg-emerald-700 text-white rounded-2xl flex items-center justify-between shadow-lg">
-                        <div>
-                            <div class="text-xs font-black opacity-80 uppercase tracking-widest">最优协同总时长</div>
-                            <div class="text-4xl font-black">11.29 <span class="text-lg font-normal">s</span></div>
+                <div class="space-y-8">
+                    <div class="bg-white p-10 rounded-[3rem] shadow-xl border border-slate-200">
+                        <h4 class="font-black text-xs text-slate-400 mb-8 uppercase tracking-widest text-center">三机分布式协同执行方案</h4>
+                        <table class="data-table text-xs shadow-sm">
+                            <thead><tr><th>机号</th><th>航向 ($\theta$)</th><th>飞行速度 ($V$)</th><th>投放时刻</th><th>起爆延时</th></tr></thead>
+                            <tbody>
+                                <tr><td class="font-black text-emerald-700">UAV FY1</td><td>5.12°</td><td>100.67 m/s</td><td>0.73 s</td><td>0.46 s</td></tr>
+                                <tr><td class="font-black text-emerald-700">UAV FY2</td><td>237.36°</td><td>81.95 m/s</td><td>12.30 s</td><td>7.53 s</td></tr>
+                                <tr><td class="font-black text-emerald-700">UAV FY3</td><td>107.64°</td><td>97.09 m/s</td><td>27.19 s</td><td>6.25 s</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-8 p-6 bg-emerald-700 text-white rounded-2xl flex items-center justify-between shadow-lg">
+                            <div>
+                                <div class="text-xs font-black opacity-80 uppercase tracking-widest">最优协同总时长</div>
+                                <div class="text-4xl font-black">11.29 <span class="text-lg font-normal">s</span></div>
+                            </div>
+                            <i class="fa-solid fa-dna text-4xl opacity-30 animate-pulse"></i>
                         </div>
-                        <i class="fa-solid fa-dna text-4xl opacity-30 animate-pulse"></i>
                     </div>
-                </div>
-            </div>
 
-            <!-- GA 收敛曲线 -->
-            <div class="mt-12 bg-white p-10 rounded-[3rem] shadow-xl border border-slate-200">
-                <h4 class="font-black text-xs text-slate-400 mb-8 uppercase tracking-widest text-center">遗传算法收敛曲线 (GA Convergence Plot)</h4>
-                <div class="relative h-[400px] w-full">
-                    <canvas id="gaConvergenceChart"></canvas>
-                </div>
-                <div class="mt-6 flex justify-center space-x-8 text-xs font-bold">
-                    <div class="flex items-center"><span class="w-3 h-3 bg-blue-600 rounded-full mr-2"></span> 最佳适应度 (Best Fitness)</div>
-                    <div class="flex items-center"><span class="w-3 h-3 bg-orange-500 rounded-full mr-2"></span> 平均适应度 (Mean Fitness)</div>
+                    <!-- GA 收敛曲线 -->
+                    <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-200">
+                        <h4 class="font-black text-xs text-slate-400 mb-6 uppercase tracking-widest text-center">遗传算法收敛曲线 (GA Convergence Plot)</h4>
+                        <div class="relative h-[300px] w-full">
+                            <canvas id="gaConvergenceChart"></canvas>
+                        </div>
+                        <div class="mt-4 flex justify-center space-x-6 text-[0.6rem] font-bold">
+                            <div class="flex items-center"><span class="w-2 h-2 bg-blue-600 rounded-full mr-2"></span> 最佳适应度</div>
+                            <div class="flex items-center"><span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span> 平均适应度</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
