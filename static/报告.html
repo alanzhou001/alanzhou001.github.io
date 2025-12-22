@@ -36,6 +36,27 @@
         .highlight-bold { font-weight: 900; color: #1e40af; }
         .contrast-text { color: #0f172a; line-height: 1.8; font-size: 1.05rem; }
         .theory-block { @apply bg-slate-50 border border-slate-200 p-6 rounded-2xl my-4 text-base leading-relaxed; }
+        /* Auto-hide nav */
+        #nav-container {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 99;
+            transition: transform .35s ease, opacity .35s ease;
+        }
+        #nav-container.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #nav-trigger {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            z-index: 100;
+        }
         /* Splash overlay */
         #splash {
             position: fixed;
@@ -113,24 +134,27 @@
         <img src="./eva-title.jpg" alt="EVA Title">
     </div>
 
-    <!-- 顶部导航 -->
-    <nav class="fixed top-0 w-full z-[100] glass-card px-8 py-4 flex justify-between items-center shadow-xl">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-300">
-                <i class="fa-solid fa-shield-halved text-xl"></i>
+    <!-- 顶部导航：默认隐藏，顶部触发区域显示 -->
+    <div id="nav-trigger"></div>
+    <div id="nav-container" class="hidden">
+        <nav class="glass-card px-8 py-4 flex justify-between items-center shadow-xl">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center text-white shadow-lg shadow-blue-300">
+                    <i class="fa-solid fa-shield-halved text-xl"></i>
+                </div>
+                <span class="font-black text-xl tracking-tight text-blue-900 italic uppercase">UAV Defense System</span>
             </div>
-            <span class="font-black text-xl tracking-tight text-blue-900 italic uppercase">UAV Defense System</span>
-        </div>
-        <div class="hidden lg:flex space-x-8 text-xs font-black text-slate-600 uppercase tracking-widest">
-            <a href="#background" class="hover:text-blue-700 transition">问题背景</a>
-            <a href="#physics" class="hover:text-blue-700 transition">物理建模</a>
-            <a href="#prob1" class="hover:text-blue-700 transition">问题一</a>
-            <a href="#prob2" class="hover:text-blue-700 transition">问题二</a>
-            <a href="#prob3" class="hover:text-blue-700 transition">问题三</a>
-            <a href="#prob4" class="hover:text-blue-700 transition">问题四</a>
-            <a href="#prob5" class="hover:text-blue-700 transition">问题五</a>
-        </div>
-    </nav>
+            <div class="hidden lg:flex space-x-8 text-xs font-black text-slate-600 uppercase tracking-widest">
+                <a href="#background" class="hover:text-blue-700 transition">问题背景</a>
+                <a href="#physics" class="hover:text-blue-700 transition">物理建模</a>
+                <a href="#prob1" class="hover:text-blue-700 transition">问题一</a>
+                <a href="#prob2" class="hover:text-blue-700 transition">问题二</a>
+                <a href="#prob3" class="hover:text-blue-700 transition">问题三</a>
+                <a href="#prob4" class="hover:text-blue-700 transition">问题四</a>
+                <a href="#prob5" class="hover:text-blue-700 transition">问题五</a>
+            </div>
+        </nav>
+    </div>
 
     <!-- 主标题区域 -->
     <header class="pt-44 pb-24 px-6 bg-gradient-to-b from-blue-50 to-gray-100 relative">
@@ -936,6 +960,8 @@
         // Splash click-to-enter
         document.addEventListener('DOMContentLoaded', () => {
             const splash = document.getElementById('splash');
+            const nav = document.getElementById('nav-container');
+            const trigger = document.getElementById('nav-trigger');
             if (splash) {
                 splash.addEventListener('click', () => {
                     // First, trigger a short white flash
@@ -946,6 +972,15 @@
                         setTimeout(() => { splash.style.display = 'none'; }, 600);
                     }, 220);
                 });
+            }
+
+            // Nav hover-to-show
+            if (nav && trigger) {
+                const showNav = () => nav.classList.remove('hidden');
+                const hideNav = () => nav.classList.add('hidden');
+                trigger.addEventListener('mouseenter', showNav);
+                nav.addEventListener('mouseenter', showNav);
+                nav.addEventListener('mouseleave', hideNav);
             }
         });
 
