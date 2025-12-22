@@ -478,25 +478,39 @@
                         <div class="grid grid-cols-2 gap-6 mb-8">
                             <div class="p-6 bg-white rounded-2xl shadow-sm border border-indigo-100">
                                 <span class="text-xs text-slate-400 font-black uppercase tracking-widest">最佳航向角</span>
-                                <div class="font-black text-2xl text-indigo-800">179.7°</div>
+                                <div class="font-black text-2xl text-indigo-800">179.6° (3.14 rad)</div>
                             </div>
                             <div class="p-6 bg-white rounded-2xl shadow-sm border border-indigo-100">
                                 <span class="text-xs text-slate-400 font-black uppercase tracking-widest">最佳飞行速度</span>
-                                <div class="font-black text-2xl text-indigo-800">140.00 m/s</div>
+                                <div class="font-black text-2xl text-indigo-800">139.77 m/s</div>
                             </div>
                         </div>
                         <table class="data-table mb-8 shadow-sm">
                             <thead><tr><th>烟幕弹ID</th><th>投放时刻 ($t_{drop}$)</th><th>起爆延时 ($\tau$)</th></tr></thead>
                             <tbody class="text-xs font-bold">
-                                <tr><td>干扰弹1</td><td>$0.25\text{ s}$</td><td>$3.62\text{ s}$</td></tr>
-                                <tr><td>干扰弹2</td><td>$3.58\text{ s}$</td><td>$5.38\text{ s}$</td></tr>
-                                <tr><td>干扰弹3</td><td>$5.42\text{ s}$</td><td>$6.00\text{ s}$</td></tr>
+                                <tr><td>干扰弹1</td><td>$0.00\text{ s}$</td><td>$3.66\text{ s}$</td></tr>
+                                <tr><td>干扰弹2</td><td>$3.05\text{ s}$</td><td>$5.11\text{ s}$</td></tr>
+                                <tr><td>干扰弹3</td><td>$5.31\text{ s}$</td><td>$5.93\text{ s}$</td></tr>
                             </tbody>
                         </table>
                         <div class="p-8 bg-indigo-800 text-white rounded-3xl text-center shadow-lg mb-8">
                             <span class="text-xs uppercase opacity-70 font-black tracking-widest">最终并集遮蔽时长</span>
-                            <div class="text-4xl font-black mt-1">7.11 <span class="text-lg font-normal">sec</span></div>
-                            <div class="text-xs mt-2 opacity-80 font-mono">遮蔽时段: [5.63, 12.73] s</div>
+                            <div class="text-4xl font-black mt-1">7.45 <span class="text-lg font-normal">sec</span></div>
+                            <div class="text-xs mt-2 opacity-80 font-mono">遮蔽时段: [5.17, 11.21] s, [11.25, 12.64] s</div>
+                        </div>
+
+                        <!-- 灵敏度分析配图 -->
+                        <div class="space-y-6">
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-indigo-100">
+                                <h5 class="text-xs font-black text-indigo-400 uppercase tracking-widest mb-4 text-center">算法灵敏度分析：Top-K 种子点选择</h5>
+                                <img src="./prob3_topk.png" alt="Top-K Analysis" class="w-full rounded-xl shadow-inner">
+                                <p class="text-[0.65rem] text-slate-500 mt-3 italic text-center">图 3.1: 不同 K 值对最终优化结果的影响（500个初始起点采样）</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-indigo-100">
+                                <h5 class="text-xs font-black text-indigo-400 uppercase tracking-widest mb-4 text-center">算法收敛性分析：初始起点规模</h5>
+                                <img src="./prob3_points.png" alt="Initial Points Analysis" class="w-full rounded-xl shadow-inner">
+                                <p class="text-[0.65rem] text-slate-500 mt-3 italic text-center">图 3.2: 初始采样点数量与最优遮蔽时长的收敛关系 (K=9)</p>
+                            </div>
                         </div>
 
                         <!-- Chart Container -->
@@ -1029,11 +1043,11 @@
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['100', '200', '300', '400', '500', '1000', '1500', '2000'],
+                    labels: ['100', '200', '300', '400', '500', '1000', '1500', '2000', '3000'],
                     datasets: [
                         {
                             label: 'Iteration 1',
-                            data: [4.0, 4.6, 5.1, 5.1, 5.4, 5.4, 5.4, 5.4],
+                            data: [3.8, 4.3, 4.9, 4.9, 4.9, 5.5, 5.6, 5.6, 5.6],
                             borderColor: '#3b82f6', // blue-500
                             backgroundColor: '#3b82f6',
                             tension: 0.3,
@@ -1042,7 +1056,7 @@
                         },
                         {
                             label: 'Iteration 2',
-                            data: [5.2, 5.3, 6.1, 6.1, 6.8, 6.9, 6.9, 6.9],
+                            data: [5.1, 5.4, 5.5, 6.0, 5.6, 6.0, 6.5, 7.0, 7.0],
                             borderColor: '#f97316', // orange-500
                             backgroundColor: '#f97316',
                             tension: 0.3,
@@ -1051,7 +1065,7 @@
                         },
                         {
                             label: 'Iteration 3',
-                            data: [5.61, 5.70, 6.35, 6.35, 6.99, 7.11, 7.11, 7.11],
+                            data: [5.20, 5.90, 5.85, 6.15, 5.84, 6.27, 6.98, 7.45, 7.26],
                             borderColor: '#eab308', // yellow-500
                             backgroundColor: '#eab308',
                             tension: 0.3,
