@@ -187,7 +187,7 @@
                     <!-- 竞赛题目详情 -->
                     <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-200">
                         <h3 class="text-2xl font-black text-slate-800 mb-6 flex items-center">
-                            <i class="fa-solid fa-file-lines text-blue-600 mr-3"></i> 竞赛题目：烟幕干扰弹的投放策略 (A题)
+                            <i class="fa-solid fa-file-lines text-blue-600 mr-3"></i> 烟幕干扰弹的投放策略
                         </h3>
                         <p class="text-sm text-slate-600 leading-relaxed mb-6">
                             运用无人机挂载烟幕干扰弹，在来袭导弹与保护目标之间建立遮蔽屏障。需建立数学模型，针对不同战术情景设计最优投放策略（飞行航向、速度、投放点、起爆延时），以最大化有效遮蔽时长。
@@ -246,18 +246,26 @@
 
                     <div class="bg-white p-6 rounded-[2rem] border border-slate-200 shadow-sm">
                         <h4 class="font-black text-xs text-slate-400 mb-4 uppercase tracking-widest">问题清单</h4>
-                        <div class="space-y-2">
-                            <div class="flex gap-2 items-center text-xs">
-                                <span class="font-black text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Q1-Q3</span>
-                                <span class="text-slate-600">单机单弹/多弹策略优化</span>
+                        <div class="space-y-2 text-xs text-slate-600 font-medium leading-relaxed">
+                            <div class="flex gap-2 items-start">
+                                <span class="font-black text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Q1</span>
+                                <span>FY1 以 120 m/s 朝假目标方向飞行，受领 1.5 s 后投放 1 枚烟幕弹，3.6 s 后起爆，求对 M1 的有效遮蔽时长。</span>
                             </div>
-                            <div class="flex gap-2 items-center text-xs">
+                            <div class="flex gap-2 items-start">
+                                <span class="font-black text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Q2</span>
+                                <span>FY1 投放 1 枚烟幕弹，需联合优化飞行方向、速度、投放点与起爆点，使对 M1 的遮蔽时间最大。</span>
+                            </div>
+                            <div class="flex gap-2 items-start">
+                                <span class="font-black text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Q3</span>
+                                <span>FY1 投放 3 枚烟幕弹干扰 M1，给出投放策略（序列、位置、延时）。</span>
+                            </div>
+                            <div class="flex gap-2 items-start">
                                 <span class="font-black text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">Q4</span>
-                                <span class="text-slate-600">3机1弹协同拦截 M1</span>
+                                <span>FY1、FY2、FY3 各投放 1 枚烟幕弹干扰 M1，给出协同投放策略。</span>
                             </div>
-                            <div class="flex gap-2 items-center text-xs">
+                            <div class="flex gap-2 items-start">
                                 <span class="font-black text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded">Q5</span>
-                                <span class="text-slate-600">5机5弹大规模对抗博弈</span>
+                                <span>5 架无人机，每架至多 3 枚烟幕弹，对 M1、M2、M3 三枚导弹实施干扰，给出多机多弹投放策略。</span>
                             </div>
                         </div>
                     </div>
@@ -269,7 +277,7 @@
         <section id="physics" class="scroll-mt-32">
             <h2 class="text-4xl font-black mb-12 flex items-center text-slate-900">
                 <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">01</span>
-                二、物理建模全体系
+                二、物理建模
             </h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="formula-card shadow-sm">
@@ -305,6 +313,7 @@
                         <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">02</span>
                         问题一：单机单弹确定性计算
                     </h2>
+                    <p class="text-sm text-slate-600 mb-6 leading-relaxed">FY1 以 120 m/s 朝假目标方向飞行，受领任务 1.5 s 后投放 1 枚烟幕弹，3.6 s 后起爆，求对 M1 的有效遮蔽时长。</p>
                     <div class="glass-card p-8 rounded-3xl mb-8 border-l-8 border-slate-900">
                         <span class="model-header bg-gray-100 shadow-md text-blue-400">优化模型标准表述</span>
                         <div class="text-sm contrast-text space-y-4">
@@ -352,6 +361,7 @@
                 <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">03</span>
                 问题二：单机参数全局寻优 (PSO)
             </h2>
+            <p class="text-sm text-slate-600 mb-8 leading-relaxed">FY1 投放 1 枚烟幕弹，联合优化飞行方向、飞行速度、投放点与起爆点，使对 M1 的遮蔽时间最大。</p>
             <div class="grid lg:grid-cols-2 gap-12">
                 <div class="space-y-8">
                     <div class="glass-card p-8 rounded-3xl border-l-8 border-blue-700">
@@ -404,6 +414,7 @@
                 <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">04</span>
                 问题三：带间隔约束的并集优化 (SQP)
             </h2>
+            <p class="text-sm text-slate-600 mb-8 leading-relaxed">FY1 投放 3 枚烟幕弹干扰 M1，需给出投放序列、位置与延时的策略设计。</p>
             <div class="glass-card p-12 rounded-[3rem] flex flex-col lg:flex-row gap-16 border-t-8 border-indigo-700">
                 <div class="lg:w-1/2 space-y-8">
                     <span class="model-header bg-gray-100 shadow-md text-blue-400">优化模型标准表述</span>
@@ -495,6 +506,7 @@
                 <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">05</span>
                 问题四：多机协同遗传算法 (GA)
             </h2>
+            <p class="text-sm text-slate-600 mb-8 leading-relaxed">FY1、FY2、FY3 各投放 1 枚烟幕弹干扰 M1，需给出三机的协同投放策略。</p>
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
                     <div class="glass-card p-8 rounded-3xl border-l-8 border-emerald-700">
@@ -558,8 +570,9 @@
         <section id="prob5" class="scroll-mt-32">
             <h2 class="text-4xl font-black mb-12 flex items-center text-slate-900">
                 <span class="text-blue-700 mr-4 opacity-30 text-6xl italic">06</span>
-                问题五：5机5弹大规模对抗博弈
+                问题五：5机3弹大规模对抗博弈
             </h2>
+            <p class="text-sm text-slate-600 mb-10 leading-relaxed">5 架无人机，每架至多 3 枚烟幕弹，对 M1、M2、M3 三枚导弹实施干扰，需设计多机多弹的协同投放策略。</p>
             <div class="glass-card p-10 rounded-[3rem] border-l-8 border-indigo-900 mb-12 shadow-xl">
                 <h4 class="font-black text-xs text-indigo-900 mb-6 uppercase tracking-widest tracking-tighter shadow-sm inline-block px-3 py-1 bg-indigo-50 rounded">40 维高维寻优标准表述</h4>
                 <div class="contrast-text text-sm space-y-4">
