@@ -412,6 +412,59 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 敏感性分析 -->
+            <div class="mt-12 bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-200">
+                <h3 class="text-2xl font-black text-slate-800 mb-8 flex items-center">
+                    <i class="fa-solid fa-chart-line text-blue-600 mr-4"></i>
+                    最优策略的敏感性分析 (Sensitivity Analysis)
+                </h3>
+                
+                <div class="grid lg:grid-cols-5 gap-12 items-center">
+                    <div class="lg:col-span-2 space-y-6">
+                        <div class="p-6 bg-slate-50 rounded-2xl border-l-4 border-blue-500">
+                            <h4 class="font-black text-xs text-slate-400 mb-3 uppercase tracking-widest">扰动环境设定</h4>
+                            <ul class="text-sm text-slate-600 space-y-3">
+                                <li><span class="font-bold text-slate-800">定位误差：</span> 假设雷达对导弹坐标的测量存在各向同性的随机偏差，误差范围设为 $\pm 5\text{m}$。</li>
+                                <li><span class="font-bold text-slate-800">速度波动：</span> 假设导弹速度在 $[298, 302] \text{m/s}$ 范围内随机波动（即 $\pm 0.6\%$）。</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <h4 class="font-black text-xs text-slate-400 uppercase tracking-widest">分析结论</h4>
+                            <p class="text-sm text-slate-600 leading-relaxed">
+                                保持决策变量不变，我们进行了 $N=1000$ 次蒙特卡洛仿真。统计结果显示：
+                            </p>
+                            <ul class="text-sm text-slate-600 space-y-4">
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-check-circle text-emerald-500 mt-1"></i>
+                                    <span><b class="text-slate-800">极高的可靠性：</b> 任务成功率达到了 <span class="highlight-bold">100%</span>（有效遮蔽时长 $>1\text{s}$）。即便在最恶劣工况下，仍能保证 3.20s 的有效遮蔽。</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-gauge-high text-blue-500 mt-1"></i>
+                                    <span><b class="text-slate-800">性能保持度高：</b> 平均遮蔽时长为 <span class="highlight-bold">4.18s</span>，仅比理论最优值（4.60s）下降了约 9%。</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fa-solid fa-chart-area text-indigo-500 mt-1"></i>
+                                    <span><b class="text-slate-800">分布特性：</b> 呈现明显的<span class="highlight-bold">左偏（Left-skewed）</span>特征，绝大多数样本集中在 4.0s 至 4.6s 的高分区间。</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-3">
+                        <div class="bg-white p-4 rounded-3xl shadow-inner border border-slate-100">
+                            <img src="prob2_sensitivity.png" alt="Sensitivity Analysis" class="w-full rounded-2xl">
+                            <p class="text-center text-xs text-slate-400 mt-4 font-medium">图 5-4：最优策略鲁棒性分布 (N=1000)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-blue-50 rounded-2xl border border-blue-100 text-sm text-blue-800 leading-relaxed">
+                    <i class="fa-solid fa-quote-left opacity-20 mr-2"></i>
+                    综上所述，本文求解得到的单机单弹投放策略不仅在理论上达到了性能极限，且对米级定位误差和微小速度波动具有极强的免疫力，具备实际工程应用的价值。
+                </div>
+            </div>
         </section>
 
         <!-- 4. 问题三 -->
