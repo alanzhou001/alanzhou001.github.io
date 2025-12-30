@@ -306,415 +306,646 @@
         </section>
 
         <!-- 问题一 -->
-        <section id="problem1" class="mb-5">
-            <h2 class="section-title">问题一：起跳与落地时刻确定及滞空阶段分析</h2>
+<section id="problem1" class="mb-5">
+    <h2 class="section-title">问题一：起跳与落地时刻确定及滞空阶段分析</h2>
+    
+    <h4 class="subsection-title">1. 问题分析</h4>
+    <p>问题1需要对运动员跳远过程中的关键数据进行分析，主要目的是提取起跳和落地时刻，分析滞空阶段的运动轨迹。通过使用AI技术提取运动员每帧的位置信息，并结合运动学模型，可以精确计算出起跳和落地时刻。</p>
+    
+    <h4 class="subsection-title">2. 建模方法</h4>
+    <div class="row">
+        <div class="col-md-8">
+            <p>采用竖直速度法确定起跳和落地时刻：</p>
+            <ul>
+                <li><strong>起跳时刻：</strong>运动员脚部竖直速度由负变为正的瞬间</li>
+                <li><strong>落地时刻：</strong>运动员脚部竖直速度由正变为负的瞬间</li>
+            </ul>
             
-            <h4 class="subsection-title">1. 问题分析</h4>
-            <p>问题1需要对运动员跳远过程中的关键数据进行分析，主要目的是提取起跳和落地时刻，分析滞空阶段的运动轨迹。通过使用AI技术提取运动员每帧的位置信息，并结合运动学模型，可以精确计算出起跳和落地时刻。</p>
-            
-            <h4 class="subsection-title">2. 建模方法</h4>
-            <div class="row">
-                <div class="col-md-8">
-                    <p>采用竖直速度法确定起跳和落地时刻：</p>
-                    <ul>
-                        <li><strong>起跳时刻：</strong>运动员脚部竖直速度由负变为正的瞬间</li>
-                        <li><strong>落地时刻：</strong>运动员脚部竖直速度由正变为负的瞬间</li>
-                    </ul>
-                    
-                    <div class="code-block">
-                        # 竖直速度计算公式<br>
-                        v(t) = [x(t) - x(t-1)] / Δt<br>
-                        <br>
-                        # 起跳时刻判定条件<br>
-                        起跳时刻 t: v(t-1) &lt; 0 且 v(t) &gt; 0<br>
-                        <br>
-                        # 落地时刻判定条件<br>
-                        落地时刻 t: v(t-1) &gt; 0 且 v(t) &lt; 0
-                    </div>
-                    
-                    <p>滞空阶段运动遵循抛物线运动规律：</p>
-                    <div class="code-block">
-                        x(t) = v<sub>x0</sub> · t<br>
-                        y(t) = y<sub>0</sub> + v<sub>y0</sub> · t - 1/2 · g · t²
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">关键公式</div>
-                        <div class="card-body">
-                            <p><strong>滞空时间：</strong></p>
-                            <p>t<sub>air</sub> = 2v<sub>y0</sub> / g</p>
-                            <p><strong>最大高度：</strong></p>
-                            <p>y<sub>max</sub> = y<sub>0</sub> + v<sub>y0</sub>² / (2g)</p>
-                            <p><strong>达到最大高度时间：</strong></p>
-                            <p>t<sub>max</sub> = v<sub>y0</sub> / g</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="code-block">
+                # 竖直速度计算公式<br>
+                v(t) = [x(t) - x(t-1)] / Δt<br>
+                <br>
+                # 起跳时刻判定条件<br>
+                起跳时刻 t: v(t-1) &lt; 0 且 v(t) &gt; 0<br>
+                <br>
+                # 落地时刻判定条件<br>
+                落地时刻 t: v(t-1) &gt; 0 且 v(t) &lt; 0
             </div>
             
-            <h4 class="subsection-title">3. 求解结果</h4>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image1.png" alt="运动者1竖直位置变化" class="model-diagram">
-                        <div class="image-caption">图1：运动者1竖直位置随时间变化</div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image2.png" alt="运动者1竖直速度变化" class="model-diagram">
-                        <div class="image-caption">图2：运动者1竖直速度随时间变化</div>
-                    </div>
-                </div>
+            <p>滞空阶段运动遵循抛物线运动规律：</p>
+            <div class="code-block">
+                x(t) = v<sub>x0</sub> · t<br>
+                y(t) = y<sub>0</sub> + v<sub>y0</sub> · t - 1/2 · g · t²
             </div>
             
-            <div class="result-box">
-                <h5><i class="fas fa-check-circle text-success me-2"></i>关键发现</h5>
-                <ul>
-                    <li><strong>运动者1：</strong>起跳时刻：帧号300，落地时刻：帧号4，跳远成绩：1.58米</li>
-                    <li><strong>运动者2：</strong>起跳时刻：帧号302，落地时刻：帧号2，跳远成绩：1.15米</li>
-                    <li>竖直速度法能准确识别起跳与落地时刻，起跳时速度由负转正，落地时速度由正转负</li>
-                    <li>滞空阶段运动轨迹符合抛物线规律，水平速度保持恒定，竖直速度受重力影响逐渐减小</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- 问题二 -->
-        <section id="problem2" class="mb-5">
-            <h2 class="section-title">问题二：影响跳远成绩的主要因素分析</h2>
-            
-            <h4 class="subsection-title">1. 整体建模框架</h4>
-            <div class="image-container">
-                <img src="framework.png" alt="问题二建模框架" class="model-diagram">
-                <div class="image-caption">图3：问题二整体建模框架</div>
-            </div>
-            
-            <h4 class="subsection-title">2. 特征工程</h4>
-            <p>基于运动学分析和体质报告，构建了包含25维特征的特征空间：</p>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-header">运动学特征（7个）</div>
-                        <div class="card-body">
-                            <ul>
-                                <li>水平初速度 (v_x0)</li>
-                                <li>垂直初速度 (v_y0)</li>
-                                <li>起跳角度 (θ)</li>
-                                <li>滞空时间 (t_air)</li>
-                                <li>手臂摆动幅度</li>
-                                <li>最大高度</li>
-                                <li>膝部角度范围</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-header">体质与分类特征（4个）</div>
-                        <div class="card-body">
-                            <ul>
-                                <li>身体质量指数 (BMI)</li>
-                                <li>年龄</li>
-                                <li>性别虚拟变量</li>
-                                <li>营养状态虚拟变量</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="card mt-3">
-                <div class="card-header">特征扩展策略</div>
-                <div class="card-body">
-                    <ul>
-                        <li><strong>二次项特征：</strong>对8个主要连续变量添加平方项，捕捉非线性效应</li>
-                        <li><strong>交互项特征：</strong>设计6个具有物理意义的交互项，如BMI×年龄、性别×BMI等</li>
-                        <li><strong>最终特征矩阵：</strong>25个特征 × 32个样本</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <h4 class="subsection-title">3. 多重共线性处理</h4>
-            <p>通过方差膨胀因子(VIF)和条件数分析发现严重多重共线性问题，采用迭代VIF筛选方法，以VIF=10为阈值，从25个扩展特征中逐步移除14个高度共线性特征，最终保留11个相对独立的特征。</p>
-            
-            <div class="image-container">
-                <img src="media/image8.png" alt="多重共线性分析" class="model-diagram">
-                <div class="image-caption">图4：多重共线性分析结果</div>
-            </div>
-            
-            <h4 class="subsection-title">4. 多模型比较与选择</h4>
-            
-            <div class="table-responsive">
-                <table class="table table-bordered table-custom comparison-table">
-                    <thead class="table-light">
-                        <tr>
-                            <th>模型</th>
-                            <th>特征数</th>
-                            <th>R²</th>
-                            <th>调整R²</th>
-                            <th>RMSE(cm)</th>
-                            <th>关键特点</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>逐步回归</strong></td>
-                            <td>6</td>
-                            <td>0.9070</td>
-                            <td>0.8847</td>
-                            <td>9.14</td>
-                            <td>解释性强，特征少，避免过拟合</td>
-                        </tr>
-                        <tr>
-                            <td>LASSO(minMSE)</td>
-                            <td>3</td>
-                            <td>0.8506</td>
-                            <td>0.8346</td>
-                            <td>11.58</td>
-                            <td>特征选择，稀疏解</td>
-                        </tr>
-                        <tr>
-                            <td>岭回归</td>
-                            <td>25</td>
-                            <td>0.8840</td>
-                            <td>0.4005</td>
-                            <td>10.21</td>
-                            <td>处理共线性，保留所有特征</td>
-                        </tr>
-                        <tr>
-                            <td>弹性网络</td>
-                            <td>8</td>
-                            <td>0.8571</td>
-                            <td>0.2616</td>
-                            <td>11.33</td>
-                            <td>L1+L2混合正则化</td>
-                        </tr>
-                        <tr>
-                            <td>主成分回归</td>
-                            <td>8(PCs)</td>
-                            <td>0.8841</td>
-                            <td>0.8437</td>
-                            <td>10.20</td>
-                            <td>降维处理，消除共线性</td>
-                        </tr>
-                        <tr>
-                            <td>随机森林</td>
-                            <td>25</td>
-                            <td>0.8562(OOB)</td>
-                            <td>0.7877</td>
-                            <td>11.36</td>
-                            <td>非线性建模，特征重要性</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image3.png" alt="模型比较" class="model-diagram">
-                        <div class="image-caption">图5：模型性能比较</div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image6.png" alt="误差分析" class="model-diagram">
-                        <div class="image-caption">图6：模型误差分析</div>
-                    </div>
-                </div>
-            </div>
-            
-            <h4 class="subsection-title">5. 最终模型与结果分析</h4>
-            
+            <p>通过运动学模型分析，我们可以得到以下关键参数：</p>
+            <ul>
+                <li><strong>滞空时间：</strong>t<sub>air</sub> = 2v<sub>y0</sub> / g</li>
+                <li><strong>最大高度：</strong>y<sub>max</sub> = y<sub>0</sub> + v<sub>y0</sub>² / (2g)</li>
+                <li><strong>达到最大高度时间：</strong>t<sub>max</sub> = v<sub>y0</sub> / g</li>
+            </ul>
+        </div>
+        <div class="col-md-4">
             <div class="card">
-                <div class="card-header">逐步回归模型方程</div>
+                <div class="card-header">关键运动学公式</div>
                 <div class="card-body">
-                    <p class="text-center fs-5">
-                        成绩(cm) = 161.72 + 182.01 × BMI + 26.89 × 性别 - 3.92 × 起跳角度 - 6.40 × 营养状态 + 2.77 × 手臂摆动 - 177.79 × BMI²
-                    </p>
+                    <p><strong>水平位移：</strong></p>
+                    <p>x(t) = v<sub>x0</sub> · t</p>
+                    <p><strong>竖直位移：</strong></p>
+                    <p>y(t) = y<sub>0</sub> + v<sub>y0</sub> · t - ½ g t²</p>
+                    <p><strong>滞空时间：</strong></p>
+                    <p>t<sub>air</sub> = 2v<sub>y0</sub> / g</p>
+                    <p><strong>最大高度：</strong></p>
+                    <p>y<sub>max</sub> = y<sub>0</sub> + v<sub>y0</sub>² / (2g)</p>
                 </div>
             </div>
-            
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image11.png" alt="实际vs预测" class="model-diagram">
-                        <div class="image-caption">图7：实际成绩与预测成绩对比</div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image5.png" alt="残差分析" class="model-diagram">
-                        <div class="image-caption">图8：模型残差分析</div>
-                    </div>
-                </div>
+        </div>
+    </div>
+    
+    <h4 class="subsection-title">3. 求解结果</h4>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="image-container">
+                <img src="1.png" alt="运动者1竖直位置与速度变化" class="model-diagram">
+                <div class="image-caption">图1：运动者1竖直位置与速度随时间变化（包含位置与速度曲线）</div>
             </div>
-            
-            <div class="row mt-4">
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image10.png" alt="特征重要性" class="model-diagram">
-                        <div class="image-caption">图9：随机森林特征重要性</div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image9.png" alt="调整前后对比" class="model-diagram">
-                        <div class="image-caption">图10：姿势调整前后成绩对比</div>
-                    </div>
-                </div>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="image-container">
+                <img src="2.png" alt="运动者2竖直位置与速度变化" class="model-diagram">
+                <div class="image-caption">图2：运动者2竖直位置与速度随时间变化（包含位置与速度曲线）</div>
             </div>
-            
-            <div class="result-box mt-4">
-                <h5><i class="fas fa-chart-line text-primary me-2"></i>关键结论</h5>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="3.png" alt="运动者1跳远轨迹" class="model-diagram">
+                <div class="image-caption">图3：运动者1跳远轨迹分析</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="4.png" alt="运动者2跳远轨迹" class="model-diagram">
+                <div class="image-caption">图4：运动者2跳远轨迹分析</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="result-box">
+        <h5><i class="fas fa-check-circle text-success me-2"></i>关键发现</h5>
+        <div class="row">
+            <div class="col-md-6">
+                <h6>运动者1分析结果：</h6>
                 <ul>
-                    <li><strong>体质特征主导跳远成绩：</strong>BMI、年龄、性别和营养状态是影响跳远成绩的主要因素</li>
-                    <li><strong>性别效应显著：</strong>男性运动员平均比女性高26.89 cm (p=0.0002)</li>
-                    <li><strong>BMI存在最优范围：</strong>BMI与成绩呈倒U型关系，存在最佳BMI范围</li>
-                    <li><strong>运动学特征辅助作用：</strong>起跳角度、手臂摆动等技术特征对成绩有贡献但重要性较低</li>
-                    <li><strong>姿势调整有效：</strong>专业训练后，跳远成绩平均提升10-15 cm，相对提升7-10%</li>
+                    <li><strong>起跳时刻：</strong>帧号300</li>
+                    <li><strong>落地时刻：</strong>帧号4</li>
+                    <li><strong>跳远成绩：</strong>1.58米</li>
+                    <li><strong>竖直速度变化：</strong>起跳时由负转正，落地时由正转负</li>
+                    <li><strong>轨迹特征：</strong>抛物线形状明显，水平速度假设为3.0 m/s</li>
                 </ul>
             </div>
-        </section>
-
-        <!-- 问题三 -->
-        <section id="problem3" class="mb-5">
-            <h2 class="section-title">问题三：运动者11跳远成绩预测</h2>
-            
-            <h4 class="subsection-title">1. 预测流程</h4>
-            <div class="image-container">
-                <img src="prediction_flow.png" alt="预测流程" class="model-diagram">
-                <div class="image-caption">图11：运动者11成绩预测流程</div>
+            <div class="col-md-6">
+                <h6>运动者2分析结果：</h6>
+                <ul>
+                    <li><strong>起跳时刻：</strong>帧号302</li>
+                    <li><strong>落地时刻：</strong>帧号2</li>
+                    <li><strong>跳远成绩：</strong>1.15米</li>
+                    <li><strong>竖直速度变化：</strong>波动更多，可能由于起跳姿势或技术因素</li>
+                    <li><strong>轨迹特征：</strong>飞行时间略长，水平和竖直位置变化更明显</li>
+                </ul>
             </div>
-            
-            <h4 class="subsection-title">2. 运动者11特征数据</h4>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">体质特征（附件4）</div>
-                        <div class="card-body">
-                            <table class="table table-sm">
-                                <tr>
-                                    <td><strong>特征</strong></td>
-                                    <td><strong>值</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>身高</td>
-                                    <td>120.0 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>体重</td>
-                                    <td>21.0 kg</td>
-                                </tr>
-                                <tr>
-                                    <td>BMI</td>
-                                    <td>14.583</td>
-                                </tr>
-                                <tr>
-                                    <td>体脂率</td>
-                                    <td>14.2%</td>
-                                </tr>
-                                <tr>
-                                    <td>年龄</td>
-                                    <td>6岁</td>
-                                </tr>
-                                <tr>
-                                    <td>性别</td>
-                                    <td>男性</td>
-                                </tr>
-                                <tr>
-                                    <td>营养状态</td>
-                                    <td>标准</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">运动学特征（附件5提取）</div>
-                        <div class="card-body">
-                            <table class="table table-sm">
-                                <tr>
-                                    <td><strong>特征</strong></td>
-                                    <td><strong>值</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>起跳水平速度</td>
-                                    <td>-757.94 cm/s</td>
-                                </tr>
-                                <tr>
-                                    <td>起跳垂直速度</td>
-                                    <td>4763.55 cm/s</td>
-                                </tr>
-                                <tr>
-                                    <td>起跳角度</td>
-                                    <td>80.96°</td>
-                                </tr>
-                                <tr>
-                                    <td>滞空时间</td>
-                                    <td>9.00 s</td>
-                                </tr>
-                                <tr>
-                                    <td>手臂摆动幅度</td>
-                                    <td>763.77 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>理论最大高度</td>
-                                    <td>11577.25 cm</td>
-                                </tr>
-                                <tr>
-                                    <td>膝关节活动范围</td>
-                                    <td>68.53°</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <h4 class="subsection-title">3. 预测结果</h4>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image12.png" alt="脚部竖直位置" class="model-diagram">
-                        <div class="image-caption">图12：运动者11脚部竖直位置变化</div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="image-container">
-                        <img src="media/image13.png" alt="竖直速度检测" class="model-diagram">
-                        <div class="image-caption">图13：运动者11竖直速度检测</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="result-box mt-4">
-                <h5><i class="fas fa-bullseye text-success me-2"></i>预测结果</h5>
-                <div class="text-center">
-                    <h3 class="text-primary">预测跳远成绩：1.308 m</h3>
-                    <p class="mt-2">95% 预测区间：[1.129, 1.487] m</p>
-                </div>
-                <div class="mt-3">
-                    <p><strong>结果分析：</strong></p>
+        </div>
+        
+        <h6 class="mt-3">整体结论：</h6>
+        <ul>
+            <li>竖直速度法能准确识别起跳与落地时刻，起跳时速度由负转正，落地时速度由正转负</li>
+            <li>滞空阶段运动轨迹符合抛物线规律，水平速度保持恒定，竖直速度受重力影响逐渐减小</li>
+            <li>运动者1的飞行时间短于运动者2，这可能与其起跳速度、姿势或身体素质相关</li>
+            <li>水平速度和竖直起跳速度是影响跳远成绩的主要因素</li>
+            <li>滞空时间与飞行距离密切相关，飞行时间越长，水平位移越大，跳远成绩越好</li>
+        </ul>
+    </div>
+    
+    <h4 class="subsection-title mt-4">4. 模型验证与应用</h4>
+    <p>通过本模型，我们能够准确预测并分析运动员的跳远轨迹，并通过可视化结果提供直观的展示。尽管此模型忽略了空气阻力等因素，但它仍然可以作为评估跳远成绩的有效工具。模型的准确性验证：</p>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-custom">
+            <thead class="table-light">
+                <tr>
+                    <th>评估指标</th>
+                    <th>运动者1</th>
+                    <th>运动者2</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>起跳时刻检测</td>
+                    <td><span class="badge bg-success">准确</span></td>
+                    <td><span class="badge bg-success">准确</span></td>
+                    <td>通过竖直速度变化准确识别</td>
+                </tr>
+                <tr>
+                    <td>落地时刻检测</td>
+                    <td><span class="badge bg-success">准确</span></td>
+                    <td><span class="badge bg-success">准确</span></td>
+                    <td>通过竖直速度变化准确识别</td>
+                </tr>
+                <tr>
+                    <td>轨迹拟合度</td>
+                    <td><span class="badge bg-success">高</span></td>
+                    <td><span class="badge bg-success">高</span></td>
+                    <td>抛物线模型与实际轨迹高度一致</td>
+                </tr>
+                <tr>
+                    <td>参数提取精度</td>
+                    <td><span class="badge bg-success">高</span></td>
+                    <td><span class="badge bg-success">高</span></td>
+                    <td>关键运动学参数提取准确</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+        <!-- 问题二 -->
+<section id="problem2" class="mb-5">
+    <h2 class="section-title">问题二：影响跳远成绩的主要因素分析</h2>
+    
+    <h4 class="subsection-title">1. 整体建模框架</h4>
+    <p>基于运动学分析和体质报告，我们构建了完整的多模型比较框架，系统分析了影响跳远成绩的关键因素。研究流程包括数据采集与预处理、特征工程、多重共线性处理、多模型比较与选择、交叉验证与模型评估等步骤。</p>
+    
+    <h4 class="subsection-title">2. 数据特征工程</h4>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header">运动学特征（7个）</div>
+                <div class="card-body">
                     <ul>
-                        <li>运动者11的跳远成绩处于同年龄段儿童的合理范围之内</li>
-                        <li>起跳角度偏大(80.96°)，动作更偏向竖直方向，限制了水平位移效率</li>
-                        <li>飞行高度较大，但水平推进能力有提升空间</li>
+                        <li>水平初速度 (v_x0)</li>
+                        <li>垂直初速度 (v_y0)</li>
+                        <li>起跳角度 (θ)</li>
+                        <li>滞空时间 (t_air)</li>
+                        <li>手臂摆动幅度</li>
+                        <li>最大高度</li>
+                        <li>膝部角度范围</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="image-container mt-4">
-                <img src="media/image15.png" alt="运动轨迹" class="model-diagram">
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100">
+                <div class="card-header">体质与分类特征（4个）</div>
+                <div class="card-body">
+                    <ul>
+                        <li>身体质量指数 (BMI)</li>
+                        <li>年龄</li>
+                        <li>性别虚拟变量</li>
+                        <li>营养状态虚拟变量</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h4 class="subsection-title mt-4">3. 实际成绩与预测成绩对比</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="image-container">
+                <img src="01_actual_vs_predicted.png" alt="实际成绩与预测成绩对比" class="model-diagram">
+                <div class="image-caption">图5：实际跳远成绩与模型预测成绩对比</div>
+            </div>
+        </div>
+    </div>
+    <p>该图表展示了逐步回归模型对跳远成绩的预测能力。横轴为实际跳远成绩，纵轴为模型预测成绩。理想情况下，所有点应落在对角线y=x上。图中显示大多数点接近对角线，表明模型具有较好的预测精度。</p>
+    
+    <h4 class="subsection-title">4. 模型残差分析</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="image-container">
+                <img src="02_residual_analysis.png" alt="模型残差分析" class="model-diagram">
+                <div class="image-caption">图6：模型残差分析结果</div>
+            </div>
+        </div>
+    </div>
+    <p>残差分析结果显示，残差基本服从正态分布，无明显异方差性。Lilliefors检验p=0.1785>0.05，Breusch-Pagan检验p=0.4814>0.05，Durbin-Watson统计量=1.8383，表明模型满足线性回归的基本假设。</p>
+    
+    <h4 class="subsection-title">5. 多模型性能比较</h4>
+    
+    <div class="table-responsive">
+        <table class="table table-bordered table-custom comparison-table">
+            <thead class="table-light">
+                <tr>
+                    <th>模型</th>
+                    <th>特征数</th>
+                    <th>R²</th>
+                    <th>调整R²</th>
+                    <th>RMSE(cm)</th>
+                    <th>关键特点</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>逐步回归</strong></td>
+                    <td>6</td>
+                    <td>0.9070</td>
+                    <td>0.8847</td>
+                    <td>9.14</td>
+                    <td>解释性强，特征少，避免过拟合</td>
+                </tr>
+                <tr>
+                    <td>LASSO(minMSE)</td>
+                    <td>3</td>
+                    <td>0.8506</td>
+                    <td>0.8346</td>
+                    <td>11.58</td>
+                    <td>特征选择，稀疏解</td>
+                </tr>
+                <tr>
+                    <td>岭回归</td>
+                    <td>25</td>
+                    <td>0.8840</td>
+                    <td>0.4005</td>
+                    <td>10.21</td>
+                    <td>处理共线性，保留所有特征</td>
+                </tr>
+                <tr>
+                    <td>弹性网络</td>
+                    <td>8</td>
+                    <td>0.8571</td>
+                    <td>0.2616</td>
+                    <td>11.33</td>
+                    <td>L1+L2混合正则化</td>
+                </tr>
+                <tr>
+                    <td>主成分回归</td>
+                    <td>8(PCs)</td>
+                    <td>0.8841</td>
+                    <td>0.8437</td>
+                    <td>10.20</td>
+                    <td>降维处理，消除共线性</td>
+                </tr>
+                <tr>
+                    <td>随机森林</td>
+                    <td>25</td>
+                    <td>0.8562(OOB)</td>
+                    <td>0.7877</td>
+                    <td>11.36</td>
+                    <td>非线性建模，特征重要性</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="04_feature_importance.png" alt="特征重要性分析" class="model-diagram">
+                <div class="image-caption">图7：随机森林模型特征重要性排名</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="05_before_after_comparison.png" alt="姿势调整前后对比" class="model-diagram">
+                <div class="image-caption">图8：姿势调整前后跳远成绩对比</div>
+            </div>
+        </div>
+    </div>
+    
+    <p>随机森林模型显示，BMI、年龄、性别和营养状态是影响跳远成绩的最重要因素。运动学特征如起跳角度和手臂摆动幅度的重要性相对较低，但仍对成绩有贡献。</p>
+    
+    <p>姿势调整后，跳远成绩平均提升10-15 cm，相对提升幅度为7-10%。调整后成绩分布更加集中，表明技术动作更加标准化和一致。</p>
+    
+    <h4 class="subsection-title">6. 误差分析与多重共线性</h4>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="06_error_analysis.png" alt="误差分析" class="model-diagram">
+                <div class="image-caption">图9：模型预测误差分析</div>
+            </div>
+            <p>误差分析显示，模型在大多数情况下预测误差控制在合理范围内。留一法交叉验证RMSE为8.66 cm，表明模型具有良好的泛化能力。</p>
+        </div>
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="08_multicollinearity_analysis.png" alt="多重共线性分析" class="model-diagram">
+                <div class="image-caption">图10：多重共线性诊断结果</div>
+            </div>
+            <p>通过方差膨胀因子(VIF)和条件数分析发现严重多重共线性问题。采用迭代VIF筛选方法，以VIF=10为阈值，从25个扩展特征中逐步移除14个高度共线性特征，最终保留11个相对独立的特征。</p>
+        </div>
+    </div>
+    
+    <h4 class="subsection-title">7. 最终模型结果分析</h4>
+    
+    <div class="card">
+        <div class="card-header">逐步回归模型方程</div>
+        <div class="card-body">
+            <p class="text-center fs-5">
+                成绩(cm) = 161.72 + 182.01 × BMI + 26.89 × 性别 - 3.92 × 起跳角度 - 6.40 × 营养状态 + 2.77 × 手臂摆动 - 177.79 × BMI²
+            </p>
+        </div>
+    </div>
+    
+    <div class="result-box mt-4">
+        <h5><i class="fas fa-chart-line text-primary me-2"></i>关键结论</h5>
+        <ul>
+            <li><strong>体质特征主导跳远成绩：</strong>BMI、年龄、性别和营养状态是影响跳远成绩的主要因素</li>
+            <li><strong>性别效应显著：</strong>男性运动员平均比女性高26.89 cm (p=0.0002)</li>
+            <li><strong>BMI存在最优范围：</strong>BMI与成绩呈倒U型关系，存在最佳BMI范围</li>
+            <li><strong>运动学特征辅助作用：</strong>起跳角度、手臂摆动等技术特征对成绩有贡献但重要性较低</li>
+            <li><strong>姿势调整有效：</strong>专业训练后，跳远成绩平均提升10-15 cm，相对提升7-10%</li>
+            <li><strong>逐步回归模型最优：</strong>在多个评估指标中表现最佳，兼具预测性能和解释性</li>
+        </ul>
+    </div>
+    
+    <h4 class="subsection-title">8. 模型选择依据</h4>
+    <p>选择<strong>逐步回归模型</strong>作为最终模型，基于以下考虑：</p>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">性能优势</div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>留一法交叉验证性能最优：</strong>RMSE最低（8.66 cm）</li>
+                        <li><strong>5折交叉验证表现稳定：</strong>R²为0.8017，RMSE为12.02 cm</li>
+                        <li><strong>训练集拟合度好：</strong>R²达0.9070，调整R²为0.8847</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">实用优势</div>
+                <div class="card-body">
+                    <ul>
+                        <li><strong>模型简洁性：</strong>仅选择6个特征，避免过拟合</li>
+                        <li><strong>解释性强：</strong>特征系数有明确物理意义</li>
+                        <li><strong>计算效率高：</strong>模型简单，预测速度快</li>
+                        <li><strong>稳定性好：</strong>交叉验证表现稳定</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="table-responsive mt-4">
+        <table class="table table-bordered table-custom">
+            <thead class="table-light">
+                <tr>
+                    <th>交叉验证方法</th>
+                    <th>R²</th>
+                    <th>RMSE(cm)</th>
+                    <th>说明</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>训练集</td>
+                    <td>0.9070</td>
+                    <td>9.14</td>
+                    <td>模型在训练数据上的表现</td>
+                </tr>
+                <tr>
+                    <td>5折交叉验证</td>
+                    <td>0.8017</td>
+                    <td>12.02</td>
+                    <td>模型泛化能力的评估</td>
+                </tr>
+                <tr>
+                    <td>留一法交叉验证</td>
+                    <td>-</td>
+                    <td>8.66</td>
+                    <td>最严格的交叉验证方法</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+        <!-- 问题三 -->
+<section id="problem3" class="mb-5">
+    <h2 class="section-title">问题三：运动者11跳远成绩预测</h2>
+    
+    <h4 class="subsection-title">1. 预测流程</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">预测模型流程</div>
+                <div class="card-body">
+                    <p>基于问题一构建的运动学特征提取方法和问题二确定的逐步回归模型，对运动者11的跳远成绩进行预测：</p>
+                    <ol>
+                        <li><strong>运动学特征提取：</strong>从附件5跳远视频位置信息中提取关键运动学参数</li>
+                        <li><strong>体质特征获取：</strong>从附件4体质报告中获取运动员基本体质信息</li>
+                        <li><strong>特征标准化：</strong>按照问题二确定的标准化参数处理特征数据</li>
+                        <li><strong>模型预测：</strong>将处理后的特征输入逐步回归模型进行成绩预测</li>
+                        <li><strong>置信区间计算：</strong>基于模型RMSE计算预测成绩的置信区间</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h4 class="subsection-title">2. 运动者11特征数据提取</h4>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="Q3_footY_takeoff_landing.png" alt="脚部竖直位置与起跳落地时刻检测" class="model-diagram">
+                <div class="image-caption">图12：运动者11脚部竖直位置随时间变化及起跳、落地帧判定</div>
+            </div>
+            <p>通过分析脚部关键点的竖直位置变化，准确识别起跳与落地时刻。图中标记了起跳帧和落地帧的位置，为后续运动学参数提取提供基础。</p>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="Q3_speedY_detection.png" alt="竖直速度检测" class="model-diagram">
+                <div class="image-caption">图13：运动者11脚部竖直速度检测结果</div>
+            </div>
+            <p>基于脚部竖直位置计算竖直速度，起跳时刻对应明显的速度突变特征。通过检测速度由负转正和由正转负的变化点，精确定位起跳与落地时刻。</p>
+        </div>
+    </div>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">体质特征（附件4）</div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>特征</strong></td>
+                            <td><strong>值</strong></td>
+                        </tr>
+                        <tr>
+                            <td>身高</td>
+                            <td>120.0 cm</td>
+                        </tr>
+                        <tr>
+                            <td>体重</td>
+                            <td>21.0 kg</td>
+                        </tr>
+                        <tr>
+                            <td>BMI</td>
+                            <td>14.583</td>
+                        </tr>
+                        <tr>
+                            <td>体脂率</td>
+                            <td>14.2%</td>
+                        </tr>
+                        <tr>
+                            <td>年龄</td>
+                            <td>6岁</td>
+                        </tr>
+                        <tr>
+                            <td>性别</td>
+                            <td>男性</td>
+                        </tr>
+                        <tr>
+                            <td>营养状态</td>
+                            <td>标准</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">运动学特征（附件5提取）</div>
+                <div class="card-body">
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>特征</strong></td>
+                            <td><strong>值</strong></td>
+                        </tr>
+                        <tr>
+                            <td>起跳水平速度</td>
+                            <td>-757.94 cm/s</td>
+                        </tr>
+                        <tr>
+                            <td>起跳垂直速度</td>
+                            <td>4763.55 cm/s</td>
+                        </tr>
+                        <tr>
+                            <td>起跳角度</td>
+                            <td>80.96°</td>
+                        </tr>
+                        <tr>
+                            <td>滞空时间</td>
+                            <td>9.00 s</td>
+                        </tr>
+                        <tr>
+                            <td>手臂摆动幅度</td>
+                            <td>763.77 cm</td>
+                        </tr>
+                        <tr>
+                            <td>理论最大高度</td>
+                            <td>11577.25 cm</td>
+                        </tr>
+                        <tr>
+                            <td>膝关节活动范围</td>
+                            <td>68.53°</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h4 class="subsection-title">3. 运动轨迹分析与预测结果</h4>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="Q3_trajectory.png" alt="跳远轨迹分析" class="model-diagram">
                 <div class="image-caption">图14：运动者11跳远轨迹分析</div>
             </div>
-        </section>
+            <p>运动者11在滞空阶段的运动符合典型抛体运动特征。轨迹显示，其飞行高度较大，但水平推进能力有提升空间，这与起跳角度偏大有关。</p>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="image-container">
+                <img src="Q3_prediction_CI.png" alt="预测结果与置信区间" class="model-diagram">
+                <div class="image-caption">图15：运动者11跳远成绩预测结果及置信区间</div>
+            </div>
+            <p>基于逐步回归模型的预测结果及其95%置信区间。预测值为点估计，置信区间反映了模型预测的不确定性。</p>
+        </div>
+    </div>
+    
+    <div class="result-box mt-4">
+        <h5><i class="fas fa-bullseye text-success me-2"></i>预测结果</h5>
+        <div class="text-center">
+            <h3 class="text-primary">预测跳远成绩：1.308 m</h3>
+            <p class="mt-2">95% 预测区间：[1.129, 1.487] m</p>
+        </div>
+        
+        <div class="mt-3">
+            <h6>结果分析：</h6>
+            <ul>
+                <li><strong>成绩合理性：</strong>运动者11的跳远成绩处于同年龄段儿童的合理范围之内</li>
+                <li><strong>技术特点：</strong>起跳角度偏大(80.96°)，动作更偏向竖直方向，限制了水平位移效率</li>
+                <li><strong>提升潜力：</strong>飞行高度较大，但水平推进能力有提升空间</li>
+                <li><strong>模型适用性：</strong>预测结果可作为制定训练目标和评估训练效果的重要参考基准</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h4 class="subsection-title mt-4">4. 技术特点分析与讨论</h4>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">优势分析</div>
+                <div class="card-body">
+                    <ul>
+                        <li><i class="fas fa-check text-success me-2"></i><strong>垂直爆发力强：</strong>起跳垂直速度达4763.55 cm/s，显示良好的下肢爆发力</li>
+                        <li><i class="fas fa-check text-success me-2"></i><strong>手臂摆动积极：</strong>手臂摆动幅度较大，表明上肢积极参与起跳动作</li>
+                        <li><i class="fas fa-check text-success me-2"></i><strong>柔韧性基础好：</strong>膝关节活动范围较大，为技术改进提供有利条件</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">待改进点</div>
+                <div class="card-body">
+                    <ul>
+                        <li><i class="fas fa-exclamation-triangle text-warning me-2"></i><strong>起跳角度不合理：</strong>80.96°的起跳角度明显偏大，不利于水平位移</li>
+                        <li><i class="fas fa-exclamation-triangle text-warning me-2"></i><strong>能量转化效率低：</strong>垂直能量未能有效转化为水平位移</li>
+                        <li><i class="fas fa-exclamation-triangle text-warning me-2"></i><strong>技术协调性不足：</strong>上下肢协调性有待提高，可能存在能量损失</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <h4 class="subsection-title mt-4">5. 模型应用与局限性</h4>
+    
+    <div class="card">
+        <div class="card-header">模型应用说明</div>
+        <div class="card-body">
+            <p><strong>应用价值：</strong>该预测模型基于有限样本训练，更适用于评估运动者的相对水平与潜在能力，而非对单次比赛成绩的精确复现。预测结果可作为制定训练目标和评估训练效果的重要参考基准。</p>
+            
+            <p><strong>局限性说明：</strong></p>
+            <ul>
+                <li>模型基于样本数据训练，对极端情况或特殊体质的运动员预测可能存在偏差</li>
+                <li>未考虑心理状态、环境因素等外部变量对成绩的影响</li>
+                <li>短期预测精度较高，长期预测需考虑运动员生长发育变化</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="result-box mt-4">
+        <h5><i class="fas fa-lightbulb text-warning me-2"></i>问题三小结</h5>
+        <p>本节在问题一运动学特征提取方法和问题二逐步回归模型的基础上，结合附件4和附件5中的数据，对运动者11的跳远成绩进行了预测。结果表明，运动者11在当前体质与技术条件下的预测跳远成绩为 <strong>1.308 m</strong>，其成绩仍具有一定的提升空间，为问题四中短期姿势训练建议与理想成绩预测奠定了定量基础。</p>
+    </div>
+</section>
 
         <!-- 问题四 -->
         <section id="problem4" class="mb-5">
@@ -1020,7 +1251,7 @@
                 <div class="col-md-6">
                     <h5><i class="fas fa-brain me-2"></i>AI辅助智能体测建模报告</h5>
                     <p>基于运动学分析与机器学习的跳远成绩预测与优化研究</p>
-                    <p class="mb-0"><small>© 2023 智能体测研究团队. 保留所有权利.</small></p>
+                    <p class="mb-0"><small>© 2025MATLAB课程小组 许恩彰 陈鹏飞 李旻阳.</small></p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <h5>关键贡献</h5>
