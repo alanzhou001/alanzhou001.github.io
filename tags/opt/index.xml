@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OPT on Alan Zhou</title><link>https://cxzhou.com/tags/opt/</link><description>Recent content in OPT on Alan Zhou</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 23 Jun 2025 20:00:00 +0800</lastBuildDate><atom:link href="https://cxzhou.com/tags/opt/index.xml" rel="self" type="application/rss+xml"/><item><title>OPT学习笔记-0</title><link>https://cxzhou.com/p/opt-notes-0/</link><pubDate>Mon, 23 Jun 2025 20:00:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-0/</guid><description>&lt;img src="https://cxzhou.com/p/opt-notes-0/cover.jpg" alt="Featured image of post OPT学习笔记-0" /&gt;&lt;h2 id="basic-definition"&gt;Basic Definition
+&lt;/h2&gt;&lt;p&gt;OPT is short for Optimization, and an optimization problem is defined as follow:&lt;/p&gt;
+&lt;div class="math-block math-block--definition" id="def-opt"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 0: optimization problem&lt;/strong&gt;&lt;a href="#def-opt" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$$
+\min \space f(x) \\
+s.t. \space x\in X
+$$&lt;p&gt;
+where $f: \mathbb{R}^n \to \mathbb{R}$ is called the &lt;em&gt;objective function (决策函数)&lt;/em&gt;, $x$ is the &lt;em&gt;decision variable (决策变量)&lt;/em&gt;， and $X$ is the &lt;em&gt;feasible region (可行域)&lt;/em&gt; . Moreover, $min$ for &lt;em&gt;minimize&lt;/em&gt; and $s.t.$ for &lt;em&gt;subject to&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-optimal"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 1: 全局最优解及最优值 (global) optimal solution &amp;amp; optimal value&lt;/strong&gt;&lt;a href="#def-optimal" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;$x^\*$ is an optimal solution of &lt;a class="link" href="#def-opt" &gt;1&lt;/a&gt;
+&lt;em&gt;iff.&lt;/em&gt; $ \space x^\* \in X, f(x^\*)\leq f(x), \forall x\in X$
+where $f(x^\*)$ is the optimal value of &lt;a class="link" href="#def-opt" &gt;1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Some special cases:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;infeasible(不可行)：&lt;/em&gt; $X = \emptyset$;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;unbounded(无界)：&lt;/em&gt;$(x^n)_{n=1}^{\infin}\in X$, $f(x^n)\to \infty$;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;not achieved(无法取得):&lt;/em&gt; not exist $ x^* \in X $, so that $ f(x^*)=inf\{f(x)|x\in X\} $&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-min"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 2: 局部极小值点&lt;/strong&gt;&lt;a href="#def-min" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;$\bar{x}$ is a &lt;em&gt;local minimum(局部极小值点)&lt;/em&gt; of function $f$, if there exists $\delta&gt;0$ such that
+&lt;/p&gt;
+$$f(\bar{x})\leq f(x), \forall x\in X, ||x-\bar{x}||_2&lt;\delta$$&lt;p&gt;
+$\bar{x}$ is a &lt;em&gt;strict local minimum&lt;/em&gt; of function $f$, if there exists $\delta&gt;0$ such that
+&lt;/p&gt;
+$$f(\bar{x})&lt; f(x), \forall x\in X, ||x-\bar{x}||_2&lt;\delta\space and\space x\neq \bar{x}$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="mathematical-foundations"&gt;Mathematical Foundations
+&lt;/h2&gt;&lt;h3 id="linear-algebra"&gt;Linear Algebra
+&lt;/h3&gt;&lt;h4 id="the-space"&gt;The space $\mathbb{R}^n$
+&lt;/h4&gt;&lt;p&gt;A &lt;strong&gt;vector&lt;/strong&gt; (or point) $x$ in $\mathbb{R}^n$ is an ordered collection of $n$ real numbers, which can be given as $x=(x_1,x_2,x_3,\cdots,x_n)$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;scalar multiplication(数乘)&lt;/strong&gt; $a\in \mathbb{R}, x \in \mathbb{R}^n, ax=(ax_1,ax_2,\cdots,ax_n)$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;addition(向量加法)&lt;/strong&gt; $x\in\mathbb{R}^n, y\in\mathbb{R}^n, x+y=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;linear subspace(线性子空间)&lt;/strong&gt; A nonempty subset $S$ of $\mathbb{R}^n$ is a &lt;em&gt;linear subspace&lt;/em&gt; &lt;em&gt;iff.&lt;/em&gt;
+&lt;/p&gt;
+$$
+x,y\in S, x+y\in S;x\in S,a\in \mathbb{R},ax\in S
+$$&lt;p&gt;
+(对加法和数乘封闭)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;linear combinations(线性组合) &amp;amp; span(线性生成空间)&lt;/strong&gt;
+&lt;/p&gt;
+$$
+\mathcal{V}=\{v_1,v_2,\cdots,v_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}
+$$&lt;p&gt;$\sum_{i=1}^ma_iv_i$ is a &lt;em&gt;linear combination&lt;/em&gt;;&lt;/p&gt;
+$$
+span(\mathcal{V}):=\{ a_1v_1+a_2v_2+\cdots+a_mv_m \mid a_1,a_2,\cdots,a_m\in\mathbb{R} \}
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;linear independent(线性无关) &amp;amp; linear dependent(线性相关)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;linear independent:&lt;/em&gt; $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ &lt;em&gt;iff.&lt;/em&gt; $a_1=a_2=\cdots=a_m=0$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;linear dependent:&lt;/em&gt; exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Basis(基)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\mathcal{V}$ is a &lt;em&gt;basis&lt;/em&gt; of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some useful facts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The span of $\mathcal{V}$ is a linear subspace of $\mathbb{R}^n$;&lt;/li&gt;
+&lt;li&gt;$\mathcal{V}$ is linear independent if and only if every $v\in span(\mathcal{V})$ can be uniquely represented as a linear combination of $\mathcal{V}$;&lt;/li&gt;
+&lt;li&gt;$\mathcal{V}$ is linear independent. If $v\notin span(\mathcal{V})$ the $\mathcal{V}\cup v$ is linear independent;&lt;/li&gt;
+&lt;li&gt;If $\mathcal{V}$ is linear dependent, there exists a nonzero vector $v\in\mathcal{V}$ such that $v\in span(\mathcal{V\backslash v}), span(\mathcal{V})=span(\mathcal{V\backslash v})$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="math-block math-block--theorem" id="theo-basis"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Theorem 1 (基扩充/缩减定理)&lt;/strong&gt;&lt;a href="#theo-basis" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+Every linear independent subset of $\mathcal{V}$ can be extended to a basis of $span(\mathcal{V})$. The set of $\mathcal{V}$ can be reduced to a basis of $span(\mathcal{V})$.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;(重复加入/减去线性无关向量直到构成基)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Proposition 1&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+Let $\mathcal{W}$ be a vector space spanned by a finite set $\mathcal{V}$, i.e., $\mathcal{W}=span(\mathcal{V})$. Any linearly independent subset of $\mathcal{W}$ can be extended to form a basis for $\mathcal{W}$ .
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;Let $L=\{v_1,v_2,…,v_k\}$ be a linearly independent set of vectors in W. We want to find a set of vectors ${u_1,u_2,…,u_m}\subseteq \mathcal{V}$ such that the combined set $B=L∪\{u_1,…,u_m\}$ is a basis for $\mathcal{W}$ .&lt;/p&gt;
+&lt;p&gt;We proceed with the following algorithm:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Check if&lt;/strong&gt; $L$ &lt;strong&gt;spans&lt;/strong&gt; $\mathcal{W}$ .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If $span(L)=\mathcal{W}$, then $L$ is a linearly independent spanning set, which means $L$ is already a basis for $\mathcal{W}$. The proof is complete.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;If&lt;/strong&gt; $L$ &lt;strong&gt;does not span&lt;/strong&gt; $\mathcal{W}$ &lt;strong&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If $span(L)\neq\mathcal{W} $, then there must exist at least one vector in $\mathcal{W}$ that is not in the span of $L$. Since $\mathcal{W}=span(\mathcal{V})$, there must be a vector $u_1∈\mathcal{V}$ such that $u_1\notin span(\mathcal{V})$.&lt;/li&gt;
+&lt;li&gt;Let&amp;rsquo;s form a new set $L_1=L∪\{u_1\}=\{v_1,…,v_k,u_1\}$. We claim this new set is also linearly independent.&lt;/li&gt;
+&lt;li&gt;To prove this, consider the equation:
+$c_1v_1+c_2v_2+⋯+c_kv_k+d_1u_1=0$&lt;/li&gt;
+&lt;li&gt;Case 1: If $d1\neq 0$, we could rearrange the equation to express u1 as a linear combination of the vectors in $L$:
+$u_1=−d_{11}(c_1v_1+⋯+c_kv_k)$
+This would imply that $u1\in span(L)$, which contradicts our choice of u1.&lt;/li&gt;
+&lt;li&gt;Case 2: Therefore, we must have $d_1=0$. The equation simplifies to:
+$c_1v_1+c_2v_2+⋯+c_kv_k=0$
+Since $L$ is a linearly independent set, the only solution to this equation is $c_1=c_2=⋯+c_k=0$.&lt;/li&gt;
+&lt;li&gt;Thus, the only solution is that all coefficients ($c_i$ and $d_1$) are zero. This proves that the set $L_1$ is linearly independent.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Repeat the process.&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We now repeat the procedure with $L_1$. If $span(L_1)=\mathcal{W}$, we have found our basis. If not, we find another vector $u_2\in V$ such that $u_2\notin span(L_1)$ and form the larger, linearly independent set $L_2=L_1∪\{u_2\}$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Since W is spanned by a finite set V, it is a finite-dimensional space. Let $dim(\mathcal{W})=n$. Any linearly independent set in $\mathcal{W}$ can contain at most n vectors. Our process starts with a set of k vectors and adds one vector at a time, maintaining linear independence at each step. Therefore, the process is guaranteed to terminate in at most n−k steps, at which point we have a set $B$ that is linearly independent and spans $\mathcal{W}$. By definition, $B$ is a basis for $\mathcal{W}$ that contains the original set $L$.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Proposition 2&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+Any finite set $\mathcal{V}$ that spans a vector space W can be reduced to a basis for $\mathcal{W}$ by removing some of its vectors.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;Let $\mathcal{V}=\{v_1,v_2,\cdots,v_m\}$ be a set that spans $\mathcal{W}$, i.e., $\mathcal{W}=span(\mathcal{V})$. We want to find a subset $B\subseteq \mathcal{V}$ that is a basis for $\mathcal{W}$.&lt;/p&gt;
+&lt;p&gt;We can construct the basis $B$ using the following &amp;ldquo;sifting&amp;rdquo; algorithm:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Initialize an empty set, $B=\empty$.&lt;/li&gt;
+&lt;li&gt;Iterate through each vector $v_i$ in $\mathcal{V}$ for $i=1,\cdots,m$.&lt;/li&gt;
+&lt;li&gt;For each $v_i$, check if it is a linear combination of the vectors already in $B$. That is, check if $v_i\in span(B)$.
+&lt;ul&gt;
+&lt;li&gt;If &lt;strong&gt;NO&lt;/strong&gt;, then $v_i$ is linearly independent of the vectors in $B$. Add $v_i$ to $B$.&lt;/li&gt;
+&lt;li&gt;If &lt;strong&gt;YES&lt;/strong&gt;, then vi is a redundant vector (it depends linearly on other vectors). Discard $v_i$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The final set $B$ produced by this algorithm is a basis for $\mathcal{W}$. We must prove two properties: that $B$ is linearly independent and that it spans $\mathcal{W}$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Linear Independence:&lt;/strong&gt; By construction, a vector is only added to $B$ if it is not in the span of the vectors already in $B$. This condition directly ensures that the resulting set $B$ is linearly independent. If $B=\{b_1,\cdots,b_k\}$ were linearly dependent, then by the properties of linear dependence, some vector $b_j$ would be a linear combination of the preceding vectors, $b_j\in span(\{b_1,…,b_{j−1}\})$. But this contradicts the very rule we used to add $b_j$ to the set. Therefore, $B$ must be linearly independent.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spanning Property:&lt;/strong&gt; We need to show that $span(B)=span(\mathcal{V})$.
+&lt;ul&gt;
+&lt;li&gt;Since $B\subseteq\mathcal{V}$, it is clear that $span(B)\subseteq span(V)$.&lt;/li&gt;
+&lt;li&gt;To show $span(V)\subseteq span(B)$, we must show that every vector $v_i\in \mathcal{V}$ is in $span(B)$.
+&lt;ul&gt;
+&lt;li&gt;If a vector $v_i$ was added to $B$, then $v_i∈B$, so it is trivially in $span(B)$.&lt;/li&gt;
+&lt;li&gt;If a vector $v_i$ was discarded, it was because at the moment of its consideration, it was already a linear combination of the vectors in the current version of $B$. Since the final set $B$ contains all these vectors, it follows that $v_i\in span(B)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Since every vector in the original spanning set $\mathcal{V}$ can be expressed as a linear combination of vectors in $B$, the span of $\mathcal{V}$ cannot be larger than the span of $B$. Thus, $span(\mathcal{V})\subseteq span(B)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.&lt;/p&gt;
+&lt;p&gt;Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis for $\mathcal{W}$.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id="euclidean-inner-product-euclidean-norm-orthogonal"&gt;Euclidean inner product, Euclidean norm, orthogonal
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Euclidean inner product&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="math-block math-block--definition" id="def-product"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 3: Euclidean inner product(欧氏内积)&lt;/strong&gt;&lt;a href="#def-product" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;Given two vectors $x, y \in \mathbb{R}^n$, their &lt;strong&gt;Euclidean inner product&lt;/strong&gt; is defined as&lt;br&gt;
+&lt;/p&gt;
+$$
+\langle x, y \rangle=\sum_{i=1}^n x_i y_i
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Properties of the inner product&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;bi-linearity(双线性性):&lt;/strong&gt; when $\bar{x}$ is a fixed vector in $\mathbb{R}^n$, the function $&lt;\bar{x}, y&gt;$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathbb{R}^n$, the function $&lt;x, \bar{y}&gt;$ is linear in variable $x$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;symmetry(对称性):&lt;/strong&gt; $&lt;x, y&gt;=&lt;y, x&gt;, \forall x, y \in \mathbb{R}^n$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;positive definiteness(正定性):&lt;/strong&gt; $\forall x \in \mathbb{R}^n, &lt;x, x&gt;\geq 0$, and is zero &lt;em&gt;iff.&lt;/em&gt; $x=\mathbf{0}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 4: Linear function&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;A function $f: \mathbb{R}^n \to \mathbb{R}$ is linear if for every $ x,y \in \mathbb{R}^n $ and $ \alpha, \beta \in \mathbb{R} $,
+&lt;/p&gt;
+$$
+f(\alpha x+ \beta y)=\alpha f(x)+ \beta f(y)
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="theo-func"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Theorem 2 (线性函数可由向量内积唯一表示)&lt;/strong&gt;&lt;a href="#theo-func" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;Let $&lt;\cdot , \cdot&gt;$ be the &lt;em&gt;Euclidean inner product&lt;/em&gt; on $\mathbb{R}^n \to \mathbb{R}$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For every vector $a \in \mathbb{R}^n$, $&lt;a,x&gt;$ is a linear function from $ \mathbb{R}^n \to \mathbb{R} $,&lt;/li&gt;
+&lt;li&gt;Let $f(x)$ be a linear function from $ \mathbb{R}^n \to \mathbb{R} $. Then, there exists a unique vector $a\in \mathbb{R}^n$ so that $f(x)=&lt;a, x&gt;$ for every $x\in \mathbb{R}^n$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;ol&gt;
+&lt;li&gt;Let $f(x)=&lt;a, x&gt;$, for every $x, y\in \mathbb{R}^n$ and $\alpha, \beta \in \mathbb{R}$
+$$
+\begin{align*}
+f(\alpha x+ \beta y) &amp;= \langle a, \alpha x+ \beta y \rangle \\
+&amp;= \alpha \langle a, x \rangle + \beta \langle a, y \rangle \\
+&amp;= \alpha f(x) + \beta f(y)
+\end{align*}
+$$
+$f(x)$ is a linear function;&lt;/li&gt;
+&lt;li&gt;Let $f(x)$ be a linear function,
+$$
+\begin{align*}
+f(x) &amp;=f(\sum x_ie_i) \\
+&amp;=\sum x_if(e_i) \\
+&amp;=\langle a, x \rangle
+\end{align*}
+$$
+in which $a=(f(e_1),\cdots,f(e_n))$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Extending Theorem 2 from scalar-valued linear functions $f: \mathbb{R}^n \to \mathbb{R}$ to vector-valued linear functions $f: \mathbb{R}^n \to \mathbb{R}^m$, we derive the following corollary:&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="coro-3"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Corollary 3&lt;/strong&gt;&lt;a href="#coro-3" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ul&gt;
+&lt;li&gt;Let $A$ be a $m \times n$ matrix whose row vectors are $a_1^T,\cdots,a_m^T$. Then, $Ax$ is a linear function from $\mathbb{R}^n \to \mathbb{R}^m$;&lt;/li&gt;
+&lt;li&gt;Let $f(x)$ be a linear function from $\mathbb{R}^n \to \mathbb{R}^m$. Then there exists a unique $m \times n$ matrix $A$ such that $f(x)=Ax$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;&lt;strong&gt;Euclidean norm&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="math-block math-block--definition" id="def-norm"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Euclidean norm(欧几里得范数)&lt;/strong&gt;&lt;a href="#def-norm" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The &lt;strong&gt;Euclidean norm&lt;/strong&gt; of $x\in \mathbb{R}^n$ is defined as
+&lt;/p&gt;
+$$
+||x||_2=\sqrt{\langle x,x \rangle}=\sqrt{\sum_{i=1}^n x_i^2}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;An important inequality: &lt;strong&gt;Cauchy-Schwarz inequality(柯西施瓦茨不等式)&lt;/strong&gt;
+&lt;/p&gt;
+$$
+|\langle x,y \rangle|\leq||x||_2\cdot ||y||_2.
+$$&lt;ol start="3"&gt;
+&lt;li&gt;&lt;strong&gt;orthogonal(正交)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$x$ and $y$ are orthogonal &lt;em&gt;iff.&lt;/em&gt; $&lt;x,y&gt;=0$.&lt;/p&gt;
+&lt;h4 id="four-fundamental-subspaces"&gt;Four fundamental subspaces
+&lt;/h4&gt;
+&lt;div class="math-block math-block--definition" id="def-col"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Column Space&lt;/strong&gt;&lt;a href="#def-col" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The column space of matrix $ A $, denoted $ Col(A) $, is the subspace spanned by the linear combinations of its column vectors.
+&lt;/p&gt;
+$$
+Col(A) = \{ A\mathbf{x} \mid \mathbf{x} \in \mathbb{R}^n \}
+$$&lt;p&gt;
+where $ A $ is an $ m \times n $ matrix and $ \mathbf{x} $ is an $ n $-dimensional vector.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-row"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Row Space&lt;/strong&gt;&lt;a href="#def-row" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The row space of matrix $ A $, denoted $ \text{Row}(A) $, is the subspace spanned by the linear combinations of its row vectors.
+&lt;/p&gt;
+$$
+\text{Row}(A) = \{ \mathbf{y}^T A \mid \mathbf{y} \in \mathbb{R}^m \}
+$$&lt;p&gt;
+Equivalently, it is the column space of $ A^T $ ($ \text{Col}(A^T) $).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-null"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Null Space&lt;/strong&gt;&lt;a href="#def-null" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The null space of matrix $ A $, denoted $ \text{Null}(A) $, is the set of all vectors $ \mathbf{x} $ such that $ A\mathbf{x} = \mathbf{0} $.
+&lt;/p&gt;
+$$
+\text{Null}(A) = \{ \mathbf{x} \in \mathbb{R}^n \mid A\mathbf{x} = \mathbf{0} \}
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-null"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Left Null Space&lt;/strong&gt;&lt;a href="#def-null" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The left null space of matrix $ A $, denoted $ \text{Null}(A^T) $, is the set of all vectors $ \mathbf{y} $ such that $ \mathbf{y}^T A = \mathbf{0} $.
+&lt;/p&gt;
+$$
+\text{Null}(A^T) = \{ \mathbf{y} \in \mathbb{R}^m \mid \mathbf{y}^T A = \mathbf{0} \}
+$$&lt;p&gt;
+This is equivalent to the null space of $ A^T $.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="subspaces"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Relationships Between the Subspaces&lt;/strong&gt;&lt;a href="#subspaces" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Orthogonality&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;The column space $ \text{Col}(A) $ is orthogonal to the left null space $ \text{Null}(A^T) $ (in $ \mathbb{R}^m $).&lt;/li&gt;
+&lt;li&gt;The row space $ \text{Row}(A) $ is orthogonal to the null space $ \text{Null}(A) $ (in $ \mathbb{R}^n $).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dimension Relationships&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;$ \text{rank}(A) = \dim(\text{Col}(A)) = \dim(\text{Row}(A)) $&lt;/li&gt;
+&lt;li&gt;$ \dim(\text{Null}(A)) = n - \text{rank}(A) $&lt;/li&gt;
+&lt;li&gt;$ \dim(\text{Null}(A^T)) = m - \text{rank}(A) $&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id="eigenvalues-and-eigenvectors"&gt;Eigenvalues and eigenvectors
+&lt;/h4&gt;</description></item></channel></rss>
