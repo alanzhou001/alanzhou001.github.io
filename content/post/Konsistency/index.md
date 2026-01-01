@@ -1,6 +1,6 @@
 ---
-title: K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究
-description: K连贯性方法(Konsistency)及其在六度分隔问题中的探索最差情形下的六度连接。
+title: K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）
+description: K连贯性方法(Konsistency)及其在六度分隔问题中探索最差情形下的六度连接。
 slug: Konsistency
 date: 2026-01-01 23:06:00+0800
 math: true
