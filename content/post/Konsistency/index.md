@@ -6,9 +6,9 @@ date: 2026-01-01 23:06:00+0800
 math: true
 image: cover.jpg
 categories:
-    - OPT
+    - Math
 tags:
-    - OPT
+    - Topology
     - Data Structure
     - Math
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
