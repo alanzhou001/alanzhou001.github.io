@@ -1,0 +1,550 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="介绍线性表结构"><title>线性表</title><link rel=canonical href=https://cxzhou.com/p/datastructure-2/><link rel=stylesheet href=/scss/style.min.702a187fb5c376d86aa32a6922f4ea12dac0c2dde6e96fe5532d11baeb79adfd.css><meta property='og:title' content="线性表"><meta property='og:description' content="介绍线性表结构"><meta property='og:url' content='https://cxzhou.com/p/datastructure-2/'><meta property='og:site_name' content='Alan Zhou'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Algorithm - Data Structures'><meta property='article:published_time' content='2025-09-26T23:23:00+08:00'><meta property='article:modified_time' content='2025-09-26T23:23:00+08:00'><meta property='og:image' content='https://cxzhou.com/p/datastructure-2/cover.jpg'><meta name=twitter:title content="线性表"><meta name=twitter:description content="介绍线性表结构"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content='https://cxzhou.com/p/datastructure-2/cover.jpg'><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_6f2b4dd1a1c0b31e.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>✅</span></figure><div class=site-meta><h1 class=site-name><a href=/>Alan Zhou</a></h1><h2 class=site-description>长风破浪会有时，直挂云帆济沧海。</h2></div></header><ol class=menu-social><li><a href=https://space.bilibili.com/1896424732 target=_blank title=Bilibili rel=me><!doctype html><svg t="1750673622263" class="icon" viewBox="0 0 1024 1024" p-id="9917" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M306.048 117.632 444.352 256h135.296L718.08 117.632a42.688 42.688.0 1160.288 60.352L700.352 256h89.024a149.312 149.312.0 01149.312 149.312v341.376A149.312 149.312.0 01789.376 896H234.688A149.312 149.312.0 0185.376 746.688V405.312A149.312 149.312.0 01234.688 256h88.96L245.76 177.92a42.688 42.688.0 0160.352-60.352zm483.328 223.68H234.688a64 64 0 00-63.68 57.856l-.32 6.144v341.376a64 64 0 0057.856 63.68l6.144.32h554.688a64 64 0 0063.68-57.856l.32-6.144V405.312a64 64 0 00-64-64zm-448 128c23.552.0 42.688 19.136 42.688 42.688v85.312a42.688 42.688.0 11-85.376.0V512c0-23.552 19.136-42.688 42.688-42.688zm341.312.0c23.616.0 42.688 19.136 42.688 42.688v85.312a42.688 42.688.0 11-85.312.0V512c0-23.552 19.072-42.688 42.624-42.688z" fill="currentColor" p-id="9918"/></svg></a></li><li><a href=https://github.com/alanzhou001 target=_blank title=GitHub rel=me><!doctype html><svg t="1750674654355" class="icon" viewBox="0 0 1024 1024" p-id="11874" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" fill="currentColor"><path d="M682.215454 981.446137c-25.532318.0-42.553863-17.021545-42.553864-42.553864V772.932206c4.255386-34.043091-8.510773-59.575409-29.787704-80.852341-12.766159-12.766159-17.021545-29.787704-8.510773-42.553864 4.255386-17.021545 21.276932-25.532318 34.043091-29.787704 123.406204-12.766159 238.301635-55.320023 238.301635-255.323181.0-46.80925-17.021545-93.6185-51.064636-131.916976-12.766159-12.766159-12.766159-29.787704-8.510772-42.553864 12.766159-34.043091 12.766159-68.086182 4.255386-102.129272-21.276932 4.255386-55.320023 17.021545-110.640045 55.320022-8.510773 8.510773-21.276932 8.510773-34.043091 4.255387-89.363113-25.532318-187.236999-25.532318-276.600112.0-12.766159 4.255386-25.532318 4.255386-38.298477-4.255387C307.741455 104.836549 269.442978 92.07039 248.166047 87.815004c-8.510773 34.043091-8.510773 68.086182 4.255386 102.129272 4.255386 17.021545 4.255386 34.043091-8.510773 42.553864-34.043091 38.298477-51.064636 85.107727-51.064636 131.916976.0 200.003158 114.895431 242.557022 238.301635 255.323181 17.021545.0 29.787704 12.766159 34.043091 29.787704 4.255386 17.021545.0 34.043091-8.510773 42.553864-21.276932 21.276932-29.787704 46.80925-29.787704 76.596954v165.960068c0 25.532318-17.021545 42.553863-42.553863 42.553863s-42.553863-17.021545-42.553864-42.553863v-72.341568c-127.66159 21.276932-182.981613-51.064636-221.28009-97.873886-17.021545-21.276932-29.787704-38.298477-46.80925-42.553864-21.276932-4.255386-38.298477-29.787704-29.787704-51.064636 4.255386-21.276932 29.787704-38.298477 51.064636-29.787704 42.553863 12.766159 68.086182 42.553863 93.6185 72.341568 34.043091 46.80925 63.830795 80.852341 153.193908 63.830795v-4.255386c0-25.532318 4.255386-55.320023 12.766159-76.596955-119.150818-25.532318-246.812408-102.129272-246.812408-327.664748.0-63.830795 21.276932-123.406204 59.575409-170.215454-17.021545-59.575409-12.766159-114.895431 12.766159-170.215454 4.255386-12.766159 12.766159-21.276932 25.532318-25.532318 17.021545-4.255386 72.341568-12.766159 187.236999 59.575409 93.6185-21.276932 191.492386-21.276932 280.855499.0 110.640045-72.341568 170.215454-63.830795 187.236999-59.575409 12.766159 4.255386 21.276932 12.766159 25.532319 25.532318 21.276932 55.320023 25.532318 110.640045 12.766159 165.960067 38.298477 46.80925 59.575409 106.384659 59.575408 170.215454.0 242.557022-144.683136 306.387817-246.812408 331.920135 8.510773 25.532318 12.766159 55.320023 12.766159 80.852341V938.892273c0 25.532318-17.021545 42.553863-42.553863 42.553864z" p-id="11875"/></svg></a></li><li><a href=https://www.kaggle.com/alanz001 target=_blank title=Kaggle rel=me><!doctype html><svg t="1750673694686" class="icon" viewBox="0 0 1024 1024" p-id="10910" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" fill="currentColor"><path d="M331.264 128c-7.488.0-11.264 3.744-11.264 11.264V884.64c0 7.488 3.744 11.232 11.264 11.232h73.472c7.488.0 11.328-3.712 11.328-11.232V729.888l57.888-55.136L641.568 888c4.544 5.28 9.792 8 15.872 8h101.504c5.312.0 8.32-1.536 9.056-4.576l-2.112-11.488-221.12-274.816L756.8 399.936c3.936-4.096 2.56-15.936-8.064-15.936h-104.96c-5.344.0-10.656 2.752-15.968 8.064L416 607.2V139.264c0-7.52-3.744-11.264-11.264-11.264h-73.472z" p-id="10911"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About me</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#线性表的概念>线性表的概念</a></li><li><a href=#线性表的基本操作>线性表的基本操作</a></li><li><a href=#线性表的顺序存储实现sequential-storage>线性表的顺序存储实现（Sequential Storage）</a><ol><li><a href=#结构和原理>结构和原理</a></li><li><a href=#python-实现代码示例-linearlist>Python 实现代码示例 (<code>LinearList</code>)</a><ol><li><a href=#构造求长清空访问>构造、求长、清空、访问</a></li><li><a href=#插入操作-inserti-x>插入操作 (<code>insert(i, x)</code>)</a></li><li><a href=#删除操作-removei>删除操作 (<code>remove(i)</code>)</a></li></ol></li><li><a href=#顺序存储总结>顺序存储总结</a></li></ol></li><li><a href=#线性表的链接存储实现linked-storage>线性表的链接存储实现（Linked Storage）</a><ol><li><a href=#单链表-singly-linked-list>单链表 (Singly Linked List)</a><ol><li><a href=#单链表结构>单链表结构</a></li><li><a href=#python-结点和链表类>Python 结点和链表类</a></li><li><a href=#单链表插入操作-inserti-x>单链表插入操作 (<code>insert(i, x)</code>)</a></li><li><a href=#单链表删除操作-removei>单链表删除操作 (<code>remove(i)</code>)</a></li><li><a href=#访问和搜索操作-visiti-searchx>访问和搜索操作 (<code>visit(i)</code>, <code>search(x)</code>)</a></li></ol></li><li><a href=#双链表doubly-linked-list>双链表（Doubly Linked List）</a><ol><li><a href=#双链表结构>双链表结构</a></li><li><a href=#双链表插入操作-inserti-x>双链表插入操作 (<code>insert(i, x)</code>)</a></li><li><a href=#双链表删除操作-removei>双链表删除操作 (<code>remove(i)</code>)</a></li></ol></li><li><a href=#循环链表-circular-linked-list>循环链表 (Circular Linked List)</a></li></ol></li><li><a href=#五-总结比较>五、 总结比较</a></li><li><a href=#六-线性表应用约瑟夫斯环问题>六、 线性表应用：约瑟夫斯环问题</a><ol><li><a href=#使用数组列表解决>使用数组/列表解决</a></li><li><a href=#使用单循环链表解决>使用单循环链表解决</a></li></ol></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/p/datastructure-2/><img src=/p/datastructure-2/cover_hu_3147739891acc4ff.jpg srcset="/p/datastructure-2/cover_hu_3147739891acc4ff.jpg 800w, /p/datastructure-2/cover_hu_d2ff5354667f9197.jpg 1600w" width=800 height=600 loading=lazy alt="Featured image of post 线性表"></a></div><div class=article-details><header class=article-category><a href=/categories/data-structures/>Data Structures</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/datastructure-2/>线性表</a></h2><h3 class=article-subtitle>介绍线性表结构</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2025-09-26T23:23:00+08:00>Sep 26, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 10 分钟</time></div></footer></div></header><section class=article-content><h2 id=线性表的概念>线性表的概念</h2><p>线性表（Linear List）是一种最基本、最常用的数据结构。</p><ul><li><strong>定义</strong>：线性结构是一种有序的数据项集合 1。其中除了首尾数据项外，每个数据项都有<strong>唯一的前驱</strong>和<strong>后继</strong>。</li><li><strong>首尾特性</strong>：首数据项没有前驱，尾数据项没有后继。</li><li><strong>线性</strong>：新的数据项加入时，只会加入到原有某个数据项之前或之后，不会有分叉，也不会独立于原有数据集。</li><li><strong>术语</strong>：<ul><li><strong>表的大小（N）</strong>：表中元素的个数。</li><li><strong>首结点</strong>：$A_0$。</li><li><strong>尾结点</strong>：$A_{N−1}$。</li><li><strong>空表</strong>：元素个数为零的表。</li><li><strong>位置（i）</strong>：元素 $A_i$ 在表中的位置。</li></ul></li></ul><h2 id=线性表的基本操作>线性表的基本操作</h2><p>线性表的基本操作可分为四类：构造、读取属性、操纵数据和遍历。</p><div class=table-wrapper><table><thead><tr><th>操作</th><th>描述</th><th>类别</th></tr></thead><tbody><tr><td><code>create()</code></td><td>创建一个空的线性表。</td><td>构造属性</td></tr><tr><td><code>length()</code></td><td>返回线性表的长度。</td><td>读取属性</td></tr><tr><td><code>search(x)</code></td><td>搜索元素<code>x</code> 的位置，不存在返回 <code>-1</code>。</td><td>读取属性</td></tr><tr><td><code>visit(i)</code></td><td>返回线性表中第 <code>i</code> 个数据元素的值。</td><td>读取属性</td></tr><tr><td><code>insert(i, x)</code></td><td>在第 <code>i</code> 个位置插入元素 <code>x</code>。</td><td>操纵数据</td></tr><tr><td><code>remove(i)</code></td><td>删除第 <code>i</code> 个位置的元素。</td><td>操纵数据</td></tr><tr><td><code>clear()</code></td><td>删除线性表中的所有数据元素。</td><td>操纵数据</td></tr><tr><td><code>traverse()</code></td><td>按序访问线性表的每一数据元素。</td><td>遍历数据</td></tr></tbody></table></div><hr><h2 id=线性表的顺序存储实现sequential-storage>线性表的顺序存储实现（Sequential Storage）</h2><h3 id=结构和原理>结构和原理</h3><ul><li><strong>原理</strong>：线性表中的结点存放在存储器上<strong>一块连续的空间中</strong>。</li><li><strong>特性</strong>：结点的<strong>物理位置</strong>和它的<strong>逻辑位置</strong>是<strong>一致的</strong>。</li><li><strong>Python 实现</strong>：在 Python 中，通常使用<strong>动态数组</strong>（即 <strong>List</strong>）来实现顺序存储结构。</li></ul><p>一个顺序存储结构需要保存三个变量：</p><ol><li><strong>指向数组的指针</strong>（或数组本身，例如 Python 中的 <code>list</code>）。</li><li><strong>数组规模</strong>（容量，<code>capacity</code>/<code>maxSize</code>）。</li><li><strong>数组中的元素个数</strong>（表长，<code>size</code>/<code>length</code>）。</li></ol><h3 id=python-实现代码示例-linearlist>Python 实现代码示例 (<code>LinearList</code>)</h3><p>下面是顺序存储结构中一些关键操作的实现和复杂度分析。</p><h4 id=构造求长清空访问>构造、求长、清空、访问</h4><p>这些操作在顺序表中效率很高。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=k>class</span> <span class=nc>LinearList</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>maxSize</span><span class=o>=</span><span class=mi>4</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>capacity</span> <span class=o>=</span> <span class=n>maxSize</span>  <span class=c1># 最大容量</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 用列表存储线性表的元素，这里用 None 填充初始容量</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>data</span> <span class=o>=</span> <span class=p>[</span><span class=kc>None</span><span class=p>]</span> <span class=o>*</span> <span class=bp>self</span><span class=o>.</span><span class=n>capacity</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>size</span> <span class=o>=</span> <span class=mi>0</span>  <span class=c1># 记录线性表的长度</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>length</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;返回线性表的长度。时间复杂度 O(1)&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>size</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>clear</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;删除所有数据元素，只需将长度置为 0。时间复杂度 O(1)&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>size</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visit</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>i</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;返回第 i 个元素的值。时间复杂度 O(1)&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=mi>0</span> <span class=o>&lt;=</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>size</span><span class=p>:</span> <span class=c1># 边界检查</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=p>[</span><span class=n>cite</span><span class=p>:</span> <span class=mi>263</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>raise</span> <span class=ne>IndexError</span><span class=p>(</span><span class=s2>&#34;Index out of range&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>search</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;在线性表中搜索 x，返回位置或 -1。时间复杂度 O(n)&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>size</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>==</span> <span class=n>x</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=k>return</span> <span class=n>i</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=o>-</span><span class=mi>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>traverse</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;遍历线性表，按序输出所有元素。时间复杂度 O(n)&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>size</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>i</span><span class=p>],</span> <span class=n>end</span><span class=o>=</span><span class=s1>&#39; &#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=插入操作-inserti-x>插入操作 (<code>insert(i, x)</code>)</h4><p>在顺序表中插入元素需要移动结点，效率较低。</p><p><strong>步骤</strong>：</p><ol><li>检查是否需要<strong>扩容</strong> (<code>double_space()</code>)。</li><li>从尾部 <code>$a_{n-1}$</code> 开始，依次将 <code>$a_{n-1}, \dots, a_i$</code> 向后移动一位。</li><li>在 <code>i</code> 位置放入新元素 <code>x</code>。</li><li>表长 <code>size</code> 加 1。</li></ol><p><strong>扩容策略</strong>：</p><ul><li><strong>使用倍数扩容（例如扩大一倍）</strong>：总时间复杂度为 $O(n)$，<strong>均摊时间复杂度为 $O(1)$</strong>，性能显著优化。</li><li><strong>使用常数 C 扩容</strong>：总时间复杂度为 $O(n^2)$，均摊时间复杂度为 $O(n)$。</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>double_space</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;扩大数组容量一倍 [cite: 189, 195]&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>capacity</span> <span class=o>*=</span> <span class=mi>2</span>
+</span></span><span class=line><span class=cl>        <span class=n>new_data</span> <span class=o>=</span> <span class=p>[</span><span class=kc>None</span><span class=p>]</span> <span class=o>*</span> <span class=bp>self</span><span class=o>.</span><span class=n>capacity</span> <span class=c1># 重新申请更大规模数组</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>size</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>new_data</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=c1># 拷贝原有数据</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>data</span> <span class=o>=</span> <span class=n>new_data</span> <span class=c1># 释放原有数组空间，使用新数组</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>insert</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;在第 i 个位置插入元素 x&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=bp>self</span><span class=o>.</span><span class=n>size</span> <span class=o>==</span> <span class=bp>self</span><span class=o>.</span><span class=n>capacity</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>double_space</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=mi>0</span> <span class=o>&lt;=</span> <span class=n>i</span> <span class=o>&lt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>size</span><span class=p>:</span> <span class=c1># i 的合法取值范围是 0 到 n</span>
+</span></span><span class=line><span class=cl>            <span class=c1># 移动元素 (从后往前移动)</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=n>j</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>size</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>                <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>j</span> <span class=o>-</span> <span class=mi>1</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>x</span> <span class=c1># 插入新元素 </span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>size</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>raise</span> <span class=ne>IndexError</span><span class=p>(</span><span class=s2>&#34;Invalid index&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 时间复杂度：</span>
+</span></span><span class=line><span class=cl><span class=c1># 最好情况 O(1) (i=n, 尾部插入)</span>
+</span></span><span class=line><span class=cl><span class=c1># 最坏情况 O(n) (i=0, 头部插入) </span>
+</span></span><span class=line><span class=cl><span class=c1># 平均情况 O(n) [cite: 301]</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=删除操作-removei>删除操作 (<code>remove(i)</code>)</h4><p>删除操作同样需要移动结点。</p><p><strong>步骤</strong>：</p><ol><li>将 <code>$a_{i+1}, \dots, a_{n-1}$</code> 依次向前移动一位。</li><li>表长 <code>size</code> 减 1。</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>remove</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>i</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;删除第 i 个位置的元素&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=mi>0</span> <span class=o>&lt;=</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>size</span><span class=p>:</span> <span class=c1># i 的合法取值范围是 0 到 n-1</span>
+</span></span><span class=line><span class=cl>            <span class=c1># 移动元素 (从前往后移动)</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=n>j</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>i</span><span class=p>,</span> <span class=bp>self</span><span class=o>.</span><span class=n>size</span> <span class=o>-</span> <span class=mi>1</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>                <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=n>j</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl>            <span class=c1># 可选：将原最后一个元素位置置为 None (清理)</span>
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>data</span><span class=p>[</span><span class=bp>self</span><span class=o>.</span><span class=n>size</span> <span class=o>-</span> <span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=kc>None</span> 
+</span></span><span class=line><span class=cl>            <span class=bp>self</span><span class=o>.</span><span class=n>size</span> <span class=o>-=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>raise</span> <span class=ne>IndexError</span><span class=p>(</span><span class=s2>&#34;Invalid index&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 时间复杂度：</span>
+</span></span><span class=line><span class=cl><span class=c1># 最好情况 O(1) (i=n-1, 尾部删除)</span>
+</span></span><span class=line><span class=cl><span class=c1># 最坏情况 O(n) (i=0, 头部删除)</span>
+</span></span><span class=line><span class=cl><span class=c1># 平均情况 O(n)</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=顺序存储总结>顺序存储总结</h3><ul><li><strong>优点</strong>：<strong>定位访问的性能很好</strong>，因为逻辑次序和物理次序一致。<code>visit(i)</code>、<code>length()</code>、<code>clear()</code> 的时间复杂度都是 <strong>$O(1)$</strong>。</li><li><strong>缺点</strong>：在<strong>插入/删除</strong>时需要移动大量数据，性能不太理想 (<strong>$O(n)$</strong>)。</li><li><strong>适用场景</strong>：适合<strong>静态的</strong>、<strong>经常做定位访问</strong>的线性表。</li><li><strong>Python 关联</strong>：Python 中 <code>list</code> 的底层实现大致与顺序线性表相同。</li></ul><hr><h2 id=线性表的链接存储实现linked-storage>线性表的链接存储实现（Linked Storage）</h2><p>链接存储通过指针来表示结点间的逻辑关系，<strong>结点的物理位置可能相邻也可能不相邻</strong>。</p><h3 id=单链表-singly-linked-list>单链表 (Singly Linked List)</h3><h4 id=单链表结构>单链表结构</h4><ul><li><strong>结点</strong>：包含数据域和指向下一个结点的指针域 (<code>next</code>)。</li><li><strong>头指针</strong>：一个指向链表头结点的指针变量 (<code>head</code>)。</li><li><strong>头结点</strong>：通常在表头额外增加一个特殊结点（不属于线性表组成部分），目的是<strong>简化在表头位置上进行插入和删除的操作</strong>，使之与在其它结点位置上的操作一致。</li></ul><h4 id=python-结点和链表类>Python 结点和链表类</h4><p>在 Python 中，通过<strong>引用</strong>的特性实现类似 C 语言指针的效果。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Node</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;定义链表结点&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>data</span><span class=o>=</span><span class=kc>None</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>data</span> <span class=o>=</span> <span class=n>data</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>LinkedList</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;构造函数：创建一个只有头结点的空链表&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>head</span> <span class=o>=</span> <span class=n>Node</span><span class=p>()</span> <span class=c1># 创建头结点</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 头结点的 next 默认为 None，表示空表</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=单链表插入操作-inserti-x>单链表插入操作 (<code>insert(i, x)</code>)</h4><p>插入操作不需要移动数据元素，只需修改两个指针。</p><p><strong>步骤</strong>：</p><ol><li>找到第 <code>i-1</code> 个结点（即 <code>current</code>）,需要 $O(i)$ 的时间。</li><li>创建新结点 <code>new_node</code>。</li><li>新结点的 <code>next</code> 指向 <code>current</code> 的后继结点。</li><li><code>current</code> 的 <code>next</code> 指向新结点 <code>new_node</code>。</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>insert</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;在第 i 个位置插入元素 x&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 边界检查</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>0</span> <span class=ow>or</span> <span class=n>i</span> <span class=o>&gt;</span> <span class=bp>self</span><span class=o>.</span><span class=n>length</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>            <span class=k>raise</span> <span class=ne>IndexError</span><span class=p>(</span><span class=s2>&#34;Index out of range&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=n>current</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>head</span> <span class=c1># 从头结点开始</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 找到要插入位置 i 的前一个节点（i-1）</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>i</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>current</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl>        <span class=n>new_node</span> <span class=o>=</span> <span class=n>Node</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 先武装自己：新结点的 next 指向 current.next</span>
+</span></span><span class=line><span class=cl>        <span class=n>new_node</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 再加入队伍：current 的 next 指向新结点</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>new_node</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 时间复杂度：</span>
+</span></span><span class=line><span class=cl><span class=c1># 最好情况 O(1) (i=0, 头部插入, 找到头结点 O(1))</span>
+</span></span><span class=line><span class=cl><span class=c1># 最坏情况 O(n) (i=n, 尾部插入, 需遍历到倒数第二个结点)</span>
+</span></span><span class=line><span class=cl><span class=c1># 平均情况 O(n)</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=单链表删除操作-removei>单链表删除操作 (<code>remove(i)</code>)</h4><p>删除操作同样只需修改一个指针。</p><p><strong>步骤</strong>：</p><ol><li>找到要删除结点 <code>$a_i$</code> 的前驱结点 <code>$a_{i-1}$</code>（即 <code>current</code>），这需要 $O(i)$ 的时间。</li><li>将 <code>$a_{i-1}$</code> 的 <code>next</code> 指针直接指向 <code>$a_i$</code> 的后继结点 <code>$a_{i+1}$</code>。</li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>remove</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>i</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;删除第 i 个位置的元素&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>0</span> <span class=ow>or</span> <span class=n>i</span> <span class=o>&gt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>length</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>            <span class=k>raise</span> <span class=ne>IndexError</span><span class=p>(</span><span class=s2>&#34;Index out of range&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=n>current</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>head</span> <span class=c1># 从头结点开始</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 找到要删除位置 i 的前一个节点（i-1）</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>i</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>current</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=c1># current.next 指向 to_delete 的 next，即跳过 to_delete</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 时间复杂度：</span>
+</span></span><span class=line><span class=cl><span class=c1># 最好情况 O(1) (i=0, 头部删除)</span>
+</span></span><span class=line><span class=cl><span class=c1># 最坏情况 O(n) (i=n-1, 尾部删除)</span>
+</span></span><span class=line><span class=cl><span class=c1># 平均情况 O(n)</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=访问和搜索操作-visiti-searchx>访问和搜索操作 (<code>visit(i)</code>, <code>search(x)</code>)</h4><p>链表不支持随机存取，访问第 <code>i</code> 个元素或搜索元素都需要从头开始遍历。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>visit</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>i</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;访问线性表的第 i 个元素&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>0</span> <span class=ow>or</span> <span class=n>i</span> <span class=o>&gt;=</span> <span class=bp>self</span><span class=o>.</span><span class=n>length</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>            <span class=k>raise</span> <span class=ne>IndexError</span><span class=p>(</span><span class=s2>&#34;Index out of range&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=n>current</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>head</span><span class=o>.</span><span class=n>next</span> <span class=c1># 从首结点开始</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>i</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>current</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>current</span><span class=o>.</span><span class=n>data</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 时间复杂度：</span>
+</span></span><span class=line><span class=cl><span class=c1># O(n)，需要遍历 i 次。</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>search</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;搜索元素 x 的位置 position&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>head</span><span class=o>.</span><span class=n>next</span> <span class=c1># 从首结点开始</span>
+</span></span><span class=line><span class=cl>        <span class=n>position</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>        <span class=k>while</span> <span class=n>current</span> <span class=ow>is</span> <span class=ow>not</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=n>current</span><span class=o>.</span><span class=n>data</span> <span class=o>==</span> <span class=n>x</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>                <span class=k>return</span> <span class=n>position</span>
+</span></span><span class=line><span class=cl>            <span class=n>current</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>            <span class=n>position</span> <span class=o>+=</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=o>-</span><span class=mi>1</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 时间复杂度：</span>
+</span></span><span class=line><span class=cl><span class=c1># O(n)，最坏情况需要遍历整个链表。</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=双链表doubly-linked-list>双链表（Doubly Linked List）</h3><h4 id=双链表结构>双链表结构</h4><ul><li><strong>结点</strong>：包含数据域、指向<strong>直接前驱</strong>的指针域 (<code>pre</code>) 和指向<strong>直接后继</strong>的指针域 (<code>next</code>)。</li><li><strong>头尾结点</strong>：为了消除在表头、表尾插入删除的特殊处理，通常设置<strong>头结点</strong>和<strong>尾结点</strong>。<ul><li>头结点的 <code>pre</code> 为空，<code>next</code> 指向首结点。</li><li>尾结点的 <code>next</code> 为空，<code>pre</code> 指向最后一个结点。</li></ul></li></ul><h4 id=双链表插入操作-inserti-x>双链表插入操作 (<code>insert(i, x)</code>)</h4><p>在双链表中插入新结点 <code>new_node</code> 在 <code>current</code> 之后，需要修改四个指针（<code>new_node</code> 的 <code>pre</code>/<code>next</code> 和前后结点的 <code>pre</code>/<code>next</code>）。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=c1># 假设 Node 类已添加 self.prev = None 属性</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>insert</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>x</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;在第 i 个位置插入元素 x (在 current 之后插入)&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=c1># ... 边界检查 ...</span>
+</span></span><span class=line><span class=cl>        <span class=n>new_node</span> <span class=o>=</span> <span class=n>Node</span><span class=p>(</span><span class=n>x</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>head</span> <span class=c1># 找到插入位置的前一个 node</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>i</span><span class=p>):</span> 
+</span></span><span class=line><span class=cl>            <span class=n>current</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># 1. 先武装自己：新节点的 pre/next 指向前后节点</span>
+</span></span><span class=line><span class=cl>        <span class=n>new_node</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>        <span class=n>new_node</span><span class=o>.</span><span class=n>prev</span> <span class=o>=</span> <span class=n>current</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=c1># 2. 再加入队伍：调整前后节点的 pre/next 指针</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span><span class=o>.</span><span class=n>next</span><span class=o>.</span><span class=n>prev</span> <span class=o>=</span> <span class=n>new_node</span> <span class=c1># current 后一个节点的 pre 指向新节点</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>new_node</span> <span class=c1># current 的 next 指向新节点</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 查找 current 仍需要 O(n)，但修改指针只需要 O(1)。</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=双链表删除操作-removei>双链表删除操作 (<code>remove(i)</code>)</h4><p>删除操作只需要修改被删除结点的前一个和后一个结点的指针。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>remove</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>i</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=s2>&#34;&#34;&#34;删除第 i 个位置的元素 current&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=c1># ... 边界检查 ...</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span> <span class=o>=</span> <span class=bp>self</span><span class=o>.</span><span class=n>head</span><span class=o>.</span><span class=n>next</span> <span class=c1># 从首结点开始</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>i</span><span class=p>):</span> <span class=c1># 找到要删除的 node</span>
+</span></span><span class=line><span class=cl>            <span class=n>current</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=c1># 将 current 的前驱和后继结点直接连接起来</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span><span class=o>.</span><span class=n>prev</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span><span class=o>.</span><span class=n>next</span><span class=o>.</span><span class=n>prev</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>prev</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 查找 current 仍需要 O(n)，但删除操作（修改指针）只需要 O(1)。</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=循环链表-circular-linked-list>循环链表 (Circular Linked List)</h3><ul><li><strong>单循环链表</strong>：末结点的 <code>next</code> 指向首结点，形成一个环。</li><li><strong>双循环链表</strong>：末结点的 <code>next</code> 指向头结点，首结点的 <code>pre</code> 指向末结点，形成双向环。</li><li><strong>特性</strong>：可以从任意一个结点开始，顺序向后访问到达任意结点。</li></ul><hr><h2 id=五-总结比较>五、 总结比较</h2><div class=table-wrapper><table><thead><tr><th>特点</th><th>顺序存储 (如 Python List)</th><th>单链表</th><th>双链表</th><th>循环链表</th></tr></thead><tbody><tr><td><strong>存储方式</strong></td><td>连续存储</td><td>离散存储 (通过指针连接)</td><td>离散存储 (双向指针)</td><td>离散存储 (末尾连回头部)</td></tr><tr><td><strong>访问性能</strong></td><td></td><td>$O(1)$ (随机存取，通过索引直接访问)</td><td>$O(n)$ (需从头遍历)</td><td>$O(n)$ (需从头遍历)</td></tr><tr><td><strong>插入/删除</strong></td><td></td><td>$O(n)$ (需移动大量数据)</td><td>$O(n)$ (需 $O(n)$ 查找前驱结点，$O(1)$ 修改指针)</td><td>$O(n)$ (需 $O(n)$ 查找结点，$O(1)$ 修改指针)</td></tr><tr><td><strong>内存效率</strong></td><td>好 (但可能因扩容产生开销)</td><td>差 (需要额外的指针空间)</td><td>最差 (需要两个指针空间)</td><td>较差 (需要额外的指针空间)</td></tr><tr><td><strong>主要区别</strong></td><td>适合<strong>静态</strong>、经常做<strong>定位访问</strong>的场景。</td><td>只能<strong>单向</strong>访问。</td><td>可以<strong>双向</strong>访问，删除操作更方便。</td><td>可以从任何结点开始访问任一结点。</td></tr></tbody></table></div><h2 id=六-线性表应用约瑟夫斯环问题>六、 线性表应用：约瑟夫斯环问题</h2><p>约瑟夫斯环问题是一个经典的线性表应用，它模拟一群人围成一个圈，按规则淘汰，求最后剩下的人的位置。</p><h3 id=使用数组列表解决>使用数组/列表解决</h3><p>使用 Python 的 <code>list</code> 实现时，每次删除元素 <code>people.pop(index)</code>，列表内部都需要移动其后的所有元素。</p><ul><li><strong>时间复杂度</strong>：$O(N^2)$ (每次淘汰都是 $O(N)$，总共淘汰 $N−1$ 次)。</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=k>def</span> <span class=nf>josephus_list</span><span class=p>(</span><span class=n>N</span><span class=p>,</span> <span class=n>M</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;使用 Python List 解决约瑟夫斯环问题&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>people</span> <span class=o>=</span> <span class=nb>list</span><span class=p>(</span><span class=nb>range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>N</span> <span class=o>+</span> <span class=mi>1</span><span class=p>))</span> <span class=c1># [1, 2, ..., N]</span>
+</span></span><span class=line><span class=cl>    <span class=n>index</span> <span class=o>=</span> <span class=mi>0</span> <span class=c1># 从第一个人开始</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=nb>len</span><span class=p>(</span><span class=n>people</span><span class=p>)</span> <span class=o>&gt;</span> <span class=mi>1</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 计算下一个要淘汰的人的索引</span>
+</span></span><span class=line><span class=cl>        <span class=n>index</span> <span class=o>=</span> <span class=p>(</span><span class=n>index</span> <span class=o>+</span> <span class=n>M</span> <span class=o>-</span> <span class=mi>1</span><span class=p>)</span> <span class=o>%</span> <span class=nb>len</span><span class=p>(</span><span class=n>people</span><span class=p>)</span> 
+</span></span><span class=line><span class=cl>        <span class=n>people</span><span class=o>.</span><span class=n>pop</span><span class=p>(</span><span class=n>index</span><span class=p>)</span> <span class=c1># 淘汰该人</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>people</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 示例: josephus_list(7, 3) 返回 4</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=使用单循环链表解决>使用单循环链表解决</h3><p>使用单循环链表可以避免删除时移动大量数据的开销。</p><ul><li><strong>时间复杂度</strong>：$O(N\cdot M)$ (每次淘汰需要 $O(M)$ 步找到要删除的结点，总共淘汰 $N−1$ 次)。</li><li><strong>注意</strong>：尽管删除操作本身是 $O(1)$，但<strong>寻找</strong>要删除的结点需要 $O(M)$。</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=k>class</span> <span class=nc>Node</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;定义链表结点，用于约瑟夫斯环问题&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>value</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>value</span> <span class=o>=</span> <span class=n>value</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>create_circle</span><span class=p>(</span><span class=n>N</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>    创建 N 个结点的单循环链表。
+</span></span></span><span class=line><span class=cl><span class=s2>    编号从 1 到 N。
+</span></span></span><span class=line><span class=cl><span class=s2>    &#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>N</span> <span class=o>&lt;=</span> <span class=mi>0</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>None</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=c1># 1. 创建第一个节点</span>
+</span></span><span class=line><span class=cl>    <span class=n>head</span> <span class=o>=</span> <span class=n>Node</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span> <span class=p>[</span><span class=n>cite</span><span class=p>:</span> <span class=mi>744</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=n>current</span> <span class=o>=</span> <span class=n>head</span> <span class=p>[</span><span class=n>cite</span><span class=p>:</span> <span class=mi>745</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 2. 创建其他节点 (从 2 到 N)</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=n>N</span> <span class=o>+</span> <span class=mi>1</span><span class=p>):</span> <span class=p>[</span><span class=n>cite</span><span class=p>:</span> <span class=mi>748</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>Node</span><span class=p>(</span><span class=n>i</span><span class=p>)</span> <span class=c1># 创建其他节点 [cite: 749]</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span> <span class=p>[</span><span class=n>cite</span><span class=p>:</span> <span class=mi>750</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=c1># 3. 形成循环链表：最后一个节点的 next 指向 head</span>
+</span></span><span class=line><span class=cl>    <span class=n>current</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>head</span> <span class=p>[</span><span class=n>cite</span><span class=p>:</span> <span class=mi>751</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>head</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>josephus_linked_list</span><span class=p>(</span><span class=n>N</span><span class=p>,</span> <span class=n>M</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>    使用单循环链表解决约瑟夫斯环问题。
+</span></span></span><span class=line><span class=cl><span class=s2>    N 为人数，M 为淘汰间隔。
+</span></span></span><span class=line><span class=cl><span class=s2>    时间复杂度: O(N*M) [cite: 734]
+</span></span></span><span class=line><span class=cl><span class=s2>    &#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>N</span> <span class=o>==</span> <span class=mi>1</span><span class=p>:</span> 
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=n>M</span> <span class=o>==</span> <span class=mi>1</span><span class=p>:</span> <span class=p>[</span><span class=n>cite</span><span class=p>:</span> <span class=mi>756</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>N</span> <span class=p>[</span><span class=n>cite</span><span class=p>:</span> <span class=mi>758</span><span class=p>]</span> <span class=c1># M=1时，将按序淘汰 1, 2, ..., N-1，最后剩下 N。</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>head</span> <span class=o>=</span> <span class=n>create_circle</span><span class=p>(</span><span class=n>N</span><span class=p>)</span> <span class=c1># 创建循环链表</span>
+</span></span><span class=line><span class=cl>    <span class=n>current</span> <span class=o>=</span> <span class=n>head</span> <span class=c1># 记录当前结点，从编号 1 的结点开始</span>
+</span></span><span class=line><span class=cl>    <span class=n>prev</span> <span class=o>=</span> <span class=kc>None</span> <span class=c1># 记录前一个结点，用于删除操作</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>while</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span> <span class=o>!=</span> <span class=n>current</span><span class=p>:</span> <span class=c1># 循环直到只剩一个结点</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 1. 移动 M-1 步，找到要淘汰的节点的前一个节点 (prev)</span>
+</span></span><span class=line><span class=cl>        <span class=c1># 循环 M-1 次，使 current 停在要淘汰的节点 to_delete 上</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>M</span> <span class=o>-</span> <span class=mi>1</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>prev</span> <span class=o>=</span> <span class=n>current</span>
+</span></span><span class=line><span class=cl>            <span class=n>current</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=c1># 此时 current 为要淘汰的节点 to_delete</span>
+</span></span><span class=line><span class=cl>        <span class=c1># print(f&#34;淘汰的节点:{current.value}&#34;)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># 2. 淘汰节点：将 prev 的 next 指向 to_delete 的 next</span>
+</span></span><span class=line><span class=cl>        <span class=c1># to_delete = current</span>
+</span></span><span class=line><span class=cl>        <span class=n>prev</span><span class=o>.</span><span class=n>next</span> <span class=o>=</span> <span class=n>current</span><span class=o>.</span><span class=n>next</span> <span class=c1># 删除该节点</span>
+</span></span><span class=line><span class=cl>        
+</span></span><span class=line><span class=cl>        <span class=c1># 3. 移动到下一个节点：新的 current 从 prev 的下一个结点（即原 to_delete 的 next）开始下一轮计数</span>
+</span></span><span class=line><span class=cl>        <span class=n>current</span> <span class=o>=</span> <span class=n>prev</span><span class=o>.</span><span class=n>next</span> <span class=c1># 移动到下一个节点</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>current</span><span class=o>.</span><span class=n>value</span> <span class=c1># 返回最后剩下的节点的值</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=c1># 示例</span>
+</span></span><span class=line><span class=cl><span class=n>N</span> <span class=o>=</span> <span class=mi>7</span> <span class=c1># 人数 [cite: 781]</span>
+</span></span><span class=line><span class=cl><span class=n>M</span> <span class=o>=</span> <span class=mi>3</span> <span class=c1># 每隔 M 个人淘汰一个 [cite: 782]</span>
+</span></span><span class=line><span class=cl><span class=n>last_person</span> <span class=o>=</span> <span class=n>josephus_linked_list</span><span class=p>(</span><span class=n>N</span><span class=p>,</span> <span class=n>M</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=c1># print(f&#34;最后剩下的人在原始队伍中的位置是:{last_person}&#34;)</span>
+</span></span><span class=line><span class=cl><span class=c1># 期望输出结果为 4</span>
+</span></span></code></pre></td></tr></table></div></div></section><footer class=article-footer><section class=article-tags><a href=/tags/algorithm---data-structures/>Algorithm - Data Structures</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{const e=[".main-article",".widget--toc"];e.forEach(e=>{const t=document.querySelector(e);t&&renderMathInElement(t,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})})</script></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article class=has-image><a href=/p/datastructure-1/><div class=article-image><img src=/p/datastructure-1/cover.2652685e3b1a8e1d286101d6b6d3300a_hu_3c8d4e14fd366ba9.jpg width=250 height=150 loading=lazy alt="Featured image of post 算法复杂度" data-key=datastructure-1 data-hash="md5-JlJoXjsajh0oYQHWttMwCg=="></div><div class=article-details><h2 class=article-title>算法复杂度</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//alanz.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2025 -
+2026 Alan Zhou</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.33.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
