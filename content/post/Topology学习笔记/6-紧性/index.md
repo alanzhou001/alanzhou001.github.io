@@ -430,3 +430,64 @@ $$
 该常数 $\varepsilon$ 称为 **Lebesgue 数（Lebesgue constant / Lebesgue number）**。
 
 {{< /math-block >}}
+
+## 一点紧致化
+
+{{< math-block type="definition" title="Locally compact" label="local-cmpc>}}
+
+设 $X$ 是一个拓扑空间。称 $X$ 是**局部紧的（locally compact）**，如果对任意 $x\in X$，存在一个**紧子集** $C\subset X$，使得
+$$
+x \in \operatorname{int}(C).
+$$
+
+等价地，$X$ 是局部紧的，当且仅当：
+
+对任意 $x\in X$，存在一个开集 $U$ 和一个紧集 $C$，使得
+$$
+x \in U \subset C.
+$$
+
+{{< /math-block >}}
+
+> 所有紧空间都是局部紧的；
+> $E^n$是局部紧的，$\forall x \in E^n$，$C=B(x,1), U=B(x,1)$
+
+{{< math-block type="theorem" title="Alexandroff 一点紧致化">}}
+
+设 $(X,\mathcal T)$ 是一个 **Hausdorff** 拓扑空间，取一点 $\infty\notin X$，令
+$$
+Y = X \cup \{\infty\}.
+$$
+定义 $Y$ 上的拓扑
+$$
+\mathcal T_\infty
+= \mathcal T \,\cup\, \{\,Y\setminus C \mid C \text{ 是 } X \text{ 中的紧子集}\,\}.
+$$
+
+则有以下结论：
+
+(1) $(Y,\mathcal T_\infty)$ 是一个拓扑空间
+
+(2) $X$ 从 $(Y,\mathcal T_\infty)$ 继承的子空间拓扑与原拓扑一致，即
+$$
+(\mathcal T_\infty)_X = \mathcal T.
+$$
+
+(3) $(Y,\mathcal T_\infty)$ 是紧的
+
+(4) 若 $(X,\mathcal T)$ 是**局部紧的**，则 $(Y,\mathcal T_\infty)$ 是 **Hausdorff** 空间
+
+(5) 若 $(X,\mathcal T)$ 是**非紧的**，则
+$$
+X \subsetneq Y,
+$$
+即新加入的一点 $\infty$ 不是多余的
+
+---
+
+## 备注（Remark）
+
+该构造称为 **一点紧化（one-point compactification）** 或 **Alexandroff 紧化**。  
+当 $X$ 是局部紧 Hausdorff 空间时，$(Y,\mathcal T_\infty)$ 是一个 **紧 Hausdorff 空间**，且 $X$ 是 $Y$ 的一个稠密开子空间。
+
+{{< /math-block >}}
