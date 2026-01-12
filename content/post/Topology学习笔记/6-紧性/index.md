@@ -433,7 +433,7 @@ $$
 
 ## 一点紧致化
 
-{{< math-block type="definition" title="Locally compact" label="local-cmpc>}}
+{{< math-block type="definition" title="Locally compact" label="local-cmpc">}}
 
 设 $X$ 是一个拓扑空间。称 $X$ 是**局部紧的（locally compact）**，如果对任意 $x\in X$，存在一个**紧子集** $C\subset X$，使得
 $$
