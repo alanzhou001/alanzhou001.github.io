@@ -1,0 +1,227 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="K连贯性方法(Konsistency)及其在六度分隔问题中探索最差情形下的六度连接。"><title>K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）</title><link rel=canonical href=https://cxzhou.com/p/konsistency/><link rel=stylesheet href=/scss/style.min.702a187fb5c376d86aa32a6922f4ea12dac0c2dde6e96fe5532d11baeb79adfd.css><meta property='og:title' content="K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）"><meta property='og:description' content="K连贯性方法(Konsistency)及其在六度分隔问题中探索最差情形下的六度连接。"><meta property='og:url' content='https://cxzhou.com/p/konsistency/'><meta property='og:site_name' content='Alan Zhou'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Topology'><meta property='article:tag' content='Data Structure'><meta property='article:tag' content='Math'><meta property='article:published_time' content='2026-01-01T23:06:00+08:00'><meta property='article:modified_time' content='2026-01-01T23:06:00+08:00'><meta property='og:image' content='https://cxzhou.com/p/konsistency/cover.jpg'><meta name=twitter:title content="K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）"><meta name=twitter:description content="K连贯性方法(Konsistency)及其在六度分隔问题中探索最差情形下的六度连接。"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content='https://cxzhou.com/p/konsistency/cover.jpg'><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_6f2b4dd1a1c0b31e.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>✅</span></figure><div class=site-meta><h1 class=site-name><a href=/>Alan Zhou</a></h1><h2 class=site-description>长风破浪会有时，直挂云帆济沧海。</h2></div></header><ol class=menu-social><li><a href=https://space.bilibili.com/1896424732 target=_blank title=Bilibili rel=me><!doctype html><svg t="1750673622263" class="icon" viewBox="0 0 1024 1024" p-id="9917" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M306.048 117.632 444.352 256h135.296L718.08 117.632a42.688 42.688.0 1160.288 60.352L700.352 256h89.024a149.312 149.312.0 01149.312 149.312v341.376A149.312 149.312.0 01789.376 896H234.688A149.312 149.312.0 0185.376 746.688V405.312A149.312 149.312.0 01234.688 256h88.96L245.76 177.92a42.688 42.688.0 0160.352-60.352zm483.328 223.68H234.688a64 64 0 00-63.68 57.856l-.32 6.144v341.376a64 64 0 0057.856 63.68l6.144.32h554.688a64 64 0 0063.68-57.856l.32-6.144V405.312a64 64 0 00-64-64zm-448 128c23.552.0 42.688 19.136 42.688 42.688v85.312a42.688 42.688.0 11-85.376.0V512c0-23.552 19.136-42.688 42.688-42.688zm341.312.0c23.616.0 42.688 19.136 42.688 42.688v85.312a42.688 42.688.0 11-85.312.0V512c0-23.552 19.072-42.688 42.624-42.688z" fill="currentColor" p-id="9918"/></svg></a></li><li><a href=https://github.com/alanzhou001 target=_blank title=GitHub rel=me><!doctype html><svg t="1750674654355" class="icon" viewBox="0 0 1024 1024" p-id="11874" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" fill="currentColor"><path d="M682.215454 981.446137c-25.532318.0-42.553863-17.021545-42.553864-42.553864V772.932206c4.255386-34.043091-8.510773-59.575409-29.787704-80.852341-12.766159-12.766159-17.021545-29.787704-8.510773-42.553864 4.255386-17.021545 21.276932-25.532318 34.043091-29.787704 123.406204-12.766159 238.301635-55.320023 238.301635-255.323181.0-46.80925-17.021545-93.6185-51.064636-131.916976-12.766159-12.766159-12.766159-29.787704-8.510772-42.553864 12.766159-34.043091 12.766159-68.086182 4.255386-102.129272-21.276932 4.255386-55.320023 17.021545-110.640045 55.320022-8.510773 8.510773-21.276932 8.510773-34.043091 4.255387-89.363113-25.532318-187.236999-25.532318-276.600112.0-12.766159 4.255386-25.532318 4.255386-38.298477-4.255387C307.741455 104.836549 269.442978 92.07039 248.166047 87.815004c-8.510773 34.043091-8.510773 68.086182 4.255386 102.129272 4.255386 17.021545 4.255386 34.043091-8.510773 42.553864-34.043091 38.298477-51.064636 85.107727-51.064636 131.916976.0 200.003158 114.895431 242.557022 238.301635 255.323181 17.021545.0 29.787704 12.766159 34.043091 29.787704 4.255386 17.021545.0 34.043091-8.510773 42.553864-21.276932 21.276932-29.787704 46.80925-29.787704 76.596954v165.960068c0 25.532318-17.021545 42.553863-42.553863 42.553863s-42.553863-17.021545-42.553864-42.553863v-72.341568c-127.66159 21.276932-182.981613-51.064636-221.28009-97.873886-17.021545-21.276932-29.787704-38.298477-46.80925-42.553864-21.276932-4.255386-38.298477-29.787704-29.787704-51.064636 4.255386-21.276932 29.787704-38.298477 51.064636-29.787704 42.553863 12.766159 68.086182 42.553863 93.6185 72.341568 34.043091 46.80925 63.830795 80.852341 153.193908 63.830795v-4.255386c0-25.532318 4.255386-55.320023 12.766159-76.596955-119.150818-25.532318-246.812408-102.129272-246.812408-327.664748.0-63.830795 21.276932-123.406204 59.575409-170.215454-17.021545-59.575409-12.766159-114.895431 12.766159-170.215454 4.255386-12.766159 12.766159-21.276932 25.532318-25.532318 17.021545-4.255386 72.341568-12.766159 187.236999 59.575409 93.6185-21.276932 191.492386-21.276932 280.855499.0 110.640045-72.341568 170.215454-63.830795 187.236999-59.575409 12.766159 4.255386 21.276932 12.766159 25.532319 25.532318 21.276932 55.320023 25.532318 110.640045 12.766159 165.960067 38.298477 46.80925 59.575409 106.384659 59.575408 170.215454.0 242.557022-144.683136 306.387817-246.812408 331.920135 8.510773 25.532318 12.766159 55.320023 12.766159 80.852341V938.892273c0 25.532318-17.021545 42.553863-42.553863 42.553864z" p-id="11875"/></svg></a></li><li><a href=https://www.kaggle.com/alanz001 target=_blank title=Kaggle rel=me><!doctype html><svg t="1750673694686" class="icon" viewBox="0 0 1024 1024" p-id="10910" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" fill="currentColor"><path d="M331.264 128c-7.488.0-11.264 3.744-11.264 11.264V884.64c0 7.488 3.744 11.232 11.264 11.232h73.472c7.488.0 11.328-3.712 11.328-11.232V729.888l57.888-55.136L641.568 888c4.544 5.28 9.792 8 15.872 8h101.504c5.312.0 8.32-1.536 9.056-4.576l-2.112-11.488-221.12-274.816L756.8 399.936c3.936-4.096 2.56-15.936-8.064-15.936h-104.96c-5.344.0-10.656 2.752-15.968 8.064L416 607.2V139.264c0-7.52-3.744-11.264-11.264-11.264h-73.472z" p-id="10911"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About me</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#minmax-星型中心划分的优化建模>Min–max 星型中心划分的优化建模</a><ol><li><a href=#1-预备定义与符号>1. 预备定义与符号</a></li><li><a href=#2-minmax-优化问题的原始形式>2. Min–max 优化问题的原始形式</a></li><li><a href=#3-01-变量的-minmax-指派模型>3. 0–1 变量的 Min–max 指派模型</a></li><li><a href=#4-minmax-的标准线性化形式>4. Min–max 的标准线性化形式</a></li></ol></li><li><a href=#基于小世界模型的--方法六度分隔定理推导>基于小世界模型的 -方法六度分隔定理推导</a></li><li><a href=#newmanwatts-小世界模型>Newman–Watts 小世界模型</a></li><li><a href=#第一层-确定性星型划分>第一层 ：确定性星型划分</a></li><li><a href=#群体图的构造与边概率下界>群体图的构造与边概率下界</a></li><li><a href=#群体图上的扩张性分析>群体图上的扩张性分析</a><ol><li><a href=#度集中性chernoff-界>度集中性（Chernoff 界）</a></li><li><a href=#两步球的期望增长>两步球的期望增长</a></li><li><a href=#两步球达到--的概率下界>两步球达到 的概率下界</a></li><li><a href=#第三步覆盖全图>第三步覆盖全图</a></li><li><a href=#群体图直径界>群体图直径界</a></li></ol></li><li><a href=#回推到原图六度分隔>回推到原图：六度分隔</a></li><li><a href=#讨论与局限性discussion-and-limitations>讨论与局限性（Discussion and Limitations）</a></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/p/konsistency/><img src=/p/konsistency/cover_hu_d216fe838d1a6218.jpg srcset="/p/konsistency/cover_hu_d216fe838d1a6218.jpg 800w, /p/konsistency/cover_hu_1f8234c720d4c436.jpg 1600w" width=800 height=450 loading=lazy alt="Featured image of post K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）"></a></div><div class=article-details><header class=article-category><a href=/categories/math/>Math</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/konsistency/>K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）</a></h2><h3 class=article-subtitle>K连贯性方法(Konsistency)及其在六度分隔问题中探索最差情形下的六度连接。</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2026-01-01T23:06:00+08:00>Jan 01, 2026</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 9 分钟</time></div></footer></div></header><section class=article-content><p>封面画师：<a class=link href=https://www.pixiv.net/artworks/60752234 target=_blank rel=noopener>wukloo</a></p><div class="math-block math-block--definition"><div class=math-block-title><strong>定义 1（图与邻接）</strong></div><div class=math-block-content>设 $G=(V,E)$ 为有限简单无向图，其中 $V$ 为顶点集，$E\subseteq{{u,v}:u,v\in V, u\neq v}$ 为边集。若 ${u,v}\in E$，则称 $u$ 与 $v$ 相邻，记为$u\sim v$。</div></div><hr><div class="math-block math-block--definition"><div class=math-block-title><strong>定义 2（闭邻域）</strong></div><div class=math-block-content><p>对任意顶点 $k\in V$，定义其闭邻域为</p>$$
+N[k] := {k}\cup{v\in V:\ v\sim k}.
+$$</div></div><hr><div class="math-block math-block--definition"><div class=math-block-title><strong>定义 3（支配集）</strong></div><div class=math-block-content><p>集合 $K\subseteq V$ 称为图 $G$ 的一个支配集，若满足</p>$$
+\forall v\in V,\quad \exists k\in K \text{ 使得 } v\in N[k].
+$$<p>即，图中每一个顶点要么属于 $K$，要么与 $K$ 中的某个顶点相邻。</p></div></div><hr><div class="math-block math-block--definition"><div class=math-block-title><strong>定义 4（划分）</strong></div><div class=math-block-content><p>称一族非空集合 ${S_k}_{k\in I}$ 为 $V$ 的一个划分，若满足：</p><ol><li>$S_k\neq\varnothing$，对所有 $k\in I$；</li><li>$S_{k_1}\cap S_{k_2}=\varnothing$，对所有 $k_1\neq k_2$；</li><li>$\bigcup_{k\in I} S_k = V$。</li></ol></div></div><hr><div class="math-block math-block--definition"><div class=math-block-title><strong>定义 5（k-星型中心）</strong></div><div class=math-block-content><p>设 $S\subseteq V$ 为非空集合。若存在 $k\in S$ 使得</p>$$
+\forall v\in S\setminus{k},\quad k\sim v,
+$$<p>则称 k 为集合 S 的一个 <strong>k-星型中心</strong>。</p></div></div><hr><div class="math-block math-block--theorem"><div class=math-block-title><strong>定理 1（由支配集诱导的 k-中心星型划分）</strong></div><div class=math-block-content><p>设 $G=(V,E)$ 为有限简单无向图，且 $K\subseteq V$ 为其一个支配集。则存在一个映射</p>$$
+f:V\to K
+$$<p>满足</p>$$
+\forall v\in V,\quad v\in N[f(v)].
+$$<p>令</p>$$
+S_k := {v\in V:\ f(v)=k},\qquad k\in K,
+$$<p>并定义</p>$$
+K' := {k\in K:\ S_k\neq\varnothing}.
+$$<p>则集合族 ${S_k}_{k\in K'}$ 构成 $V$ 的一个划分，且对每个 $k\in K'$，顶点 $k$ 是子集 $S_k$ 的 k-星型中心。</p></div></div><hr><div class="math-block math-block--proof"><div class=math-block-content><em><strong>证明.</strong></em>&nbsp;<p>由于 $K$ 是 $G$ 的支配集，按定义对任意 $v\in V$，存在至少一个 $k\in K$ 使得 $v\in N[k]$。据此，对每个 $v\in V$ 任取一个满足上述条件的顶点 $k\in K$，并定义映射</p>$$
+f(v)=k.
+$$<p>由构造立即可得</p>$$
+\forall v\in V,\quad v\in N[f(v)].
+$$<p>接下来验证集合族 ${S_k}_{k\in K'}$ 的性质。</p><p>首先，对任意$v\in V$，由 $f(v)\in K$ 且 $v\in S_{f(v)}$，可得</p>$$
+V=\bigcup_{k\in K}S_k=\bigcup_{k\in K'}S_k,
+$$<p>从而覆盖性成立。</p><p>其次，由于 $f$ 为函数，对任意不同的 $k_1,k_2\in K$，有</p>$$
+S_{k_1}\cap S_{k_2}
+={v\in V:\ f(v)=k_1 \text{ 且 } f(v)=k_2}
+=\varnothing,
+$$<p>故集合两两不交。</p><p>再次，由 $K'$ 的定义可知，对所有$k\in K'$，均有$S_k\neq\varnothing$。因此 ${S_k}_{k\in K'}$ 构成 $V$ 的一个划分。</p><p>最后，取任意 $k\in K'$ 及任意$v\in S_k$。由 $S_k$ 的定义，有 $f(v)=k$。结合映射 $f$ 的构造性质，得</p>$$
+v\in N[k],
+$$<p>即要么 $v=k$，要么 $v\sim k$。因此，对所有$v\in S_k\setminus{k}$，均有 $k\sim v$，从而 $k$ 为 $S_k$ 的 k-星型中心。</p><p>定理得证。</p><span class=qed-symbol>□</span></div></div><hr><h2 id=minmax-星型中心划分的优化建模>Min–max 星型中心划分的优化建模</h2><h3 id=1-预备定义与符号>1. 预备定义与符号</h3><p>设 \(G=(V,E)\) 为有限简单无向图，\(|V|=n\)。定义邻接指示函数</p>\[
+a_{vk} =
+\begin{cases}
+1, & v = k \text{ 或 } \{v,k\} \in E, \\
+0, & \text{否则}.
+\end{cases}
+\]<p>注意 \(a_{vk}=1\) 当且仅当 \(v \in N[k]\)，即顶点 \(v\) 与顶点 \(k\) 至多一跳可达（允许 \(v=k\)）。</p><p>称顶点 \(k\) 为集合 \(S \subseteq V\) 的 <strong>\(k\)-星型中心</strong>，若对任意 \(v \in S \setminus \{k\}\)，均有 \(\{v,k\} \in E\)。等价地，</p>\[
+\forall v \in S,\quad a_{vk}=1.
+\]<hr><h3 id=2-minmax-优化问题的原始形式>2. Min–max 优化问题的原始形式</h3><p>给定一个正整数 \(m\)（中心数或子群体数的预算），考虑如下问题：</p><blockquote><p><strong>问题 \((\mathcal{P}_m)\)：Min–max 星型中心划分</strong></p>\[
+\min_{\{S_k\},\,K}\ \max_{k \in K} |S_k|
+\]<p>满足</p>\[
+\begin{aligned}
+&K \subseteq V,\quad |K| \le m, \\
+&\{S_k\}_{k \in K} \text{ 构成 } V \text{ 的一个划分}, \\
+&k \in S_k \quad \forall k \in K, \\
+&S_k \subseteq N[k] \quad \forall k \in K.
+\end{aligned}
+\]</blockquote><p>其中约束 \(S_k \subseteq N[k]\) 保证每个子群体 \(S_k\) 以 \(k\) 为中心，且所有成员与 \(k\) 至多一跳相邻。</p><blockquote><p><strong>说明</strong><br>若不对 \(|K|\) 加以限制，则可取 \(K=V\)、\(S_k=\{k\}\)，使目标值恒为 1，从而问题退化。因此中心数预算 \(m\) 是获得非平凡解的必要条件。</p></blockquote><hr><h3 id=3-01-变量的-minmax-指派模型>3. 0–1 变量的 Min–max 指派模型</h3><p>引入如下决策变量：</p><ul><li>\(y_k \in \{0,1\}\)：若 \(y_k=1\)，则选择顶点 \(k\) 作为某一子群体的中心；</li><li>\(x_{vk} \in \{0,1\}\)：若 \(x_{vk}=1\)，则将顶点 \(v\) 分配给中心 \(k\)。</li></ul><p>定义中心 \(k\) 的群体规模（负载）为</p>\[
+L_k(x) := \sum_{v \in V} x_{vk}.
+\]<p>则问题 \((\mathcal{P}_m)\) 等价地可表述为如下 min–max 整数优化问题：</p><blockquote><p><strong>问题 \((\mathcal{IP}_m)\)：Min–max 星型指派模型</strong></p>\[
+\min_{x,y}\ \max_{k \in V} L_k(x)
+\]<p>满足</p>\[
+\begin{aligned}
+&\sum_{k \in V} x_{vk} = 1
+&& \forall v \in V
+&& \text{(每个顶点恰分配给一个中心)} \\
+&x_{vk} \le a_{vk}
+&& \forall v,k \in V
+&& \text{(一跳可达 / 星型约束)} \\
+&x_{vk} \le y_k
+&& \forall v,k \in V
+&& \text{(只能分配给被选中的中心)} \\
+&\sum_{k \in V} y_k \le m
+&&
+&& \text{(中心数预算)} \\
+&x_{kk} = y_k
+&& \forall k \in V
+&& \text{(选中心则中心属于其群体)} \\
+&x_{vk} \in \{0,1\},\ y_k \in \{0,1\}
+&& \forall v,k \in V.
+\end{aligned}
+\]</blockquote><p>在该模型中，对每个满足 \(y_k=1\) 的顶点 \(k\)，集合</p>\[
+S_k := \{v \in V : x_{vk}=1\}
+\]<p>构成一个非空子群体，且由约束 \(x_{vk} \le a_{vk}\) 可知 \(S_k \subseteq N[k]\)，因此 \(k\) 是 \(S_k\) 的 \(k\)-星型中心。由 \(\sum_k x_{vk}=1\) 可知这些子群体构成 \(V\) 的一个划分（忽略空集）。</p><hr><h3 id=4-minmax-的标准线性化形式>4. Min–max 的标准线性化形式</h3><p>引入一个标量上界变量 \(T\) 将 min–max 目标转化为等价形式：</p><p><strong>等价形式 \((\mathcal{IP}_m^T)\)</strong></p>\[
+\min_{x,y,T}\ T
+\]<p>满足问题 \((\mathcal{IP}_m)\) 的全部约束，并额外加入</p>\[
+\sum_{v \in V} x_{vk} \le T \quad \forall k \in V.
+\]<p>在最优解处，有</p>\[
+T^\star = \min_{x,y}\ \max_{k \in V} L_k(x),
+\]<p>从而该模型与原 min–max 目标等价。</p><hr><h2 id=基于小世界模型的--方法六度分隔定理推导>基于小世界模型的 \(k\)-方法六度分隔定理推导</h2><p>本节在前述 <strong>定义 1–5、定理 1</strong> 以及 <strong>Min–max 星型中心模型</strong> 的基础上，<br><strong>保持此前给出的足够条件不变</strong>，在 <strong>Newman–Watts 小世界模型</strong> 下，<br>以 <strong>完全展开的概率不等式（Chernoff 界 + 并集界）</strong> 形式，给出“六度分隔”的推导。</p><hr><h2 id=newmanwatts-小世界模型>Newman–Watts 小世界模型</h2><p>设顶点集</p>\[
+V=\{0,1,\dots,n-1\}
+\]<p>按模 \(n\) 排列成环，定义环距离</p>\[
+\mathrm{dist}_{\mathrm{ring}}(u,v)=\min\{|u-v|,\,n-|u-v|\}.
+\]<p>给定参数 \(r\in\mathbb{N}\)、\(p\in(0,1)\)，随机图</p>\[
+G\sim \mathrm{NW}(n,r,p)
+\]<p>按如下规则生成：</p><ol><li><p><strong>局部边（确定性）</strong><br>若 \(\mathrm{dist}_{\mathrm{ring}}(u,v)\le r\) 且 \(u\neq v\)，则加入边 \(\{u,v\}\)；
+此时每个顶点局部度为 \(2r\)。</p></li><li><p><strong>长程边（随机）</strong><br>对所有尚未相连的顶点对 \(\{u,v\}\)，独立地以概率 \(p\) 加入边。</p></li></ol><hr><h2 id=第一层-确定性星型划分>第一层 \(k\)：确定性星型划分</h2><p>设</p>\[
+s := 2r+1, \qquad m := \left\lceil \frac{n}{s} \right\rceil .
+\]<p>将环按顺序划分为 \(m\) 个连续区块</p>\[
+B_1,\dots,B_m,
+\quad |B_i|\le s.
+\]<p>在每个区块 \(B_i\) 中选取一个中心 \(k_i\)，定义</p>\[
+K_1 := \{k_1,\dots,k_m\}.
+\]<div class="math-block math-block--lemma"><div class=math-block-title><strong>引理 7.1（块内星型支配）</strong></div><div class=math-block-content><p>对任意 \(i\)，有</p>\[
+B_i \subseteq N_G[k_i].
+\]</div></div><div class="math-block math-block--proof"><div class=math-block-content><em><strong>证明.</strong></em>&nbsp;<p>由于 \(|B_i|\le 2r+1\)，且 \(k_i\) 取块中点，任意 \(v\in B_i\) 满足</p>\[
+\mathrm{dist}_{\mathrm{ring}}(v,k_i)\le r,
+\]<p>从而 \(\{v,k_i\}\in E\)。证毕。</p><span class=qed-symbol>□</span></div></div><p>因此</p>\[
+\forall v\in V,\quad \mathrm{dist}_G(v,K_1)\le 1.
+\]<hr><h2 id=群体图的构造与边概率下界>群体图的构造与边概率下界</h2><p>定义 <strong>群体图</strong></p>\[
+H=(V_H,E_H),
+\quad V_H := K_1.
+\]<p>若原图中存在 \(u\in B_i, v\in B_j\) 使得 \(\{u,v\}\in E(G)\)，则在 \(H\) 中加入边 \(\{k_i,k_j\}\)。</p><hr><div class="math-block math-block--lemma"><div class=math-block-title><strong>引理 7.2（群体图边概率下界）</strong></div><div class=math-block-content><p>设</p>\[
+p' := 1-(1-p)^{(s-1)^2}.
+\]<p>则对任意 \(i\neq j\)，有</p>\[
+\mathbb{P}\big(\{k_i,k_j\}\in E_H\big) \ge p'.
+\]</div></div><div class="math-block math-block--proof"><div class=math-block-content><em><strong>证明.</strong></em>&nbsp;<p>区块 \(B_i,B_j\) 至少包含 \((s-1)^2\) 对"非局部相邻"的顶点对。<br>每一对以概率 \(p\) 独立连边，因此</p>\[
+\mathbb{P}(\text{无任何跨块边})
+=(1-p)^{|B_i||B_j|}
+\le (1-p)^{(s-1)^2}.
+\]<p>取补事件即得结论。</p><span class=qed-symbol>□</span></div></div><hr><h2 id=群体图上的扩张性分析>群体图上的扩张性分析</h2><p>以下分析在 <strong>Erdős–Rényi 下界模型</strong></p>\[
+\widetilde H \sim G(m,p')
+\]<p>中进行；由于“直径 \(\le 4\)”是单调递增事件，<br>由耦合原理可将结论转移到真实群体图 \(H\)。</p><hr><h3 id=度集中性chernoff-界>度集中性（Chernoff 界）</h3><p>令</p>\[
+d := (m-1)p'.
+\]<p>对任意固定顶点 \(x\in V(\widetilde H)\)，其度</p>\[
+\deg(x)\sim \mathrm{Bin}(m-1,p').
+\]<p>对任意 \(0<\delta<1\)，Chernoff 界给出</p>\[
+\mathbb{P}\big(\deg(x)\le (1-\delta)d\big)
+\le \exp\!\left(-\frac{\delta^2 d}{2}\right).
+\]<p>取 \(\delta=\tfrac12\)，得</p>\[
+\mathbb{P}\big(\deg(x)\le d/2\big)
+\le \exp\!\left(-\frac{d}{8}\right).
+\]<p>若</p>\[
+d \ge 16\log m,
+\]<p>则</p>\[
+\mathbb{P}\big(\deg(x)\le d/2\big)\le m^{-2}.
+\]<p>由并集界，</p>\[
+\mathbb{P}\big(\exists x:\deg(x)\le d/2\big)
+\le m\cdot m^{-2}=m^{-1}.
+\]<p><strong>结论：</strong> 以概率至少 \(1-m^{-1}\)，</p>\[
+\delta(\widetilde H)\ge d/2.
+\]<hr><h3 id=两步球的期望增长>两步球的期望增长</h3><p>固定顶点 \(x\)，在事件 \(\deg(x)\ge d/2\) 上考虑</p>\[
+\Gamma_1(x) := \{x\}\cup N(x),
+\quad |\Gamma_1(x)|\ge d/2.
+\]<p>对任意顶点 \(y\notin \Gamma_1(x)\)，其不与 \(\Gamma_1(x)\) 中任意点相连的概率为</p>\[
+\mathbb{P}\big(y\notin \Gamma_2(x)\mid \Gamma_1(x)\big)
+=(1-p')^{|\Gamma_1(x)|}
+\le \exp\!\left(-p'|\Gamma_1(x)|\right)
+\le \exp\!\left(-\frac{p'd}{2}\right).
+\]<p>因此</p>\[
+\mathbb{E}\big[m-|\Gamma_2(x)|\mid \deg(x)\ge d/2\big]
+\le m\exp\!\left(-\frac{p'd}{2}\right).
+\]<hr><h3 id=两步球达到--的概率下界>两步球达到 \(m^{2/3}\) 的概率下界</h3><p>设足够条件</p>\[
+d \ge C\, m^{1/3}\log m
+\quad (C>0\ \text{充分大}),
+\]<p>注意</p>\[
+p'd \asymp \frac{d^2}{m}.
+\]<p>则</p>\[
+\frac{p'd}{2}
+\ge \frac{C^2}{2}\, m^{-1/3}\log^2 m.
+\]<p>于是</p>\[
+m\exp\!\left(-\frac{p'd}{2}\right)
+\le m\exp\!\left(-\tfrac{C^2}{2}m^{-1/3}\log^2 m\right)
+\le m^{-10}
+\]<p>当 \(C\) 充分大时成立。</p><p>由 Markov 不等式，</p>\[
+\mathbb{P}\big(|\Gamma_2(x)|\le m^{2/3}\big)
+\le \mathbb{P}\big(m-|\Gamma_2(x)|\ge m-m^{2/3}\big)
+\le \frac{m^{-10}}{m^{1/3}}
+\le m^{-9}.
+\]<hr><h3 id=第三步覆盖全图>第三步覆盖全图</h3><p>在事件 \(|\Gamma_2(x)|\ge m^{2/3}\) 上，对任意顶点 \(z\notin \Gamma_2(x)\)，</p>\[
+\mathbb{P}\big(z\notin \Gamma_3(x)\big)
+=(1-p')^{|\Gamma_2(x)|}
+\le \exp\!\left(-p'm^{2/3}\right).
+\]<p>而</p>\[
+p'm^{2/3}
+\asymp \frac{d}{m}\cdot m^{2/3}
+=d\,m^{-1/3}
+\ge C\log m.
+\]<p>因此</p>\[
+\mathbb{P}\big(z\notin \Gamma_3(x)\big)\le m^{-C}.
+\]<p>再用并集界：</p>\[
+\mathbb{P}\big(\Gamma_3(x)\neq V\big)
+\le m\cdot m^{-C}
+= m^{1-C}.
+\]<p>取 \(C\ge 12\)，得</p>\[
+\mathbb{P}\big(\Gamma_3(x)=V\big)\ge 1-m^{-11}.
+\]<hr><h3 id=群体图直径界>群体图直径界</h3><p>对所有 \(x\in V(\widetilde H)\) 再次使用并集界，</p>\[
+\mathbb{P}\big(\exists x:\Gamma_3(x)\neq V\big)
+\le m\cdot m^{-11}
+= m^{-10}.
+\]<p>因此，以概率至少 \(1-m^{-10}\)，</p>\[
+\operatorname{rad}(\widetilde H)\le 3
+\quad\Rightarrow\quad
+\operatorname{diam}(\widetilde H)\le 6.
+\]<p>进一步，采用“两点各自两步球相交”的标准估计（同上步骤 8.3–8.4），
+可将直径改进为</p>\[
+\operatorname{diam}(\widetilde H)\le 4
+\]<p>仍以多项式高概率成立。</p><hr><h2 id=回推到原图六度分隔>回推到原图：六度分隔</h2><p>由于</p>\[
+\forall v\in V,\quad \mathrm{dist}_G(v,K_1)\le 1,
+\]<p>且以高概率</p>\[
+\operatorname{diam}(H)\le 4,
+\]<p>对任意 \(u,v\in V\)，记其块中心为 \(k(u),k(v)\)，则</p>\[
+\mathrm{dist}_G(u,v)
+\le
+\mathrm{dist}_G(u,k(u))
++\mathrm{dist}_H(k(u),k(v))
++\mathrm{dist}_G(k(v),v)
+\le 1+4+1=6.
+\]<hr><div class="math-block math-block--theorem"><div class=math-block-title><strong>定理（小世界模型中的六度分隔，k-收缩证明）</strong></div><div class=math-block-content><p>设</p>\[
+G\sim \mathrm{NW}(n,r,p),
+\quad s=2r+1,\quad m=\left\lceil\frac{n}{s}\right\rceil,
+\quad p'=1-(1-p)^{(s-1)^2}.
+\]<p>若存在常数 \(C>0\) 使得</p>\[
+(m-1)p' \ge C\, m^{1/3}\log m,
+\]<p>则存在常数 \(c>0\)，使得</p>\[
+\mathbb{P}\big(\operatorname{diam}(G)\le 6\big)
+\ge 1-m^{-c}.
+\]<p>等价地：在该参数区间内，以高概率任意两点之间存在一条长度不超过 \(6\) 的路径，即中间 \(k\)-节点链条长度最多为 \(5\)。</p></div></div><hr><h2 id=讨论与局限性discussion-and-limitations>讨论与局限性（Discussion and Limitations）</h2><p>本文所得到的充分条件</p>$$
+(m-1)p' \ge Cm^{1/3}\log m
+$$<p>在定量意义上是较强的，尤其是在将其还原为 Newman–Watts 小世界模型的原始参数 $(n,r,p)$ 后可以看到，该条件对局部连接半径 (r) 与长程边概率 (p) 的协同作用提出了较高要求。与已有文献中关于小世界网络“平均距离”或“典型节点对距离”为 $O(\log n)$ 的结果相比，本文的条件并非最优，且在某些参数区间内明显偏保守。</p><p>然而，这种条件的“偏强”本质上源于本文目标命题的严格性。本文所证明的并非平均意义或概率意义下的距离界，而是以高概率成立的<strong>全局直径上界</strong>，即保证任意两点之间的最短路径长度不超过 6。众所周知，相较于平均距离或随机选点对的距离估计，直径这样的最坏情形指标通常需要显著更强的结构假设，因此该结果在逻辑上是合理且一致的。</p><p>从方法论角度看，本文的主要优势在于其结构化与可解释性。证明全过程严格基于 k-星型中心的支配划分与图收缩操作，避免了对谱方法、分支过程近似或渐近距离公式的依赖。每一层收缩都对应一个清晰的网络操作：局部星型支配、群体级压缩以及在压缩图上的快速扩张。这种分层机制直观地揭示了小世界网络中“局部高聚类 + 稀疏长程随机边”如何通过层级化结构转化为全局的短路径性质。</p><p>此外，k-收缩框架与本文给出的 min–max 优化模型在形式上高度一致，使得该理论不仅具有概率论意义，也具备潜在的算法与优化解释。这种统一视角为网络分层建模、群体抽象、以及大规模网络的多尺度分析提供了新的可能性。</p><p>需要强调的是，本文给出的参数阈值应被视为一种“可证明的充分条件”，而非刻画六度分隔现象的精确边界。通过更精细的概率估计、更弱的目标结论（例如只约束典型距离而非直径），或在其他小世界模型与度分布假设下，本文所采用的 k-中心收缩思路仍有较大的改进空间。因此，本文的结果更适合作为一种概念性与方法论上的证明范式，展示六度分隔现象如何在明确的层级支配结构中被严格推出，而非对现实社会网络的参数进行最终刻画。</p><p>尽管<strong>支配集</strong>、<strong>图收缩（graph coarsening）<strong>以及</strong>小世界网络的距离性质分析</strong>均已在现有文献中得到广泛研究，但<strong>通过反复的星型中心支配与收缩来推导统一的常数级直径上界</strong>这一做法，在现有研究中尚未出现。本文提出的 <strong>k-收缩框架</strong>可被视为一种统一性的视角，它将<strong>基于支配的覆盖结构</strong>与<strong>多层次图收缩方法</strong>相结合，同时保持了对<strong>路径长度的显式、可解释刻画</strong>。</p></section><footer class=article-footer><section class=article-tags><a href=/tags/topology/>Topology</a>
+<a href=/tags/data-structure/>Data Structure</a>
+<a href=/tags/math/>Math</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{const e=[".main-article",".widget--toc"];e.forEach(e=>{const t=document.querySelector(e);t&&renderMathInElement(t,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})})</script></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article class=has-image><a href=/p/topol-8/><div class=article-image><img src=/p/topol-8/cover.b178c490eb6ad8f3865286f0e86a3f93_hu_97f8b5cad223511.jpg width=250 height=150 loading=lazy alt="Featured image of post 商空间与商拓扑" data-key=topol-8 data-hash="md5-sXjEkOtq2POGUobw6Go/kw=="></div><div class=article-details><h2 class=article-title>商空间与商拓扑</h2></div></a></article><article class=has-image><a href=/p/topol-7/><div class=article-image><img src=/p/topol-7/cover.30eb22b8ba1bf0fed1e48530ed02a36f_hu_c5437b482a335cc2.jpg width=250 height=150 loading=lazy alt="Featured image of post 连通性" data-key=topol-7 data-hash="md5-MOsiuLob8P7R5IUw7QKjbw=="></div><div class=article-details><h2 class=article-title>连通性</h2></div></a></article><article class=has-image><a href=/p/topol-6/><div class=article-image><img src=/p/topol-6/cover.a888d0f1917a429cc740c804593904ed_hu_51eab0969e6eca16.jpg width=250 height=150 loading=lazy alt="Featured image of post 紧性" data-key=topol-6 data-hash="md5-qIjQ8ZF6QpzHQMgEWTkE7Q=="></div><div class=article-details><h2 class=article-title>紧性</h2></div></a></article><article class=has-image><a href=/p/topol-5/><div class=article-image><img src=/p/topol-5/cover.a185263f51a9a0bad4152607e4fff8d4_hu_35d4ee4251022e7b.jpg width=250 height=150 loading=lazy alt="Featured image of post 分离性与可数性" data-key=topol-5 data-hash="md5-oYUmP1GpoLrUFSYH5P/41A=="></div><div class=article-details><h2 class=article-title>分离性与可数性</h2></div></a></article><article class=has-image><a href=/p/topol-4/><div class=article-image><img src=/p/topol-4/cover.adcb864440c1accd968e2c534d3d1f79_hu_4af52b31baba4906.jpg width=250 height=150 loading=lazy alt="Featured image of post 连续映射、同胚与拓扑性质" data-key=topol-4 data-hash="md5-rcuGREDBrM2WjixTTT0feQ=="></div><div class=article-details><h2 class=article-title>连续映射、同胚与拓扑性质</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//alanz.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2025 -
+2026 Alan Zhou</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.33.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

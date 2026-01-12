@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ODE on Alan Zhou</title><link>https://cxzhou.com/tags/ode/</link><description>Recent content in ODE on Alan Zhou</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 22 Jun 2025 20:14:00 +0800</lastBuildDate><atom:link href="https://cxzhou.com/tags/ode/index.xml" rel="self" type="application/rss+xml"/><item><title>ODE期末复习</title><link>https://cxzhou.com/p/ode%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</link><pubDate>Sun, 22 Jun 2025 20:14:00 +0800</pubDate><guid>https://cxzhou.com/p/ode%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0/</guid><description>&lt;p&gt;##　线性方程&lt;/p&gt;
+&lt;h3 id="齐次线性微分方程组"&gt;齐次线性微分方程组
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;形式：
+&lt;/p&gt;
+$$
+\frac{d\mathbf{x}}{dt}=\mathbf{A}(t)\mathbf{x}
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通解：
+&lt;/p&gt;
+$$
+\mathbf{x}(t)=\mathbf{X}(t)\mathbf{c}
+$$&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$\mathbf{X}(t)$是基解矩阵，判断基解矩阵（线性无关）充要条件：&lt;/p&gt;
+&lt;p&gt;$det(\mathbf{X}(t))$恒不为零$\iff$$\exist t_0, det(\mathbf{X}(t))=det(\mathbf{X}(t_0))exp(\int_{t_0}^t tr(\mathbf{A}(\tau)d\tau) \neq 0$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;叠加原理（解的线性组合还是解）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="非齐次线性微分方程组"&gt;非齐次线性微分方程组
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;形式：
+&lt;/p&gt;
+$$
+\frac{d\mathbf{x}}{dt}=\mathbf{A}(t)\mathbf{x}+\mathbf{f}(t)
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;通解：
+&lt;/p&gt;
+$$
+\mathbf{x}(t)=\mathbf{X}(t)\mathbf{c}+\mathbf{x}^*(t)
+$$&lt;ul&gt;
+&lt;li&gt;$\mathbf{x}^*(t)$通过常数变易法求得，
+$$
+\mathbf{x}^*(t)=\mathbf{X}(t)\int_{t_0}^{t}\mathbf{X}^{-1}(\tau)\mathbf{f}(\tau)d\tau
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="高阶线性微分方程"&gt;高阶线性微分方程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;形式：
+&lt;/p&gt;
+$$
+\frac{d^n x}{dt^n}+a_1(t)\frac{d^{n-1} x}{dt^{n-1}}+\cdots+a_n(t)x=f(t)
+$$&lt;p&gt;
+升维降阶：&lt;/p&gt;
+&lt;p&gt;令
+&lt;/p&gt;
+$$
+x_1=x, x_2=\frac{dx}{dt}, \cdots, x_n=\frac{d^{n-1} x}{dt^{n-1}}
+$$&lt;p&gt;
+转换为一阶线性微分方程组
+&lt;/p&gt;
+$$
+\frac{d\mathbf{x}}{dt}=\mathbf{A}(t)\mathbf{x}+\mathbf{f}(t)
+$$&lt;p&gt;
+其中
+&lt;/p&gt;
+$$
+\mathbf{A}(t)=\left( \begin{matrix}
+0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \\
+-a_n(t) &amp; -a_{n-1}(t) &amp; -a_{n-2}(t) &amp; \cdots &amp; -a_1(t) \\
+\end{matrix}\right),
+$$$$
+\mathbf{f}(t)=\left(\begin{matrix}
+0 \\
+0 \\
+\vdots \\
+0 \\
+f(t)
+\end{matrix}\right), \mathbf{x}=\left(\begin{matrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_{n-1} \\
+x_n
+\end{matrix}\right)
+$$&lt;p&gt;对应基解矩阵第一行即为原方程的n个线性无关解，同理，原方程的n个线性无关解通过求导可得基解矩阵.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;判断基解矩阵（线性无关）充要条件：&lt;/p&gt;
+&lt;p&gt;$W(t)=det(\mathbf{X}(t))$恒不为零$\iff$$\exist t_0, W(t)=W(t_0)exp(\int_{t_0}^t tr(\mathbf{A}(\tau)d\tau)=W(t_0)exp(\int_{t_0}^t -a_1(\tau)d\tau) \neq 0$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;一个特例：
+&lt;/p&gt;
+$$
+\frac{d^2x}{dt^2}+a_1(t)\frac{dx}{dt}+a_2(t)x=0
+$$&lt;p&gt;
+已知一个非零解$x_1(t)$，通解为
+&lt;/p&gt;
+$$
+x(t)=x_1(t)(C_2+C_1\int\frac{1}{x_1^2(t)}e^{-\int a_1(t)dt}dt)
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="复值解"&gt;复值解
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;复值线性方程组
+$$
+\frac{d\mathbf{z}}{dt}=\mathbf{A}(t)\mathbf{z}+\mathbf{f}(t)
+$$
+其中
+$$
+\mathbf{z}(t)=\mathbf{x}(t)+i\mathbf{y}(t), \newline
+\mathbf{A}(t)=\mathbf{A}_R(t)+i\mathbf{A}_I(t), \newline
+\mathbf{f}(t)=\mathbf{f}_R(t)+i\mathbf{f}_I(t).
+$$
+等价于实方程组
+$$
+\frac{d}{dt}\left(\begin{matrix} \mathbf{x} \\ \mathbf{y} \end{matrix}\right)=\left(\begin{matrix} \mathbf{A}_R(t) &amp; -\mathbf{A}_I(t) \\ \mathbf{A}_I(t) &amp; \mathbf{A}_R(t) \end{matrix}\right)\left(\begin{matrix} \mathbf{x} \\ \mathbf{y} \end{matrix}\right)+\left(\begin{matrix} \mathbf{f}_R(t) \\ \mathbf{f}_I(t) \end{matrix}\right)
+$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="常系数线性方程"&gt;常系数线性方程
+&lt;/h2&gt;&lt;h3 id="微分算子处理常系数高阶线性方程"&gt;微分算子处理常系数高阶线性方程
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$\frac{d^n x}{dt^n}+a_1\frac{d^{n-1} x}{dt^{n-1}}+\cdots+a_nx=f(t)$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;微分算子: $D=\frac{d}{dt}$, $D^n=\frac{d^n}{dt^n}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;方程可化为算子形式：$P(D)x=f(t)$, $P(D)\overset{def}{=}D^n+a_1D^{n-1}+\cdots+a_{n-1}D+a_n$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="齐次问题"&gt;齐次问题
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;欧拉待定指数函数法&lt;/strong&gt;：寻找形如$x(t)=e^{\lambda t}$的解&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;求解特征方程：
+&lt;/p&gt;
+$$
+P(\lambda)=\lambda^n+a_1\lambda^{n-1}+\cdots+a_{n-1}\lambda+a_n=0
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设有$r$个互异的实特征根$\lambda_1, \lambda_2 \cdots, \lambda_r$，$l$对互异的复特征根$\alpha_1\pm i\beta_1, \alpha_2\pm i\beta_2, \cdots, \alpha_l\pm i\beta_l$，重数分别为$n_1, n_2, \cdots, n_r$和$m_1, m_2, \cdots, m_l$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;基本解组如下：
+&lt;/p&gt;
+$$
+e^{\lambda_k t},\space te^{\lambda_k t},\space \cdots,\space t^{n_k-1}e^{\lambda_k t}\space\space\space\space (k=1,2,\cdots,r),\newline
+e^{\alpha_jt}cos\beta_jt,\space te^{\alpha_jt}cos\beta_jt,\space \cdots,\space t^{m_j-1}e^{\alpha_jt}cos\beta_jt \space\space\space\space (j=1,2,\cdots,l),\newline
+e^{\alpha_jt}sin\beta_jt,\space te^{\alpha_jt}sin\beta_jt,\space \cdots,\space t^{m_j-1}e^{\alpha_jt}sin\beta_jt \space\space\space\space (j=1,2,\cdots,l)
+$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="非齐次问题"&gt;非齐次问题
+&lt;/h4&gt;&lt;p&gt;求出一个特解&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;算子解法
+&lt;/p&gt;
+$$
+x^*(t)=\frac{1}{P(D)}f(t)
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;具体算法：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;解析法：对$k$次多项式$f_k(t)$，若$\frac{1}{P(x)}$在$x=0$处解析，且可（泰勒）展开为
+&lt;/p&gt;
+$$
+\frac{1}{P(x)}=Q_k(x)+H_k(x)
+$$&lt;p&gt;
+其中$Q_K(x)$为$k$次多项式，$H_k(x)$为$k+1$次以上高阶项，&lt;/p&gt;
+&lt;p&gt;有
+&lt;/p&gt;
+$$
+\frac{1}{P(D)}f_k(t)=Q_k(D)f_k(t)
+$$&lt;p&gt;
+(泰勒公式：$f(0)+\frac{f\prime(0)}{1!}x+\cdots+\frac{f^{(n)}(0)}{n!}x^n+\cdots$)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;代换法：&lt;/p&gt;
+&lt;p&gt;要求$P(\lambda)\neq0$，$\frac{1}{P(D)}e^{\lambda t}=\frac{1}{P(\lambda)}e^{\lambda t}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;二项式法：&lt;/p&gt;
+&lt;p&gt;$\frac{1}{P(D)}e^{\lambda t}v(t)=e^{\lambda t}\frac{1}{P(D+\lambda)}v(t)$&lt;/p&gt;
+&lt;p&gt;常用技巧：$v(t)=1$&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="常系数线性方程组"&gt;常系数线性方程组
+&lt;/h3&gt;$$
+\frac{d}{dt}\left(\begin{matrix}x_1 \\ \vdots \\ x_n \end{matrix}\right)=\left(\begin{matrix}a_{11} &amp; \cdots &amp; a_{1n} \\ \vdots &amp;&amp; \vdots \\ a_{n1} &amp; \cdots &amp; a_{nn} \end{matrix}\right)\left(\begin{matrix}x_1 \\ \vdots \\ x_n \end{matrix}\right)+\left(\begin{matrix}f_1(t) \\ \vdots \\ f_n(t) \end{matrix}\right)
+$$&lt;p&gt;通解形式：
+&lt;/p&gt;
+$$
+\mathbf{x}(t)=e^{t\mathbf{A}}\mathbf{c}+e^{t\mathbf{A}}\int_{t_0}^te^{-s\mathbf{A}}\mathbf{f}(s)ds
+$$&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;求解$e^{t\mathbf{A}}$：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;借助$Jordan$标准型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;求$Jordan$链：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;求解$\mathbf{A}$的特征值$\lambda_1, \lambda_2, \cdots, \lambda_s$，重数分别为$n_1, n_2, \cdots, n_s$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于$\lambda_i, i=1,2,\cdots, s$求解广义特征向量：
+&lt;/p&gt;
+$$
+(\mathbf{A}-\lambda_i\mathbf{I})^{n_i}\mathbf{\gamma}=\mathbf{0}
+$$&lt;p&gt;
+有$n_i$个线性无关的广义特征向量，$\gamma_1^{(i)}, \gamma_2^{(i)}, \cdots, \gamma_{n_i}^{(i)}$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于每一个广义特征向量$\gamma_j^{(i)}, j=1,2,\cdots, n_i; i=1,2,\cdots, s$，求得对应的$Jordan$链：
+&lt;/p&gt;
+$$
+\gamma_{j,0}^{(i)}=\gamma_j^{(i)}, \newline
+\gamma_{j,1}^{(i)}=(\mathbf{A}-\lambda_i\mathbf{I})\gamma_{j,0}^{(i)}, \newline
+\cdots \newline
+\gamma_{j,n_1-1}^{(i)}=(\mathbf{A}-\lambda_i\mathbf{I})\gamma_{j,n_i-2}^{(i)}, \newline
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对应基解矩阵中的一列：
+&lt;/p&gt;
+$$
+e^{\lambda_i t}[\gamma_{j,0}^{(i)}+\frac{t}{1!}\gamma_{j,1}^{(i)}+\cdots+\frac{t^{n_i-1}}{(n_i-1)!}\gamma_{j,n_i-1}^{(i)}]
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;组装即得基解矩阵&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如有复根，直接取实部即可（欧拉公式：$e^{it}=cost+isint$)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="动力系统"&gt;动力系统
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;动力系统概念
+&lt;/p&gt;
+$$
+\frac{d\mathbf{x}}{dt}=\mathbf{f}(\mathbf{x})
+$$&lt;p&gt;
+右端函数只与$\mathbf{x}$有关&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;平衡点/奇点&lt;/strong&gt;：从该点出发的轨道一直驻留在该点，对应一个定常解$\mathbf{x}(t)\equiv\mathbf{x}_0$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;闭轨/周期轨&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="lyapunov稳定性"&gt;Lyapunov稳定性
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;各种稳定性的定义：张伟年p162-163&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;判别
+&lt;/p&gt;
+$$
+\frac{d\mathbf{x}}{dt}=\mathbf{A}\mathbf{x}
+$$&lt;p&gt;
+的零解稳定性情况，若有段函数有高阶部分，判断高阶部分是否满足：
+&lt;/p&gt;
+$$
+\mathbf{R}(t,\mathbf{0})\equiv\mathbf{0}, \lim_{\|\mathbf{x}\| \to \mathbf{0}}
+\frac{\|\mathbf{R}(t, \mathbf{x})\|}{\|\mathbf{x}\|} = 0
+$$&lt;p&gt;
+若满足则可只考察线性部分.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;渐近稳定：当且仅当$\mathbf{A}$的全部特征值实部均为负数&lt;/li&gt;
+&lt;li&gt;稳定：当且仅当$\mathbf{A}$的全部特征值实部均为非正数，且实部为零的特征值对应的$Jordan$块都是一阶&lt;/li&gt;
+&lt;li&gt;不稳定：当且仅当$\mathbf{A}$的特征值至少一个实部为正，或至少一个实部为零的特征值对应的$Jordan$块大于一阶&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="lyapunov直接法"&gt;Lyapunov直接法
+&lt;/h3&gt;&lt;p&gt;构造Lyapunov函数，满足函数定正（至少在一个邻域内）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;稳定：导数常负&lt;/li&gt;
+&lt;li&gt;渐近稳定：导数定 负&lt;/li&gt;
+&lt;li&gt;不稳定：导数定正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="平衡点分析"&gt;平衡点分析
+&lt;/h3&gt;&lt;p&gt;只考虑平面自治系统：
+&lt;/p&gt;
+$$
+\frac{dx}{dt}=X(x, y), \frac{dy}{dt}=Y(x, y)
+$$&lt;p&gt;
+平衡点：$X(x,y)=0, Y(x,y)=0$&lt;/p&gt;
+&lt;p&gt;分析步骤：
+&lt;/p&gt;
+$$
+\frac{dx}{dt}=ax+by, \frac{dy}{dt}=cx+dy, \newline
+\frac{d}{dt}\left(\begin{matrix}x \\ y\end{matrix}\right)=\mathbf{A}\left(\begin{matrix}x \\ y\end{matrix}\right)
+$$&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;通过可逆变换，原方程组变为
+&lt;/p&gt;
+$$
+\frac{d}{dt}\left(\begin{matrix}u \\ v\end{matrix}\right)=\mathbf{J}\left(\begin{matrix}u \\ v\end{matrix}\right)
+$$&lt;p&gt;
+$\mathbf{J}=\mathbf{P^{-1}AP}$&lt;/p&gt;
+&lt;p&gt;其中$\mathbf{J}$有三种形式：
+&lt;/p&gt;
+$$
+\left(\begin{matrix}
+\lambda &amp; 0 \\
+0 &amp; \mu \\
+\end{matrix}\right), \left(\begin{matrix}
+\lambda &amp; 0 \\
+1 &amp; \lambda \\
+\end{matrix}\right), \left(\begin{matrix}
+\alpha &amp; \beta \\
+-\beta &amp; \alpha \\
+\end{matrix}\right)
+$$&lt;p&gt;
+即分别对应矩阵$\mathbf{A}$有两个一重特征值，一个二重特征值和一对共轭复特征值&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分类讨论&lt;/p&gt;
+&lt;p&gt;仅考虑非退化平衡点，$det(\mathbf{A})\neq0$&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;第一种&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$\lambda=\mu$&lt;/p&gt;
+&lt;p&gt;$\lambda&lt;0$, 渐近稳定；$\lambda&gt;0$, 不稳定；&lt;/p&gt;
+&lt;p&gt;同时平衡点附近轨道均为过原点直线，方向由$\lambda$正负决定；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;星形结点/临界结点&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\lambda\neq\mu, \lambda\mu&gt;0$&lt;/p&gt;
+&lt;p&gt;均正，不稳定；均负，稳定；&lt;/p&gt;
+&lt;p&gt;抛物线，谁的绝对值小就与对应的轴相切；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;两向结点/正常结点&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\lambda\neq\mu, \lambda\mu&lt;0$&lt;/p&gt;
+&lt;p&gt;不稳定；&lt;/p&gt;
+&lt;p&gt;$\lambda&lt;0, \mu&gt;0$, 渐近$v$轴;$\lambda&gt;0, \mu&lt;0$, 渐近$u$轴;（渐近正方向）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;鞍点&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二种&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单向结点&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$\lambda&lt;0$&lt;/p&gt;
+&lt;p&gt;渐近稳定；&lt;/p&gt;
+&lt;p&gt;像正弦函数从两侧逼近原点；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\lambda&gt;0$&lt;/p&gt;
+&lt;p&gt;不稳定&lt;/p&gt;
+&lt;p&gt;像负正弦函数向两侧远离原点；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第三种&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$\alpha\neq0$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;焦点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;螺旋线，$\beta$正顺负逆&lt;/p&gt;
+&lt;p&gt;$\alpha&gt;0$不稳定，$\alpha&lt;0$渐近稳定&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\alpha=0$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;中心&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;同心圆&lt;/p&gt;
+&lt;p&gt;稳定但不渐近稳定&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;除&lt;strong&gt;中心&lt;/strong&gt;以外的&lt;strong&gt;初等平衡点&lt;/strong&gt;（非退化）称为&lt;strong&gt;粗的&lt;/strong&gt;，其余为&lt;strong&gt;细的&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="极限环"&gt;极限环
+&lt;/h3&gt;&lt;p&gt;化为极坐标后讨论&lt;/p&gt;
+&lt;p&gt;转化方式类似首次积分中的方法：
+&lt;/p&gt;
+$$
+rr\prime=xx\prime+yy\prime, \newline
+-r^2\theta\prime=yx\prime-xy\prime
+$$$$
+\frac{d^2x}{dt}+2\mu\frac{dx}{dt}+x=f(t)
+$$&lt;p&gt;
+$f(t)$是$T$-周期函数，$x(t)$是否存在$T$-周期解?（$\mu\geq1$）&lt;/p&gt;
+&lt;p&gt;判别
+&lt;/p&gt;
+$$
+\frac{d\mathbf{x}}{dt}=\mathbf{A}\mathbf{x}+\mathbf{f}(\mathbf{x})
+$$&lt;p&gt;
+的零解稳定性情况是否与$\frac{d\mathbf{x}}{dt}=\mathbf{A}\mathbf{x}$一致，其中$\mathbf{f}(\mathbf{x})=O(x^2)$.&lt;/p&gt;</description></item></channel></rss>

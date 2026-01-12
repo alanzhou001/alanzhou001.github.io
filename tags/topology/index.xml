@@ -1,0 +1,3813 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Topology on Alan Zhou</title><link>https://cxzhou.com/tags/topology/</link><description>Recent content in Topology on Alan Zhou</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 12 Jan 2026 22:50:00 +0800</lastBuildDate><atom:link href="https://cxzhou.com/tags/topology/index.xml" rel="self" type="application/rss+xml"/><item><title>商空间与商拓扑</title><link>https://cxzhou.com/p/topol-8/</link><pubDate>Mon, 12 Jan 2026 22:50:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-8/</guid><description>&lt;img src="https://cxzhou.com/p/topol-8/cover.jpg" alt="Featured image of post 商空间与商拓扑" /&gt;&lt;p&gt;封面画师：&lt;a class="link" href="https://x.com/wttb_tv/status/1990011971828359171" target="_blank" rel="noopener"
+&gt;竹嶋えく&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="商空间"&gt;商空间
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="quotient-space"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 商空间&lt;/strong&gt;&lt;a href="#quotient-space" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设
+&lt;/p&gt;
+$$
+(X,\mathcal T)
+$$&lt;p&gt;
+是一个拓扑空间，$\sim$ 是 $X$ 上的一个&lt;strong&gt;等价关系&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;商集&lt;/strong&gt;定义为
+&lt;/p&gt;
+$$
+X/\sim=\{[x]\mid x\in X\},
+$$&lt;p&gt;
+其中
+&lt;/p&gt;
+$$
+[x]=\{y\in X\mid y\sim x\}
+$$&lt;p&gt;
+是 $x$ 的等价类。&lt;/p&gt;
+&lt;p&gt;定义&lt;strong&gt;自然映射（canonical map）&lt;/strong&gt;
+&lt;/p&gt;
+$$
+q:X\to X/\sim,\qquad x\mapsto [x].
+$$&lt;p&gt;&lt;strong&gt;商拓扑的定义：&lt;/strong&gt;
+定义集合族
+&lt;/p&gt;
+$$
+\tilde{\mathcal T}
+=\Bigl\{\,U\subset X/\sim \;\Big|\; q^{-1}(U)\text{ 在 }X\text{ 中是开集}\Bigr\}.
+$$&lt;p&gt;
+则
+&lt;/p&gt;
+$$
+\tilde{\mathcal T}
+$$&lt;p&gt;
+是 $X/\sim$ 上的一族拓扑，称为由 $q$ 诱导的&lt;strong&gt;商拓扑（quotient topology）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;赋予商拓扑 $\tilde{\mathcal T}$ 的集合
+&lt;/p&gt;
+$$
+(X/\sim,\tilde{\mathcal T})
+$$&lt;p&gt;
+称为一个&lt;strong&gt;商空间（quotient space）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;自然映射
+&lt;/p&gt;
+$$
+q:X\to X/\sim
+$$&lt;p&gt;
+称为&lt;strong&gt;商映射（quotient map）&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;备注（Remark）&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;映射
+&lt;/p&gt;
+$$
+q:X\to X/\sim
+$$&lt;p&gt;
+总是&lt;strong&gt;满射&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对任意 $U\subset X/\sim$，
+&lt;/p&gt;
+$$
+U \text{ 在 } X/\sim \text{ 中是开集}
+\;\Longleftrightarrow\;
+q^{-1}(U) \text{ 在 } X \text{ 中是开集}.
+$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$X/\sim$ 上的&lt;strong&gt;商拓扑&lt;/strong&gt; $\tilde{\mathcal T}$ 是&lt;strong&gt;使自然映射&lt;/strong&gt;
+&lt;/p&gt;
+$$q:X\to X/\sim$$&lt;p&gt;
+&lt;strong&gt;连续的最细（finest）拓扑&lt;/strong&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;证明:&lt;/strong&gt;
+设 $\tilde{\mathcal T}'$ 是 $X/\sim$ 上的任意一个拓扑，并且
+&lt;/p&gt;
+$$
+q:(X,\mathcal T)\to (X/\sim,\tilde{\mathcal T}')
+$$&lt;p&gt;
+是连续的。&lt;/p&gt;
+&lt;p&gt;由连续性的定义可知：&lt;br&gt;
+对任意
+&lt;/p&gt;
+$$
+U\in \tilde{\mathcal T}',
+$$&lt;p&gt;
+都有
+&lt;/p&gt;
+$$
+q^{-1}(U)\in \mathcal T.
+$$&lt;p&gt;而根据商拓扑的定义，
+&lt;/p&gt;
+$$
+\tilde{\mathcal T}
+=\{\,V\subset X/\sim \mid q^{-1}(V)\in\mathcal T\,\}.
+$$&lt;p&gt;
+因此对每个 $U\in\tilde{\mathcal T}'$，必有
+&lt;/p&gt;
+$$
+U\in \tilde{\mathcal T}.
+$$&lt;p&gt;于是得到
+&lt;/p&gt;
+$$
+\tilde{\mathcal T}' \subset \tilde{\mathcal T}.
+$$&lt;p&gt;这表明：&lt;br&gt;
+任何使 $q$ 连续的拓扑都不可能比 $\tilde{\mathcal T}$ 更细。&lt;/p&gt;
+&lt;p&gt;因此，$\tilde{\mathcal T}$ 正是 $X/\sim$ 上&lt;strong&gt;使 $q$ 连续的最细拓扑&lt;/strong&gt;。&lt;/p&gt;
+$$
+\Box
+$$
+&lt;div class="math-block math-block--theorem" id="star"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Lemma *&lt;/strong&gt;&lt;a href="#star" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $(X,\mathcal T)$ 是拓扑空间，$\sim$ 是 $X$ 上的等价关系，&lt;br&gt;
+$q:X\to X/\sim$ 为自然映射，并赋予 $X/\sim$ &lt;strong&gt;商拓扑&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;则 $q$ 是一个&lt;strong&gt;商映射（quotient map）&lt;/strong&gt;，并且满足以下等价性：&lt;/p&gt;
+&lt;p&gt;对任意拓扑空间 $Z$ 及映射
+&lt;/p&gt;
+$$
+f:X/\sim \to Z,
+$$&lt;p&gt;
+有
+&lt;/p&gt;
+$$
+f \text{ 连续 } \iff f\circ q:X\to Z \text{ 连续}.
+$$&lt;p&gt;映射关系为
+&lt;/p&gt;
+$$
+X \xrightarrow{\,q\,} X/\sim \xrightarrow{\,f\,} Z,
+$$&lt;p&gt;
+其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$q$ 是商映射；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;判断 $f$ 是否连续，只需判断 $f\circ q$ 是否连续&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$\Rightarrow$:&lt;/p&gt;
+&lt;p&gt;若 $f$ 连续，而 $q$ 连续（这是商拓扑的定义性质），&lt;br&gt;
+则连续映射的复合仍连续，因此
+&lt;/p&gt;
+$$
+f\circ q
+$$&lt;p&gt;
+连续。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;$\Leftarrow$:&lt;/p&gt;
+&lt;p&gt;假设
+&lt;/p&gt;
+$$
+f\circ q:X\to Z
+$$&lt;p&gt;
+连续。&lt;/p&gt;
+&lt;p&gt;取任意开集
+&lt;/p&gt;
+$$
+V\subset Z.
+$$&lt;p&gt;
+则
+&lt;/p&gt;
+$$
+(f\circ q)^{-1}(V)=q^{-1}\bigl(f^{-1}(V)\bigr)
+$$&lt;p&gt;
+在 $X$ 中是开集。&lt;/p&gt;
+&lt;p&gt;根据&lt;strong&gt;商拓扑的定义&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+U\subset X/\sim \text{ 是开集 }
+\iff
+q^{-1}(U)\text{ 在 }X\text{ 中是开集},
+$$&lt;p&gt;
+于是由
+&lt;/p&gt;
+$$
+q^{-1}\bigl(f^{-1}(V)\bigr)\text{ 在 }X\text{ 中开}
+$$&lt;p&gt;
+可推出
+&lt;/p&gt;
+$$
+f^{-1}(V)\text{ 在 }X/\sim\text{ 中开}.
+$$&lt;p&gt;由于 $V$ 是任意开集，这正是 $f$ 连续的定义。&lt;/p&gt;
+&lt;p&gt;因此
+&lt;/p&gt;
+$$
+f \text{ 连续}.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="quotient-map"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 商映射&lt;/strong&gt;&lt;a href="#quotient-map" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X, Y$ 为拓扑空间。&lt;/p&gt;
+&lt;p&gt;若映射
+&lt;/p&gt;
+$$
+f : X \to Y
+$$&lt;p&gt;
+满足以下条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;满射性&lt;/strong&gt;
+&lt;/p&gt;
+$$
+f \text{ 是满射（surjective）}
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;由逆像刻画开集（或闭集）&lt;/strong&gt;
+对任意 $U \subset Y$，
+&lt;/p&gt;
+$$
+U \text{ 在 } Y \text{ 中是开集}
+\quad \Longleftrightarrow \quad
+f^{-1}(U) \text{ 在 } X \text{ 中是开集}.
+$$&lt;p&gt;
+（等价地，也可以用闭集表述）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;则称 $f$ 为一个 &lt;strong&gt;商映射（quotient map）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;注：&lt;a class="link" href="#star" &gt;Lemma (*)&lt;/a&gt;在该抽象定义下仍然成立。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Lemma:&lt;/strong&gt; 设$X, Y$是拓扑空间，$f:X \to Y$是一个商映射，在 $X$ 上定义一个等价关系 $\sim_f$，对任意 $x_1, x_2 \in X$，$x_1 \sim_f x_2\quad \Longleftrightarrow \quadf(x_1) = f(x_2).$ 则有$X / \sim_f \;\cong\; Y$。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 2&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f:X\to Y$ 是满射且连续的映射。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;若 $f$ 是&lt;strong&gt;开映射&lt;/strong&gt;，则 $f$ 是商映射；&lt;/li&gt;
+&lt;li&gt;若 $f$ 是&lt;strong&gt;闭映射&lt;/strong&gt;，则 $f$ 是商映射。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;设 $U\subset Y$，且 $f^{-1}(U)$ 在 $X$ 中是开集。&lt;br&gt;
+由于 $f$ 是开映射，$f(f^{-1}(U))$ 在 $Y$ 中是开集。&lt;br&gt;
+又因为 $f$ 是满射，有
+&lt;/p&gt;
+$$
+f(f^{-1}(U)) = U .
+$$&lt;p&gt;
+因此 $U$ 在 $Y$ 中是开集。&lt;br&gt;
+由商映射的定义，$f$ 是商映射。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 3&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $f:X\to Y$ 是满射且连续的映射。&lt;br&gt;
+若 $X$ 是紧空间，$Y$ 是 Hausdorff 空间，则 $f$ 是商映射。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;只需证明 $f$ 是闭映射。&lt;/p&gt;
+&lt;p&gt;设 $C\subset X$ 是闭集。由于 $X$ 紧，$C$ 也是紧集。&lt;br&gt;
+由 $f$ 的连续性，$f(C)$ 是 $Y$ 中的紧集。&lt;br&gt;
+又因为 $Y$ 是 Hausdorff 空间，紧集在 $Y$ 中必为闭集。&lt;/p&gt;
+&lt;p&gt;因此 $f$ 是闭映射，从而 $f$ 是商映射。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 4&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f:X\to Y$、$g:Y\to Z$ 都是商映射，则复合映射
+&lt;/p&gt;
+$$
+g\circ f : X\to Z
+$$&lt;p&gt;
+也是商映射。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;显然 $g\circ f$ 是满射且连续。&lt;/p&gt;
+&lt;p&gt;设 $U\subset Z$，且 $(g\circ f)^{-1}(U)$ 在 $X$ 中是开集。&lt;br&gt;
+注意到
+&lt;/p&gt;
+$$
+(g\circ f)^{-1}(U)=f^{-1}(g^{-1}(U)).
+$$&lt;p&gt;
+由于 $f$ 是商映射，可得 $g^{-1}(U)$ 在 $Y$ 中是开集；&lt;br&gt;
+再由于 $g$ 是商映射，可得 $U$ 在 $Z$ 中是开集。&lt;/p&gt;
+&lt;p&gt;因此 $g\circ f$ 是商映射。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;若 $f_1:X_1\to Y_1$、$f_2:X_2\to Y_2$ 都是商映射，则
+&lt;/p&gt;
+$$
+f_1\times f_2 : X_1\times X_2 \to Y_1\times Y_2
+$$&lt;p&gt;
+&lt;strong&gt;不一定&lt;/strong&gt;是商映射。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;若 $f:X\to Y$ 是商映射且 $X$ 是 Hausdorff 空间，&lt;br&gt;
+则 $Y$ &lt;strong&gt;不一定&lt;/strong&gt;是 Hausdorff 空间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;商映射一般&lt;strong&gt;不一定是开映射或闭映射&lt;/strong&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="例子"&gt;例子
+&lt;/h2&gt;</description></item><item><title>连通性</title><link>https://cxzhou.com/p/topol-7/</link><pubDate>Mon, 12 Jan 2026 17:55:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-7/</guid><description>&lt;img src="https://cxzhou.com/p/topol-7/cover.jpg" alt="Featured image of post 连通性" /&gt;&lt;p&gt;封面画师：&lt;a class="link" href="https://x.com/wttb_tv/status/1990011971828359171" target="_blank" rel="noopener"
+&gt;竹嶋えく&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="连通空间"&gt;连通空间
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="connecttedness"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 4.1.1 连通空间&lt;/strong&gt;&lt;a href="#connecttedness" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间。&lt;br&gt;
+如果存在&lt;strong&gt;非空且不交的开集&lt;/strong&gt; $U,V \subset X$，使得
+&lt;/p&gt;
+$$
+U \cap V = \varnothing,
+\qquad
+U \cup V = X,
+$$&lt;p&gt;
+则称 $X$ 是&lt;strong&gt;不连通的（disconnected）&lt;/strong&gt;，并称集合对
+&lt;/p&gt;
+$$
+\{U,V\}
+$$&lt;p&gt;
+为 $X$ 的一个&lt;strong&gt;分离（separation）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;如果不存在这样的开集对，则称 $X$ 是&lt;strong&gt;连通的（connected）&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;e.g.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;平凡拓扑的实数空间&lt;/p&gt;
+$$\mathbb{R}$$&lt;p&gt;是连通的。
+&lt;strong&gt;基为所有区间 $[a,b]$（$a&lt;b$）&lt;/strong&gt; 的拓扑的实数集&lt;/p&gt;
+$$\mathbb{R}$$&lt;p&gt;是不连通的。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 17&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，则
+&lt;/p&gt;
+$$
+X \text{ 不连通}
+\;\Longleftrightarrow\;
+\text{存在一个非空、既开又闭且真包含于 } X \text{ 的子集 } A \subset X.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$\Rightarrow$:&lt;/p&gt;
+&lt;p&gt;若 $X$ 不连通，则存在一对分离
+&lt;/p&gt;
+$$
+U,V \subset X
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+U \neq \varnothing,\quad V \neq \varnothing,\quad
+U \cap V = \varnothing,\quad
+U \cup V = X.
+$$&lt;p&gt;
+此时 $U$ 是开集，且
+&lt;/p&gt;
+$$
+U^c = V
+$$&lt;p&gt;
+也是开集，因此 $U$ 同时是闭集。又因为 $U \neq \varnothing$ 且 $U \neq X$，所以 $U$ 是一个非空、既开又闭且真包含于 $X$ 的子集。&lt;/p&gt;
+&lt;p&gt;$\Leftarrow$:&lt;/p&gt;
+&lt;p&gt;反之，设存在
+&lt;/p&gt;
+$$
+A \subset X
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+A \neq \varnothing,\quad A \neq X,
+$$&lt;p&gt;
+且 $A$ 既是开集又是闭集。令
+&lt;/p&gt;
+$$
+V = X \setminus A,
+$$&lt;p&gt;
+则 $V$ 也是非空开集，并且
+&lt;/p&gt;
+$$
+A \cap V = \varnothing,\qquad A \cup V = X.
+$$&lt;p&gt;
+因此 $\{A,V\}$ 构成 $X$ 的一个分离，说明 $X$ 不连通。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;例：$\mathbb{E}^1$ 的连通性：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;设
+&lt;/p&gt;
+$$
+\mathbb{E}^1
+$$&lt;p&gt;
+表示带通常拓扑的一维欧氏空间。假设反设其不连通，则存在一个非空、既开又闭且真包含的子集
+&lt;/p&gt;
+$$
+A \subset \mathbb{E}^1.
+$$&lt;p&gt;取
+&lt;/p&gt;
+$$
+b \in A,\qquad (b,+\infty)\cap A \neq \varnothing,
+$$&lt;p&gt;
+并定义
+&lt;/p&gt;
+$$
+d = \inf\{a \in A \mid a&gt;b\}.
+$$&lt;p&gt;
+由于 $A$ 在 $\mathbb{E}^1$ 中是闭集，可得
+&lt;/p&gt;
+$$
+d \in A.
+$$&lt;p&gt;
+于是
+&lt;/p&gt;
+$$
+d&gt;b,\qquad [b,d)\cap A = \varnothing,
+$$&lt;p&gt;
+从而 $d$ 不是 $A$ 的内点，即
+&lt;/p&gt;
+$$
+d \notin \operatorname{int}(A).
+$$&lt;p&gt;
+这与 $A$ 是开集矛盾。&lt;/p&gt;
+&lt;p&gt;因此假设不成立，$\mathbb{E}^1$ 必为连通空间。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="连通子集"&gt;连通子集
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 4.1.2&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A \subset X$。&lt;br&gt;
+称 $A$ &lt;strong&gt;在 $X$ 中是连通的&lt;/strong&gt;（或称 $A$ 是 $X$ 的一个&lt;strong&gt;连通子集&lt;/strong&gt;），如果 $A$ 在其&lt;strong&gt;子空间拓扑&lt;/strong&gt;下是连通的。&lt;/p&gt;
+&lt;p&gt;也就是说，$A$ 在 $X$ 中连通，当且仅当不存在 $A$ 中的两个非空不交开集 $U,V$，使得
+&lt;/p&gt;
+$$
+U \cap V = \varnothing,
+\qquad
+U \cup V = A.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--Lemma" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A \subset X$。&lt;br&gt;
+则 $A$ &lt;strong&gt;在 $X$ 中不连通&lt;/strong&gt; 当且仅当存在 $X$ 中的开集 $U,V$，满足
+&lt;/p&gt;
+$$
+U \cap A \neq \varnothing,\qquad
+V \cap A \neq \varnothing,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+A \subset U \cup V,
+$$&lt;p&gt;
+并且
+&lt;/p&gt;
+$$
+(U \cap A)\cap (V \cap A)=U\cap V\cap A=\varnothing.
+$$&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;说明（Separation）&lt;/strong&gt;
+满足上述条件的开集对
+&lt;/p&gt;
+$$
+\{U,V\}
+$$&lt;p&gt;
+称为 &lt;strong&gt;$A$ 在 $X$ 中的一个分离（separation of $A$ in $X$）&lt;/strong&gt;。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;直观理解&lt;/strong&gt;
+该引理说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$A$ 在子空间拓扑下不连通&lt;br&gt;
+$\Longleftrightarrow$&lt;/li&gt;
+&lt;li&gt;可以用 &lt;strong&gt;$X$ 中的两个开集&lt;/strong&gt; 把 $A$ “撕开”，并且这两个开集在 $A$ 内分别截到两块非空、互不相交的部分。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这正是“子空间连通性”用 &lt;strong&gt;母空间开集&lt;/strong&gt; 表述的等价刻画。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 18&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X,Y$ 是拓扑空间，映射
+&lt;/p&gt;
+$$
+f: X \to Y
+$$&lt;p&gt;
+是连续的。若
+&lt;/p&gt;
+$$
+X \text{ 是连通的},
+$$&lt;p&gt;
+则
+&lt;/p&gt;
+$$
+f(X) \text{ 在 } Y \text{ 中是连通的。}
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;反设 $f(X)$ 在 $Y$ 中不连通。&lt;br&gt;
+则存在一对分离 $\{U,V\}$，其中 $U,V$ 是 $Y$ 中的开集，满足
+&lt;/p&gt;
+$$
+U \cap f(X) \neq \varnothing,\qquad
+V \cap f(X) \neq \varnothing,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+U \cup V = f(X),\qquad
+U \cap V \cap f(X) = \varnothing.
+$$&lt;p&gt;由于 $f$ 连续，$f^{-1}(U)$ 与 $f^{-1}(V)$ 是 $X$ 中的开集。&lt;br&gt;
+又因为
+&lt;/p&gt;
+$$
+U \cap f(X) \neq \varnothing,\qquad
+V \cap f(X) \neq \varnothing,
+$$&lt;p&gt;
+可得
+&lt;/p&gt;
+$$
+f^{-1}(U) \neq \varnothing,\qquad
+f^{-1}(V) \neq \varnothing.
+$$&lt;p&gt;并且
+&lt;/p&gt;
+$$
+f^{-1}(U) \cap f^{-1}(V)
+= f^{-1}(U \cap V)
+= \varnothing,
+$$&lt;p&gt;
+以及
+&lt;/p&gt;
+$$
+f^{-1}(U) \cup f^{-1}(V)
+= f^{-1}(U \cup V)
+= f^{-1}(f(X))
+= X.
+$$&lt;p&gt;因此 $\{f^{-1}(U),f^{-1}(V)\}$ 构成 $X$ 的一个分离，这与 $X$ 连通矛盾。&lt;/p&gt;
+&lt;p&gt;故假设不成立，$f(X)$ 必为连通的。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;**性质：**连通性随同胚传递。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A \subset B \subset X$。&lt;br&gt;
+设 $\{U,V\}$ 是 $B$ 在 $X$ 中的一个分离，即
+&lt;/p&gt;
+$$
+U,V \text{ 在 } X \text{ 中是开集},\qquad
+U \cap B \neq \varnothing,\quad V \cap B \neq \varnothing,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+B \subset U \cup V,\qquad
+U \cap V \cap B = \varnothing.
+$$&lt;p&gt;
+若
+&lt;/p&gt;
+$$
+A \text{ 在 } X \text{ 中是连通的},
+$$&lt;p&gt;
+则必有
+&lt;/p&gt;
+$$
+A \subset U \quad \text{或} \quad A \subset V.
+$$&lt;p&gt;等价地，
+&lt;/p&gt;
+$$
+A \cap U = \varnothing \quad \text{或} \quad A \cap V = \varnothing.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由于 $\{U,V\}$ 是 $B$ 在 $X$ 中的一个分离，有
+&lt;/p&gt;
+$$
+U \cap B \neq \varnothing,\quad V \cap B \neq \varnothing,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+B \subset U \cup V,\qquad
+U \cap V \cap B = \varnothing.
+$$&lt;p&gt;反设
+&lt;/p&gt;
+$$
+A \cap U \neq \varnothing \quad \text{且} \quad A \cap V \neq \varnothing.
+$$&lt;p&gt;
+由于 $U,V$ 在 $X$ 中是开集，$A \cap U$ 与 $A \cap V$ 在 $A$ 的子空间拓扑中是开集。&lt;/p&gt;
+&lt;p&gt;并且
+&lt;/p&gt;
+$$
+(A \cap U) \cap (A \cap V)
+= A \cap (U \cap V)
+\subset A \cap (U \cap V \cap B)
+= \varnothing,
+$$&lt;p&gt;
+同时
+&lt;/p&gt;
+$$
+A \subset B \subset U \cup V
+\;\Longrightarrow\;
+A = (A \cap U) \cup (A \cap V).
+$$&lt;p&gt;于是 $\{A \cap U,\, A \cap V\}$ 构成 $A$ 在 $X$ 中的一个分离，这与
+&lt;/p&gt;
+$$
+A \text{ 在 } X \text{ 中连通}
+$$&lt;p&gt;
+相矛盾。&lt;/p&gt;
+&lt;p&gt;因此反设不成立，只能有
+&lt;/p&gt;
+$$
+A \cap U = \varnothing \quad \text{或} \quad A \cap V = \varnothing.
+$$&lt;p&gt;由 $B \subset U \cup V$ 立刻得到
+&lt;/p&gt;
+$$
+A \cap U = \varnothing \;\Longleftrightarrow\; A \subset V,
+\qquad
+A \cap V = \varnothing \;\Longleftrightarrow\; A \subset U.
+$$&lt;p&gt;故结论成立。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如果 $B$ 被 $U$ 和 $V$ “撕成两块”，而 $A$ 又是 $B$ 里的一个连通部分，那么 $A$ 不可能横跨这两块，只能完整地落在其中一侧。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A \subset X$ 在 $X$ 中是连通的。&lt;br&gt;
+若
+&lt;/p&gt;
+$$
+A \subset B \subset \overline{A},
+$$&lt;p&gt;
+则
+&lt;/p&gt;
+$$
+B \text{ 在 } X \text{ 中是连通的。}
+$$&lt;p&gt;
+特别地，
+&lt;/p&gt;
+$$
+\overline{A} \text{ 在 } X \text{ 中是连通的。}
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;反设 $B$ 在 $X$ 中不连通。&lt;br&gt;
+则存在 $B$ 在 $X$ 中的一个分离 $\{U,V\}$，其中 $U,V$ 是 $X$ 中的开集，满足
+&lt;/p&gt;
+$$
+U \cap B \neq \varnothing,\qquad
+V \cap B \neq \varnothing,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+B \subset U \cup V,\qquad
+U \cap V \cap B = \varnothing.
+$$&lt;p&gt;由于 $A \subset B$ 且 $A$ 在 $X$ 中是连通的，根据前述引理，必有
+&lt;/p&gt;
+$$
+A \subset U \quad \text{或} \quad A \subset V.
+$$&lt;p&gt;不妨设
+&lt;/p&gt;
+$$
+A \subset V,
+$$&lt;p&gt;
+等价地，
+&lt;/p&gt;
+$$
+A \cap U = \varnothing.
+$$&lt;p&gt;由 $U \cap B \neq \varnothing$，可取
+&lt;/p&gt;
+$$
+x \in U \cap B.
+$$&lt;p&gt;
+又因为
+&lt;/p&gt;
+$$
+B \subset \overline{A},
+$$&lt;p&gt;
+所以
+&lt;/p&gt;
+$$
+x \in \overline{A}.
+$$&lt;p&gt;但 $x \in U$，而 $U$ 是开集且
+&lt;/p&gt;
+$$
+U \cap A = \varnothing,
+$$&lt;p&gt;
+这与 $x \in \overline{A}$ 矛盾。&lt;/p&gt;
+&lt;p&gt;因此假设不成立，$B$ 必为连通的。&lt;/p&gt;
+&lt;p&gt;特别地，取
+&lt;/p&gt;
+$$
+B = \overline{A},
+$$&lt;p&gt;
+即可得 $\overline{A}$ 在 $X$ 中连通。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;连通集的“缝合能力”很强——只要一个集合 $B$ 被夹在 $A$ 与其闭包之间，就不可能把 $B$ 撕成两块；因此连通性在取闭包时保持不变。
+$\overline{A}=A \cup A'$，$B=A \cup \{some limit points of A \}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$\{C_\lambda\}_{\lambda\in\Lambda}$ 是 $X$ 中的一族&lt;strong&gt;连通子集&lt;/strong&gt;，并且满足
+&lt;/p&gt;
+$$
+\bigcap_{\lambda\in\Lambda} C_\lambda \neq \varnothing.
+$$&lt;p&gt;
+则
+&lt;/p&gt;
+$$
+\bigcup_{\lambda\in\Lambda} C_\lambda
+$$&lt;p&gt;
+在 $X$ 中是&lt;strong&gt;连通的&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;反证，设
+&lt;/p&gt;
+$$
+\bigcup_{\lambda\in\Lambda} C_\lambda
+$$&lt;p&gt;
+在 $X$ 中不连通。&lt;br&gt;
+则存在 $X$ 中的开集 $U,V$，构成其一个分离，即
+&lt;/p&gt;
+$$
+U \cap \bigcup_{\lambda\in\Lambda} C_\lambda \neq \varnothing,\qquad
+V \cap \bigcup_{\lambda\in\Lambda} C_\lambda \neq \varnothing,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+\bigcup_{\lambda\in\Lambda} C_\lambda \subset U \cup V,
+\qquad
+U \cap V \cap \bigcup_{\lambda\in\Lambda} C_\lambda = \varnothing.
+$$&lt;p&gt;由于每个 $C_\lambda$ 在 $X$ 中是连通的，根据前述关于连通子集的引理，对每个 $\lambda\in\Lambda$，必有
+&lt;/p&gt;
+$$
+C_\lambda \subset U \quad \text{或} \quad C_\lambda \subset V,
+$$&lt;p&gt;
+等价地，
+&lt;/p&gt;
+$$
+C_\lambda \cap V = \varnothing \quad \text{或} \quad C_\lambda \cap U = \varnothing.
+$$&lt;p&gt;取
+&lt;/p&gt;
+$$
+x \in \bigcap_{\lambda\in\Lambda} C_\lambda,
+$$&lt;p&gt;
+该点存在是由假设保证的。&lt;br&gt;
+由于
+&lt;/p&gt;
+$$
+x \in \bigcup_{\lambda\in\Lambda} C_\lambda \subset U \cup V,
+$$&lt;p&gt;
+必有
+&lt;/p&gt;
+$$
+x \in U \quad \text{或} \quad x \in V.
+$$&lt;p&gt;不妨设
+&lt;/p&gt;
+$$
+x \in U.
+$$&lt;p&gt;
+则对任意 $\lambda\in\Lambda$，都有
+&lt;/p&gt;
+$$
+x \in C_\lambda \cap U,
+$$&lt;p&gt;
+从而
+&lt;/p&gt;
+$$
+C_\lambda \cap U \neq \varnothing.
+$$&lt;p&gt;
+因此不可能有 $C_\lambda \subset V$，只能是
+&lt;/p&gt;
+$$
+C_\lambda \subset U.
+$$&lt;p&gt;于是得到
+&lt;/p&gt;
+$$
+\bigcup_{\lambda\in\Lambda} C_\lambda \subset U,
+$$&lt;p&gt;
+从而
+&lt;/p&gt;
+$$
+\left(\bigcup_{\lambda\in\Lambda} C_\lambda\right) \cap V = \varnothing,
+$$&lt;p&gt;
+这与
+&lt;/p&gt;
+$$
+V \cap \bigcup_{\lambda\in\Lambda} C_\lambda \neq \varnothing
+$$&lt;p&gt;
+矛盾。&lt;/p&gt;
+&lt;p&gt;矛盾说明假设不成立，因此
+&lt;/p&gt;
+$$
+\bigcup_{\lambda\in\Lambda} C_\lambda
+$$&lt;p&gt;
+在 $X$ 中是连通的。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--定理" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X,Y$ 是拓扑空间，则
+&lt;/p&gt;
+$$
+X \times Y \text{ 是连通的}
+\;\Longleftrightarrow\;
+X \text{ 和 } Y \text{ 都是连通的}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$\Rightarrow$：&lt;/p&gt;
+&lt;p&gt;设
+&lt;/p&gt;
+$$
+X \times Y \text{ 是连通的}.
+$$&lt;p&gt;
+考虑投影映射
+&lt;/p&gt;
+$$
+\pi_1: X \times Y \to X,\quad (x,y)\mapsto x,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+\pi_2: X \times Y \to Y,\quad (x,y)\mapsto y.
+$$&lt;p&gt;
+显然 $\pi_1,\pi_2$ 都是&lt;strong&gt;连续且满射&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;由于&lt;strong&gt;连续映射保持连通性&lt;/strong&gt;，可得
+&lt;/p&gt;
+$$
+X = \pi_1(X \times Y),\qquad
+Y = \pi_2(X \times Y)
+$$&lt;p&gt;
+均为连通空间。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;$\Leftarrow$：&lt;/p&gt;
+&lt;p&gt;现设
+&lt;/p&gt;
+$$
+X \text{ 和 } Y \text{ 都是连通的}.
+$$&lt;p&gt;
+任取一点
+&lt;/p&gt;
+$$
+x_0 \in X.
+$$&lt;p&gt;对任意 $y \in Y$，集合
+&lt;/p&gt;
+$$
+X \times \{y\}
+$$&lt;p&gt;
+与 $X$ 同胚，因此是连通的。&lt;/p&gt;
+&lt;p&gt;定义
+&lt;/p&gt;
+$$
+C_y = (\{x_0\} \times Y)\ \cup\ (X \times \{y\}).
+$$&lt;p&gt;
+由于
+&lt;/p&gt;
+$$
+(\{x_0\} \times Y) \cap (X \times \{y\})
+= \{(x_0,y)\} \neq \varnothing,
+$$&lt;p&gt;
+根据“&lt;strong&gt;有公共点的连通集并仍连通&lt;/strong&gt;”的引理，得到
+&lt;/p&gt;
+$$
+C_y \text{ 是连通的}.
+$$&lt;p&gt;注意到
+&lt;/p&gt;
+$$
+\bigcup_{y\in Y} C_y = X \times Y,
+$$&lt;p&gt;
+且
+&lt;/p&gt;
+$$
+\bigcap_{y\in Y} C_y = \{x_0\} \times Y \neq \varnothing.
+$$&lt;p&gt;
+再次应用同一引理，可知
+&lt;/p&gt;
+$$
+X \times Y
+$$&lt;p&gt;
+是连通的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;综上，
+&lt;/p&gt;
+$$
+X \times Y \text{ 连通 } \Longleftrightarrow X \text{ 和 } Y \text{ 连通}.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="连通分支"&gt;连通分支
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 4.1.3 连通分支&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$x,y\in X$。定义关系
+&lt;/p&gt;
+$$
+x \sim_c y
+$$&lt;p&gt;
+当且仅当&lt;strong&gt;存在 $X$ 的一个连通子集&lt;/strong&gt; $C_{x,y}$，使得
+&lt;/p&gt;
+$$
+x,y \in C_{x,y}.
+$$&lt;p&gt;关系 $\sim_c$ 是 $X$ 上的一个&lt;strong&gt;等价关系&lt;/strong&gt;，即满足：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自反性：$$x \sim_c x.$$&lt;/li&gt;
+&lt;li&gt;对称性：$$x \sim_c y \;\Longrightarrow\; y \sim_c x.$$&lt;/li&gt;
+&lt;li&gt;传递性：若$$x \sim_c y \quad \text{且} \quad y \sim_c z,$$，则$$x \sim_c z.$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;由上述命题，$\sim_c$ 是一个等价关系。&lt;br&gt;
+$\sim_c$ 的&lt;strong&gt;等价类&lt;/strong&gt;称为 $X$ 的一个&lt;strong&gt;连通分支&lt;/strong&gt;（或&lt;strong&gt;连通分量&lt;/strong&gt;, connected component）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;备注（Remark）&lt;/p&gt;
+&lt;p&gt;(1)
+任意一个连通子集都包含于某个连通分支中。&lt;/p&gt;
+&lt;p&gt;(2)
+拓扑空间 $X$ 是连通的，当且仅当
+&lt;/p&gt;
+$$
+X \text{ 恰好只有一个连通分支}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Lemma 1(连通性):&lt;/strong&gt; $X$的连通分支是连通的。
+&lt;strong&gt;pf:&lt;/strong&gt; 取 $x_0 \in C$。根据连通分支的定义，对任意 $x \in C$，存在一个连通子集 $C_x \subset X$，使得&lt;/p&gt;
+$$x_0,\, x \in C_x.$$&lt;p&gt; 由连通分支的定义可知&lt;/p&gt;
+$$C_x \subset C.$$&lt;p&gt; 因此&lt;/p&gt;
+$$C = \bigcup_{x \in C} C_x.$$&lt;p&gt; 又注意到&lt;/p&gt;
+$$\bigcap_{x \in C} C_x \supset \{x_0\} \neq \varnothing. $$&lt;p&gt; 根据“&lt;strong&gt;有公共点的连通子集的并仍连通&lt;/strong&gt;”这一引理，得到&lt;/p&gt;
+$$C \text{ 是连通的。}$$&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Lemma 2(极大性):&lt;/strong&gt; 设 $C$ 是 $X$ 的一个连通分支，$A \subset X$ 在 $X$ 中连通，且$C \subset A.$则$A = C.$
+**pf:**只需证明 $A \subset C$。 任取&lt;/p&gt;
+$$x_0 \in C.$$&lt;p&gt;由于 $A$ 连通且 $x_0 \in A$，对任意 $a \in A$，都有&lt;/p&gt;
+$$x_0 \sim_c a.$$&lt;p&gt;由连通分支的定义可知&lt;/p&gt;
+$$a \in C.$$&lt;p&gt;因此&lt;/p&gt;
+$$A \subset C.$$&lt;p&gt;结合 $C \subset A$，得到&lt;/p&gt;
+$$A = C.$$&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Lemma 3(闭性):&lt;/strong&gt; 设 $C$ 是 $X$ 的一个连通分支，则$C \text{ 在 } X \text{ 中是闭集。}$
+&lt;strong&gt;pf:&lt;strong&gt;由引理 1，$C$ 是连通的，因此其闭包$\overline{C}$也是连通的。显然有$C \subset \overline{C}.$而 $C$ 是连通分支，按定义它是&lt;/strong&gt;包含自身的最大连通子集&lt;/strong&gt;，因此只能有$\overline{C} = C.$从而$C \text{ 是闭集。}$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id="道路连通"&gt;道路连通
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="compactness"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 4.2.1 道路连通&lt;/strong&gt;&lt;a href="#compactness" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;&lt;strong&gt;Path：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间。&lt;br&gt;
+称映射
+&lt;/p&gt;
+$$
+\alpha:[0,1]\to X
+$$&lt;p&gt;
+为 $X$ 中的一条&lt;strong&gt;路径（path）&lt;/strong&gt;，如果 $\alpha$ 是连续映射。&lt;/p&gt;
+&lt;p&gt;其中：
+&lt;/p&gt;
+$$
+\alpha(0) \quad \text{称为起点}, \qquad \alpha(1) \quad \text{称为终点}.
+$$&lt;p&gt;注意：&lt;strong&gt;路径不是仅仅指像集 $\alpha([0,1])$，而是包含参数化信息的映射本身。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Path connected：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在拓扑空间 $X$ 中，若对任意
+&lt;/p&gt;
+$$
+x,y\in X,
+$$&lt;p&gt;
+都存在一条路径
+&lt;/p&gt;
+$$
+\alpha:[0,1]\to X
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+\alpha(0)=x,\qquad \alpha(1)=y,
+$$&lt;p&gt;
+则称 $X$ 是&lt;strong&gt;路径连通的（path connected）&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Path Connected Subset：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $A\subset X$。&lt;br&gt;
+若 $A$ 在其&lt;strong&gt;子空间拓扑&lt;/strong&gt;下是路径连通的，则称 $A$ 是 $X$ 的一个&lt;strong&gt;路径连通子集&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$$
+f:X\to Y
+$$&lt;p&gt;
+是连续映射。&lt;br&gt;
+若
+&lt;/p&gt;
+$$
+X \text{ 是路径连通的},
+$$&lt;p&gt;
+则
+&lt;/p&gt;
+$$
+f(X) \text{ 在 } Y \text{ 中是路径连通的}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;任取
+&lt;/p&gt;
+$$
+y_0,y_1\in f(X).
+$$&lt;p&gt;
+则存在
+&lt;/p&gt;
+$$
+x_0,x_1\in X
+$$&lt;p&gt;
+使得
+&lt;/p&gt;
+$$
+f(x_0)=y_0,\qquad f(x_1)=y_1.
+$$&lt;p&gt;由于 $X$ 是路径连通的，存在一条路径
+&lt;/p&gt;
+$$
+\alpha:[0,1]\to X
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+\alpha(0)=x_0,\qquad \alpha(1)=x_1.
+$$&lt;p&gt;考虑复合映射
+&lt;/p&gt;
+$$
+f\circ\alpha:[0,1]\to Y.
+$$&lt;p&gt;
+由于 $f$ 与 $\alpha$ 都连续，$f\circ\alpha$ 连续，且
+&lt;/p&gt;
+$$
+(f\circ\alpha)(0)=y_0,\qquad (f\circ\alpha)(1)=y_1.
+$$&lt;p&gt;因此 $f\circ\alpha$ 是 $f(X)$ 中一条从 $y_0$ 到 $y_1$ 的路径，说明
+&lt;/p&gt;
+$$
+f(X) \text{ 是路径连通的}.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;道路连通可被同胚传递&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="道路连通分支"&gt;道路连通分支
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;道路连通分支&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$x,y\in X$。&lt;br&gt;
+定义关系
+&lt;/p&gt;
+$$
+x \sim_p y
+$$&lt;p&gt;
+当且仅当&lt;strong&gt;存在一条路径&lt;/strong&gt; $\alpha:[0,1]\to X$，使得
+&lt;/p&gt;
+$$
+\alpha(0)=x,\qquad \alpha(1)=y.
+$$&lt;p&gt;关系 $\sim_p$ 是 $X$ 上的一个&lt;strong&gt;等价关系&lt;/strong&gt;，即满足：
+(i) 自反性：$x \sim_p x.$&lt;br&gt;
+(ii) 对称性：$x \sim_p y \;\Longrightarrow\; y \sim_p x.$&lt;br&gt;
+(iii) 传递性：若$x \sim_p y \quad\text{且}\quad y \sim_p z $，则$x \sim_p z.$&lt;/p&gt;
+&lt;p&gt;由上述命题，$\sim_p$ 是一个等价关系。&lt;br&gt;
+$\sim_p$ 的等价类称为 $X$ 的一个&lt;strong&gt;路径分支&lt;/strong&gt;（或&lt;strong&gt;路径分量&lt;/strong&gt;, path component）。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;备注（Remarks）&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;任意路径连通子集都包含于某一个路径分支中。&lt;/li&gt;
+&lt;li&gt;拓扑空间 $X$ 是路径连通的，当且仅当$X \text{ 只有一个路径分支}.$&lt;/li&gt;
+&lt;li&gt;每个路径分支一定是连通的，但一般而言$\text{连通分支} \;\supsetneq\; \text{路径分支}.$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;直观理解&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$x\sim_p y$：可以&lt;strong&gt;沿着一条连续轨迹&lt;/strong&gt;从 $x$ 走到 $y$；&lt;/li&gt;
+&lt;li&gt;路径分支是“能用连续路径走到一起的最大块”；&lt;/li&gt;
+&lt;li&gt;在 $\mathbb{R}^n$ 等良性空间中，路径分支与连通分支一致；&lt;/li&gt;
+&lt;li&gt;在病态空间中，二者可能不同（例如拓扑学家正弦曲线）。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Lemma 1(路径连通性):&lt;/strong&gt; 设 $X$ 是拓扑空间，$P$ 是 $X$ 的一个路径分支，则$P$是路径连通的.
+&lt;strong&gt;Lemma 2(极大性 / 最大性):&lt;/strong&gt; 设 $P$ 是 $X$ 的一个路径分支，$A\subset X$ 是路径连通子集，且$ P\subset A.$ 则$A=P.$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="连通connected与路径连通path-connected"&gt;连通（Connected）与路径连通（Path Connected）
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 23&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若拓扑空间 $X$ 是&lt;strong&gt;路径连通的&lt;/strong&gt;，则 $X$ 是&lt;strong&gt;连通的&lt;/strong&gt;：
+&lt;/p&gt;
+$$
+\text{path connected} \;\Longrightarrow\; \text{connected}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;反证，设 $X$ 是路径连通的，但 &lt;strong&gt;不连通&lt;/strong&gt;。&lt;br&gt;
+则存在 $X$ 的一个分离
+&lt;/p&gt;
+$$
+\{U,V\},
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+U\neq\varnothing,\quad V\neq\varnothing,\quad
+U\cap V=\varnothing,\quad
+U\cup V=X,
+$$&lt;p&gt;
+且 $U,V$ 都是 $X$ 中的开集。&lt;/p&gt;
+&lt;p&gt;取
+&lt;/p&gt;
+$$
+x\in U,\qquad y\in V.
+$$&lt;p&gt;
+由于 $X$ 是路径连通的，存在一条路径
+&lt;/p&gt;
+$$
+a:[0,1]\to X
+$$&lt;p&gt;
+使得
+&lt;/p&gt;
+$$
+a(0)=x,\qquad a(1)=y.
+$$&lt;p&gt;考虑原像集合
+&lt;/p&gt;
+$$
+a^{-1}(U),\qquad a^{-1}(V).
+$$&lt;p&gt;
+由于 $a$ 连续，$U,V$ 开，有
+&lt;/p&gt;
+$$
+a^{-1}(U),\ a^{-1}(V)\ \text{是 }[0,1]\text{ 中的开集}.
+$$&lt;p&gt;
+并且
+&lt;/p&gt;
+$$
+0\in a^{-1}(U),\quad 1\in a^{-1}(V),
+$$&lt;p&gt;
+所以
+&lt;/p&gt;
+$$
+a^{-1}(U)\neq\varnothing,\qquad a^{-1}(V)\neq\varnothing.
+$$&lt;p&gt;又因为
+&lt;/p&gt;
+$$
+U\cap V=\varnothing,\quad U\cup V=X,
+$$&lt;p&gt;
+得到
+&lt;/p&gt;
+$$
+a^{-1}(U)\cap a^{-1}(V)=\varnothing,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+a^{-1}(U)\cup a^{-1}(V)=[0,1].
+$$&lt;p&gt;
+因此
+&lt;/p&gt;
+$$
+\{a^{-1}(U),\,a^{-1}(V)\}
+$$&lt;p&gt;
+构成了区间 $[0,1]$ 的一个分离。&lt;/p&gt;
+&lt;p&gt;但 $[0,1]$ 在通常拓扑下是&lt;strong&gt;连通的&lt;/strong&gt;，不可能存在这样的分离，矛盾。&lt;/p&gt;
+&lt;p&gt;故假设不成立，从而
+&lt;/p&gt;
+$$
+X \text{ 连通}.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;存在拓扑空间是连通的，但不是路径连通的。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;反例：&lt;a class="link" href="https://zh.wikipedia.org/wiki/%E6%8B%93%E6%89%91%E5%AD%A6%E5%AE%B6%E6%AD%A3%E5%BC%A6%E6%9B%B2%E7%BA%BF" target="_blank" rel="noopener"
+&gt;拓扑学家的曲线&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;性质&lt;/th&gt;
+&lt;th&gt;含义&lt;/th&gt;
+&lt;th&gt;关系&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;连通&lt;/td&gt;
+&lt;td&gt;不能被分成两个不交的开集&lt;/td&gt;
+&lt;td&gt;较弱&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;路径连通&lt;/td&gt;
+&lt;td&gt;任意两点可由连续路径连接&lt;/td&gt;
+&lt;td&gt;较强&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;逻辑关系&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;路径连通 $\Rightarrow$ 连通&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;反例&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;拓扑学家正弦曲线&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="局部道路连通locally-path-connected"&gt;局部道路连通（Locally Path Connected）
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 局部道路连通&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间。&lt;br&gt;
+如果对任意
+&lt;/p&gt;
+$$
+x\in X
+$$&lt;p&gt;
+以及 $x$ 的任意一个邻域
+&lt;/p&gt;
+$$
+U
+$$&lt;p&gt;
+都存在一个&lt;strong&gt;路径连通的邻域&lt;/strong&gt;
+&lt;/p&gt;
+$$
+V
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+x\in V\subset U,
+$$&lt;p&gt;
+则称 $X$ 是&lt;strong&gt;局部路径连通的（locally path connected）&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 24&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间。若
+&lt;/p&gt;
+$$
+X \text{ 连通且局部路径连通},
+$$&lt;p&gt;
+则
+&lt;/p&gt;
+$$
+X \text{ 是路径连通的}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;反证，设 $X$ &lt;strong&gt;不是&lt;/strong&gt;路径连通的。&lt;br&gt;
+则 $X$ 可分解为若干个互不相交的路径分支：
+&lt;/p&gt;
+$$
+X=\bigcup_{\lambda\in\Lambda} P_\lambda,
+$$&lt;p&gt;
+其中每个 $P_\lambda$ 是 $X$ 的一个路径分支，并且
+&lt;/p&gt;
+$$
+|\Lambda|\ge 2.
+$$&lt;p&gt;任选其中一个路径分支 $P_{\lambda_0}$。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;第一步：$P_{\lambda_0}$ 是开集&lt;/p&gt;
+&lt;p&gt;任取
+&lt;/p&gt;
+$$
+x\in P_{\lambda_0}.
+$$&lt;p&gt;
+由于 $X$ 是&lt;strong&gt;局部路径连通的&lt;/strong&gt;，存在一个路径连通的邻域
+&lt;/p&gt;
+$$
+V
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+x\in V.
+$$&lt;p&gt;
+由于 $V$ 是路径连通的，并且 $x\in P_{\lambda_0}$，根据路径分支的极大性，必有
+&lt;/p&gt;
+$$
+V\subset P_{\lambda_0}.
+$$&lt;p&gt;
+因此 $x$ 有一个包含于 $P_{\lambda_0}$ 的开邻域，从而
+&lt;/p&gt;
+$$
+P_{\lambda_0} \text{ 是开集}.
+$$&lt;hr&gt;
+&lt;p&gt;第二步：$P_{\lambda_0}$ 是闭集&lt;/p&gt;
+&lt;p&gt;对任意 $\lambda\neq\lambda_0$，同理可知
+&lt;/p&gt;
+$$
+P_\lambda \text{ 是开集}.
+$$&lt;p&gt;
+因此
+&lt;/p&gt;
+$$
+\bigcup_{\lambda\neq\lambda_0} P_\lambda
+$$&lt;p&gt;
+是开集，而
+&lt;/p&gt;
+$$
+X\setminus P_{\lambda_0}=\bigcup_{\lambda\neq\lambda_0} P_\lambda.
+$$&lt;p&gt;
+这说明
+&lt;/p&gt;
+$$
+P_{\lambda_0} \text{ 是闭集}.
+$$&lt;hr&gt;
+&lt;p&gt;第三步：得到矛盾&lt;/p&gt;
+&lt;p&gt;由构造可知：
+&lt;/p&gt;
+$$
+P_{\lambda_0}\neq\varnothing,\qquad
+P_{\lambda_0}\neq X,
+$$&lt;p&gt;
+且 $P_{\lambda_0}$ 同时是
+&lt;/p&gt;
+$$
+\text{非空、开、闭、真子集}.
+$$&lt;p&gt;
+这与
+&lt;/p&gt;
+$$
+X \text{ 是连通的}
+$$&lt;p&gt;
+矛盾。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;因此假设不成立，$X$ 必为路径连通空间。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="结论总结"&gt;结论总结
+&lt;/h3&gt;&lt;p&gt;一般情形下：
+&lt;/p&gt;
+$$
+\text{路径连通} \;\Longrightarrow\; \text{连通},
+$$&lt;p&gt;
+但反向不成立；&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;若额外假设局部路径连通性&lt;/strong&gt;，则
+&lt;/p&gt;
+$$
+\text{连通} \;\Longrightarrow\; \text{路径连通};
+$$&lt;p&gt;因此在局部路径连通空间中：
+&lt;/p&gt;
+$$
+\text{连通} \iff \text{路径连通}.
+$$</description></item><item><title>K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）</title><link>https://cxzhou.com/p/konsistency/</link><pubDate>Thu, 01 Jan 2026 23:06:00 +0800</pubDate><guid>https://cxzhou.com/p/konsistency/</guid><description>&lt;img src="https://cxzhou.com/p/konsistency/cover.jpg" alt="Featured image of post K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）" /&gt;&lt;p&gt;封面画师：&lt;a class="link" href="https://www.pixiv.net/artworks/60752234" target="_blank" rel="noopener"
+&gt;wukloo&lt;/a&gt;&lt;/p&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 1（图与邻接）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $G=(V,E)$ 为有限简单无向图，其中 $V$ 为顶点集，$E\subseteq{{u,v}:u,v\in V, u\neq v}$ 为边集。若 ${u,v}\in E$，则称 $u$ 与 $v$ 相邻，记为$u\sim v$。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 2（闭邻域）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对任意顶点 $k\in V$，定义其闭邻域为
+&lt;/p&gt;
+$$
+N[k] := {k}\cup{v\in V:\ v\sim k}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 3（支配集）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;集合 $K\subseteq V$ 称为图 $G$ 的一个支配集，若满足
+&lt;/p&gt;
+$$
+\forall v\in V,\quad \exists k\in K \text{ 使得 } v\in N[k].
+$$&lt;p&gt;
+即，图中每一个顶点要么属于 $K$，要么与 $K$ 中的某个顶点相邻。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 4（划分）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;称一族非空集合 ${S_k}_{k\in I}$ 为 $V$ 的一个划分，若满足：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$S_k\neq\varnothing$，对所有 $k\in I$；&lt;/li&gt;
+&lt;li&gt;$S_{k_1}\cap S_{k_2}=\varnothing$，对所有 $k_1\neq k_2$；&lt;/li&gt;
+&lt;li&gt;$\bigcup_{k\in I} S_k = V$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 5（k-星型中心）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $S\subseteq V$ 为非空集合。若存在 $k\in S$ 使得
+&lt;/p&gt;
+$$
+\forall v\in S\setminus{k},\quad k\sim v,
+$$&lt;p&gt;
+则称 k 为集合 S 的一个 &lt;strong&gt;k-星型中心&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 1（由支配集诱导的 k-中心星型划分）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $G=(V,E)$ 为有限简单无向图，且 $K\subseteq V$ 为其一个支配集。则存在一个映射
+&lt;/p&gt;
+$$
+f:V\to K
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+\forall v\in V,\quad v\in N[f(v)].
+$$&lt;p&gt;
+令
+&lt;/p&gt;
+$$
+S_k := {v\in V:\ f(v)=k},\qquad k\in K,
+$$&lt;p&gt;
+并定义
+&lt;/p&gt;
+$$
+K' := {k\in K:\ S_k\neq\varnothing}.
+$$&lt;p&gt;
+则集合族 ${S_k}_{k\in K'}$ 构成 $V$ 的一个划分，且对每个 $k\in K'$，顶点 $k$ 是子集 $S_k$ 的 k-星型中心。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由于 $K$ 是 $G$ 的支配集，按定义对任意 $v\in V$，存在至少一个 $k\in K$ 使得 $v\in N[k]$。据此，对每个 $v\in V$ 任取一个满足上述条件的顶点 $k\in K$，并定义映射
+&lt;/p&gt;
+$$
+f(v)=k.
+$$&lt;p&gt;
+由构造立即可得
+&lt;/p&gt;
+$$
+\forall v\in V,\quad v\in N[f(v)].
+$$&lt;p&gt;接下来验证集合族 ${S_k}_{k\in K'}$ 的性质。&lt;/p&gt;
+&lt;p&gt;首先，对任意$v\in V$，由 $f(v)\in K$ 且 $v\in S_{f(v)}$，可得
+&lt;/p&gt;
+$$
+V=\bigcup_{k\in K}S_k=\bigcup_{k\in K'}S_k,
+$$&lt;p&gt;
+从而覆盖性成立。&lt;/p&gt;
+&lt;p&gt;其次，由于 $f$ 为函数，对任意不同的 $k_1,k_2\in K$，有
+&lt;/p&gt;
+$$
+S_{k_1}\cap S_{k_2}
+={v\in V:\ f(v)=k_1 \text{ 且 } f(v)=k_2}
+=\varnothing,
+$$&lt;p&gt;
+故集合两两不交。&lt;/p&gt;
+&lt;p&gt;再次，由 $K'$ 的定义可知，对所有$k\in K'$，均有$S_k\neq\varnothing$。因此 ${S_k}_{k\in K'}$ 构成 $V$ 的一个划分。&lt;/p&gt;
+&lt;p&gt;最后，取任意 $k\in K'$ 及任意$v\in S_k$。由 $S_k$ 的定义，有 $f(v)=k$。结合映射 $f$ 的构造性质，得
+&lt;/p&gt;
+$$
+v\in N[k],
+$$&lt;p&gt;
+即要么 $v=k$，要么 $v\sim k$。因此，对所有$v\in S_k\setminus{k}$，均有 $k\sim v$，从而 $k$ 为 $S_k$ 的 k-星型中心。&lt;/p&gt;
+&lt;p&gt;定理得证。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="minmax-星型中心划分的优化建模"&gt;Min–max 星型中心划分的优化建模
+&lt;/h2&gt;&lt;h3 id="1-预备定义与符号"&gt;1. 预备定义与符号
+&lt;/h3&gt;&lt;p&gt;设 \(G=(V,E)\) 为有限简单无向图，\(|V|=n\)。定义邻接指示函数
+&lt;/p&gt;
+\[
+a_{vk} =
+\begin{cases}
+1, &amp; v = k \text{ 或 } \{v,k\} \in E, \\
+0, &amp; \text{否则}.
+\end{cases}
+\]&lt;p&gt;
+注意 \(a_{vk}=1\) 当且仅当 \(v \in N[k]\)，即顶点 \(v\) 与顶点 \(k\) 至多一跳可达（允许 \(v=k\)）。&lt;/p&gt;
+&lt;p&gt;称顶点 \(k\) 为集合 \(S \subseteq V\) 的 &lt;strong&gt;\(k\)-星型中心&lt;/strong&gt;，若对任意 \(v \in S \setminus \{k\}\)，均有 \(\{v,k\} \in E\)。等价地，
+&lt;/p&gt;
+\[
+\forall v \in S,\quad a_{vk}=1.
+\]&lt;hr&gt;
+&lt;h3 id="2-minmax-优化问题的原始形式"&gt;2. Min–max 优化问题的原始形式
+&lt;/h3&gt;&lt;p&gt;给定一个正整数 \(m\)（中心数或子群体数的预算），考虑如下问题：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;问题 \((\mathcal{P}_m)\)：Min–max 星型中心划分&lt;/strong&gt;
+&lt;/p&gt;
+\[
+\min_{\{S_k\},\,K}\ \max_{k \in K} |S_k|
+\]&lt;p&gt;
+满足
+&lt;/p&gt;
+\[
+\begin{aligned}
+&amp;K \subseteq V,\quad |K| \le m, \\
+&amp;\{S_k\}_{k \in K} \text{ 构成 } V \text{ 的一个划分}, \\
+&amp;k \in S_k \quad \forall k \in K, \\
+&amp;S_k \subseteq N[k] \quad \forall k \in K.
+\end{aligned}
+\]&lt;/blockquote&gt;
+&lt;p&gt;其中约束 \(S_k \subseteq N[k]\) 保证每个子群体 \(S_k\) 以 \(k\) 为中心，且所有成员与 \(k\) 至多一跳相邻。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;&lt;br&gt;
+若不对 \(|K|\) 加以限制，则可取 \(K=V\)、\(S_k=\{k\}\)，使目标值恒为 1，从而问题退化。因此中心数预算 \(m\) 是获得非平凡解的必要条件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id="3-01-变量的-minmax-指派模型"&gt;3. 0–1 变量的 Min–max 指派模型
+&lt;/h3&gt;&lt;p&gt;引入如下决策变量：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\(y_k \in \{0,1\}\)：若 \(y_k=1\)，则选择顶点 \(k\) 作为某一子群体的中心；&lt;/li&gt;
+&lt;li&gt;\(x_{vk} \in \{0,1\}\)：若 \(x_{vk}=1\)，则将顶点 \(v\) 分配给中心 \(k\)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;定义中心 \(k\) 的群体规模（负载）为
+&lt;/p&gt;
+\[
+L_k(x) := \sum_{v \in V} x_{vk}.
+\]&lt;p&gt;则问题 \((\mathcal{P}_m)\) 等价地可表述为如下 min–max 整数优化问题：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;问题 \((\mathcal{IP}_m)\)：Min–max 星型指派模型&lt;/strong&gt;
+&lt;/p&gt;
+\[
+\min_{x,y}\ \max_{k \in V} L_k(x)
+\]&lt;p&gt;
+满足
+&lt;/p&gt;
+\[
+\begin{aligned}
+&amp;\sum_{k \in V} x_{vk} = 1
+&amp;&amp; \forall v \in V
+&amp;&amp; \text{(每个顶点恰分配给一个中心)} \\
+&amp;x_{vk} \le a_{vk}
+&amp;&amp; \forall v,k \in V
+&amp;&amp; \text{(一跳可达 / 星型约束)} \\
+&amp;x_{vk} \le y_k
+&amp;&amp; \forall v,k \in V
+&amp;&amp; \text{(只能分配给被选中的中心)} \\
+&amp;\sum_{k \in V} y_k \le m
+&amp;&amp;
+&amp;&amp; \text{(中心数预算)} \\
+&amp;x_{kk} = y_k
+&amp;&amp; \forall k \in V
+&amp;&amp; \text{(选中心则中心属于其群体)} \\
+&amp;x_{vk} \in \{0,1\},\ y_k \in \{0,1\}
+&amp;&amp; \forall v,k \in V.
+\end{aligned}
+\]&lt;/blockquote&gt;
+&lt;p&gt;在该模型中，对每个满足 \(y_k=1\) 的顶点 \(k\)，集合
+&lt;/p&gt;
+\[
+S_k := \{v \in V : x_{vk}=1\}
+\]&lt;p&gt;
+构成一个非空子群体，且由约束 \(x_{vk} \le a_{vk}\) 可知 \(S_k \subseteq N[k]\)，因此 \(k\) 是 \(S_k\) 的 \(k\)-星型中心。由 \(\sum_k x_{vk}=1\) 可知这些子群体构成 \(V\) 的一个划分（忽略空集）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="4-minmax-的标准线性化形式"&gt;4. Min–max 的标准线性化形式
+&lt;/h3&gt;&lt;p&gt;引入一个标量上界变量 \(T\) 将 min–max 目标转化为等价形式：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;等价形式 \((\mathcal{IP}_m^T)\)&lt;/strong&gt;
+&lt;/p&gt;
+\[
+\min_{x,y,T}\ T
+\]&lt;p&gt;
+满足问题 \((\mathcal{IP}_m)\) 的全部约束，并额外加入
+&lt;/p&gt;
+\[
+\sum_{v \in V} x_{vk} \le T \quad \forall k \in V.
+\]&lt;p&gt;在最优解处，有
+&lt;/p&gt;
+\[
+T^\star = \min_{x,y}\ \max_{k \in V} L_k(x),
+\]&lt;p&gt;
+从而该模型与原 min–max 目标等价。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="基于小世界模型的--方法六度分隔定理推导"&gt;基于小世界模型的 \(k\)-方法六度分隔定理推导
+&lt;/h2&gt;&lt;p&gt;本节在前述 &lt;strong&gt;定义 1–5、定理 1&lt;/strong&gt; 以及 &lt;strong&gt;Min–max 星型中心模型&lt;/strong&gt; 的基础上，&lt;br&gt;
+&lt;strong&gt;保持此前给出的足够条件不变&lt;/strong&gt;，在 &lt;strong&gt;Newman–Watts 小世界模型&lt;/strong&gt; 下，&lt;br&gt;
+以 &lt;strong&gt;完全展开的概率不等式（Chernoff 界 + 并集界）&lt;/strong&gt; 形式，给出“六度分隔”的推导。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="newmanwatts-小世界模型"&gt;Newman–Watts 小世界模型
+&lt;/h2&gt;&lt;p&gt;设顶点集
+&lt;/p&gt;
+\[
+V=\{0,1,\dots,n-1\}
+\]&lt;p&gt;
+按模 \(n\) 排列成环，定义环距离
+&lt;/p&gt;
+\[
+\mathrm{dist}_{\mathrm{ring}}(u,v)=\min\{|u-v|,\,n-|u-v|\}.
+\]&lt;p&gt;给定参数 \(r\in\mathbb{N}\)、\(p\in(0,1)\)，随机图
+&lt;/p&gt;
+\[
+G\sim \mathrm{NW}(n,r,p)
+\]&lt;p&gt;
+按如下规则生成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;局部边（确定性）&lt;/strong&gt;&lt;br&gt;
+若 \(\mathrm{dist}_{\mathrm{ring}}(u,v)\le r\) 且 \(u\neq v\)，则加入边 \(\{u,v\}\)；
+此时每个顶点局部度为 \(2r\)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;长程边（随机）&lt;/strong&gt;&lt;br&gt;
+对所有尚未相连的顶点对 \(\{u,v\}\)，独立地以概率 \(p\) 加入边。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="第一层-确定性星型划分"&gt;第一层 \(k\)：确定性星型划分
+&lt;/h2&gt;&lt;p&gt;设
+&lt;/p&gt;
+\[
+s := 2r+1, \qquad m := \left\lceil \frac{n}{s} \right\rceil .
+\]&lt;p&gt;将环按顺序划分为 \(m\) 个连续区块
+&lt;/p&gt;
+\[
+B_1,\dots,B_m,
+\quad |B_i|\le s.
+\]&lt;p&gt;
+在每个区块 \(B_i\) 中选取一个中心 \(k_i\)，定义
+&lt;/p&gt;
+\[
+K_1 := \{k_1,\dots,k_m\}.
+\]
+&lt;div class="math-block math-block--lemma" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理 7.1（块内星型支配）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对任意 \(i\)，有
+&lt;/p&gt;
+\[
+B_i \subseteq N_G[k_i].
+\]
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由于 \(|B_i|\le 2r+1\)，且 \(k_i\) 取块中点，任意 \(v\in B_i\) 满足
+&lt;/p&gt;
+\[
+\mathrm{dist}_{\mathrm{ring}}(v,k_i)\le r,
+\]&lt;p&gt;
+从而 \(\{v,k_i\}\in E\)。证毕。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;因此
+&lt;/p&gt;
+\[
+\forall v\in V,\quad \mathrm{dist}_G(v,K_1)\le 1.
+\]&lt;hr&gt;
+&lt;h2 id="群体图的构造与边概率下界"&gt;群体图的构造与边概率下界
+&lt;/h2&gt;&lt;p&gt;定义 &lt;strong&gt;群体图&lt;/strong&gt;
+&lt;/p&gt;
+\[
+H=(V_H,E_H),
+\quad V_H := K_1.
+\]&lt;p&gt;若原图中存在 \(u\in B_i, v\in B_j\) 使得 \(\{u,v\}\in E(G)\)，则在 \(H\) 中加入边 \(\{k_i,k_j\}\)。&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--lemma" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理 7.2（群体图边概率下界）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设
+&lt;/p&gt;
+\[
+p' := 1-(1-p)^{(s-1)^2}.
+\]&lt;p&gt;
+则对任意 \(i\neq j\)，有
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\{k_i,k_j\}\in E_H\big) \ge p'.
+\]
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;区块 \(B_i,B_j\) 至少包含 \((s-1)^2\) 对&amp;quot;非局部相邻&amp;quot;的顶点对。&lt;br&gt;
+每一对以概率 \(p\) 独立连边，因此
+&lt;/p&gt;
+\[
+\mathbb{P}(\text{无任何跨块边})
+=(1-p)^{|B_i||B_j|}
+\le (1-p)^{(s-1)^2}.
+\]&lt;p&gt;
+取补事件即得结论。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="群体图上的扩张性分析"&gt;群体图上的扩张性分析
+&lt;/h2&gt;&lt;p&gt;以下分析在 &lt;strong&gt;Erdős–Rényi 下界模型&lt;/strong&gt;
+&lt;/p&gt;
+\[
+\widetilde H \sim G(m,p')
+\]&lt;p&gt;
+中进行；由于“直径 \(\le 4\)”是单调递增事件，&lt;br&gt;
+由耦合原理可将结论转移到真实群体图 \(H\)。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="度集中性chernoff-界"&gt;度集中性（Chernoff 界）
+&lt;/h3&gt;&lt;p&gt;令
+&lt;/p&gt;
+\[
+d := (m-1)p'.
+\]&lt;p&gt;对任意固定顶点 \(x\in V(\widetilde H)\)，其度
+&lt;/p&gt;
+\[
+\deg(x)\sim \mathrm{Bin}(m-1,p').
+\]&lt;p&gt;对任意 \(0&lt;\delta&lt;1\)，Chernoff 界给出
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\deg(x)\le (1-\delta)d\big)
+\le \exp\!\left(-\frac{\delta^2 d}{2}\right).
+\]&lt;p&gt;取 \(\delta=\tfrac12\)，得
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\deg(x)\le d/2\big)
+\le \exp\!\left(-\frac{d}{8}\right).
+\]&lt;p&gt;若
+&lt;/p&gt;
+\[
+d \ge 16\log m,
+\]&lt;p&gt;
+则
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\deg(x)\le d/2\big)\le m^{-2}.
+\]&lt;p&gt;由并集界，
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\exists x:\deg(x)\le d/2\big)
+\le m\cdot m^{-2}=m^{-1}.
+\]&lt;p&gt;&lt;strong&gt;结论：&lt;/strong&gt; 以概率至少 \(1-m^{-1}\)，
+&lt;/p&gt;
+\[
+\delta(\widetilde H)\ge d/2.
+\]&lt;hr&gt;
+&lt;h3 id="两步球的期望增长"&gt;两步球的期望增长
+&lt;/h3&gt;&lt;p&gt;固定顶点 \(x\)，在事件 \(\deg(x)\ge d/2\) 上考虑
+&lt;/p&gt;
+\[
+\Gamma_1(x) := \{x\}\cup N(x),
+\quad |\Gamma_1(x)|\ge d/2.
+\]&lt;p&gt;对任意顶点 \(y\notin \Gamma_1(x)\)，其不与 \(\Gamma_1(x)\) 中任意点相连的概率为
+&lt;/p&gt;
+\[
+\mathbb{P}\big(y\notin \Gamma_2(x)\mid \Gamma_1(x)\big)
+=(1-p')^{|\Gamma_1(x)|}
+\le \exp\!\left(-p'|\Gamma_1(x)|\right)
+\le \exp\!\left(-\frac{p'd}{2}\right).
+\]&lt;p&gt;因此
+&lt;/p&gt;
+\[
+\mathbb{E}\big[m-|\Gamma_2(x)|\mid \deg(x)\ge d/2\big]
+\le m\exp\!\left(-\frac{p'd}{2}\right).
+\]&lt;hr&gt;
+&lt;h3 id="两步球达到--的概率下界"&gt;两步球达到 \(m^{2/3}\) 的概率下界
+&lt;/h3&gt;&lt;p&gt;设足够条件
+&lt;/p&gt;
+\[
+d \ge C\, m^{1/3}\log m
+\quad (C&gt;0\ \text{充分大}),
+\]&lt;p&gt;
+注意
+&lt;/p&gt;
+\[
+p'd \asymp \frac{d^2}{m}.
+\]&lt;p&gt;则
+&lt;/p&gt;
+\[
+\frac{p'd}{2}
+\ge \frac{C^2}{2}\, m^{-1/3}\log^2 m.
+\]&lt;p&gt;于是
+&lt;/p&gt;
+\[
+m\exp\!\left(-\frac{p'd}{2}\right)
+\le m\exp\!\left(-\tfrac{C^2}{2}m^{-1/3}\log^2 m\right)
+\le m^{-10}
+\]&lt;p&gt;
+当 \(C\) 充分大时成立。&lt;/p&gt;
+&lt;p&gt;由 Markov 不等式，
+&lt;/p&gt;
+\[
+\mathbb{P}\big(|\Gamma_2(x)|\le m^{2/3}\big)
+\le \mathbb{P}\big(m-|\Gamma_2(x)|\ge m-m^{2/3}\big)
+\le \frac{m^{-10}}{m^{1/3}}
+\le m^{-9}.
+\]&lt;hr&gt;
+&lt;h3 id="第三步覆盖全图"&gt;第三步覆盖全图
+&lt;/h3&gt;&lt;p&gt;在事件 \(|\Gamma_2(x)|\ge m^{2/3}\) 上，对任意顶点 \(z\notin \Gamma_2(x)\)，
+&lt;/p&gt;
+\[
+\mathbb{P}\big(z\notin \Gamma_3(x)\big)
+=(1-p')^{|\Gamma_2(x)|}
+\le \exp\!\left(-p'm^{2/3}\right).
+\]&lt;p&gt;而
+&lt;/p&gt;
+\[
+p'm^{2/3}
+\asymp \frac{d}{m}\cdot m^{2/3}
+=d\,m^{-1/3}
+\ge C\log m.
+\]&lt;p&gt;因此
+&lt;/p&gt;
+\[
+\mathbb{P}\big(z\notin \Gamma_3(x)\big)\le m^{-C}.
+\]&lt;p&gt;再用并集界：
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\Gamma_3(x)\neq V\big)
+\le m\cdot m^{-C}
+= m^{1-C}.
+\]&lt;p&gt;取 \(C\ge 12\)，得
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\Gamma_3(x)=V\big)\ge 1-m^{-11}.
+\]&lt;hr&gt;
+&lt;h3 id="群体图直径界"&gt;群体图直径界
+&lt;/h3&gt;&lt;p&gt;对所有 \(x\in V(\widetilde H)\) 再次使用并集界，
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\exists x:\Gamma_3(x)\neq V\big)
+\le m\cdot m^{-11}
+= m^{-10}.
+\]&lt;p&gt;因此，以概率至少 \(1-m^{-10}\)，
+&lt;/p&gt;
+\[
+\operatorname{rad}(\widetilde H)\le 3
+\quad\Rightarrow\quad
+\operatorname{diam}(\widetilde H)\le 6.
+\]&lt;p&gt;进一步，采用“两点各自两步球相交”的标准估计（同上步骤 8.3–8.4），
+可将直径改进为
+&lt;/p&gt;
+\[
+\operatorname{diam}(\widetilde H)\le 4
+\]&lt;p&gt;
+仍以多项式高概率成立。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="回推到原图六度分隔"&gt;回推到原图：六度分隔
+&lt;/h2&gt;&lt;p&gt;由于
+&lt;/p&gt;
+\[
+\forall v\in V,\quad \mathrm{dist}_G(v,K_1)\le 1,
+\]&lt;p&gt;
+且以高概率
+&lt;/p&gt;
+\[
+\operatorname{diam}(H)\le 4,
+\]&lt;p&gt;
+对任意 \(u,v\in V\)，记其块中心为 \(k(u),k(v)\)，则
+&lt;/p&gt;
+\[
+\mathrm{dist}_G(u,v)
+\le
+\mathrm{dist}_G(u,k(u))
++\mathrm{dist}_H(k(u),k(v))
++\mathrm{dist}_G(k(v),v)
+\le 1+4+1=6.
+\]&lt;hr&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理（小世界模型中的六度分隔，k-收缩证明）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设
+&lt;/p&gt;
+\[
+G\sim \mathrm{NW}(n,r,p),
+\quad s=2r+1,\quad m=\left\lceil\frac{n}{s}\right\rceil,
+\quad p'=1-(1-p)^{(s-1)^2}.
+\]&lt;p&gt;
+若存在常数 \(C&gt;0\) 使得
+&lt;/p&gt;
+\[
+(m-1)p' \ge C\, m^{1/3}\log m,
+\]&lt;p&gt;
+则存在常数 \(c&gt;0\)，使得
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\operatorname{diam}(G)\le 6\big)
+\ge 1-m^{-c}.
+\]&lt;p&gt;等价地：在该参数区间内，以高概率任意两点之间存在一条长度不超过 \(6\) 的路径，即中间 \(k\)-节点链条长度最多为 \(5\)。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="讨论与局限性discussion-and-limitations"&gt;讨论与局限性（Discussion and Limitations）
+&lt;/h2&gt;&lt;p&gt;本文所得到的充分条件
+&lt;/p&gt;
+$$
+(m-1)p' \ge Cm^{1/3}\log m
+$$&lt;p&gt;
+在定量意义上是较强的，尤其是在将其还原为 Newman–Watts 小世界模型的原始参数 $(n,r,p)$ 后可以看到，该条件对局部连接半径 (r) 与长程边概率 (p) 的协同作用提出了较高要求。与已有文献中关于小世界网络“平均距离”或“典型节点对距离”为 $O(\log n)$ 的结果相比，本文的条件并非最优，且在某些参数区间内明显偏保守。&lt;/p&gt;
+&lt;p&gt;然而，这种条件的“偏强”本质上源于本文目标命题的严格性。本文所证明的并非平均意义或概率意义下的距离界，而是以高概率成立的&lt;strong&gt;全局直径上界&lt;/strong&gt;，即保证任意两点之间的最短路径长度不超过 6。众所周知，相较于平均距离或随机选点对的距离估计，直径这样的最坏情形指标通常需要显著更强的结构假设，因此该结果在逻辑上是合理且一致的。&lt;/p&gt;
+&lt;p&gt;从方法论角度看，本文的主要优势在于其结构化与可解释性。证明全过程严格基于 k-星型中心的支配划分与图收缩操作，避免了对谱方法、分支过程近似或渐近距离公式的依赖。每一层收缩都对应一个清晰的网络操作：局部星型支配、群体级压缩以及在压缩图上的快速扩张。这种分层机制直观地揭示了小世界网络中“局部高聚类 + 稀疏长程随机边”如何通过层级化结构转化为全局的短路径性质。&lt;/p&gt;
+&lt;p&gt;此外，k-收缩框架与本文给出的 min–max 优化模型在形式上高度一致，使得该理论不仅具有概率论意义，也具备潜在的算法与优化解释。这种统一视角为网络分层建模、群体抽象、以及大规模网络的多尺度分析提供了新的可能性。&lt;/p&gt;
+&lt;p&gt;需要强调的是，本文给出的参数阈值应被视为一种“可证明的充分条件”，而非刻画六度分隔现象的精确边界。通过更精细的概率估计、更弱的目标结论（例如只约束典型距离而非直径），或在其他小世界模型与度分布假设下，本文所采用的 k-中心收缩思路仍有较大的改进空间。因此，本文的结果更适合作为一种概念性与方法论上的证明范式，展示六度分隔现象如何在明确的层级支配结构中被严格推出，而非对现实社会网络的参数进行最终刻画。&lt;/p&gt;
+&lt;p&gt;尽管&lt;strong&gt;支配集&lt;/strong&gt;、&lt;strong&gt;图收缩（graph coarsening）&lt;strong&gt;以及&lt;/strong&gt;小世界网络的距离性质分析&lt;/strong&gt;均已在现有文献中得到广泛研究，但&lt;strong&gt;通过反复的星型中心支配与收缩来推导统一的常数级直径上界&lt;/strong&gt;这一做法，在现有研究中尚未出现。本文提出的 &lt;strong&gt;k-收缩框架&lt;/strong&gt;可被视为一种统一性的视角，它将&lt;strong&gt;基于支配的覆盖结构&lt;/strong&gt;与&lt;strong&gt;多层次图收缩方法&lt;/strong&gt;相结合，同时保持了对&lt;strong&gt;路径长度的显式、可解释刻画&lt;/strong&gt;。&lt;/p&gt;</description></item><item><title>紧性</title><link>https://cxzhou.com/p/topol-6/</link><pubDate>Wed, 29 Oct 2025 21:36:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-6/</guid><description>&lt;img src="https://cxzhou.com/p/topol-6/cover.jpg" alt="Featured image of post 紧性" /&gt;&lt;p&gt;封面画师：&lt;a class="link" href="https://www.pixiv.net/artworks/113735140" target="_blank" rel="noopener"
+&gt;Novi&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="紧性"&gt;紧性
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="compactness"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 4.3.1 紧致空间&lt;/strong&gt;&lt;a href="#compactness" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;&lt;strong&gt;开覆盖 (Open Cover)&lt;/strong&gt;
+设 $X$ 是一个拓扑空间 (topol. space)，$A \subset X$。
+$\mathcal{O}$ 是 $X$ 中的一组开集 (a collection of open sets of $X$)。
+如果 $A$ 包含在 $\mathcal{O}$ 中所有开集的并集内，则 $\mathcal{O}$ 称为 $A$ 的一个&lt;strong&gt;开覆盖&lt;/strong&gt; (open cover)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;子覆盖 (Subcover)&lt;/strong&gt;
+如果 $\mathcal{O}$ 覆盖了 $A$，$\mathcal{O}'$ 是 $\mathcal{O}$ 的一个子族 (subcollection) 且 $\mathcal{O}'$ 也覆盖了 $A$，则 $\mathcal{O}'$ 是 $\mathcal{O}$ 的一个&lt;strong&gt;子覆盖&lt;/strong&gt; (subcover)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;紧致空间 (Compact Space)&lt;/strong&gt;
+一个拓扑空间 $X$ 是&lt;strong&gt;紧致的&lt;/strong&gt; (compact)，如果 $X$ 的每一个开覆盖都有一个&lt;strong&gt;有限子覆盖&lt;/strong&gt; (a finite subcover)。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;例 (Eg.)：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;$E^1$ &lt;strong&gt;不是紧致的&lt;/strong&gt; (is not compact)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明：&lt;/strong&gt; 考虑开覆盖 $\mathcal{O} = \{(-n, n) | n \in \mathbb{Z}^+\}$。
+$\bigcup_{n=1}^{\infty} (-n, n) = E^1$，所以 $\mathcal{O}$ 是 $E^1$ 的一个开覆盖。
+如果 $\mathcal{O}$ 有一个有限子覆盖 $\mathcal{O}' = \{(-n_1, n_1), \ldots, (-n_k, n_k)\}$。
+令 $N = \max\{n_1, \ldots, n_k\}$。则 $\bigcup_{i=1}^{k} (-n_i, n_i) = (-N, N)$。
+由于 $(-N, N) \neq E^1$（例如，点 $N+1$ 不被覆盖），故 $\mathcal{O}$ 没有有限子覆盖。
+因此 $E^1$ 不是紧致的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设 $X = \{x_1, x_2, \ldots, x_n\}$ 是一个有限集，则 $X$ 上的任何拓扑都是&lt;strong&gt;紧致的&lt;/strong&gt; (is compact)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明：&lt;/strong&gt; 设 $\mathcal{O}$ 是 $X$ 的任意开覆盖。对于 $\forall x_i \in X$，必存在 $U_i \in \mathcal{O}$ 使得 $x_i \in U_i$。由于 $X$ 只有 $n$ 个点，我们只需选择 $\{U_1, U_2, \ldots, U_n\}$ 这 $n$ 个开集即可覆盖 $X$。这是一个有限子覆盖。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;$\mathbb{R}_{fc}$（具有&lt;strong&gt;共有限拓扑&lt;/strong&gt; (cofinite topology) 的实数集 $\mathbb{R}$）是&lt;strong&gt;紧致的&lt;/strong&gt; (is compact)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明：&lt;/strong&gt;
+设 $\mathcal{O}$ 是 $\mathbb{R}_{fc}$ 的一个开覆盖 (open cover)。
+由于 $\mathcal{O}$ 覆盖了 $\mathbb{R}$，$\exists U \in \mathcal{O}$ 使得 $U \neq \emptyset$。
+根据共有限拓扑的定义，非空开集 $U$ 的补集 $\mathbb{R} \setminus U$ 是&lt;strong&gt;有限集&lt;/strong&gt;。
+记 $\mathbb{R} \setminus U = \{y_1, y_2, \ldots, y_m\}$。
+$\forall y_i \in \mathbb{R} \setminus U$ (即 $y_i$ 是未被 $U$ 覆盖的点)，由于 $\mathcal{O}$ 覆盖了 $\mathbb{R}$， $\exists V_i \in \mathcal{O}$ 使得 $y_i \in V_i$。
+考虑 $\mathcal{O}' = \{V_1, V_2, \ldots, V_m, U\}$。$\mathcal{O}'$ 是 $\mathcal{O}$ 的一个有限子集（包含 $m+1$ 个元素）。
+&lt;/p&gt;
+$$\bigcup_{i=1}^{m} V_i \cup U = (\mathbb{R} \setminus U) \cup U = \mathbb{R}$$&lt;p&gt;
+因此 $\mathcal{O}'$ 是 $\mathcal{O}$ 的一个有限子覆盖。
+所以 $\mathbb{R}_{fc}$ 是紧致的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="紧子集"&gt;紧子集
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="compact-set"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;紧子集&lt;/strong&gt;&lt;a href="#compact-set" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$X$ 是一个拓扑空间，$A \subset X$, 称$A$在$X$中是紧的(compact)，或是$X$中的一个紧致子集(a compact set)，如果$A$在子空间拓扑中是紧的。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="compact-set-lemma"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Lemma: 紧子集&lt;/strong&gt;&lt;a href="#compact-set-lemma" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设$X$是一个拓扑空间，$A \subset X$，则$A$在$X$中是紧的，当且仅当任何由$X$中开集组成的、覆盖$A$的开覆盖，都存在一个有限子覆盖。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Proposition&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设$X$是一个拓扑空间且紧的，$Y$是拓扑空间，$f: X \to Y$连续，则
+&lt;/p&gt;
+$$
+f(X)在Y中是紧的
+$$&lt;p&gt;*连续映射保持紧性&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;取任意一个 $f(X)$ 在 $Y$ 中的开覆盖 $\mathcal{O}$，即
+&lt;/p&gt;
+$$
+f(X)\subset \bigcup_{U\in\mathcal{O}} U,
+$$&lt;p&gt;
+其中每个 $U$ 都是 $Y$ 中的开集。&lt;/p&gt;
+&lt;p&gt;由于 $f$ 连续，对任意 $U\in\mathcal{O}$，其原像 $f^{-1}(U)$ 是 $X$ 中的开集。于是
+&lt;/p&gt;
+$$
+\{,f^{-1}(U)\mid U\in\mathcal{O},\}
+$$&lt;p&gt;
+是一族 $X$ 中的开集，并且它覆盖 $X$：对任意 $x\in X$，有 $f(x)\in f(X)\subset \bigcup_{U\in\mathcal{O}}U$，因此存在某个 $U\in\mathcal{O}$ 使得 $f(x)\in U$，从而 $x\in f^{-1}(U)$。故
+&lt;/p&gt;
+$$
+X\subset \bigcup_{U\in\mathcal{O}} f^{-1}(U).
+$$&lt;p&gt;因为 $X$ 紧，上述开覆盖存在有限子覆盖：存在 $U_1,\dots,U_n\in\mathcal{O}$，使得
+&lt;/p&gt;
+$$
+X=\bigcup_{i=1}^n f^{-1}(U_i).
+$$&lt;p&gt;两边取 $f$ 的像，得
+&lt;/p&gt;
+$$
+f(X)=f!\left(\bigcup_{i=1}^n f^{-1}(U_i)\right)
+= \bigcup_{i=1}^n f\bigl(f^{-1}(U_i)\bigr)
+\subset \bigcup_{i=1}^n U_i.
+$$&lt;p&gt;
+所以 $U_1,\dots,U_n$ 是 $\mathcal{O}$ 的一个有限子覆盖。&lt;/p&gt;
+&lt;p&gt;因此，任意 $f(X)$ 的开覆盖都有有限子覆盖，说明 $f(X)$ 在 $Y$ 中紧.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Corollary&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$X_1, X_2$是拓扑空间，$X_1 \cong X_2$，则$X_1$是紧的$\Longleftrightarrow$ $X_2$是紧的
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="几个性质"&gt;几个性质
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;紧空间&lt;/strong&gt;上的&lt;strong&gt;闭子集&lt;/strong&gt;是&lt;strong&gt;紧的&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hausdorff空间&lt;/strong&gt;的&lt;strong&gt;紧子集&lt;/strong&gt;是&lt;strong&gt;闭的&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;紧且 Hausdorff&lt;/strong&gt; 的拓扑空间中，一个子集当且仅当它是&lt;strong&gt;闭集&lt;/strong&gt;时才是&lt;strong&gt;紧的&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 4&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $X$ 是一个&lt;strong&gt;紧致（compact）&lt;strong&gt;拓扑空间，$Y$ 是一个 &lt;strong&gt;Hausdorff&lt;/strong&gt; 拓扑空间。&lt;br&gt;
+若映射
+$$
+f: X \to Y
+$$
+是&lt;/strong&gt;连续的双射&lt;/strong&gt;，则 $f$ 是一个&lt;strong&gt;同胚（homeomorphism）&lt;/strong&gt;。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;要证明 $f$ 是同胚，只需证明 $f^{-1}$ 连续。&lt;br&gt;
+等价地，只需证明 $f$ 是一个&lt;strong&gt;闭映射&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;设 $C \subset X$ 是闭集。&lt;/p&gt;
+&lt;p&gt;因为 $X$ 紧，且 $C$ 是 $X$ 的闭子集，所以&lt;br&gt;
+&lt;/p&gt;
+$$
+C \text{ 在 } X \text{ 中是紧的。}
+$$&lt;p&gt;由于 $f$ 连续，紧集在连续映射下的像仍然紧，因此&lt;br&gt;
+&lt;/p&gt;
+$$
+f(C) \text{ 在 } Y \text{ 中是紧的。}
+$$&lt;p&gt;又因为 $Y$ 是 Hausdorff 空间，紧集在 Hausdorff 空间中必为闭集，所以&lt;br&gt;
+&lt;/p&gt;
+$$
+f(C) \text{ 在 } Y \text{ 中是闭的。}
+$$&lt;p&gt;因此，$f$ 将任意闭集映为闭集，即 $f$ 是闭映射。&lt;/p&gt;
+&lt;p&gt;结合 $f$ 连续且为双射，可得 $f^{-1}$ 连续，从而 $f$ 是同胚。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 5&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $X$ 是一个&lt;strong&gt;紧致（compact）&lt;strong&gt;拓扑空间，$Y$ 是一个 &lt;strong&gt;Hausdorff&lt;/strong&gt; 拓扑空间。&lt;br&gt;
+若映射
+$$
+f: X \to Y
+$$
+是&lt;/strong&gt;连续且单射（injective）&lt;strong&gt;的，则 $f$ 是一个&lt;/strong&gt;嵌入（embedding）&lt;/strong&gt;。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;要证明 $f$ 是嵌入，只需证明
+&lt;/p&gt;
+$$
+f: X \to f(X)
+$$&lt;p&gt;
+是一个同胚。&lt;/p&gt;
+&lt;p&gt;由于 $f$ 是连续的双射，从 $X$ 到 $f(X)$，且 $f(X)$ 作为 $Y$ 的子空间仍是 Hausdorff 空间，因此只需证明 $f$ 是闭映射。&lt;/p&gt;
+&lt;p&gt;设 $C \subset X$ 是闭集。&lt;/p&gt;
+&lt;p&gt;因为 $X$ 紧，且 $C$ 是 $X$ 的闭子集，所以
+&lt;/p&gt;
+$$
+C \text{ 在 } X \text{ 中是紧的。}
+$$&lt;p&gt;由于 $f$ 连续，紧集在连续映射下的像仍然紧，因此
+&lt;/p&gt;
+$$
+f(C) \text{ 在 } f(X) \text{ 中是紧的。}
+$$&lt;p&gt;又因为 $f(X)$ 是 Hausdorff 空间，紧集在 Hausdorff 空间中必为闭集，所以
+&lt;/p&gt;
+$$
+f(C) \text{ 在 } f(X) \text{ 中是闭的。}
+$$&lt;p&gt;因此，$f$ 将任意闭集映为闭集，即
+&lt;/p&gt;
+$$
+f: X \to f(X)
+$$&lt;p&gt;
+是闭映射。&lt;/p&gt;
+&lt;p&gt;结合 $f$ 连续且为双射，可得其逆映射连续，从而
+&lt;/p&gt;
+$$
+f: X \to f(X)
+$$&lt;p&gt;
+是同胚。&lt;/p&gt;
+&lt;p&gt;因此 $f$ 是一个嵌入。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 6&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个 &lt;strong&gt;Hausdorff&lt;/strong&gt; 拓扑空间，$\{C_\lambda\}_{\lambda\in\Lambda}$ 是 $X$ 中的一族&lt;strong&gt;紧子集&lt;/strong&gt;。&lt;br&gt;
+则
+&lt;/p&gt;
+$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$&lt;p&gt;
+在 $X$ 中是&lt;strong&gt;紧的&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由于 $X$ 是 Hausdorff 空间，而每个 $C_\lambda$ 都是紧的，因此
+&lt;/p&gt;
+$$
+C_\lambda \text{ 在 } X \text{ 中是闭集。}
+$$&lt;p&gt;于是有
+&lt;/p&gt;
+$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$&lt;p&gt;
+是 $X$ 中闭集的交，因此仍是闭集。&lt;/p&gt;
+&lt;p&gt;任取某个固定的 $\lambda_0 \in \Lambda$，显然有
+&lt;/p&gt;
+$$
+\bigcap_{\lambda\in\Lambda} C_\lambda \subset C_{\lambda_0}.
+$$&lt;p&gt;由于 $C_{\lambda_0}$ 是紧空间，而
+&lt;/p&gt;
+$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$&lt;p&gt;
+是 $C_{\lambda_0}$ 中的闭子集，所以
+&lt;/p&gt;
+$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$&lt;p&gt;
+在 $C_{\lambda_0}$ 中是紧的。&lt;/p&gt;
+&lt;p&gt;而紧性在子空间意义下保持，因此
+&lt;/p&gt;
+$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$&lt;p&gt;
+在 $X$ 中也是紧的。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 7&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X,Y$ 是拓扑空间，则
+&lt;/p&gt;
+$$
+X \times Y \text{ 是紧的 } \Longleftrightarrow X \text{ 和 } Y \text{ 都是紧的。}
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$\Rightarrow$:&lt;/p&gt;
+&lt;p&gt;设
+&lt;/p&gt;
+$$
+X \times Y \text{ 是紧的。}
+$$&lt;p&gt;
+考虑投影映射
+&lt;/p&gt;
+$$
+\pi_1: X \times Y \to X,\quad (x,y)\mapsto x,
+$$&lt;p&gt;
+&lt;/p&gt;
+$$
+\pi_2: X \times Y \to Y,\quad (x,y)\mapsto y.
+$$&lt;p&gt;
+显然 $\pi_1,\pi_2$ 都是连续且满射。&lt;/p&gt;
+&lt;p&gt;由于紧集在连续映射下的像仍然是紧的，因此
+&lt;/p&gt;
+$$
+X=\pi_1(X\times Y),\quad Y=\pi_2(X\times Y)
+$$&lt;p&gt;
+都是紧的。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;$\Leftarrow$:&lt;/p&gt;
+&lt;p&gt;现在设
+&lt;/p&gt;
+$$
+X \text{ 和 } Y \text{ 都是紧的。}
+$$&lt;p&gt;
+令 $\mathcal{O}$ 是 $X\times Y$ 的一个开覆盖。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一步：固定 $x\in X$，构造 $W_x$&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由于
+&lt;/p&gt;
+$$
+\{x\}\times Y
+$$&lt;p&gt;
+与 $Y$ 同胚，因此是紧的。于是存在有限个开集
+&lt;/p&gt;
+$$
+W_x \subset \mathcal{O}
+$$&lt;p&gt;
+使得
+&lt;/p&gt;
+$$
+\{x\}\times Y \subset \bigcup W_x.
+$$&lt;p&gt;对任意 $y\in Y$，因为 $(x,y)\in \bigcup W_x$，存在
+&lt;/p&gt;
+$$
+U_y \times V_y \subset W_x
+$$&lt;p&gt;
+使得
+&lt;/p&gt;
+$$
+(x,y)\in U_y \times V_y,
+$$&lt;p&gt;
+其中 $U_y$ 是 $X$ 中 $x$ 的邻域，$V_y$ 是 $Y$ 中 $y$ 的邻域。&lt;/p&gt;
+&lt;p&gt;由于
+&lt;/p&gt;
+$$
+\{V_y \mid y\in Y\}
+$$&lt;p&gt;
+是 $Y$ 的一个开覆盖，而 $Y$ 紧，存在有限子覆盖
+&lt;/p&gt;
+$$
+Y=\bigcup_{j=1}^n V_{y_j}.
+$$&lt;p&gt;令
+&lt;/p&gt;
+$$
+R_x=\bigcap_{j=1}^n U_{y_j},
+$$&lt;p&gt;
+则 $R_x$ 是 $X$ 中的开集，且 $x\in R_x$。&lt;/p&gt;
+&lt;p&gt;并且有
+&lt;/p&gt;
+$$
+R_x \times Y \subset \bigcup W_x.
+$$&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;第二步：利用 $X$ 的紧性&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由上述构造，
+&lt;/p&gt;
+$$
+\{R_x \mid x\in X\}
+$$&lt;p&gt;
+是 $X$ 的一个开覆盖。由于 $X$ 紧，存在有限个点
+&lt;/p&gt;
+$$
+x_1,\dots,x_m \in X
+$$&lt;p&gt;
+使得
+&lt;/p&gt;
+$$
+X=\bigcup_{i=1}^m R_{x_i}.
+$$&lt;p&gt;于是
+&lt;/p&gt;
+$$
+X\times Y
+= \left(\bigcup_{i=1}^m R_{x_i}\right)\times Y
+= \bigcup_{i=1}^m (R_{x_i}\times Y)
+\subset \bigcup_{i=1}^m \bigcup W_{x_i}.
+$$&lt;p&gt;右端是 $\mathcal{O}$ 的有限子集的并，因此 $\mathcal{O}$ 存在有限子覆盖。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;由紧性的定义可知
+&lt;/p&gt;
+$$
+X\times Y \text{ 是紧的。}
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Corollary&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X_i$ 是拓扑空间，$i=1,2,\dots,n$。则
+&lt;/p&gt;
+$$
+X_1 \times X_2 \times \cdots \times X_n \text{ 是紧的}
+$$&lt;p&gt;
+当且仅当
+&lt;/p&gt;
+$$
+X_i \text{ 是紧的}, \quad \forall\, i=1,2,\dots,n.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="lebesgue引理"&gt;Lebesgue引理
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Lebesgue引理&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $(X,d)$ 是一个&lt;strong&gt;紧致度量空间&lt;/strong&gt;，$\mathcal O$ 是 $X$ 的一个&lt;strong&gt;开覆盖&lt;/strong&gt;。&lt;br&gt;
+则存在一个常数
+&lt;/p&gt;
+$$
+\varepsilon &gt; 0
+$$&lt;p&gt;
+使得对任意 $x\in X$，都存在某个 $U\in\mathcal O$，满足
+&lt;/p&gt;
+$$
+B(x,\varepsilon)\subset U.
+$$&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;备注（Remark）&lt;/strong&gt;
+这里的 $\varepsilon$ 只依赖于 $(X,d)$ 和开覆盖 $\mathcal O$，&lt;br&gt;
+&lt;strong&gt;与具体点 $x\in X$ 无关&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;该常数 $\varepsilon$ 称为 &lt;strong&gt;Lebesgue 数（Lebesgue constant / Lebesgue number）&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="一点紧致化"&gt;一点紧致化
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="local-cmpc"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Locally compact&lt;/strong&gt;&lt;a href="#local-cmpc" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间。称 $X$ 是&lt;strong&gt;局部紧的（locally compact）&lt;/strong&gt;，如果对任意 $x\in X$，存在一个&lt;strong&gt;紧子集&lt;/strong&gt; $C\subset X$，使得
+&lt;/p&gt;
+$$
+x \in \operatorname{int}(C).
+$$&lt;p&gt;等价地，$X$ 是局部紧的，当且仅当：&lt;/p&gt;
+&lt;p&gt;对任意 $x\in X$，存在一个开集 $U$ 和一个紧集 $C$，使得
+&lt;/p&gt;
+$$
+x \in U \subset C.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+&lt;p&gt;所有紧空间都是局部紧的；
+$E^n$是局部紧的，$\forall x \in E^n$，$C=B(x,1), U=B(x,1)$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Alexandroff 一点紧致化&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $(X,\mathcal T)$ 是一个 &lt;strong&gt;Hausdorff&lt;/strong&gt; 拓扑空间，取一点 $\infty\notin X$，令
+&lt;/p&gt;
+$$
+Y = X \cup \{\infty\}.
+$$&lt;p&gt;
+定义 $Y$ 上的拓扑
+&lt;/p&gt;
+$$
+\mathcal T_\infty
+= \mathcal T \,\cup\, \{\,Y\setminus C \mid C \text{ 是 } X \text{ 中的紧子集}\,\}.
+$$&lt;p&gt;则有以下结论：&lt;/p&gt;
+&lt;p&gt;(1) $(Y,\mathcal T_\infty)$ 是一个拓扑空间&lt;/p&gt;
+&lt;p&gt;(2) $X$ 从 $(Y,\mathcal T_\infty)$ 继承的子空间拓扑与原拓扑一致，即
+&lt;/p&gt;
+$$
+(\mathcal T_\infty)_X = \mathcal T.
+$$&lt;p&gt;(3) $(Y,\mathcal T_\infty)$ 是紧的&lt;/p&gt;
+&lt;p&gt;(4) 若 $(X,\mathcal T)$ 是&lt;strong&gt;局部紧的&lt;/strong&gt;，则 $(Y,\mathcal T_\infty)$ 是 &lt;strong&gt;Hausdorff&lt;/strong&gt; 空间&lt;/p&gt;
+&lt;p&gt;(5) 若 $(X,\mathcal T)$ 是&lt;strong&gt;非紧的&lt;/strong&gt;，则
+&lt;/p&gt;
+$$
+X \subsetneq Y,
+$$&lt;p&gt;
+即新加入的一点 $\infty$ 不是多余的&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="备注remark"&gt;备注（Remark）
+&lt;/h2&gt;&lt;p&gt;该构造称为 &lt;strong&gt;一点紧化（one-point compactification）&lt;/strong&gt; 或 &lt;strong&gt;Alexandroff 紧化&lt;/strong&gt;。&lt;br&gt;
+当 $X$ 是局部紧 Hausdorff 空间时，$(Y,\mathcal T_\infty)$ 是一个 &lt;strong&gt;紧 Hausdorff 空间&lt;/strong&gt;，且 $X$ 是 $Y$ 的一个稠密开子空间。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>分离性与可数性</title><link>https://cxzhou.com/p/topol-5/</link><pubDate>Sun, 26 Oct 2025 14:37:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-5/</guid><description>&lt;img src="https://cxzhou.com/p/topol-5/cover.jpg" alt="Featured image of post 分离性与可数性" /&gt;&lt;p&gt;封面画师：&lt;a class="link" href="https://www.pixiv.net/artworks/67467647" target="_blank" rel="noopener"
+&gt;電鬼&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="分离性"&gt;分离性
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="t3"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition3.1.2-1 T3空间&lt;/strong&gt;&lt;a href="#t3" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间 (topol. space)，如果 $X$ 满足以下条件，则称 $X$ 是&lt;strong&gt;正则空间 (Regular)&lt;/strong&gt;（$T_3$空间）：&lt;/p&gt;
+&lt;p&gt;(i) $X$ 中的单点集 (one-point sets) 是闭集 (closed)；&lt;/p&gt;
+&lt;p&gt;(ii) $\forall a \in X$， $\forall$ 闭集 $B \subset X$，且 $a \notin B$，存在不相交的开集 $U$ 和 $V$ (disjoint open sets $U$ and $V$)，使得 $a \in U$ 且 $B \subset V$。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Remark：&lt;/strong&gt; 正则 (regular) $\Rightarrow$ Hausdorff。&lt;/p&gt;
+&lt;div class="math-block math-block--definition" id="t4"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition3.1.2-2 T4空间&lt;/strong&gt;&lt;a href="#t4" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间 (topol. space)，如果 $X$ 满足以下条件，则称 $X$ 是&lt;strong&gt;正规空间(Normal)&lt;/strong&gt;（$T_4$空间）：&lt;/p&gt;
+&lt;p&gt;(i) $X$ 中的单点集 (one-point sets) 是闭集 (closed)；&lt;/p&gt;
+&lt;p&gt;(ii) $\forall$ 两个不相交的闭集 $A \subset X$ 和 $B \subset X$ ($A \cap B = \emptyset$)，存在不相交的开集 $U$ 和 $V$ (disjoint open sets $U$ and $V$)，使得 $A \subset U$ 且 $B \subset V$。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Remark：&lt;/strong&gt; 正规 (normal) $\Rightarrow$ 正则 (regular)。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;分离公理 (Separation axiom)&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$$\text{Normal (T}_4) \subset \text{regular} \subset \text{Hausdorff} \quad (\text{注：} \text{T}_3 \text{通常指正则且 } T_1 \text{，} T_2 \text{指 Hausdorff})$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;命题：每个度量空间（metric space）都是正规空间（$T_4$，nomal）&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;要证明一个空间 $X$ 是正规空间，需要证明两点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$X$ 中每个单点集都是闭集。&lt;/li&gt;
+&lt;li&gt;$\forall$ 两个不相交的闭集 $A, B \subset X$，存在不相交的开集 $U$ 和 $V$，使得 $A \subset U$ 且 $B \subset V$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;1. 单点集是闭集：&lt;/strong&gt;
+在度量空间中，每个单点集都是闭集。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. 分离不相交闭集：&lt;/strong&gt;
+假设 $X$ 是一个度量空间，$A$ 和 $B$ 是 $X$ 中两个不相交的闭集 (disjoint closed sets)。
+定义函数 $g: X \rightarrow E^1$ 和 $h: X \rightarrow E^1$:
+&lt;/p&gt;
+$$g(x) = d(x, A) := \inf\{d(x, a) | a \in A\}$$&lt;p&gt;
+&lt;/p&gt;
+$$h(x) = d(x, B) := \inf\{d(x, b) | b \in B\}$$&lt;p&gt;
+定义函数 $f: X \rightarrow E^1$:
+&lt;/p&gt;
+$$f(x) = \frac{d(x, A)}{d(x, A) + d(x, B)}$$&lt;p&gt;整个证明分为三个步骤：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(i) 证明 $g$ 和 $h$ 是连续的 (continuous)。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;要证明 $g$ 连续，只需证明 $\forall x \in X$ 和 $\forall \epsilon &gt; 0$，存在 $\delta$ 使得 $d(x, y) &lt; \delta \Rightarrow |g(y) - g(x)| &lt; \epsilon$。&lt;/p&gt;
+&lt;p&gt;对于 $\forall (r, s) \subset E^1$，我们证明 $g^{-1}((r, s))$ 是 $X$ 中的开集。
+$\forall x \in g^{-1}((r, s))$，我们找到 $\epsilon &gt; 0$ 使得 $B(x, \epsilon) \subset g^{-1}((r, s))$。
+选取 $\epsilon &gt; 0$，使得 $(g(x) - \epsilon, g(x) + \epsilon) \subset (r, s)$。
+即满足 $g(x) - \epsilon &gt; r$ 和 $g(x) + \epsilon &lt; s$。&lt;/p&gt;
+&lt;p&gt;对于 $\forall y \in B(x, \epsilon)$，有 $d(x, y) &lt; \epsilon$。
+利用三角不等式证明 $|g(y) - g(x)| &lt; \epsilon$：
+&lt;/p&gt;
+$$\begin{aligned} g(y) &amp;= d(y, A) = \inf\{d(y, a) | a \in A\} \\ &amp;\le \inf\{d(y, x) + d(x, a) | a \in A\} \\ &amp;= d(y, x) + \inf\{d(x, a) | a \in A\} \\ &amp;= d(y, x) + d(x, A) \\ &amp;&lt; \epsilon + g(x) \le s \end{aligned}$$&lt;p&gt;
+&lt;/p&gt;
+$$\begin{aligned} g(x) &amp;= d(x, A) \le d(x, y) + d(y, A) \\ &amp;&lt; \epsilon + g(y) \\ \Rightarrow g(y) &amp;&gt; g(x) - \epsilon &gt; r \end{aligned}$$&lt;p&gt;
+因此 $g(y) \in (r, s)$。故 $B(x, \epsilon) \subset g^{-1}((r, s))$。
+所以 $g^{-1}((r, s))$ 是 $X$ 中的开集，$g$ 是连续的。
+类似地，$h$ 也是连续的。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(ii) 证明分母 $d(x, A) + d(x, B) &gt; 0, \forall x \in X$。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们知道 $d(x, A) = 0 \iff x \in \overline{A}$。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“$\Leftarrow$” (即 $x \in A \Rightarrow d(x, A) = 0$) 是显然的 (obvious)。&lt;/li&gt;
+&lt;li&gt;“$\Rightarrow$” (即 $d(x, A) = 0 \Rightarrow x \in A$): 假设 $x \notin A$。因为 $A$ 是闭集 (closed)，所以 $X \setminus A$ 是开集。$\exists \epsilon &gt; 0$，使得 $B(x, \epsilon) \subset X \setminus A$。这意味着对于 $A$ 中的所有点 $a$ 都有 $d(x, a) \ge \epsilon &gt; 0$。因此 $d(x, A) = \inf\{d(x, a) | a \in A\} \ge \epsilon &gt; 0$。这与 $d(x, A) = 0$ 矛盾 (Contradiction)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果 $d(x, A) + d(x, B) = 0$，则 $d(x, A) = 0$ 且 $d(x, B) = 0$。
+根据上面证明的结论， $d(x, A) = 0 \Rightarrow x \in A$ 且 $d(x, B) = 0 \Rightarrow x \in B$。
+所以 $x \in A \cap B$。但这与 $A \cap B = \emptyset$ 矛盾 (Contradiction)。
+因此 $d(x, A) + d(x, B) &gt; 0, \forall x \in X$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(iii) 构造分离开集：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由 (i) 和 (ii) 可知，$f$ 是连续的 (continuous)。
+对于 $\forall a \in A$：
+&lt;/p&gt;
+$$f(a) = \frac{d(a, A)}{d(a, A) + d(a, B)} = \frac{0}{0 + d(a, B)} = 0$$&lt;p&gt;
+对于 $\forall b \in B$：
+&lt;/p&gt;
+$$f(b) = \frac{d(b, A)}{d(b, A) + d(b, B)} = \frac{d(b, A)}{d(b, A) + 0} = 1$$&lt;p&gt;
+令 $U = f^{-1}((-\infty, \frac{1}{2}))$， $V = f^{-1}((\frac{1}{2}, +\infty))$。
+由于 $f$ 连续，且 $(-\infty, \frac{1}{2})$ 和 $(\frac{1}{2}, +\infty)$ 是 $E^1$ 中的开集，故 $U$ 和 $V$ &lt;strong&gt;都是开集&lt;/strong&gt; (Both $U$ and $V$ are open)。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$A \subset U$ (因为 $f$ 在 $A$ 上取值 $0 &lt; 1/2$)。&lt;/li&gt;
+&lt;li&gt;$B \subset V$ (因为 $f$ 在 $B$ 上取值 $1 &gt; 1/2$)。&lt;/li&gt;
+&lt;li&gt;$U \cap V = \emptyset$ (因为 $f$ 的值不可能同时小于 $1/2$ 和大于 $1/2$)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此， $X$ 是正规空间。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="可数性"&gt;可数性
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="c1"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition3.1.3 第一可数空间&lt;/strong&gt;&lt;a href="#c1" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+一个拓扑空间 $X$ 在点 $x$ 处具有&lt;strong&gt;可数邻域基&lt;/strong&gt; (countable neighborhood basis)，如果存在一个 $x$ 的可数邻域族 $\{U_n\}_{n \in \mathbb{Z}^+}$，使得 $x$ 的任何邻域 $W$ 都包含其中一个 $U_n$，即 $x \in U_n \subset W$。
+如果 $X$ 在其每一个点处都具有可数邻域基，则称 $X$ 是&lt;strong&gt;第一可数空间&lt;/strong&gt; (first countable)，或满足&lt;strong&gt;第一可数公理&lt;/strong&gt; (first countability axiom)。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;例 (Eg.)：&lt;/strong&gt;
+每个&lt;strong&gt;度量空间&lt;/strong&gt; $(X, d)$ 都是&lt;strong&gt;第一可数空间&lt;/strong&gt; (1st countable)。&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$\forall x \in (X, d)$，定义可数邻域族 $\{U_n = B(x, \frac{1}{n})\}_{n \in \mathbb{Z}^+}$。这个族是 $x$ 的一个可数邻域基 (countable nbhd basis)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（补充：）&lt;/strong&gt; 设 $W$ 是 $x$ 的任意邻域。则存在一个开集 $V$ 使得 $x \in V \subset W$。由于 $V$ 是开集，存在 $\epsilon &gt; 0$ 使得 $B(x, \epsilon) \subset V$。根据阿基米德性质，存在正整数 $N$ 使得 $\frac{1}{N} &lt; \epsilon$。令 $U_N = B(x, \frac{1}{N})$，则 $x \in U_N \subset B(x, \epsilon) \subset V \subset W$。因此 $\{U_n\}$ 是一个可数邻域基。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="c1"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition3.1.4 第二可数空间&lt;/strong&gt;&lt;a href="#c1" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;如果一个空间 $X$ 具有一个&lt;strong&gt;可数基&lt;/strong&gt; (countable basis) 作为其拓扑的基，则称 $X$ 是&lt;strong&gt;第二可数空间&lt;/strong&gt; (second countable)，或满足&lt;strong&gt;第二可数公理&lt;/strong&gt; (second countability axiom)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;例 (Eg.)：&lt;/strong&gt;
+$E^n$ 是&lt;strong&gt;第二可数空间&lt;/strong&gt; (second countable)。
+&lt;strong&gt;证明：&lt;/strong&gt; $\mathcal{B} = \{B(x, \frac{1}{k}) | x \in E^n, x \text{的每个坐标都是有理数}, k \in \mathbb{Z}^+\}$ 是一个可数基 (countable basis)。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;命题 (Proposition)：&lt;/strong&gt;
+&lt;strong&gt;第二可数&lt;/strong&gt; (2nd countable) $\Rightarrow$ &lt;strong&gt;第一可数&lt;/strong&gt; (1st countable)。&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;假设 $X$ 是第二可数空间。设 $\mathcal{B}$ 是 $X$ 的一个可数基 (countable basis)。&lt;/p&gt;
+&lt;p&gt;$\forall x \in X$，定义 $\mathcal{B}_x = \{B \in \mathcal{B} | x \in B\}$。
+由于 $\mathcal{B}$ 是可数的， $\mathcal{B}_x$ 也是可数的。&lt;/p&gt;
+&lt;p&gt;$\mathcal{B}_x$ 是 $x$ 的一个可数邻域基 (countable nbhd basis at $x$)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（补充：）&lt;/strong&gt; 设 $W$ 是 $x$ 的任意邻域。则 $W$ 是开集（或包含一个开集 $V$）。由于 $\mathcal{B}$ 是基，存在 $B \in \mathcal{B}$ 使得 $x \in B \subset W$。根据 $\mathcal{B}_x$ 的定义， $B \in \mathcal{B}_x$。因此 $\mathcal{B}_x$ 满足可数邻域基的定义，故 $X$ 是第一可数空间。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Remark：&lt;/strong&gt;
+具有&lt;strong&gt;离散拓扑&lt;/strong&gt; (discrete topology) 的 $\mathbb{R}$ 不是第二可数空间 (is not 2nd countable)。但是它却是&lt;strong&gt;可度量化&lt;/strong&gt;的 (metrizable)。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 2&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;子空间：&lt;/strong&gt; 第一（第二）可数空间的子空间是第一（第二）可数空间。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;乘积：&lt;/strong&gt; 两个第一（第二）可数空间的乘积是第一（第二）可数空间。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;&lt;strong&gt;第二可数情况 (2nd countable case)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(1) 子空间：$X$ 是第二可数 $\Rightarrow A \subset X$ 是第二可数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $X$ 是第二可数空间，$\mathcal{B}$ 是 $X$ 的一个可数基 (countable basis)。&lt;/p&gt;
+&lt;p&gt;设 $A \subset X$ 是一个子空间 (subspace)。&lt;/p&gt;
+&lt;p&gt;则 $\mathcal{B}_A = \{B \cap A | B \in \mathcal{B}\}$ 是 $A$ 的拓扑的一个基。
+由于 $\mathcal{B}$ 是可数的，因此 $\mathcal{B}_A$ 也是可数的。&lt;/p&gt;
+&lt;p&gt;所以 $A$ 是第二可数空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(2) 乘积：$X_1, X_2$ 是第二可数 $\Rightarrow X_1 \times X_2$ 是第二可数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $X_1, X_2$ 是第二可数空间。&lt;/p&gt;
+&lt;p&gt;设 $\mathcal{B}_i$ 是 $X_i$ 的一个可数基，其中 $i=1, 2$。&lt;/p&gt;
+&lt;p&gt;则 $\mathcal{B} = \{B_1 \times B_2 | B_1 \in \mathcal{B}_1, B_2 \in \mathcal{B}_2\}$ 是乘积空间 $X_1 \times X_2$ 的拓扑的一个基。&lt;/p&gt;
+&lt;p&gt;由于 $\mathcal{B}_1$ 和 $\mathcal{B}_2$ 都是可数的，因此它们的笛卡尔积 $\mathcal{B}$ 也是可数的。&lt;/p&gt;
+&lt;p&gt;所以 $X_1 \times X_2$ 是第二可数空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一可数情况 (1st countable case)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(1) 子空间：$X$ 是第一可数 $\Rightarrow A \subset X$ 是第一可数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\forall a \in A$，因为 $X$ 是第一可数，所以 $a$ 在 $X$ 中有一个可数邻域基 $\mathcal{U} = \{U_n\}_{n \in \mathbb{Z}^+}$。&lt;/p&gt;
+&lt;p&gt;我们证明 $\mathcal{U}_A = \{U_n \cap A | U_n \in \mathcal{U}\}$ 是 $a$ 在子空间 $A$ 中的一个可数邻域基。&lt;/p&gt;
+&lt;p&gt;显然 $\mathcal{U}_A$ 是可数的。&lt;/p&gt;
+&lt;p&gt;设 $W$ 是 $a$ 在 $A$ 中的任意邻域。根据子空间拓扑的定义，存在 $X$ 中的开集 $V$，使得 $W = V \cap A$。&lt;/p&gt;
+&lt;p&gt;由于 $V$ 是 $a$ 在 $X$ 中的邻域，且 $\mathcal{U}$ 是 $a$ 在 $X$ 中的可数邻域基，因此 $\exists U_n \in \mathcal{U}$ 使得 $a \in U_n \subset V$。&lt;/p&gt;
+&lt;p&gt;那么 $a \in U_n \cap A \subset V \cap A = W$。&lt;/p&gt;
+&lt;p&gt;因此 $\mathcal{U}_A$ 是 $a$ 在 $A$ 中的一个可数邻域基。所以 $A$ 是第一可数空间。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(2) 乘积：$X_1, X_2$ 是第一可数 $\Rightarrow X_1 \times X_2$ 是第一可数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\forall (x_1, x_2) \in X_1 \times X_2$。&lt;/p&gt;
+&lt;p&gt;由于 $X_i$ 是第一可数， $x_i$ 在 $X_i$ 中有一个可数邻域基 $\mathcal{U}_i = \{U_{i, n}\}_{n \in \mathbb{Z}^+}$，其中 $i=1, 2$。&lt;/p&gt;
+&lt;p&gt;我们证明 $\mathcal{U} = \{U_{1, n} \times U_{2, m} | n, m \in \mathbb{Z}^+\}$ 是 $(x_1, x_2)$ 在 $X_1 \times X_2$ 中的一个可数邻域基。&lt;/p&gt;
+&lt;p&gt;由于 $\mathbb{Z}^+ \times \mathbb{Z}^+$ 是可数的，所以 $\mathcal{U}$ 是可数的。&lt;/p&gt;
+&lt;p&gt;设 $W$ 是 $(x_1, x_2)$ 在 $X_1 \times X_2$ 中的任意邻域。根据乘积拓扑的定义，存在基元素 $B_1 \times B_2$ 使得 $(x_1, x_2) \in B_1 \times B_2 \subset W$，其中 $B_i$ 是 $X_i$ 中的开集。&lt;/p&gt;
+&lt;p&gt;由于 $\mathcal{U}_i$ 是 $x_i$ 的可数邻域基， $\exists U_{1, n} \in \mathcal{U}_1$ 和 $U_{2, m} \in \mathcal{U}_2$ 使得 $x_1 \in U_{1, n} \subset B_1$ 且 $x_2 \in U_{2, m} \subset B_2$。&lt;/p&gt;
+&lt;p&gt;那么 $(x_1, x_2) \in U_{1, n} \times U_{2, m} \subset B_1 \times B_2 \subset W$。
+因此 $\mathcal{U}$ 是 $(x_1, x_2)$ 的一个可数邻域基。所以 $X_1 \times X_2$ 是第一可数空间。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="两个定理-two-theorems"&gt;两个定理 (Two Theorems)
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Urysohn 可度量化定理 (Urysohn Metrization Theorem)&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;如果一个拓扑空间 $X$ 是&lt;strong&gt;正则空间&lt;/strong&gt; (Regular) 且是&lt;strong&gt;第二可数空间&lt;/strong&gt; (2nd countable)，则 $X$ 是&lt;strong&gt;可度量化空间&lt;/strong&gt; (metrizable)。
+&lt;/p&gt;
+$$\text{正则} + \text{第二可数} \implies \text{可度量化}$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Tietze 扩张定理 (Tietze Extension THM)&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $X$ 是一个&lt;strong&gt;正规空间&lt;/strong&gt; (normal space)， $A \subset X$ 是一个闭集 (closed)。
+如果 $f: A \rightarrow E^1$ 是一个连续函数 (continuous function)，
+那么存在一个连续函数 $F: X \rightarrow E^1$，使得 $F|_A = f$。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id="例-eg"&gt;例 (Eg.)
+&lt;/h4&gt;&lt;p&gt;设 $\mathbb{Z}$ 是整数集，$\mathcal{B} = \{B_{a, b} = \{a + bi | i \in \mathbb{Z}\} | a, b \in \mathbb{Z}, b \neq 0\}$ 是 $\mathbb{Z}$ 上的一个基 (basis)。它生成了 $\mathbb{Z}$ 上的一个拓扑。&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;&lt;strong&gt;(i) 证明 $\mathcal{B}$ 是拓扑的一个基：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;覆盖性：&lt;/strong&gt; $\forall x \in \mathbb{Z}$。取 $b=1$，则 $B_{x, 1} = \{x + 1 \cdot i | i \in \mathbb{Z}\} = \mathbb{Z}$。所以 $\mathbb{Z} = \bigcup_{B \in \mathcal{B}} B$。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交集条件：&lt;/strong&gt; 设 $B_{a_1, b_1}, B_{a_2, b_2} \in \mathcal{B}$，且 $x \in B_{a_1, b_1} \cap B_{a_2, b_2}$。
+&lt;ul&gt;
+&lt;li&gt;$x \in B_{a_1, b_1} \implies x = a_1 + b_1 i_1$&lt;/li&gt;
+&lt;li&gt;$x \in B_{a_2, b_2} \implies x = a_2 + b_2 i_2$
+要找到 $B_{a_3, b_3} \in \mathcal{B}$ 使得 $x \in B_{a_3, b_3} \subset B_{a_1, b_1} \cap B_{a_2, b_2}$。
+令 $b_3 = \text{lcm}(b_1, b_2)$（最小公倍数）， $a_3 = x$。
+则 $B_{x, b_3} = \{x + b_3 i | i \in \mathbb{Z}\}$。
+由于 $b_3$ 是 $b_1$ 的倍数，所以 $B_{x, b_3} \subset B_{x, b_1} = B_{a_1 + b_1 i_1, b_1} = B_{a_1, b_1}$。
+同理，$B_{x, b_3} \subset B_{x, b_2} = B_{a_2, b_2}$。
+所以 $B_{x, b_3} \subset B_{a_1, b_1} \cap B_{a_2, b_2}$。
+故 $\mathcal{B}$ 是 $\mathbb{Z}$ 上的一个基。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;(ii) 判断可数性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\mathbb{Z}$ 是&lt;strong&gt;第二可数空间&lt;/strong&gt; (2nd countable)。
+因为 $\mathcal{B}$ 是&lt;strong&gt;可数&lt;/strong&gt;的。基 $\mathcal{B}$ 中的元素由 $(a, b)$ 决定，其中 $a, b \in \mathbb{Z}, b \neq 0$。 $\mathbb{Z} \times (\mathbb{Z} \setminus \{0\})$ 是可数集，故 $\mathcal{B}$ 可数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;(iii) 判断正则性：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;$\mathbb{Z}$ 是&lt;strong&gt;正则空间&lt;/strong&gt; (regular)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单点集是闭集：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\forall a \in \mathbb{Z}$，单点集 $\{a\}$ 是闭集。$\mathbb{Z} \setminus \{a\} = \bigcup_{b \neq 0} B_{a+1, b} \cup B_{a-1, b} \cup \cdots$。或更简单地，考虑 $B_{x, 2} = \{x, x \pm 2, \ldots\}$。$\mathbb{Z} \setminus \{a\} = \bigcup_{x \neq a} \{x\}$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;点与闭集分离：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\forall a \in \mathbb{Z}$， $\forall$ 闭集 $C \subset \mathbb{Z}$， $a \notin C$。令 $V = \mathbb{Z} \setminus C$ 为 $a$ 的开邻域。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;完整证明：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明单点集是闭集 (T1 条件)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\forall a \in \mathbb{Z}$，要证明 $\{a\}$ 是闭集，即 $\mathbb{Z} \setminus \{a\}$ 是开集。
+$\forall x \in \mathbb{Z} \setminus \{a\}$，我们要找到 $x$ 的一个基元素邻域 $B_{x, b}$，使得 $a \notin B_{x, b}$。
+$a \notin B_{x, b} \iff a \neq x + i b \text{ for any } i \in \mathbb{Z}$
+$\iff a - x \neq i b \text{ for any } i \in \mathbb{Z}$
+$\iff b$ 不能整除 $a - x$。&lt;/p&gt;
+&lt;p&gt;由于 $a \neq x$，所以 $a - x \neq 0$。我们只需要找到一个 $b \neq 0$ 且 $b$ &lt;strong&gt;不整除&lt;/strong&gt; $a-x$。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果 $|a-x| = 1$，取 $b = 2$。 $2$ 不整除 $\pm 1$。&lt;/li&gt;
+&lt;li&gt;如果 $|a-x| &gt; 1$，取 $b = |a-x| + 1$。 $|a-x|$ 不能整除 $|a-x| + 1$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;例如，取 $b = 2$。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果 $a$ 和 $x$ 奇偶性不同，即 $|a-x|$ 是奇数，则 $2$ 不整除 $a-x$。此时 $B_{x, 2}$ 是 $x$ 的开邻域且 $a \notin B_{x, 2}$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此，$\forall x \in \mathbb{Z} \setminus \{a\}$，都存在 $x$ 的一个开邻域不包含 $a$。所以 $\mathbb{Z} \setminus \{a\}$ 是开集，$\{a\}$ 是闭集。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明点与闭集可分离（正则条件的核心）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\forall a \in \mathbb{Z}$ 和 $\forall$ 闭集 $C \subset \mathbb{Z}$，且 $a \notin C$。要找到不相交的开集 $U$ 和 $V$，使得 $a \in U$ 且 $C \subset V$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;关键性质：$B_{a, b}$ 既是开集也是闭集。&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$B_{a, b}$ 是开集，因为它是基元素。&lt;/li&gt;
+&lt;li&gt;$B_{a, b}$ 是闭集，因为它的补集 $\mathbb{Z} \setminus B_{a, b}$ 可以表示为其他基元素的并集：
+$$\mathbb{Z} \setminus B_{a, b} = B_{a+1, b} \cup B_{a+2, b} \cup \cdots \cup B_{a+b-1, b}$$
+由于每个 $B_{a+k, b}$ 都是开集，所以 $\mathbb{Z} \setminus B_{a, b}$ 是开集，即 $B_{a, b}$ 是闭集。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;构造 $U$ 和 $V$：&lt;/strong&gt;
+由于 $a \notin C$，且 $C$ 是闭集。我们只需要找到一个基元素 $B_{a, b}$ 满足 $B_{a, b} \cap C = \emptyset$。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;对于 $\forall c \in C$，由于 $a \notin C$，所以 $a \neq c$。&lt;/li&gt;
+&lt;li&gt;由第 1 步证明可知，对于 $\forall c \in C$，存在 $b_c \neq 0$ 使得 $c \notin B_{a, b_c}$，即 $b_c$ 不整除 $c-a$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为了分离 $a$ 和整个 $C$，我们需要一个包含 $a$ 的开集 $U$ 和包含 $C$ 的开集 $V$。
+由于 $B_{a, b}$ 是闭集，其补集 $V = \mathbb{Z} \setminus B_{a, b}$ 也是开集。
+我们尝试找到一个 $b$ 使得 $C \subset \mathbb{Z} \setminus B_{a, b}$，即 $C \cap B_{a, b} = \emptyset$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;（对于任意闭集 $C$ 的证明较为复杂，但根据 $B_{a, b}$ 既开又闭的性质，可以采取以下简化的构造方式，这种方式在 $T_3$ 空间中常用：）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\forall a \in \mathbb{Z}$ 且 $C$ 是不包含 $a$ 的闭集。&lt;/p&gt;
+&lt;p&gt;由于 $C$ 是闭集， $\mathbb{Z} \setminus C$ 是 $a$ 的开邻域。
+$\mathbb{Z} \setminus C$ 是开集，可表示为基元素的并：
+&lt;/p&gt;
+$$\mathbb{Z} \setminus C = \bigcup_{k} B_{a_k, b_k}$$&lt;p&gt;
+由于 $a \in \mathbb{Z} \setminus C$，所以 $a$ 包含在其中一个基元素中。
+&lt;strong&gt;因此存在 $B_{a, b} \in \mathcal{B}$ 使得 $a \in B_{a, b} \subset \mathbb{Z} \setminus C$。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;取 $U = B_{a, b}$。则 $U$ 是 $a$ 的开邻域，且 $U \cap C = \emptyset$。
+取 $V = \mathbb{Z} \setminus B_{a, b}$。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$V$ 是开集（因为 $B_{a, b}$ 是闭集）。&lt;/li&gt;
+&lt;li&gt;$C \subset V$（因为 $C \cap B_{a, b} = \emptyset$）。&lt;/li&gt;
+&lt;li&gt;$U \cap V = \emptyset$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;因此，$a$ 和闭集 $C$ 可以被不相交的开集 $U$ 和 $V$ 分离。
+所以 $\mathbb{Z}$ 是正则空间。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>连续映射、同胚与拓扑性质</title><link>https://cxzhou.com/p/topol-4/</link><pubDate>Sun, 19 Oct 2025 16:05:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-4/</guid><description>&lt;img src="https://cxzhou.com/p/topol-4/cover.jpg" alt="Featured image of post 连续映射、同胚与拓扑性质" /&gt;&lt;p&gt;封面画师：&lt;a class="link" href="https://www.pixiv.net/artworks/85649197" target="_blank" rel="noopener"
+&gt;Mr.Cat&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="连续映射"&gt;连续映射
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="cont-map"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition1.3.1 连续映射&lt;/strong&gt;&lt;a href="#cont-map" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 和 $Y$ 是两个拓扑空间，$f: X \to Y$ 是一个映射。如果对于 $Y$ 中&lt;strong&gt;任意的开集 $V$&lt;/strong&gt;，其原像 $f^{-1}(V)$ 在 $X$ 中都是&lt;strong&gt;开集&lt;/strong&gt;，则称 $f$ 是&lt;strong&gt;连续的&lt;/strong&gt;（continuous）。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;示例 (Eg.):&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;(1) &lt;strong&gt;恒等映射 (Id):&lt;/strong&gt; $Id: X \to X, x \mapsto x$ 是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;(2) &lt;strong&gt;常值映射 (C):&lt;/strong&gt; $C: X \to Y, x \mapsto y_0$ 是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;(3) &lt;strong&gt;包含映射 ($\iota$):&lt;/strong&gt; 设 $A \subset X$。$\iota: A \to X, a \mapsto a$ 是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;(4) &lt;strong&gt;投影映射 ($\pi_i$):&lt;/strong&gt; $\pi_1: X \times Y \to X$ 和 $\pi_2: X \times Y \to Y$ 都是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="mix"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Lemma: 连续映射的复合&lt;/strong&gt;&lt;a href="#mix" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $f: X \to Y$ 和 $g: Y \to Z$ 都是&lt;strong&gt;连续映射&lt;/strong&gt;，则它们的复合映射 $g \circ f: X \to Z$ 也是&lt;strong&gt;连续的&lt;/strong&gt;。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+$$\forall \text{ open set } V \text{ in } Z, \quad (g \circ f)^{-1}(V) = f^{-1}(g^{-1}(V)) \text{ is open in } X$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Eg.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $f: X \to Y$ 是连续映射，$A \subset X$。则 $f$ 在 $A$ 上的限制 $f|_A: A \to Y$ 也是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;证明 (Pf.):&lt;/strong&gt; $f|_A$ 是 $f$ 和包含映射 $\iota: A \to X$ 的复合 $f|_A = f \circ \iota$。因为 $f$ 和 $\iota$ 都是连续的，所以 $f|_A$ 也是连续的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="连续性的判别"&gt;连续性的判别
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" id="basis-cri"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Lemma: 基元素判别法 (Basis Criterion)&lt;/strong&gt;&lt;a href="#basis-cri" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $f: X \to Y$ 是一个映射，$\mathcal{B}$ 是 $Y$ 的一个&lt;strong&gt;基&lt;/strong&gt;。则 $f$ 是&lt;strong&gt;连续的&lt;/strong&gt; $\iff$ 对于 $\forall B \in \mathcal{B}$，$f^{-1}(B)$ 在 $X$ 中是&lt;strong&gt;开集&lt;/strong&gt;。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;&lt;strong&gt;&amp;quot;$\implies$&amp;quot;：&lt;/strong&gt; (连续 $\implies$ 基元素原像开) 基元素 $B$ 本身是开集，由连续定义知 $f^{-1}(B)$ 是开集。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;quot;$\impliedby$&amp;quot;：&lt;/strong&gt; (基元素原像开 $\implies$ 连续) 设 $V$ 是 $Y$ 中任意开集。 $V = \bigcup_i B_i$ ($B_i \in \mathcal{B}$)。则 $f^{-1}(V) = \bigcup_i f^{-1}(B_i)$。由假设，$f^{-1}(B_i)$ 都是开集，故其并集 $f^{-1}(V)$ 也是开集。因此 $f$ 连续。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="close-cri"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Lemma: 闭集判别法 (Closed Set Criterion)&lt;/strong&gt;&lt;a href="#close-cri" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $f: X \to Y$ 是一个映射。则 $f$ 是&lt;strong&gt;连续的&lt;/strong&gt; $\iff$ 对于 $Y$ 中&lt;strong&gt;任意的闭集 $C$&lt;/strong&gt;，$f^{-1}(C)$ 在 $X$ 中是&lt;strong&gt;闭集&lt;/strong&gt;。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;&lt;strong&gt;&amp;quot;$\implies$&amp;quot;：&lt;/strong&gt; (连续 $\implies$ 闭集原像闭) 设 $C$ 是 $Y$ 中闭集，则 $Y-C$ 是开集。因为 $f$ 连续，$f^{-1}(Y-C) = X - f^{-1}(C)$ 是开集。故 $f^{-1}(C)$ 是闭集。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&amp;quot;$\impliedby$&amp;quot;：&lt;/strong&gt; (闭集原像闭 $\implies$ 连续) 设 $V$ 是 $Y$ 中开集，则 $Y-V$ 是闭集。根据假设，$f^{-1}(Y-V)$ 是闭集。 $f^{-1}(V) = X - f^{-1}(Y-V)$ 是闭集的补集，故 $f^{-1}(V)$ 是开集。因此 $f$ 连续。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id="示例-examples"&gt;示例 (Examples)
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;实变函数：&lt;/strong&gt; $f: E^1 \to E^1$ (如 $x^n, e^x, \ln x, \sin x, \cos x, \dots$) 都是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多元函数：&lt;/strong&gt; $f: E^1 \times E^1 \to E^1$ (如 $x+y, xy, x/y (y \ne 0), \dots$) 都是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="积空间映射的连续性"&gt;积空间映射的连续性
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f: X \to Y_1 \times Y_2$ 的分量映射为 $f_1: X \to Y_1$ 和 $f_2: X \to Y_2$，即 $f(x) = (f_1(x), f_2(x))$。&lt;/p&gt;
+&lt;p&gt;则 $f$ 是&lt;strong&gt;连续的&lt;/strong&gt; $\iff$ &lt;strong&gt;$f_1$ 和 $f_2$ 都是连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;&lt;strong&gt;证明 &amp;ldquo;$\implies$&amp;rdquo; ( $f$ 连续 $\implies f_1, f_2$ 连续)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;投影映射 $\pi_1: Y_1 \times Y_2 \to Y_1$ 和 $\pi_2: Y_1 \times Y_2 \to Y_2$ 都是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;分量映射可表示为复合：$f_1 = \pi_1 \circ f$ 和 $f_2 = \pi_2 \circ f$。&lt;/p&gt;
+&lt;p&gt;因为&lt;a class="link" href="#mix" &gt;连续映射的复合是连续的&lt;/a&gt;，故 $f_1$ 和 $f_2$ 都是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明 &amp;ldquo;$\impliedby$&amp;rdquo; ( $f_1, f_2$ 连续 $\implies f$ 连续)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $\mathcal{B} = \{ U_1 \times U_2 \mid U_1 \in \mathcal{T}_{Y_1}, U_2 \in \mathcal{T}_{Y_2} \}$ 是积空间 $Y_1 \times Y_2$ 的一个基。&lt;/p&gt;
+&lt;p&gt;我们只需证明对于 $\forall U_1 \times U_2 \in \mathcal{B}$，其原像 $f^{-1}(U_1 \times U_2)$ 在 $X$ 中是开集。&lt;/p&gt;
+&lt;p&gt;原像可分解为：
+&lt;/p&gt;
+$$f^{-1}(U_1 \times U_2) = f_1^{-1}(U_1) \cap f_2^{-1}(U_2)$$&lt;p&gt;因为 $f_1$ 连续且 $U_1$ 开，所以 $f_1^{-1}(U_1)$ 是 $X$ 中的&lt;strong&gt;开集&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;因为 $f_2$ 连续且 $U_2$ 开，所以 $f_2^{-1}(U_2)$ 是 $X$ 中的&lt;strong&gt;开集&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;两个开集的交集 $f_1^{-1}(U_1) \cap f_2^{-1}(U_2)$ 仍然是 $X$ 中的&lt;strong&gt;开集&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;根据&lt;a class="link" href="#basis-cri" &gt;基元素判别引理&lt;/a&gt;， $f$ 是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;因此，$f$ 连续 $\iff f_1, f_2$ 连续。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="粘合引理-the-pasting-lemma"&gt;粘合引理 (The Pasting Lemma)
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" id="pasting"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;粘合引理 (The Pasting Lemma)&lt;/strong&gt;&lt;a href="#pasting" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，且 $A, B$ 是 $X$ 中的两个&lt;strong&gt;闭集&lt;/strong&gt;，满足 $A \cup B = X$。&lt;/p&gt;
+&lt;p&gt;假设 $f: A \to Y$ 和 $g: B \to Y$ 是两个连续映射，且对于 $\forall x \in A \cap B$，$f(x) = g(x)$。&lt;/p&gt;
+&lt;p&gt;则由此构造的映射 $h: X \to Y$ 是&lt;strong&gt;连续的&lt;/strong&gt;。&lt;/p&gt;
+$$h(x) = \begin{cases} f(x) &amp; x \in A \\ g(x) &amp; x \in B \end{cases}$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;我们使用连续映射的&lt;a class="link" href="#close-cri" &gt;闭集判别法&lt;/a&gt;。设 $C$ 是 $Y$ 中的任意闭集。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;原像分解：&lt;/strong&gt; $h^{-1}(C)$ 可以分解为 $f^{-1}(C)$ 和 $g^{-1}(C)$ 的并集：
+&lt;/p&gt;
+$$h^{-1}(C) = f^{-1}(C) \cup g^{-1}(C)$$&lt;p&gt;&lt;strong&gt;验证 $f^{-1}(C)$ 是 $X$ 中的闭集：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;因为 $f: A \to Y$ 连续，所以 $f^{-1}(C)$ 是&lt;strong&gt;子空间 $A$&lt;/strong&gt; 中的闭集。&lt;/li&gt;
+&lt;li&gt;根据子空间拓扑定义，存在 $X$ 中的闭集 $D_1$，使得 $f^{-1}(C) = D_1 \cap A$。&lt;/li&gt;
+&lt;li&gt;由于 $D_1$ 是 $X$ 中的闭集，且 $A$ 是命题条件给定的 $X$ 中的闭集，故 $f^{-1}(C)$ 是两个 $X$ 中闭集的交集，因此是 $X$ 中的&lt;strong&gt;闭集&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;验证 $g^{-1}(C)$ 是 $X$ 中的闭集：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同理，因为 $g: B \to Y$ 连续，且 $B$ 是 $X$ 中的闭集，所以 $g^{-1}(C)$ 在 $X$ 中是&lt;strong&gt;闭集&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;结论：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$h^{-1}(C)$ 是 $X$ 中两个闭集的并集 $f^{-1}(C) \cup g^{-1}(C)$。&lt;/li&gt;
+&lt;li&gt;因此 $h^{-1}(C)$ 是 $X$ 中的&lt;strong&gt;闭集&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;故 $h$ 是连续的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="同胚"&gt;同胚
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="homeo"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition1.3.2 同胚映射&lt;/strong&gt;&lt;a href="#homeo" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X, Y$ 是拓扑空间 (topol. spaces)，映射 $f: X \rightarrow Y$ 是一个双射 (bijection)，其逆映射为 $f^{-1}: Y \rightarrow X$。&lt;/p&gt;
+&lt;p&gt;如果 $f$ 和 $f^{-1}$ &lt;strong&gt;都是连续的&lt;/strong&gt; (continuous)，则称 $f$ 是一个&lt;strong&gt;同胚&lt;/strong&gt; (homeomorphism)。&lt;/p&gt;
+&lt;p&gt;如果 $X$ 和 $Y$ 之间存在一个同胚 (homeomorphism)，则称 $X$ 和 $Y$ &lt;strong&gt;同胚&lt;/strong&gt; (homeomorphic)，记作 $X \cong Y$。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Remark:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;(i) $\forall U$ 是 $X$ 中的开集 (open in $X$)，则 $f(U)$ 是 $Y$ 中的开集 (open in $Y$)。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt; 因为 $f^{-1}: Y \rightarrow X$ 是连续的 (continuous)，所以 $(f^{-1})^{-1}(U)$ 是 $Y$ 中的开集 (open in $Y$)，即 $f(U)$ 是 $Y$ 中的开集 (open in $Y$)。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(ii) $\forall V$ 是 $Y$ 中的开集 (open in $Y$)，则 $f^{-1}(V)$ 在 $X$ 中是开集 (open in $X$)。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;解释：&lt;/strong&gt; 因为 $f: X \rightarrow Y$ 是连续的 (continuous)，所以 $f^{-1}(V)$ 在 $X$ 中是开集 (open in $X$)。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="同胚的性质"&gt;同胚的性质
+&lt;/h3&gt;&lt;p&gt;设 $f: X \stackrel{\cong}{\longrightarrow} Y$ 是一个同胚。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$f$ 是 $X$ 中的点和 $Y$ 中的点之间的双射 (bijection)。&lt;/li&gt;
+&lt;li&gt;$f$ 诱导了 $X$ 中的开集和 $Y$ 中的开集之间的双射。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Remark：&lt;/strong&gt;
+“$\cong$” 是拓扑空间 (topol. spaces) 之间的一个&lt;strong&gt;等价关系&lt;/strong&gt; (equivalence relation)。&lt;/p&gt;
+&lt;p&gt;(i) $X \cong X$ (自反性)。&lt;/p&gt;
+&lt;p&gt;(ii) $X \cong Y \Rightarrow Y \cong X$ (对称性)。&lt;/p&gt;
+&lt;p&gt;(iii) $X \cong Y, Y \cong Z \Rightarrow X \cong Z$ (传递性)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Remark：&lt;/strong&gt; 同胚$f$是开映射并且也是闭映射。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;开映射：将开集映到开集；&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;闭映射：将闭集映到闭集。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X, Y$ 是拓扑空间 (topol. space)。&lt;/p&gt;
+&lt;p&gt;$f: X \rightarrow Y$ 是一个同胚 (homeomorphism)
+&lt;/p&gt;
+$$\iff$$&lt;p&gt;
+$f$ 是双射 (bijective)，连续 (continuous) 且是&lt;strong&gt;开映射&lt;/strong&gt; (open)
+&lt;/p&gt;
+$$\iff$$&lt;p&gt;
+$f$ 是双射 (bijective)，连续 (continuous) 且是&lt;strong&gt;闭映射&lt;/strong&gt; (closed)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(注：)&lt;/strong&gt;
+&lt;/p&gt;
+$$f \text{ 是同胚} \iff \begin{cases} f \text{ 是双射} \\ f \text{ 连续} \\ f^{-1} \text{ 连续} \end{cases}$$&lt;p&gt;
+&lt;/p&gt;
+$$f \text{ 是双射、连续} \text{ 且是开映射}$$&lt;p&gt;
+&lt;/p&gt;
+$$f \text{ 是双射、连续} \text{ 且是闭映射}$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;&lt;strong&gt;$f$ 是同胚 $\Rightarrow f$ 是双射、连续且开映射：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $f$ 是同胚。则 $f$ 是双射且连续。
+要证 $f$ 是开映射。
+$\forall$ 开集 $U$ 在 $X$ 中，因为 $f^{-1}: Y \rightarrow X$ 是连续的，所以 $(f^{-1})^{-1}(U)$ (即 $f(U)$) 在 $Y$ 中是开集。因此 $f$ 是一个开映射 (open map)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;$f$ 是双射、连续且开映射 $\Rightarrow f$ 是同胚：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设 $f$ 是双射、连续且开映射。
+要证 $f$ 是同胚，只需证 $f^{-1}: Y \rightarrow X$ 连续。
+$\forall$ 开集 $U$ 在 $X$ 中，因为 $f: X \rightarrow Y$ 是开映射，所以 $f(U)$ 在 $Y$ 中是开集。
+又 $f(U) = (f^{-1})^{-1}(U)$。
+根据连续性的定义， $f^{-1}: Y \rightarrow X$ 是连续的。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Hausdorff性质拓扑不变&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+如果 $f: X \rightarrow Y$ 是一个同胚 (Homeomorphism)，且 $X$ 是 Hausdorff 空间，那么 $Y$ 也是 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$\forall y_1, y_2 \in Y$，且 $y_1 \neq y_2$。
+由于 $f$ 是双射，则 $f^{-1}(y_1) \neq f^{-1}(y_2)$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;思路：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;设 $x_1 = f^{-1}(y_1)$， $x_2 = f^{-1}(y_2)$。由于 $X$ 是 Hausdorff 空间，存在 $x_1$ 和 $x_2$ 在 $X$ 中的不相交开邻域 $U_1$ 和 $U_2$。&lt;/li&gt;
+&lt;li&gt;因为 $f$ 是同胚，所以 $f$ 是开映射。&lt;/li&gt;
+&lt;li&gt;$V_1 = f(U_1)$ 和 $V_2 = f(U_2)$ 是 $Y$ 中的开集。&lt;/li&gt;
+&lt;li&gt;$y_1 = f(x_1) \in f(U_1) = V_1$， $y_2 = f(x_2) \in f(U_2) = V_2$。&lt;/li&gt;
+&lt;li&gt;由于 $U_1 \cap U_2 = \emptyset$，且 $f$ 是双射，所以 $V_1 \cap V_2 = f(U_1) \cap f(U_2) = f(U_1 \cap U_2) = f(\emptyset) = \emptyset$。&lt;/li&gt;
+&lt;li&gt;因此 $y_1$ 和 $y_2$ 有不相交的开邻域 $V_1$ 和 $V_2$，故 $Y$ 是 Hausdorff 空间。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;拓扑性质 (topol. property)：&lt;/strong&gt; 拓扑空间的一个性质，如果在同胚下保持不变 (preserved by homeomorphisms)，则称该性质为&lt;strong&gt;拓扑性质&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id="嵌入embedding"&gt;嵌入（Embedding）
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="embedding"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition1.3.3 嵌入映射&lt;/strong&gt;&lt;a href="#embedding" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+拓扑空间 $X$ 在 $Y$ 中的一个&lt;strong&gt;嵌入&lt;/strong&gt; (embedding) 是一个连续映射 $f: X \rightarrow Y$，它将 $X$ &lt;strong&gt;同胚&lt;/strong&gt;地 (homeomorphically) 映射到 $Y$ 中的子空间 $f(X)$ 上。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;注记 (Rmk.)：&lt;/strong&gt; 嵌入映射是&lt;strong&gt;单射&lt;/strong&gt; (injective)。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;嵌入的等价条件&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X, Y$ 是拓扑空间 (topol. spaces)。
+$f: X \rightarrow Y$ 是一个&lt;strong&gt;嵌入&lt;/strong&gt; (embedding)
+&lt;/p&gt;
+$$\iff$$&lt;p&gt;
+$f$ 是&lt;strong&gt;单射&lt;/strong&gt; (injective)，&lt;strong&gt;连续&lt;/strong&gt; (continuous) 且&lt;strong&gt;开映射&lt;/strong&gt; (open)
+&lt;/p&gt;
+$$\iff$$&lt;p&gt;
+$f$ 是&lt;strong&gt;单射&lt;/strong&gt; (injective)，&lt;strong&gt;连续&lt;/strong&gt; (continuous) 且&lt;strong&gt;闭映射&lt;/strong&gt; (closed)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(注：)&lt;/strong&gt; 这里的“开映射”和“闭映射”是指 $f: X \rightarrow f(X)$（视 $f(X)$ 为 $Y$ 的子空间）是开映射或闭映射。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="合痕-isotopy"&gt;合痕 (isotopy)
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="isotopy"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 合痕 (isotopy)&lt;/strong&gt;&lt;a href="#isotopy" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f_0, f_1: S^1 \rightarrow E^3$ 是两个嵌入 (embeddings)。
+如果存在一个连续映射 $F: S^1 \times [0, 1] \rightarrow E^3$，满足：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$F(x, 0) = f_0(x)$&lt;/li&gt;
+&lt;li&gt;$F(x, 1) = f_1(x)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;且对于每个 $t \in [0, 1]$，映射 $f_t = F(\cdot, t): S^1 \rightarrow E^3$ (其中 $x \mapsto F(x, t)$) 都是 $E^3$ 中的一个嵌入 (embedding)，则称 $f_0$ 和 $f_1$ 是&lt;strong&gt;同痕的&lt;/strong&gt; (isotopic)。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;例 (Eg.)：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个平凡的圆嵌入 (未打结的圆) 和一个三叶结 (Trefoil Knot) &lt;strong&gt;不同痕&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;图示中描绘了两个不同的但&lt;strong&gt;同痕&lt;/strong&gt;的嵌入（一个平凡圆和另一个形状略有变化的平凡圆）。&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>内点、闭包、边界点</title><link>https://cxzhou.com/p/topol-3/</link><pubDate>Mon, 13 Oct 2025 20:00:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-3/</guid><description>&lt;img src="https://cxzhou.com/p/topol-3/cover.jpg" alt="Featured image of post 内点、闭包、边界点" /&gt;&lt;p&gt;封面画师：&lt;a class="link" href="https://www.pixiv.net/artworks/104538476" target="_blank" rel="noopener"
+&gt;リース＠ついった&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="内部闭包和边界interior-closure-and-boundary"&gt;内部、闭包和边界(Interior, Closure and Boundary)
+&lt;/h2&gt;&lt;h3 id="内部和闭包-interiorclosure"&gt;内部和闭包 (Interior&amp;amp;Closure)
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="int-cl"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 1.2.1 内部和闭包 &lt;/strong&gt;&lt;a href="#int-cl" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;（1）设 $X$ 是一个拓扑空间，$A \subset X$ 是一个子集。$A$ 的&lt;strong&gt;内部&lt;/strong&gt;，记为 $A^{\circ}$ 或 $\text{int}(A)$，是&lt;strong&gt;包含在 $A$ 中的所有开集的并集&lt;/strong&gt;。&lt;/p&gt;
+$$A^{\circ}=\bigcup_{U~is~open, U\subset A}U$$&lt;p&gt;&lt;strong&gt;等价描述 (Lemma):&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;点 $y \in X$ 属于 $A^{\circ}$ 当且仅当存在一个开集 $U$，使得 $y \in U \subset A$。&lt;/p&gt;
+&lt;p&gt;（2）设 $X$ 是一个拓扑空间，$A \subset X$ 是一个子集。$A$ 的&lt;strong&gt;闭包&lt;/strong&gt;，记为 $\overline{A}$ 或 $\text{cl}(A)$，是&lt;strong&gt;包含 $A$ 的所有闭集的交集&lt;/strong&gt;。&lt;/p&gt;
+$$\overline{A}=\bigcap_{V~is~closed, A\subset V}V$$&lt;p&gt;&lt;strong&gt;等价描述 (Lemma):&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;点 $y \in X$ 属于 $\overline{A}$ 当且仅当 $y$ 的每一个邻域都与 $A$ 相交（即 $U \cap A \ne \emptyset$）。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;性质 (Prop.):&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$A^{\circ}$ 是包含在 $A$ 中的&lt;strong&gt;最大的开集&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;$A^{\circ}$ 本身是一个&lt;strong&gt;开集&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;$(A^{\circ})^{\circ}= A^{\circ}$ (内部的内部等于内部)。&lt;/li&gt;
+&lt;li&gt;$A$ 是开集当且仅当 $A = A^{\circ}$。&lt;/li&gt;
+&lt;li&gt;$\overline{A}$ 是包含 $A$ 的&lt;strong&gt;最小的闭集&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;$\overline{A}$ 本身是一个&lt;strong&gt;闭集&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;$\overline{\overline{A}} = \overline{A}$ (闭包的闭包等于闭包)。&lt;/li&gt;
+&lt;li&gt;$A$ 是闭集当且仅当 $A = \overline{A}$。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;极限点关系：&lt;/strong&gt; $\overline{A} = A \cup A'$，其中 $A'$ 是 $A$ 的所有&lt;strong&gt;极限点&lt;/strong&gt;（或聚点）的集合。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;一些有用的推论-1&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A, B \subset X$ 是其子集。以下性质成立：&lt;/p&gt;
+&lt;p&gt;(i) 如果 $U$ 在 $X$ 中是&lt;strong&gt;开集&lt;/strong&gt;，$U \subset A$，则 $U \subset A^{\circ}$。&lt;/p&gt;
+&lt;p&gt;(ii) 如果 $V$ 在 $X$ 中是&lt;strong&gt;闭集&lt;/strong&gt;，$V \supset A$，则 $V \supset \overline{A}$。&lt;/p&gt;
+&lt;p&gt;(iii) $A \subset B \implies A^{\circ} \subset B^{\circ}$。&lt;/p&gt;
+&lt;p&gt;(iv) $A \subset B \implies \overline{A} \subset \overline{B}$。&lt;/p&gt;
+&lt;p&gt;(v) $A$ 是&lt;strong&gt;开集&lt;/strong&gt; $\iff A = A^{\circ}$。&lt;/p&gt;
+&lt;p&gt;(vi) $A$ 是&lt;strong&gt;闭集&lt;/strong&gt; $\iff A = \overline{A}$。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;(iii) 的证明 (Pf.):&lt;/strong&gt;
+&lt;/p&gt;
+$$A^{\circ} \text{ 是开集, } A^{\circ} \subset A \subset B \xrightarrow{(\text{i})} A^{\circ} \subset B^{\circ}$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;(iv) 的证明 (Pf.):&lt;/strong&gt;
+&lt;/p&gt;
+$$\overline{B} \text{ 是闭集, } \overline{B} \supset B \supset A \xrightarrow{(\text{ii})} \overline{B} \supset \overline{A}$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;(v) 的证明 (Pf.):&lt;/strong&gt;
+&lt;/p&gt;
+$$\text{"}\implies\text{"}: \text{Since } A \text{ is open, and } A \subset A \xrightarrow{(\text{i})} A \subset A^{\circ} \text{ (且 } A^{\circ} \subset A \text{ 恒成立)}$$&lt;p&gt; &lt;/p&gt;
+$$\text{"}\impliedby\text{": } A^{\circ} \text{ is open, and } A = A^{\circ} \implies A \text{ is open. }\square$$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="remark"&gt;Remark
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;$A^{\circ}$是$A$中最大的开集。&lt;/li&gt;
+&lt;li&gt;$\overline{A}$是包含$A$的最小的闭集。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="稠密集可分空间与内部闭包的等价引理"&gt;稠密集、可分空间与内部/闭包的等价引理
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="dense"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 稠密集 (Dense Set)&lt;/strong&gt;&lt;a href="#dense" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $A$ 是拓扑空间 $X$ 的一个子集。如果 $A$ 的&lt;strong&gt;闭包&lt;/strong&gt;等于整个空间 $X$，即 $\overline{A} = X$，则称 $A$ 是 $X$ 的一个&lt;strong&gt;稠密集&lt;/strong&gt;（dense set）。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="sep-space"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 可分空间 (Separable Space)&lt;/strong&gt;&lt;a href="#sep-space" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+一个拓扑空间 $X$，如果它拥有一个&lt;strong&gt;可数的稠密集&lt;/strong&gt;（countable dense subset），则称 $X$ 是一个&lt;strong&gt;可分空间&lt;/strong&gt;（separable space）。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;示例 (Eg.):&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 $\mathbb{R}_{fc}$（有限补拓扑下的实数集）中，每一个&lt;strong&gt;无限子集&lt;/strong&gt; $A$ 都是稠密集，即 $\overline{A} = \mathbb{R}$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="内部与闭包的等价引理"&gt;内部与闭包的等价引理
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A \subset X$，$y \in X$。&lt;/p&gt;
+&lt;p&gt;(i) $y \in A^{\circ} \iff$ 存在一个&lt;strong&gt;开集&lt;/strong&gt; $U$，使得 $y \in U \subset A$。&lt;/p&gt;
+&lt;p&gt;(ii) $y \in \overline{A} \iff$ $y$ 的&lt;strong&gt;每一个邻域&lt;/strong&gt;都与 $A$ 相交。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;&lt;strong&gt;(i) $\implies$&lt;/strong&gt;：$y \in A^{\circ}$ 意味着 $y$ 属于包含在 $A$ 内的所有开集的并集，故 $y$ 必属于其中某个开集 $U$ 且 $U \subset A$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(i) $\impliedby$&lt;/strong&gt;：显然 (若 $y$ 被包含在 $A$ 内的开集 $U$ 包围，则 $y$ 属于包含在 $A$ 内的最大开集 $A^{\circ}$)。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(ii) $\implies$&lt;/strong&gt;：(反证法) 假设 $y \in \overline{A}$ 但存在邻域 $U$ 使得 $U \cap A = \emptyset$。则 $X-U$ 是一个包含 $A$ 的闭集，故 $\overline{A} \subset X-U$，与 $y \in \overline{A}$ 矛盾。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;(ii) $\impliedby$&lt;/strong&gt;：(反证法) 假设 $y \notin \overline{A}$。则存在一个包含 $A$ 的闭集 $V_0$ 且 $y \notin V_0$。令 $U = X-V_0$，则 $U$ 是 $y$ 的一个开邻域，且 $U \cap A = \emptyset$，与假设矛盾。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="边界-boundary"&gt;边界 (Boundary)
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="boundary"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 1.2.5&lt;/strong&gt;&lt;a href="#boundary" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A \subset X$ 是一个子集。$A$ 的&lt;strong&gt;边界&lt;/strong&gt;，记为 $\partial A$，定义为 $A$ 的闭包与 $A$ 的内部的差集：&lt;/p&gt;
+$$\partial A = \overline{A} - A^{\circ}$$&lt;p&gt;&lt;strong&gt;等价描述 (Lemma):&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;点 $y \in X$ 属于 $\partial A$ 当且仅当 $y$ 的&lt;strong&gt;任何邻域&lt;/strong&gt;都同时与 $A$ 和 $X-A$ 相交。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，且 $B \subset A \subset X$。令 $\overline{B}_A$ 和 ${B_A}^{\circ}$ 分别表示 $B$ 在&lt;strong&gt;子空间 $A$&lt;/strong&gt; 中的闭包和内部；令 $\overline{B}$ 和 $B^{\circ}$ 分别表示 $B$ 在&lt;strong&gt;全空间 $X$&lt;/strong&gt; 中的闭包和内部。则以下关系成立：&lt;/p&gt;
+&lt;p&gt;(1) &lt;strong&gt;子空间闭包与全空间闭包的关系：&lt;/strong&gt;
+&lt;/p&gt;
+$$\overline{B}_A = \overline{B} \cap A$$&lt;p&gt;(2) &lt;strong&gt;子空间内部与全空间闭包的关系：&lt;/strong&gt;
+&lt;/p&gt;
+$${B_A}^{\circ} = A - \overline{(A-B)}$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;(1) 证明 $\overline{B}_A = \overline{B} \cap A$&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\subset$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;$\forall x \in \overline{B}_A$，则 $x \in A$。取 $X$ 中 $x$ 的任意邻域 $U$。$U \cap A$ 是 $x$ 在 $A$ 中的邻域。因 $x \in \overline{B}_A$，故 $(U \cap A) \cap B \ne \emptyset$。因 $B \subset A$，所以 $U \cap B \ne \emptyset$。故 $x \in \overline{B}$。因此 $x \in \overline{B} \cap A$。&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\supset$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;$\forall x \in \overline{B} \cap A$。取 $x$ 在 $A$ 中的任意邻域 $U_A = U \cap A$ ($U$ 在 $X$ 中开)。因 $x \in \overline{B}$，故 $U \cap B \ne \emptyset$。因 $B \subset A$，故 $U_A \cap B = (U \cap A) \cap B = U \cap B \ne \emptyset$。因此 $x \in \overline{B}_A$。&lt;/p&gt;
+&lt;p&gt;(2) 证明 ${B_A}^{\circ} = A - \overline{(A-B)}$&lt;/p&gt;
+&lt;p&gt;证明 (Pf.):&lt;/p&gt;
+&lt;p&gt;利用补集关系：${B_A}^{\circ} = A - \overline{(A-B)}_A$。应用结论 (1)：$\overline{(A-B)}_A = \overline{(A-B)} \cap A$。故 ${B_A}^{\circ} = A - (\overline{(A-B)} \cap A)$。根据集合论， $A - (C \cap A) = A - C$。最终 ${B_A}^{\circ} = A - \overline{(A-B)}$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;提醒 (Remark)：&lt;/strong&gt; &lt;strong&gt;子空间内部与全空间内部的关系不一定成立&lt;/strong&gt;，即 ${B_A}^{\circ} \ne B^{\circ} \cap A$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反例 (Counterexample):&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$X = \mathbb{R}_{std}, A = B = \mathbb{Q}$。&lt;/li&gt;
+&lt;li&gt;${B_A}^{\circ} = \mathbb{Q}$。&lt;/li&gt;
+&lt;li&gt;$B^{\circ} \cap A = \dot{\mathbb{Q}} \cap \mathbb{Q} = \emptyset \cap \mathbb{Q} = \emptyset$。&lt;/li&gt;
+&lt;li&gt;故 ${B_A}^{\circ} \ne B^{\circ} \cap A$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;一些有用的推论-2&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A, B \subset X$。则以下恒等式和包含关系成立：&lt;/p&gt;
+&lt;p&gt;(i) &lt;strong&gt;补集的内部&lt;/strong&gt; (Interior of the complement):
+&lt;/p&gt;
+$$\text{int}(X-A) = X - \overline{A}$$&lt;p&gt;
+&lt;/p&gt;
+$${(X-A)}^{\circ} = X - \overline{A}$$&lt;p&gt;(ii) &lt;strong&gt;补集的闭包&lt;/strong&gt; (Closure of the complement):
+&lt;/p&gt;
+$$\overline{X-A} = X - A^{\circ}$$&lt;p&gt;(iii) &lt;strong&gt;内部的交集&lt;/strong&gt; (Intersection of interiors):
+&lt;/p&gt;
+$$A^{\circ} \cap B^{\circ} = {(A \cap B)}^{\circ}}$$&lt;p&gt;(iv) &lt;strong&gt;内部的并集&lt;/strong&gt; (Union of interiors):
+&lt;/p&gt;
+$$A^{\circ} \cup B^{\circ} \subset \dot{A \cup B}$$&lt;p&gt;(v) &lt;strong&gt;闭包的交集&lt;/strong&gt; (Intersection of closures):
+&lt;/p&gt;
+$$\overline{A} \cap \overline{B} \supset \overline{A \cap B}$$&lt;p&gt;(vi) &lt;strong&gt;闭包的并集&lt;/strong&gt; (Union of closures):
+&lt;/p&gt;
+$$\overline{A \cup B} = \overline{A} \cup \overline{B}$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;(i) ${(X-A)}^{\circ} = X - \overline{A}$&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\subset$&amp;quot;：
+$\forall x \in {(X-A)}^{\circ}$ (即 $x \in (X-A)^\circ$)，则存在 $x$ 的邻域 $U$，使得 $x \in U \subset X-A$。&lt;/p&gt;
+&lt;p&gt;因此 $U \cap A = \emptyset$。&lt;/p&gt;
+&lt;p&gt;根据内部/闭包的等价引理 (previous lemma: $y \in \overline{A} \iff$ 任何邻域交 $A$ 不为空)，$x$ 不属于 $\overline{A}$，即 $x \in X - \overline{A}$。&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\supset$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;$\forall x \in X - \overline{A}$。因为 $\overline{A}$ 是闭集，所以 $X - \overline{A}$ 是开集。&lt;/p&gt;
+&lt;p&gt;且 $X - \overline{A} \subset X-A$。&lt;/p&gt;
+&lt;p&gt;根据内部的定义（${(X-A)}^{\circ}$ 是包含在 $X-A$ 中的最大的开集），$X - \overline{A}$ 必须包含在 ${(X-A)}^{\circ}$ 中。&lt;/p&gt;
+&lt;p&gt;因此 $X - \overline{A} \subset {(X-A)}^{\circ}$。&lt;/p&gt;
+&lt;p&gt;(iii) $A^{\circ} \cap B^{\circ} = {(A \cap B)}^{\circ}}$&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\subset$&amp;quot;：
+$\forall x \in A^{\circ} \cap B^{\circ}$。存在 $x$ 的邻域 $U_1$ 和 $U_2$，使得 $x \in U_1 \subset A$ 且 $x \in U_2 \subset B$。&lt;/p&gt;
+&lt;p&gt;因此 $x \in U_1 \cap U_2 \subset A \cap B$。&lt;/p&gt;
+&lt;p&gt;由于 $U_1$ 和 $U_2$ 都是开集，它们的交集 $U_1 \cap U_2$ 也是开集。&lt;/p&gt;
+&lt;p&gt;根据内部的等价引理，$x \in {(A \cap B)}^{\circ}}$。&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\supset$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;因为 $A \cap B \subset A$，根据内部运算的单调性，${(A \cap B)}^{\circ} \subset A^{\circ}$。&lt;/p&gt;
+&lt;p&gt;同理，因为 $A \cap B \subset B$，所以 ${(A \cap B)}^{\circ} \subset B^{\circ}$。&lt;/p&gt;
+&lt;p&gt;因此，${(A \cap B)}^{\circ}$ 包含于它们的交集：${(A \cap B)}^{\circ} \subset A^{\circ} \cap B^{\circ}$。&lt;/p&gt;
+&lt;p&gt;(iv) $A^{\circ} \cup B^{\circ} \subset {(A \cup B)}^{\circ}$&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\subset$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;因为 $A \subset A \cup B$，根据内部运算的单调性，$A^{\circ} \subset \dot{A \cup B}$。&lt;/p&gt;
+&lt;p&gt;同理，因为 $B \subset A \cup B$，所以 $B^{\circ} \subset {(A \cup B)}^{\circ}$。&lt;/p&gt;
+&lt;p&gt;因此，它们的并集 $A^{\circ} \cup B^{\circ}$ 包含于 ${(A \cup B)}^{\circ}$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;注意：&lt;/strong&gt;
+&lt;strong&gt;对于 (iv)，&lt;/strong&gt; 等号不一定成立
+&lt;strong&gt;对于 (v)，&lt;/strong&gt; 等号不一定成立。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反例 (Eg.)：&lt;/strong&gt; (说明 (iv) 中不取等号)&lt;/p&gt;
+&lt;p&gt;设 $X = \mathbb{R}_{std}$（标准拓扑下的实数集）。令 $A=[-1,0]$，$B=(0,1]$。此时$A^{\circ}=(-1,0)$，$B^{\circ}=(0,1)$，因此$A^{\circ} \cup B^{\circ} = (-1,0) \cup (0,1)$。而$A\cup B=[-1,1]$，故 ${(A\cup B)}^{\circ}=(-1,1)$。显然$A^{\circ}\cup B^{\circ}\neq\dot{A\cup B}$，差了一个点 $\{0\}$。&lt;/p&gt;
+&lt;p&gt;再令 $A=\mathbb{Q}$（有理数集），$B=\mathbb{R}-\mathbb{Q}$（无理数集）。在标准拓扑下，$A^{\circ}=\emptyset$ 且 $B^{\circ}=\emptyset$，因此 $A^{\circ} \cup B^{\circ}=\emptyset$。但$A\cup B=\mathbb{R}$，所以 ${(A\cup B)}^{\circ}=\mathbb{R}$，同样说明了$A^{\circ}\cup B^{\circ}\neq {(A\cup B)}^{\circ}$。&lt;/p&gt;
+&lt;h2 id="极限点与闭包的关系"&gt;极限点与闭包的关系
+&lt;/h2&gt;&lt;h3 id="极限点-limit-point"&gt;极限点 (Limit Point)
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="limit-point"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 极限点&lt;/strong&gt;&lt;a href="#limit-point" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A \subset X$ 是一个子集，$x \in X$。
+$x$ 是 $A$ 的一个&lt;strong&gt;极限点&lt;/strong&gt;（limit point，或聚点），如果 $x$ 的&lt;strong&gt;每一个邻域&lt;/strong&gt;（nbhd）都与 $A$ 在一个&lt;strong&gt;不同于 $x$ 本身&lt;/strong&gt;的点上相交。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;等价描述 (Equiv.):&lt;/strong&gt;&lt;/p&gt;
+$$x \text{ 是 } A \text{ 的一个极限点 } \iff x \in \overline{A - \{x\}}.$$&lt;p&gt;&lt;strong&gt;符号表示:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们用 $A'$ 表示 $A$ 的所有极限点的集合。
+则 $A' \subset \overline{A}$。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;示例 (Eg.):&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 $E^1$ 中，$A = [0, 1) \cup \{2\}$，则 $2 \notin A'$。&lt;/li&gt;
+&lt;li&gt;在 $E^1$ 中，$A = \mathbb{Q}$，则 $\forall x \in E^1$, $x \in A'$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="闭包与极限点集合的关系"&gt;闭包与极限点集合的关系
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 是一个拓扑空间，$A \subset X$。则：
+&lt;/p&gt;
+$$\overline{A} = A \cup A'$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;证明 &amp;ldquo;$A \cup A' \subset \overline{A}$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;因为 $A \subset \overline{A}$ 且 $A' \subset \overline{A}$，所以 $A \cup A' \subset \overline{A}$。&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\overline{A} \subset A \cup A'$&amp;quot;：
+$\forall x \in \overline{A}$，假设 $x \notin A$。根据闭包引理， $x$ 的任意邻域 $U$ 都与 $A$ 相交。因为 $x \notin A$，所以 $U \cap A$ 包含一个异于 $x$ 的点。故 $x$ 是 $A$ 的极限点，即 $x \in A'$。因此 $\overline{A} \subset A \cup A'$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;推论 (Corollary): 闭集的充要条件&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;$A \subset X$ 是一个&lt;strong&gt;闭集&lt;/strong&gt; $\iff A' \subset A$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;证明思路:&lt;/strong&gt; $A$ 是闭集 $\iff A = \overline{A} \iff A = A \cup A' \iff A' \subset A$。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="积空间中集合的内部和闭包"&gt;积空间中集合的内部和闭包
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X$ 和 $Y$ 是两个拓扑空间，$A \subset X$，$B \subset Y$。则以下关系成立：&lt;/p&gt;
+&lt;p&gt;(1) &lt;strong&gt;积集合的内部：&lt;/strong&gt;
+&lt;/p&gt;
+$$(A \times B)^\circ = A^{\circ} \times B^{\circ}$$&lt;p&gt;(2) &lt;strong&gt;积集合的闭包：&lt;/strong&gt;
+&lt;/p&gt;
+$$\overline{A \times B} = \overline{A} \times \overline{B}$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;(1) 积集合的内部：$(A \times B)^\circ = A^{\circ} \times B^{\circ}$&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\subset$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;$\forall (x, y) \in (A \times B)^\circ$，存在开集 $W \subset X \times Y$ 使得 $(x, y) \in W \subset A \times B$。存在基元素 $U \times V$ 使得 $(x, y) \in U \times V \subset W$。因此 $x \in U \subset A$ 且 $y \in V \subset B$。根据内部定义， $x \in A^{\circ}$ 且 $y \in B^{\circ}$，故 $(x, y) \in A^{\circ} \times B^{\circ}$。&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\supset$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;$\forall (x, y) \in A^{\circ} \times B^{\circ}$。则 $x \in A^{\circ}$ 且 $y \in B^{\circ}$。因为 $x \in A^{\circ}$，存在 $X$ 中的开集 $U$，使得 $x \in U \subset A$。因为 $y \in B^{\circ}$，存在 $Y$ 中的开集 $V$，使得 $y \in V \subset B$。考虑积集 $U \times V$。 $U \times V$ 是 $X \times Y$ 中的一个&lt;strong&gt;开集&lt;/strong&gt;。且 $(x, y) \in U \times V$。同时，由于 $U \subset A$ 且 $V \subset B$，故 $U \times V \subset A \times B$。因此，$(x, y)$ 被包含在 $A \times B$ 内的一个开集 $U \times V$ 中。根据内部的定义，$(x, y) \in (A \times B)^\circ$。&lt;/p&gt;
+&lt;p&gt;(2) 积集合的闭包：$\overline{A \times B} = \overline{A} \times \overline{B}$&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\subset$&amp;quot;：(反证法)&lt;/p&gt;
+&lt;p&gt;假设 $(x, y) \notin \overline{A} \times \overline{B}$，则假设 $x \notin \overline{A}$。存在 $x$ 的邻域 $U$ 使得 $U \cap A = \emptyset$。$U \times Y$ 是 $(x, y)$ 的邻域，且 $(U \times Y) \cap (A \times B) = (U \cap A) \times (Y \cap B) = \emptyset$。故 $(x, y) \notin \overline{A \times B}$，矛盾。&lt;/p&gt;
+&lt;p&gt;证明 &amp;ldquo;$\supset$&amp;quot;：&lt;/p&gt;
+&lt;p&gt;$\forall (x, y) \in \overline{A} \times \overline{B}$。设 $W$ 是 $(x, y)$ 的任意邻域，包含 $U \times V$ ($U, V$ 分别是 $x, y$ 的邻域)。因 $x \in \overline{A}, y \in \overline{B}$，故 $U \cap A \ne \emptyset$ 且 $V \cap B \ne \emptyset$。故 $W \cap (A \times B) \supset (U \times V) \cap (A \times B) = (U \cap A) \times (V \cap B) \ne \emptyset$。因此 $(x, y) \in \overline{A \times B}$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>拓扑基</title><link>https://cxzhou.com/p/topol-2/</link><pubDate>Tue, 30 Sep 2025 12:31:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-2/</guid><description>&lt;img src="https://cxzhou.com/p/topol-2/cover.png" alt="Featured image of post 拓扑基" /&gt;&lt;h2 id="拓扑基basis"&gt;拓扑基(Basis)
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="basis"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;拓扑基&lt;/strong&gt;&lt;a href="#basis" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对于一个非空集合 $X$，&lt;strong&gt;拓扑基&lt;/strong&gt;（或简称&lt;strong&gt;基&lt;/strong&gt;）$\mathcal{B}$ 是 $X$ 的幂集 $\mathcal{P}(X)$ 的一个子集，满足以下两个条件：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;覆盖条件（Covering Condition）&lt;/strong&gt;：
+$\mathcal{B}$ 中的元素的并集必须覆盖整个集合 $X$。换句话说，对于 $X$ 中的任意一点 $x$，&lt;strong&gt;存在&lt;/strong&gt; $\mathcal{B}$ 中的一个集合 $B$，使得 $x \in B$。
+&lt;/p&gt;
+$$\bigcup_{B \in \mathcal{B}} B = X$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;交集条件（Intersection Condition）&lt;/strong&gt;：
+如果 $B_1$ 和 $B_2$ 是 $\mathcal{B}$ 中的任意两个元素，并且它们的交集 $B_1 \cap B_2$ 不为空，那么对于交集中的任意一点 $x$，&lt;strong&gt;存在&lt;/strong&gt; $\mathcal{B}$ 中的第三个元素 $B_3$，使得 $x \in B_3$ 且 $B_3$ 包含于 $B_1 \cap B_2$。
+&lt;/p&gt;
+$$\forall B_1, B_2 \in \mathcal{B}, \forall x \in B_1 \cap B_2, \exists B_3 \in \mathcal{B} \text{ 使得 } x \in B_3 \subseteq B_1 \cap B_2$$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;如果一个集合族$\mathcal{B}$满足&lt;a class="link" href="#basis" &gt;上述条件&lt;/a&gt;，则称其为一个&lt;strong&gt;基&lt;/strong&gt;，基$\mathcal{B}$生成的拓扑 $\mathcal{T}$ 定义为：&lt;/p&gt;
+&lt;p&gt;$\mathcal{T}$ 中的一个子集 $U \subseteq X$ 是&lt;strong&gt;开集&lt;/strong&gt;，当且仅当它是 $\mathcal{B}$ 中一些元素的&lt;strong&gt;并集&lt;/strong&gt;。&lt;/p&gt;
+$$\mathcal{T} = \left\{ \bigcup_{i \in I} B_i \mid B_i \in \mathcal{B}, I \text{ 为任意指标集} \right\}$$
+&lt;div class="math-block math-block--theorem" id="lemma1.1.3"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理1.1.3&lt;/strong&gt;&lt;a href="#lemma1.1.3" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设$X$为非空集合，$\mathcal{T}_{\mathcal{B}}$是由$X$上的一个拓扑基$\mathcal{B}$生成的拓扑，则$U\subset X$是这个拓扑空间中的开集当且仅当对任意$x\in U$，存在$B_x\in \mathcal{B}$，使得$x\in B_X \subset U$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;第一部分：证明 $1 \implies 2$&lt;/p&gt;
+&lt;p&gt;（如果 $U$ 是开集，则对 $U$ 中的每一点，存在一个基元素包含该点并包含于 $U$。）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设&lt;/strong&gt; $U \in \mathcal{T}_{\mathcal{B}}$，即 $U$ 是开集。&lt;/p&gt;
+&lt;p&gt;根据基 $\mathcal{B}$ &lt;strong&gt;生成拓扑&lt;/strong&gt; $\mathcal{T}_{\mathcal{B}}$ 的定义，集合 $U$ 必须是 $\mathcal{B}$ 中一些元素的并集。
+&lt;/p&gt;
+$$\exists I \text{ (指标集) } \text{ 和 } \{B_i\}_{i \in I} \subset \mathcal{B} \text{ 使得 } U = \bigcup_{i \in I} B_i$$&lt;p&gt;取 $U$ 中任意一点 $x$，$x \in U$。&lt;/p&gt;
+&lt;p&gt;由于 $x \in U$ 且 $U = \bigcup_{i \in I} B_i$，所以 $x$ 至少属于这个并集中的一个元素。&lt;/p&gt;
+&lt;p&gt;因此，&lt;strong&gt;存在&lt;/strong&gt;某个指标 $j \in I$，使得 $x \in B_j$。&lt;/p&gt;
+&lt;p&gt;令 $B_x = B_j$。则 $B_x \in \mathcal{B}$（$B_j$ 取自 $\mathcal{B}$），且 $x \in B_x$。&lt;/p&gt;
+&lt;p&gt;又因为 $B_x = B_j$ 是形成 $U$ 的并集中的一个元素，所以 $B_x \subset \bigcup_{i \in I} B_i = U$。&lt;/p&gt;
+&lt;p&gt;综上，找到了一个 $B_x \in \mathcal{B}$ 使得 $x \in B_x \subset U$。&lt;/p&gt;
+&lt;p&gt;由于 $x$ 是 $U$ 中的任意一点，结论成立。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;第二部分：证明 $2 \implies 1$&lt;/p&gt;
+&lt;p&gt;（如果对 $U$ 中的每一点，都存在一个基元素包含该点并包含于 $U$，则 $U$ 是开集。）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设&lt;/strong&gt; 对任意 $x \in U$，存在 $B_x \in \mathcal{B}$，使得 $x \in B_x \subset U$。&lt;/p&gt;
+&lt;p&gt;证明 $U$ 是 $\mathcal{B}$ 中元素的并集。&lt;/p&gt;
+&lt;p&gt;考虑所有满足上述条件的 $B_x$ 的集合族 $\{B_x\}_{x \in U}$，并考察它们的并集 $V$:
+&lt;/p&gt;
+$$V = \bigcup_{x \in U} B_x$$&lt;p&gt;要证 $U = V$。
+- &lt;strong&gt;证明 $U \subset V$：&lt;/strong&gt;
+对于 $U$ 中的任意一点 $y$，根据假设，存在 $B_y \in \mathcal{B}$ 使得 $y \in B_y$。
+由于 $B_y$ 是并集 $V = \bigcup_{x \in U} B_x$ 中的一个元素，所以 $y \in V$。
+因此，$U \subset V$。
+- &lt;strong&gt;证明 $V \subset U$：&lt;/strong&gt;
+对于并集 $V$ 中的任意一点 $z$，根据 $V$ 的定义，它必然属于某个 $B_{x'}$，其中 $x' \in U$。
+即 $z \in B_{x'}$。
+根据假设，每一个 $B_x$ 都满足 $B_x \subset U$。所以 $B_{x'} \subset U$。
+因此，$z \in U$。
+所以，$V \subset U$。&lt;/p&gt;
+&lt;p&gt;由于 $U \subset V$ 且 $V \subset U$，所以 $U = V$。&lt;/p&gt;
+&lt;p&gt;因此，$U = \bigcup_{x \in U} B_x$，即 $U$ 是 $\mathcal{B}$ 中一些元素的并集。&lt;/p&gt;
+&lt;p&gt;根据基 $\mathcal{B}$ 生成的拓扑 $\mathcal{T}_{\mathcal{B}}$ 的定义，凡是 $\mathcal{B}$ 中元素的并集都是开集。&lt;/p&gt;
+&lt;p&gt;所以 $U \in \mathcal{T}_{\mathcal{B}}$，即 $U$ 是开集。&lt;/p&gt;
+&lt;p&gt;综上，条件 $1$ 和条件 $2$ 相互蕴含，因此它们等价，命题得证。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="lemma1.1.4"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理1.1.4&lt;/strong&gt;&lt;a href="#lemma1.1.4" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设$(X,\mathcal{T})$为一个拓扑空间，$\mathcal{B} \subset \mathcal{T}$，则$\mathcal{B}$是生成拓扑 $\mathcal{T}$的一个拓扑基当且仅当&lt;/p&gt;
+$$(1) \quad X = \bigcup_{B\in\mathcal{B}}B \\
+(2) \quad \text{对于 } U\in\mathcal{T} \text{ 和任意 } x\in U \text{，存在 } B_x\in \mathcal{B} \text{，使得 } x\in B_x \subset U.$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a class="link" href="#lemma1.1.3" &gt;定理1.1.3&lt;/a&gt;描述由$X$上的一个拓扑基生成的拓扑中开集的特征；&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="#lemma1.1.4" &gt;定理1.1.4&lt;/a&gt;，&lt;strong&gt;给定&lt;/strong&gt;一个开集族$\mathcal{B}$和一个拓扑$\mathcal{T}$，判定$\mathcal{B}$是$\mathcal{T}$的一个拓扑基.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;注：验证拓扑基用&lt;a class="link" href="#basis" &gt;定义&lt;/a&gt;，分别验证&lt;strong&gt;覆盖条件&lt;/strong&gt;和&lt;strong&gt;交集条件&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="拓扑子空间subspace"&gt;拓扑子空间(subspace)
+&lt;/h2&gt;&lt;p&gt;(又称作诱导拓扑，induced topology)&lt;/p&gt;
+&lt;p&gt;引例：$(X, \mathcal{T})$是一个拓扑空间. $A \subset X$，$\mathcal{T}_A:=\{U \cap A | U \in \mathcal{T} \}$，$\mathcal{T}_A$是$A$上的拓扑.&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+$$(i) \phi \in \mathcal{T}_A, A=X \cap A \in \mathcal{T}_A \\
+(ii) U_{\lambda} \cap A, \lambda \in \Lambda, U_{\lambda} \in \mathcal{T}. \\
+\bigcup_{\lambda \in \Lambda}(U_{\lambda} \cap A) =(\bigcup_{\lambda \in \Lambda}U_{\lambda})\cap A \in \mathcal{T}_A, since \bigcup_{\lambda \in \Lambda}U_{\lambda} \in \mathcal{T}. \\
+(iii) (U_1 \cap A) \cap (U_2 \cap A) = (U_1 \cap U_2) \cap A \in \mathcal{T}_A, U_1, U_2 \in \mathcal{T}.$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="subspace"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;拓扑子空间&lt;/strong&gt;&lt;a href="#subspace" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+称$\mathcal{T}_Y$为子空间拓扑，$(Y, \mathcal{T}_Y)$为拓扑空间$X$的子空间. 若$V \subset Y$，$V \in \mathcal{T}_Y$，则称$V$在$Y$中是开的.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="subspace-gen"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理1.2.6&lt;/strong&gt;&lt;a href="#subspace-gen" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $\mathcal{B}$ 为拓扑空间 $(X, \mathcal{T})$ 的一个基，$Y \subset X$，则
+&lt;/p&gt;
+$$ \mathcal{B}_Y = \{ B \cap Y | B \in \mathcal{B} \} $$&lt;p&gt;
+是$Y$上子空间拓扑$\mathcal{T}_Y$的一个基.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$\forall$ 开集 $V \in Y$, $\exist$ 开集 $U \in X$, 使得 $V=U \cap Y$. $\mathcal{B}$ 为拓扑空间 $(X, \mathcal{T})$ 的一个基, $\exist \mathcal{B}_U \subset \mathcal{B}$, $s.t.$ $U = \bigcup_{B \in \mathcal{B}_U}$. 因此
+&lt;/p&gt;
+$$V = (\bigcup_{B \in \mathcal{B}_U} B) \cap Y = \bigcup_{B \in \mathcal{B}_U} (B \cap Y)$$&lt;p&gt;.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;一个&lt;del&gt;有趣&lt;/del&gt;有用的Lemma：&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;子空间拓扑的传递性&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $(X, \mathcal{T})$ 是一个拓扑空间，且 $B \subset A \subset X$。
+设 $(A, \mathcal{T}_A)$ 和 $(B, \mathcal{T}_B)$ 是 $(X, \mathcal{T})$ 的子空间，并设 $(B, (\mathcal{T}_A)_B)$ 是 $(A, \mathcal{T}_A)$ 的子空间。
+则 $(\mathcal{T}_A)_B = \mathcal{T}_B$。（即子空间拓扑具有传递性）。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$\subset$ $:$ ($\mathcal{T}_B$ 包含 $(\mathcal{T}_A)_B$)
+任取 $U \in (\mathcal{T}_A)_B$，则存在一个 $A$ 中的开集 $U_1 \in \mathcal{T}_A$，使得 $U = U_1 \cap B$。
+由于 $U_1 \in \mathcal{T}_A$ 是 $A$ 中的开集，故存在一个 $X$ 中的开集 $U_2 \in \mathcal{T}$，使得 $U_1 = U_2 \cap A$。
+因此，
+&lt;/p&gt;
+$$U = (U_2 \cap A) \cap B$$&lt;p&gt;
+由于 $B \subset A$，根据集合论的结合律和幂等律，有 $A \cap B = B$。
+&lt;/p&gt;
+$$U = U_2 \cap (A \cap B) = U_2 \cap B$$&lt;p&gt;
+因为 $U_2 \in \mathcal{T}$ 是 $X$ 中的开集，所以 $U = U_2 \cap B$ 表明 $U$ 是 $B$ 中相对于 $X$ 拓扑 $\mathcal{T}$ 的开集。
+因此，$U \in \mathcal{T}_B$。&lt;/p&gt;
+&lt;p&gt;$\supset$ $:$ ( $(\mathcal{T}_A)_B$ 包含 $\mathcal{T}_B$)
+任取 $U \in \mathcal{T}_B$，则存在一个 $X$ 中的开集 $U_2 \in \mathcal{T}$，使得 $U = U_2 \cap B$。
+令 $U_1 = U_2 \cap A$。由于 $U_2 \in \mathcal{T}$，根据子空间拓扑的定义，我们有 $U_1 \in \mathcal{T}_A$。
+现在，将 $U$ 表示为 $U_1$ 与 $B$ 的交集：
+&lt;/p&gt;
+$$U = U_2 \cap B$$&lt;p&gt;
+再次利用 $B \subset A$ 推出 $B = A \cap B$：
+&lt;/p&gt;
+$$U = U_2 \cap (A \cap B) = (U_2 \cap A) \cap B$$&lt;p&gt;
+代入 $U_1$：
+&lt;/p&gt;
+$$U = U_1 \cap B$$&lt;p&gt;
+因为 $U_1 \in \mathcal{T}_A$，所以 $U = U_1 \cap B$ 表明 $U$ 是 $B$ 中相对于 $A$ 拓扑 $\mathcal{T}_A$ 的开集。
+因此，$U \in (\mathcal{T}_A)_B$&lt;/p&gt;
+&lt;p&gt;综合 (1) 和 (2)，得证 $(\mathcal{T}_A)_B = \mathcal{T}_B$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="乘积空间product-space"&gt;乘积空间(Product space)
+&lt;/h2&gt;&lt;p&gt;引例：设 $(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$ 是两个拓扑空间，
+&lt;/p&gt;
+$$ \mathcal{B} = \{ U \times V | U \in \mathcal{T}_1, V \in \mathcal{T}_2 \}.　$$&lt;p&gt;
+则 $\mathcal{B}$ 是 $X_1 \times X_2$ 上的一个拓扑基.&lt;/p&gt;
+&lt;p&gt;证明略，逐个验证&lt;a class="link" href="#basis" &gt;两个条件&lt;/a&gt;即可.&lt;/p&gt;
+&lt;div class="math-block math-block--definition" id="product"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;乘积空间&lt;/strong&gt;&lt;a href="#product" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$ 是两个拓扑空间, 称
+&lt;/p&gt;
+$$ \mathcal{B} = \{ U \times V | U \in \mathcal{T}_1, V \in \mathcal{T}_2 \}　$$&lt;p&gt;
+所生成的$X_1 \times X_2$ 的拓扑 $\mathcal{T}$ 为&lt;strong&gt;乘积拓扑&lt;/strong&gt;，称 $(X_1 \times X_2, \mathcal{T})$ 为 $(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$ 的 &lt;strong&gt;乘积拓扑空间&lt;/strong&gt;，简称为$(X_1, \mathcal{T}_1)$ 和 $(X_2, \mathcal{T}_2)$的 &lt;strong&gt;积空间&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;$X$, $Y$ 是两个拓扑空间，$A \subset X$，$B \subset Y$，则$A \times B$在$X \times Y$上的诱导拓扑与$A \times B$的乘积拓扑等价。&lt;/p&gt;
+&lt;h2 id="hausdoff"&gt;Hausdoff
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="hausdoff"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Hausdoff性质&lt;/strong&gt;&lt;a href="#hausdoff" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $(X, \mathcal{T})$ 是一个拓扑空间。如果对于 $X$ 中的\textbf{任意两个不同的点} $x$ 和 $y$ (即 $x \neq y$)，都存在一个开集 $U$ 包含 $x$，以及一个开集 $V$ 包含 $y$，使得这两个开集\textbf{不相交}，则称 $(X, \mathcal{T})$ 是一个 Hausdorff 空间.&lt;/p&gt;
+&lt;p&gt;符号表示为：
+&lt;/p&gt;
+$$
+\forall x, y \in X, \quad x \neq y \implies \exists U \in \mathcal{T}, \exists V \in \mathcal{T} \text{ 使得 } \left\{
+\begin{array}{l}
+x \in U \\
+y \in V \\
+U \cap V = \emptyset
+\end{array}
+\right.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;性质&lt;/strong&gt;：如果一个空间是Hausdoff的，则它的所有单点集都是闭的。&lt;/p&gt;
+&lt;p&gt;一些例子：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\mathbb{R}$上，$\mathcal{B}=\{(n,n+1)|n\in\mathbb{Z}\}$生成的拓扑不是Hausdoff的.&lt;/li&gt;
+&lt;li&gt;$\mathbb{R}_{fc}$不是Hausdoff, 但是其上的每一个单点集都是闭的.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="hausdoff-space"&gt;Hausdoff Space
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="hausdoff-space"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Hausdoff Space&lt;/strong&gt;&lt;a href="#hausdoff-space" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+一个拓扑空间 $X$ 是 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;（或 $T_2$ 空间），如果对于任意两个不同的点 $a, b \in X$ ($a \ne b$)，都存在 $a$ 的一个邻域 $U_a$ 和 $b$ 的一个邻域 $U_b$，使得 $U_a$ 和 $U_b$ 不相交，即 $U_a \cap U_b = \emptyset$。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Hausdorff 子空间&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+如果 $X$ 是一个 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;，且 $A \subset X$ 是 $X$ 的一个子空间 (subspace)，则 $A$ 也是 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;取 $A$ 中任意两个不等的点 $a, b \in A$，且 $a \ne b$。&lt;/p&gt;
+&lt;p&gt;因为 $X$ 是 Hausdorff 空间，存在 $X$ 中 $a$ 的邻域 $U_a$ 和 $b$ 的邻域 $U_b$，使得 $U_a \cap U_b = \emptyset$ 。&lt;/p&gt;
+&lt;p&gt;$U_a \cap A$ 是 $a$ 在 $A$ 中的一个邻域，$U_b \cap A$ 是 $b$ 在 $A$ 中的一个邻域。&lt;/p&gt;
+&lt;p&gt;它们的交集为：&lt;/p&gt;
+$$(U_a \cap A) \cap (U_b \cap A) = (U_a \cap U_b) \cap A = \emptyset \cap A = \emptyset$$&lt;p&gt;因此 $A$ 是 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Hausdorff 积空间&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+如果 $X$ 和 $Y$ 是两个 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;，则它们的积空间 $X \times Y$ 也是 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;取 $X \times Y$ 中任意两个不等的点 $(x_1, y_1), (x_2, y_2) \in X \times Y$ 。&lt;/p&gt;
+&lt;p&gt;因为 $(x_1, y_1) \ne (x_2, y_2)$，所以 &lt;strong&gt;要么&lt;/strong&gt; $x_1 \ne x_2$，&lt;strong&gt;要么&lt;/strong&gt; $y_1 \ne y_2$。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;假设&lt;/strong&gt; $x_1 \ne x_2$。&lt;/p&gt;
+&lt;p&gt;因为 $X$ 是 Hausdorff 空间，存在 $x_1$ 的邻域 $U_{x_1}$ 和 $x_2$ 的邻域 $U_{x_2}$，使得 $U_{x_1} \cap U_{x_2} = \emptyset$。&lt;/p&gt;
+&lt;p&gt;则 $U_{x_1} \times Y$ 是 $(x_1, y_1)$ 在 $X \times Y$ 中的一个邻域，$U_{x_2} \times Y$ 是 $(x_2, y_2)$ 在 $X \times Y$ 中的一个邻域。&lt;/p&gt;
+&lt;p&gt;它们的交集为：&lt;/p&gt;
+$$(U_{x_1} \times Y) \cap (U_{x_2} \times Y) = (U_{x_1} \cap U_{x_2}) \times Y = \emptyset \times Y = \emptyset$$&lt;p&gt;因此 $X \times Y$ 是 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;推论：&lt;/strong&gt; 欧氏空间 $E^n$ 的任何子空间都是 &lt;strong&gt;Hausdorff 空间&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>拓扑空间初步认识</title><link>https://cxzhou.com/p/topol-1/</link><pubDate>Fri, 29 Aug 2025 16:00:00 +0800</pubDate><guid>https://cxzhou.com/p/topol-1/</guid><description>&lt;img src="https://cxzhou.com/p/topol-1/cover.png" alt="Featured image of post 拓扑空间初步认识" /&gt;&lt;p&gt;笔记主要参考尤承业《基础拓扑学讲义》，为便于查找，所有定义、定理等编号与原书保持一致。&lt;/p&gt;
+&lt;h2 id="拓扑空间"&gt;拓扑空间
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-topol"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 1.1 拓扑空间 &lt;/strong&gt;&lt;a href="#def-topol" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设$X$是一非空集合. $X$的一个&lt;strong&gt;子集族&lt;/strong&gt;$\tau$称为$X$的一个&lt;strong&gt;拓扑&lt;/strong&gt;，如果它满足&lt;/p&gt;
+&lt;p&gt;（1） $X$，$\emptyset$都包含在$ \tau $ 中；&lt;br&gt;
+（2） $ \tau $ 中任意多个成员的并集仍在$ \tau $ 中；&lt;br&gt;
+（3） $ \tau $ 中有限多个成员的交集仍在$ \tau $ 中.&lt;/p&gt;
+&lt;p&gt;集合$X$和它的一个拓扑$ \tau $一起称为一个&lt;strong&gt;拓扑空间&lt;/strong&gt;，记作$(X, \tau)$. 称$\tau $中的成员为这个拓扑空间的&lt;strong&gt;开集&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;(&lt;em&gt;注&lt;/em&gt;：这里定义了拓扑空间中的&lt;strong&gt;开集&lt;/strong&gt;)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;定义&lt;a class="link" href="#def-topol" &gt;1.1&lt;/a&gt;中三个条件称为&lt;strong&gt;拓扑公理&lt;/strong&gt;. 其中（3）可等价为（3&amp;rsquo;）&lt;br&gt;
+（3&amp;rsquo;）$\tau $中两个成员的交集仍在$\tau $ 中.&lt;/p&gt;
+&lt;p&gt;证明如下：&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;“$\tau$ 对&lt;strong&gt;有限个&lt;/strong&gt;成员的交封闭” $\Leftrightarrow$ “$\tau$ 对&lt;strong&gt;任意两个&lt;/strong&gt;成员的交封闭”.&lt;/p&gt;
+&lt;p&gt;$\Rightarrow$ 假设 $\tau$ 中任意有限个集合的交仍在 $\tau$ 中。则特别地，任取 $U, V \in \tau$，$U \cap V$ 也是有限交，故 $U \cap V \in \tau$.&lt;/p&gt;
+&lt;p&gt;$\Leftarrow$ 反过来，假设 $\tau$ 中任意两个集合的交仍在 $\tau$ 中，即如果 $U, V \in \tau$，则 $U \cap V \in \tau$. 我们将证明 $\tau$ 对任意有限个集合的交闭.&lt;br&gt;
+归纳地证明：&lt;/p&gt;
+&lt;p&gt;当 $n = 2$ 时，结论显然成立（即假设中的条件）.&lt;/p&gt;
+&lt;p&gt;假设任意 $n$ 个开集 $U_1, \dots, U_n \in \tau$ 有 $\bigcap_{i=1}^n U_i \in \tau$.&lt;br&gt;
+考虑 $n+1$ 个开集 $U_1, \dots, U_n, U_{n+1} \in \tau$. 由归纳假设，$V := \bigcap_{i=1}^n U_i \in \tau$.&lt;br&gt;
+再利用两个集合的交闭性，得到：&lt;br&gt;
+&lt;/p&gt;
+$$
+\bigcap_{i=1}^{n+1} U_i = V \cap U_{n+1} \in \tau.
+$$&lt;p&gt;
+因此，对任意有限个开集，其交仍在 $\tau$ 中.&lt;/p&gt;
+&lt;p&gt;由此，两者等价.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;总结：给出集合的一个拓扑即规定哪些子集是开集，同时满足三条公理。&lt;/li&gt;
+&lt;li&gt;一些例子：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;离散拓扑&lt;/strong&gt;: $2^X$，记作$\tau_t$；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;平凡拓扑&lt;/strong&gt;: $(X, \emptyset)$，记作$\tau_s$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;余有限拓扑&lt;/strong&gt;: $X$是无穷集合，$\tau_f= \{ A^c \mid A是X的有限子集 \} \cup \{ \emptyset \} $；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;余可数拓扑&lt;/strong&gt;: $X$是不可数无穷集合，$\tau_c= \{ A^c \mid A是X的可数子集 \} \cup \{ \emptyset \} $；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;欧氏拓扑（标准拓扑）&lt;/strong&gt;: $\mathbf{R}$是全体实数集，$\tau_e= \{ U \mid U是若干个开区间的并集 \} $，“若干个”可以是无穷、有限、零，记作$\mathbf{E}^1=(\mathbf{R}, \tau_e)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;给出&lt;strong&gt;余有限拓扑&lt;/strong&gt;的证明:&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;验证拓扑三公理.&lt;/p&gt;
+&lt;p&gt;(1)
+由定义可知$\emptyset\in\tau$ ；&lt;br&gt;
+$X\in\tau$，因为 $X^c=\emptyset\in\tau$ .&lt;/p&gt;
+&lt;p&gt;(2)
+设 $U_{i, i\in I}\subseteq\tau$. 若存在 $i_0$ 使 $U_{i_0}=\emptyset$，不影响并集的开性，故不妨设对每个 $i$，$U_i\neq\emptyset$ 且 $X\setminus U_i$ 有限.
+则
+&lt;/p&gt;
+$$
+X\setminus \bigcup_{i\in I} U_i
+= \bigcap_{i\in I} (X\setminus U_i).
+$$&lt;p&gt;
+右侧是（可能是无限个）有限集的交集. 任取 $j\in I$，有
+&lt;/p&gt;
+$$
+\bigcap_{i\in I} (X\setminus U_i)\ \subseteq\ X\setminus U_j,
+$$&lt;p&gt;
+因此该交集是某个有限集的子集，从而也是有限集. 于是 $X\setminus \bigcup_{i\in I} U_i$ 有限，即 $\bigcup_{i\in I} U_i\in\tau$.&lt;/p&gt;
+&lt;p&gt;(3)
+取有限个 $U_1,\dots,U_n\in\tau$. 同理有
+&lt;/p&gt;
+$$
+X\setminus \bigcap_{k=1}^n U_k
+= \bigcup_{k=1}^n (X\setminus U_k),
+$$&lt;p&gt;
+右侧为有限个有限集的并，仍为有限集. 故 $\bigcap_{k=1}^n U_k\in\tau$.&lt;/p&gt;
+&lt;p&gt;综上，$\tau$ 满足拓扑的三条公理，故为 $X$ 上的一个拓扑.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="度量拓扑"&gt;度量拓扑
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;回忆：&lt;/strong&gt; 度量空间三条性质（定义）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正定性&lt;/li&gt;
+&lt;li&gt;对称性&lt;/li&gt;
+&lt;li&gt;三角不等式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="math-block math-block--definition" id="circle"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;度量空间中的开球&lt;/strong&gt;&lt;a href="#circle" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设$(X, d)$是一个度量空间，$x_0 \in X，$\epsilon $是一正数，称$X$的子集
+$$
+B(x_0, \epsilon) := \{x_0\in X \mid d(x_0, x)&lt;\epsilon \}
+$$&lt;/p&gt;
+&lt;p&gt;为以$x_0$为心，$\epsilon$为半径的&lt;strong&gt;球形邻域&lt;/strong&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="circle-capcup"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理&lt;/strong&gt;&lt;a href="#circle-capcup" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$(X, d)$的任意两个球形邻域的交集是若干个球形邻域的并集.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;设$U=B(x_1, \epsilon_1)\cap B(x_2, \epsilon_2)$. $\forall x\in U$，则$\epsilon_i-d(x, x_i)&gt;0(i=1, 2)$. 记$\epsilon_x =min\{\epsilon_1-d(x, x_1), \epsilon_2-d(x, x_2)\}$，有$B(x, \epsilon_x)\subset U$. 于是
+&lt;/p&gt;
+$$
+U=\bigcap_{x\in U}B(x, \epsilon_x).
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;规定$X$的子集族$\tau_d=\{U \mid U是若干个开球的并集\}$.&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="measure-topol"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题1.1 度量空间上的拓扑&lt;/strong&gt;&lt;a href="#measure-topol" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$\tau_d$是$X$上的一个拓扑.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;验证三条公理.
+（1），（2）均由定义可直接验证. 下证公理（3）.&lt;/p&gt;
+&lt;p&gt;设$U_{\alpha}, U_{\beta} \in \tau_d$， &lt;/p&gt;
+$$U_{\alpha}=\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}), U_{\beta}=\bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta})$$&lt;p&gt;，则有&lt;/p&gt;
+$$
+\begin{align*}
+U_{\alpha}\cap U_{\beta}=(\bigcup_{\alpha}B(x_{\alpha}, \epsilon_{\alpha}))\cap \bigcup_{\beta}B(x_{\beta}, \epsilon_{\beta}) \\
+=\bigcup_{\alpha, \beta}(B(x_{\alpha}, \epsilon_{\alpha})\cap B(x_{\beta}, \epsilon_{\beta})).
+\end{align*}
+$$&lt;p&gt;由&lt;a class="link" href="#circle-capcup" &gt;引理&lt;/a&gt;, $B(x_{\alpha}, \epsilon_{\alpha})\cap B(x_{\beta}, \epsilon_{\beta}) \in \tau_d$,&lt;/p&gt;
+&lt;p&gt;因此，$U_{\alpha}\cap U_{\beta} \in \tau_d$.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="拓扑大小的比较"&gt;拓扑“大小”的比较
+&lt;/h3&gt;
+&lt;div class="math-block math-block--definition" id="measure-topol"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;拓扑的比较&lt;/strong&gt;&lt;a href="#measure-topol" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $(X, \mathcal{T}_1)$ 和 $(X, \mathcal{T}_2)$ 是定义在同一集合 $X$ 上的两个拓扑空间.&lt;/p&gt;
+&lt;p&gt;如果 $\mathcal{T}_1$ 中的每一个开集都是 $\mathcal{T}_2$ 中的开集，则称拓扑 $\mathcal{T}_2$ &lt;strong&gt;比拓扑 $\mathcal{T}_1$ 更精细（finer）&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;用集合论的记号表示为：
+&lt;/p&gt;
+$$ \mathcal{T}_1 \subseteq \mathcal{T}_2 $$&lt;p&gt;在这种情况下，我们也称 $\mathcal{T}_1$ &lt;strong&gt;比 $\mathcal{T}_2$ 更粗糙（coarser）&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;会出现两个拓扑无法比较的情况.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="拓扑空间中的基本概念"&gt;拓扑空间中的基本概念
+&lt;/h2&gt;&lt;p&gt;下述概念在实分析中均出现过，替换开集概念为拓扑空间中的&lt;a class="link" href="#def-topol" &gt;开集&lt;/a&gt;即可.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;闭集&lt;/li&gt;
+&lt;li&gt;领域、内点和内部&lt;/li&gt;
+&lt;li&gt;聚点和闭包&lt;/li&gt;
+&lt;li&gt;序列收敛性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id="重要性质"&gt;重要性质
+&lt;/h3&gt;
+&lt;div class="math-block math-block--theorem" id="close"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题1.2 拓扑空间中闭集的性质&lt;/strong&gt;&lt;a href="#close" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ol&gt;
+&lt;li&gt;$X$与$\emptyset$都是闭集；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;任意多&lt;/strong&gt;个闭集的&lt;strong&gt;交集&lt;/strong&gt;都是闭集；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;有限个&lt;/strong&gt;闭集的&lt;strong&gt;并集&lt;/strong&gt;是闭集.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="close"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;命题1.3&lt;/strong&gt;&lt;a href="#close" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ol&gt;
+&lt;li&gt;若$A \subset B$，则$A^{\circ} \subset B^{\circ}$；&lt;/li&gt;
+&lt;li&gt;$A^{\circ}$是包含在$A$中所有开集的并集，是包含在$A$中的最大开集；&lt;/li&gt;
+&lt;li&gt;$A^{\circ}=A \iff A$是开集；&lt;/li&gt;
+&lt;li&gt;$(A\cap B)^{\circ}=A^{\circ}\cap B^{\circ}$&lt;/li&gt;
+&lt;li&gt;$(A\cup B)^{\circ} \supset A^{\circ}\cup B^{\circ}$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="c-product"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;笛卡尔积&lt;/strong&gt;&lt;a href="#c-product" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$X_1 \times X_2 \times \cdots X_n:=\{(x_1, x_2, \cdots x_n) | x_i\in X_i\} $
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="c-distribute"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;笛卡尔积分配律&lt;/strong&gt;&lt;a href="#c-distribute" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$$1. A\cup(\bigcap_{\lambda \in \Lambda}B_\lambda)= \bigcap_{\lambda \in \Lambda}(A\cup B_\lambda) \\
+2. A\cap(\bigcup_{\lambda \in \Lambda}B_\lambda)= \bigcup_{\lambda \in \Lambda}(A\cap B_\lambda) \\
+3. A\times(\bigcap_{\lambda \in \Lambda}B_\lambda)= \bigcap_{\lambda \in \Lambda}(A\times B_\lambda) \\
+4. A\times(\bigcup_{\lambda \in \Lambda}B_\lambda)= \bigcup_{\lambda \in \Lambda}(A\times B_\lambda) \\
+5. A\times(B_1 \backslash B_2)=(A\times B_1)\backslash (A\times B_2)
+$$
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

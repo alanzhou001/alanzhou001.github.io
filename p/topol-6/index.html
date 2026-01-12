@@ -1,0 +1,159 @@
+<!doctype html><html lang=zh-cn dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="拓扑中紧性（compactness）定义与性质"><title>紧性</title><link rel=canonical href=https://cxzhou.com/p/topol-6/><link rel=stylesheet href=/scss/style.min.702a187fb5c376d86aa32a6922f4ea12dac0c2dde6e96fe5532d11baeb79adfd.css><meta property='og:title' content="紧性"><meta property='og:description' content="拓扑中紧性（compactness）定义与性质"><meta property='og:url' content='https://cxzhou.com/p/topol-6/'><meta property='og:site_name' content='Alan Zhou'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='Topology'><meta property='article:tag' content='notes'><meta property='article:published_time' content='2025-10-29T21:36:00+08:00'><meta property='article:modified_time' content='2025-10-29T21:36:00+08:00'><meta property='og:image' content='https://cxzhou.com/p/topol-6/cover.jpg'><meta name=twitter:title content="紧性"><meta name=twitter:description content="拓扑中紧性（compactness）定义与性质"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content='https://cxzhou.com/p/topol-6/cover.jpg'><link rel="shortcut icon" href=/favicon.png></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_6f2b4dd1a1c0b31e.png width=300 height=300 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>✅</span></figure><div class=site-meta><h1 class=site-name><a href=/>Alan Zhou</a></h1><h2 class=site-description>长风破浪会有时，直挂云帆济沧海。</h2></div></header><ol class=menu-social><li><a href=https://space.bilibili.com/1896424732 target=_blank title=Bilibili rel=me><!doctype html><svg t="1750673622263" class="icon" viewBox="0 0 1024 1024" p-id="9917" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><path d="M306.048 117.632 444.352 256h135.296L718.08 117.632a42.688 42.688.0 1160.288 60.352L700.352 256h89.024a149.312 149.312.0 01149.312 149.312v341.376A149.312 149.312.0 01789.376 896H234.688A149.312 149.312.0 0185.376 746.688V405.312A149.312 149.312.0 01234.688 256h88.96L245.76 177.92a42.688 42.688.0 0160.352-60.352zm483.328 223.68H234.688a64 64 0 00-63.68 57.856l-.32 6.144v341.376a64 64 0 0057.856 63.68l6.144.32h554.688a64 64 0 0063.68-57.856l.32-6.144V405.312a64 64 0 00-64-64zm-448 128c23.552.0 42.688 19.136 42.688 42.688v85.312a42.688 42.688.0 11-85.376.0V512c0-23.552 19.136-42.688 42.688-42.688zm341.312.0c23.616.0 42.688 19.136 42.688 42.688v85.312a42.688 42.688.0 11-85.312.0V512c0-23.552 19.072-42.688 42.624-42.688z" fill="currentColor" p-id="9918"/></svg></a></li><li><a href=https://github.com/alanzhou001 target=_blank title=GitHub rel=me><!doctype html><svg t="1750674654355" class="icon" viewBox="0 0 1024 1024" p-id="11874" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" fill="currentColor"><path d="M682.215454 981.446137c-25.532318.0-42.553863-17.021545-42.553864-42.553864V772.932206c4.255386-34.043091-8.510773-59.575409-29.787704-80.852341-12.766159-12.766159-17.021545-29.787704-8.510773-42.553864 4.255386-17.021545 21.276932-25.532318 34.043091-29.787704 123.406204-12.766159 238.301635-55.320023 238.301635-255.323181.0-46.80925-17.021545-93.6185-51.064636-131.916976-12.766159-12.766159-12.766159-29.787704-8.510772-42.553864 12.766159-34.043091 12.766159-68.086182 4.255386-102.129272-21.276932 4.255386-55.320023 17.021545-110.640045 55.320022-8.510773 8.510773-21.276932 8.510773-34.043091 4.255387-89.363113-25.532318-187.236999-25.532318-276.600112.0-12.766159 4.255386-25.532318 4.255386-38.298477-4.255387C307.741455 104.836549 269.442978 92.07039 248.166047 87.815004c-8.510773 34.043091-8.510773 68.086182 4.255386 102.129272 4.255386 17.021545 4.255386 34.043091-8.510773 42.553864-34.043091 38.298477-51.064636 85.107727-51.064636 131.916976.0 200.003158 114.895431 242.557022 238.301635 255.323181 17.021545.0 29.787704 12.766159 34.043091 29.787704 4.255386 17.021545.0 34.043091-8.510773 42.553864-21.276932 21.276932-29.787704 46.80925-29.787704 76.596954v165.960068c0 25.532318-17.021545 42.553863-42.553863 42.553863s-42.553863-17.021545-42.553864-42.553863v-72.341568c-127.66159 21.276932-182.981613-51.064636-221.28009-97.873886-17.021545-21.276932-29.787704-38.298477-46.80925-42.553864-21.276932-4.255386-38.298477-29.787704-29.787704-51.064636 4.255386-21.276932 29.787704-38.298477 51.064636-29.787704 42.553863 12.766159 68.086182 42.553863 93.6185 72.341568 34.043091 46.80925 63.830795 80.852341 153.193908 63.830795v-4.255386c0-25.532318 4.255386-55.320023 12.766159-76.596955-119.150818-25.532318-246.812408-102.129272-246.812408-327.664748.0-63.830795 21.276932-123.406204 59.575409-170.215454-17.021545-59.575409-12.766159-114.895431 12.766159-170.215454 4.255386-12.766159 12.766159-21.276932 25.532318-25.532318 17.021545-4.255386 72.341568-12.766159 187.236999 59.575409 93.6185-21.276932 191.492386-21.276932 280.855499.0 110.640045-72.341568 170.215454-63.830795 187.236999-59.575409 12.766159 4.255386 21.276932 12.766159 25.532319 25.532318 21.276932 55.320023 25.532318 110.640045 12.766159 165.960067 38.298477 46.80925 59.575409 106.384659 59.575408 170.215454.0 242.557022-144.683136 306.387817-246.812408 331.920135 8.510773 25.532318 12.766159 55.320023 12.766159 80.852341V938.892273c0 25.532318-17.021545 42.553863-42.553863 42.553864z" p-id="11875"/></svg></a></li><li><a href=https://www.kaggle.com/alanz001 target=_blank title=Kaggle rel=me><!doctype html><svg t="1750673694686" class="icon" viewBox="0 0 1024 1024" p-id="10910" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" fill="currentColor"><path d="M331.264 128c-7.488.0-11.264 3.744-11.264 11.264V884.64c0 7.488 3.744 11.232 11.264 11.232h73.472c7.488.0 11.328-3.712 11.328-11.232V729.888l57.888-55.136L641.568 888c4.544 5.28 9.792 8 15.872 8h101.504c5.312.0 8.32-1.536 9.056-4.576l-2.112-11.488-221.12-274.816L756.8 399.936c3.936-4.096 2.56-15.936-8.064-15.936h-104.96c-5.344.0-10.656 2.752-15.968 8.064L416 607.2V139.264c0-7.52-3.744-11.264-11.264-11.264h-73.472z" p-id="10911"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>About me</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/links/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>Links</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#紧性>紧性</a><ol><li><a href=#紧子集>紧子集</a></li><li><a href=#几个性质>几个性质</a></li></ol></li><li><a href=#lebesgue引理>Lebesgue引理</a></li><li><a href=#一点紧致化>一点紧致化</a></li></ol></nav></div></section></aside><main class="main full-width"><article class="has-image main-article"><header class=article-header><div class=article-image><a href=/p/topol-6/><img src=/p/topol-6/cover_hu_7aa894bba5a96914.jpg srcset="/p/topol-6/cover_hu_7aa894bba5a96914.jpg 800w, /p/topol-6/cover_hu_a73beabc7ca05433.jpg 1600w" width=800 height=450 loading=lazy alt="Featured image of post 紧性"></a></div><div class=article-details><header class=article-category><a href=/categories/math/>Math</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/topol-6/>紧性</a></h2><h3 class=article-subtitle>拓扑中紧性（compactness）定义与性质</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published datetime=2025-10-29T21:36:00+08:00>Oct 29, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 7 分钟</time></div></footer></div></header><section class=article-content><p>封面画师：<a class=link href=https://www.pixiv.net/artworks/113735140 target=_blank rel=noopener>Novi</a></p><h2 id=紧性>紧性</h2><div class="math-block math-block--definition" id=compactness><div class=math-block-title><strong>Definition 4.3.1 紧致空间</strong><a href=#compactness class=math-block-anchor aria-label=直接链接到此>¶</a></div><div class=math-block-content><p><strong>开覆盖 (Open Cover)</strong>
+设 $X$ 是一个拓扑空间 (topol. space)，$A \subset X$。
+$\mathcal{O}$ 是 $X$ 中的一组开集 (a collection of open sets of $X$)。
+如果 $A$ 包含在 $\mathcal{O}$ 中所有开集的并集内，则 $\mathcal{O}$ 称为 $A$ 的一个<strong>开覆盖</strong> (open cover)。</p><p><strong>子覆盖 (Subcover)</strong>
+如果 $\mathcal{O}$ 覆盖了 $A$，$\mathcal{O}'$ 是 $\mathcal{O}$ 的一个子族 (subcollection) 且 $\mathcal{O}'$ 也覆盖了 $A$，则 $\mathcal{O}'$ 是 $\mathcal{O}$ 的一个<strong>子覆盖</strong> (subcover)。</p><p><strong>紧致空间 (Compact Space)</strong>
+一个拓扑空间 $X$ 是<strong>紧致的</strong> (compact)，如果 $X$ 的每一个开覆盖都有一个<strong>有限子覆盖</strong> (a finite subcover)。</p></div></div><p><strong>例 (Eg.)：</strong></p><ol><li><p>$E^1$ <strong>不是紧致的</strong> (is not compact)。</p><p><strong>证明：</strong> 考虑开覆盖 $\mathcal{O} = \{(-n, n) | n \in \mathbb{Z}^+\}$。
+$\bigcup_{n=1}^{\infty} (-n, n) = E^1$，所以 $\mathcal{O}$ 是 $E^1$ 的一个开覆盖。
+如果 $\mathcal{O}$ 有一个有限子覆盖 $\mathcal{O}' = \{(-n_1, n_1), \ldots, (-n_k, n_k)\}$。
+令 $N = \max\{n_1, \ldots, n_k\}$。则 $\bigcup_{i=1}^{k} (-n_i, n_i) = (-N, N)$。
+由于 $(-N, N) \neq E^1$（例如，点 $N+1$ 不被覆盖），故 $\mathcal{O}$ 没有有限子覆盖。
+因此 $E^1$ 不是紧致的。</p></li><li><p>设 $X = \{x_1, x_2, \ldots, x_n\}$ 是一个有限集，则 $X$ 上的任何拓扑都是<strong>紧致的</strong> (is compact)。</p><p><strong>证明：</strong> 设 $\mathcal{O}$ 是 $X$ 的任意开覆盖。对于 $\forall x_i \in X$，必存在 $U_i \in \mathcal{O}$ 使得 $x_i \in U_i$。由于 $X$ 只有 $n$ 个点，我们只需选择 $\{U_1, U_2, \ldots, U_n\}$ 这 $n$ 个开集即可覆盖 $X$。这是一个有限子覆盖。</p></li><li><p>$\mathbb{R}_{fc}$（具有<strong>共有限拓扑</strong> (cofinite topology) 的实数集 $\mathbb{R}$）是<strong>紧致的</strong> (is compact)。</p><p><strong>证明：</strong>
+设 $\mathcal{O}$ 是 $\mathbb{R}_{fc}$ 的一个开覆盖 (open cover)。
+由于 $\mathcal{O}$ 覆盖了 $\mathbb{R}$，$\exists U \in \mathcal{O}$ 使得 $U \neq \emptyset$。
+根据共有限拓扑的定义，非空开集 $U$ 的补集 $\mathbb{R} \setminus U$ 是<strong>有限集</strong>。
+记 $\mathbb{R} \setminus U = \{y_1, y_2, \ldots, y_m\}$。
+$\forall y_i \in \mathbb{R} \setminus U$ (即 $y_i$ 是未被 $U$ 覆盖的点)，由于 $\mathcal{O}$ 覆盖了 $\mathbb{R}$， $\exists V_i \in \mathcal{O}$ 使得 $y_i \in V_i$。
+考虑 $\mathcal{O}' = \{V_1, V_2, \ldots, V_m, U\}$。$\mathcal{O}'$ 是 $\mathcal{O}$ 的一个有限子集（包含 $m+1$ 个元素）。</p>$$\bigcup_{i=1}^{m} V_i \cup U = (\mathbb{R} \setminus U) \cup U = \mathbb{R}$$<p>因此 $\mathcal{O}'$ 是 $\mathcal{O}$ 的一个有限子覆盖。
+所以 $\mathbb{R}_{fc}$ 是紧致的。</p></li></ol><h3 id=紧子集>紧子集</h3><div class="math-block math-block--definition" id=compact-set><div class=math-block-title><strong>紧子集</strong><a href=#compact-set class=math-block-anchor aria-label=直接链接到此>¶</a></div><div class=math-block-content>$X$ 是一个拓扑空间，$A \subset X$, 称$A$在$X$中是紧的(compact)，或是$X$中的一个紧致子集(a compact set)，如果$A$在子空间拓扑中是紧的。</div></div><div class="math-block math-block--theorem" id=compact-set-lemma><div class=math-block-title><strong>Lemma: 紧子集</strong><a href=#compact-set-lemma class=math-block-anchor aria-label=直接链接到此>¶</a></div><div class=math-block-content>设$X$是一个拓扑空间，$A \subset X$，则$A$在$X$中是紧的，当且仅当任何由$X$中开集组成的、覆盖$A$的开覆盖，都存在一个有限子覆盖。</div></div><div class="math-block math-block--theorem"><div class=math-block-title><strong>Proposition</strong></div><div class=math-block-content><p>设$X$是一个拓扑空间且紧的，$Y$是拓扑空间，$f: X \to Y$连续，则</p>$$
+f(X)在Y中是紧的
+$$<p>*连续映射保持紧性</p></div></div><div class="math-block math-block--proof"><div class=math-block-content><em><strong>证明.</strong></em>&nbsp;<p>取任意一个 $f(X)$ 在 $Y$ 中的开覆盖 $\mathcal{O}$，即</p>$$
+f(X)\subset \bigcup_{U\in\mathcal{O}} U,
+$$<p>其中每个 $U$ 都是 $Y$ 中的开集。</p><p>由于 $f$ 连续，对任意 $U\in\mathcal{O}$，其原像 $f^{-1}(U)$ 是 $X$ 中的开集。于是</p>$$
+\{,f^{-1}(U)\mid U\in\mathcal{O},\}
+$$<p>是一族 $X$ 中的开集，并且它覆盖 $X$：对任意 $x\in X$，有 $f(x)\in f(X)\subset \bigcup_{U\in\mathcal{O}}U$，因此存在某个 $U\in\mathcal{O}$ 使得 $f(x)\in U$，从而 $x\in f^{-1}(U)$。故</p>$$
+X\subset \bigcup_{U\in\mathcal{O}} f^{-1}(U).
+$$<p>因为 $X$ 紧，上述开覆盖存在有限子覆盖：存在 $U_1,\dots,U_n\in\mathcal{O}$，使得</p>$$
+X=\bigcup_{i=1}^n f^{-1}(U_i).
+$$<p>两边取 $f$ 的像，得</p>$$
+f(X)=f!\left(\bigcup_{i=1}^n f^{-1}(U_i)\right)
+= \bigcup_{i=1}^n f\bigl(f^{-1}(U_i)\bigr)
+\subset \bigcup_{i=1}^n U_i.
+$$<p>所以 $U_1,\dots,U_n$ 是 $\mathcal{O}$ 的一个有限子覆盖。</p><p>因此，任意 $f(X)$ 的开覆盖都有有限子覆盖，说明 $f(X)$ 在 $Y$ 中紧.</p><span class=qed-symbol>□</span></div></div><div class="math-block math-block--theorem"><div class=math-block-title><strong>Corollary</strong></div><div class=math-block-content>$X_1, X_2$是拓扑空间，$X_1 \cong X_2$，则$X_1$是紧的$\Longleftrightarrow$ $X_2$是紧的</div></div><h3 id=几个性质>几个性质</h3><ul><li><strong>紧空间</strong>上的<strong>闭子集</strong>是<strong>紧的</strong></li><li><strong>Hausdorff空间</strong>的<strong>紧子集</strong>是<strong>闭的</strong></li><li><strong>紧且 Hausdorff</strong> 的拓扑空间中，一个子集当且仅当它是<strong>闭集</strong>时才是<strong>紧的</strong>。</li></ul><div class="math-block math-block--theorem"><div class=math-block-title><strong>定理 4</strong></div><div class=math-block-content>设 $X$ 是一个<strong>紧致（compact）<strong>拓扑空间，$Y$ 是一个 <strong>Hausdorff</strong> 拓扑空间。<br>若映射
+$$
+f: X \to Y
+$$
+是</strong>连续的双射</strong>，则 $f$ 是一个<strong>同胚（homeomorphism）</strong>。</div></div><div class="math-block math-block--proof"><div class=math-block-content><em><strong>证明.</strong></em>&nbsp;<p>要证明 $f$ 是同胚，只需证明 $f^{-1}$ 连续。<br>等价地，只需证明 $f$ 是一个<strong>闭映射</strong>。</p><p>设 $C \subset X$ 是闭集。</p><p>因为 $X$ 紧，且 $C$ 是 $X$ 的闭子集，所以<br></p>$$
+C \text{ 在 } X \text{ 中是紧的。}
+$$<p>由于 $f$ 连续，紧集在连续映射下的像仍然紧，因此<br></p>$$
+f(C) \text{ 在 } Y \text{ 中是紧的。}
+$$<p>又因为 $Y$ 是 Hausdorff 空间，紧集在 Hausdorff 空间中必为闭集，所以<br></p>$$
+f(C) \text{ 在 } Y \text{ 中是闭的。}
+$$<p>因此，$f$ 将任意闭集映为闭集，即 $f$ 是闭映射。</p><p>结合 $f$ 连续且为双射，可得 $f^{-1}$ 连续，从而 $f$ 是同胚。</p><span class=qed-symbol>□</span></div></div><div class="math-block math-block--theorem"><div class=math-block-title><strong>定理 5</strong></div><div class=math-block-content>设 $X$ 是一个<strong>紧致（compact）<strong>拓扑空间，$Y$ 是一个 <strong>Hausdorff</strong> 拓扑空间。<br>若映射
+$$
+f: X \to Y
+$$
+是</strong>连续且单射（injective）<strong>的，则 $f$ 是一个</strong>嵌入（embedding）</strong>。</div></div><div class="math-block math-block--proof"><div class=math-block-content><em><strong>证明.</strong></em>&nbsp;<p>要证明 $f$ 是嵌入，只需证明</p>$$
+f: X \to f(X)
+$$<p>是一个同胚。</p><p>由于 $f$ 是连续的双射，从 $X$ 到 $f(X)$，且 $f(X)$ 作为 $Y$ 的子空间仍是 Hausdorff 空间，因此只需证明 $f$ 是闭映射。</p><p>设 $C \subset X$ 是闭集。</p><p>因为 $X$ 紧，且 $C$ 是 $X$ 的闭子集，所以</p>$$
+C \text{ 在 } X \text{ 中是紧的。}
+$$<p>由于 $f$ 连续，紧集在连续映射下的像仍然紧，因此</p>$$
+f(C) \text{ 在 } f(X) \text{ 中是紧的。}
+$$<p>又因为 $f(X)$ 是 Hausdorff 空间，紧集在 Hausdorff 空间中必为闭集，所以</p>$$
+f(C) \text{ 在 } f(X) \text{ 中是闭的。}
+$$<p>因此，$f$ 将任意闭集映为闭集，即</p>$$
+f: X \to f(X)
+$$<p>是闭映射。</p><p>结合 $f$ 连续且为双射，可得其逆映射连续，从而</p>$$
+f: X \to f(X)
+$$<p>是同胚。</p><p>因此 $f$ 是一个嵌入。</p><span class=qed-symbol>□</span></div></div><div class="math-block math-block--theorem"><div class=math-block-title><strong>定理 6</strong></div><div class=math-block-content><p>设 $X$ 是一个 <strong>Hausdorff</strong> 拓扑空间，$\{C_\lambda\}_{\lambda\in\Lambda}$ 是 $X$ 中的一族<strong>紧子集</strong>。<br>则</p>$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$<p>在 $X$ 中是<strong>紧的</strong>。</p></div></div><div class="math-block math-block--proof"><div class=math-block-content><em><strong>证明.</strong></em>&nbsp;<p>由于 $X$ 是 Hausdorff 空间，而每个 $C_\lambda$ 都是紧的，因此</p>$$
+C_\lambda \text{ 在 } X \text{ 中是闭集。}
+$$<p>于是有</p>$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$<p>是 $X$ 中闭集的交，因此仍是闭集。</p><p>任取某个固定的 $\lambda_0 \in \Lambda$，显然有</p>$$
+\bigcap_{\lambda\in\Lambda} C_\lambda \subset C_{\lambda_0}.
+$$<p>由于 $C_{\lambda_0}$ 是紧空间，而</p>$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$<p>是 $C_{\lambda_0}$ 中的闭子集，所以</p>$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$<p>在 $C_{\lambda_0}$ 中是紧的。</p><p>而紧性在子空间意义下保持，因此</p>$$
+\bigcap_{\lambda\in\Lambda} C_\lambda
+$$<p>在 $X$ 中也是紧的。</p><span class=qed-symbol>□</span></div></div><div class="math-block math-block--theorem"><div class=math-block-title><strong>定理 7</strong></div><div class=math-block-content><p>设 $X,Y$ 是拓扑空间，则</p>$$
+X \times Y \text{ 是紧的 } \Longleftrightarrow X \text{ 和 } Y \text{ 都是紧的。}
+$$</div></div><div class="math-block math-block--proof"><div class=math-block-content><em><strong>证明.</strong></em>&nbsp;<p>$\Rightarrow$:</p><p>设</p>$$
+X \times Y \text{ 是紧的。}
+$$<p>考虑投影映射</p>$$
+\pi_1: X \times Y \to X,\quad (x,y)\mapsto x,
+$$<p></p>$$
+\pi_2: X \times Y \to Y,\quad (x,y)\mapsto y.
+$$<p>显然 $\pi_1,\pi_2$ 都是连续且满射。</p><p>由于紧集在连续映射下的像仍然是紧的，因此</p>$$
+X=\pi_1(X\times Y),\quad Y=\pi_2(X\times Y)
+$$<p>都是紧的。</p><hr><p>$\Leftarrow$:</p><p>现在设</p>$$
+X \text{ 和 } Y \text{ 都是紧的。}
+$$<p>令 $\mathcal{O}$ 是 $X\times Y$ 的一个开覆盖。</p><p><strong>第一步：固定 $x\in X$，构造 $W_x$</strong></p><p>由于</p>$$
+\{x\}\times Y
+$$<p>与 $Y$ 同胚，因此是紧的。于是存在有限个开集</p>$$
+W_x \subset \mathcal{O}
+$$<p>使得</p>$$
+\{x\}\times Y \subset \bigcup W_x.
+$$<p>对任意 $y\in Y$，因为 $(x,y)\in \bigcup W_x$，存在</p>$$
+U_y \times V_y \subset W_x
+$$<p>使得</p>$$
+(x,y)\in U_y \times V_y,
+$$<p>其中 $U_y$ 是 $X$ 中 $x$ 的邻域，$V_y$ 是 $Y$ 中 $y$ 的邻域。</p><p>由于</p>$$
+\{V_y \mid y\in Y\}
+$$<p>是 $Y$ 的一个开覆盖，而 $Y$ 紧，存在有限子覆盖</p>$$
+Y=\bigcup_{j=1}^n V_{y_j}.
+$$<p>令</p>$$
+R_x=\bigcap_{j=1}^n U_{y_j},
+$$<p>则 $R_x$ 是 $X$ 中的开集，且 $x\in R_x$。</p><p>并且有</p>$$
+R_x \times Y \subset \bigcup W_x.
+$$<hr><p><strong>第二步：利用 $X$ 的紧性</strong></p><p>由上述构造，</p>$$
+\{R_x \mid x\in X\}
+$$<p>是 $X$ 的一个开覆盖。由于 $X$ 紧，存在有限个点</p>$$
+x_1,\dots,x_m \in X
+$$<p>使得</p>$$
+X=\bigcup_{i=1}^m R_{x_i}.
+$$<p>于是</p>$$
+X\times Y
+= \left(\bigcup_{i=1}^m R_{x_i}\right)\times Y
+= \bigcup_{i=1}^m (R_{x_i}\times Y)
+\subset \bigcup_{i=1}^m \bigcup W_{x_i}.
+$$<p>右端是 $\mathcal{O}$ 的有限子集的并，因此 $\mathcal{O}$ 存在有限子覆盖。</p><hr><p>由紧性的定义可知</p>$$
+X\times Y \text{ 是紧的。}
+$$
+<span class=qed-symbol>□</span></div></div><div class="math-block math-block--theorem"><div class=math-block-title><strong>Corollary</strong></div><div class=math-block-content><p>设 $X_i$ 是拓扑空间，$i=1,2,\dots,n$。则</p>$$
+X_1 \times X_2 \times \cdots \times X_n \text{ 是紧的}
+$$<p>当且仅当</p>$$
+X_i \text{ 是紧的}, \quad \forall\, i=1,2,\dots,n.
+$$</div></div><h2 id=lebesgue引理>Lebesgue引理</h2><div class="math-block math-block--theorem"><div class=math-block-title><strong>Lebesgue引理</strong></div><div class=math-block-content><p>设 $(X,d)$ 是一个<strong>紧致度量空间</strong>，$\mathcal O$ 是 $X$ 的一个<strong>开覆盖</strong>。<br>则存在一个常数</p>$$
+\varepsilon > 0
+$$<p>使得对任意 $x\in X$，都存在某个 $U\in\mathcal O$，满足</p>$$
+B(x,\varepsilon)\subset U.
+$$<hr><p><strong>备注（Remark）</strong>
+这里的 $\varepsilon$ 只依赖于 $(X,d)$ 和开覆盖 $\mathcal O$，<br><strong>与具体点 $x\in X$ 无关</strong>。</p><p>该常数 $\varepsilon$ 称为 <strong>Lebesgue 数（Lebesgue constant / Lebesgue number）</strong>。</p></div></div><h2 id=一点紧致化>一点紧致化</h2><div class="math-block math-block--definition" id=local-cmpc><div class=math-block-title><strong>Locally compact</strong><a href=#local-cmpc class=math-block-anchor aria-label=直接链接到此>¶</a></div><div class=math-block-content><p>设 $X$ 是一个拓扑空间。称 $X$ 是<strong>局部紧的（locally compact）</strong>，如果对任意 $x\in X$，存在一个<strong>紧子集</strong> $C\subset X$，使得</p>$$
+x \in \operatorname{int}(C).
+$$<p>等价地，$X$ 是局部紧的，当且仅当：</p><p>对任意 $x\in X$，存在一个开集 $U$ 和一个紧集 $C$，使得</p>$$
+x \in U \subset C.
+$$</div></div><blockquote><p>所有紧空间都是局部紧的；
+$E^n$是局部紧的，$\forall x \in E^n$，$C=B(x,1), U=B(x,1)$</p></blockquote><div class="math-block math-block--theorem"><div class=math-block-title><strong>Alexandroff 一点紧致化</strong></div><div class=math-block-content><p>设 $(X,\mathcal T)$ 是一个 <strong>Hausdorff</strong> 拓扑空间，取一点 $\infty\notin X$，令</p>$$
+Y = X \cup \{\infty\}.
+$$<p>定义 $Y$ 上的拓扑</p>$$
+\mathcal T_\infty
+= \mathcal T \,\cup\, \{\,Y\setminus C \mid C \text{ 是 } X \text{ 中的紧子集}\,\}.
+$$<p>则有以下结论：</p><p>(1) $(Y,\mathcal T_\infty)$ 是一个拓扑空间</p><p>(2) $X$ 从 $(Y,\mathcal T_\infty)$ 继承的子空间拓扑与原拓扑一致，即</p>$$
+(\mathcal T_\infty)_X = \mathcal T.
+$$<p>(3) $(Y,\mathcal T_\infty)$ 是紧的</p><p>(4) 若 $(X,\mathcal T)$ 是<strong>局部紧的</strong>，则 $(Y,\mathcal T_\infty)$ 是 <strong>Hausdorff</strong> 空间</p><p>(5) 若 $(X,\mathcal T)$ 是<strong>非紧的</strong>，则</p>$$
+X \subsetneq Y,
+$$<p>即新加入的一点 $\infty$ 不是多余的</p><hr><h2 id=备注remark>备注（Remark）</h2><p>该构造称为 <strong>一点紧化（one-point compactification）</strong> 或 <strong>Alexandroff 紧化</strong>。<br>当 $X$ 是局部紧 Hausdorff 空间时，$(Y,\mathcal T_\infty)$ 是一个 <strong>紧 Hausdorff 空间</strong>，且 $X$ 是 $Y$ 的一个稠密开子空间。</p></div></div></section><footer class=article-footer><section class=article-tags><a href=/tags/topology/>Topology</a>
+<a href=/tags/notes/>Notes</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Licensed under CC BY-NC-SA 4.0</span></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{const e=[".main-article",".widget--toc"];e.forEach(e=>{const t=document.querySelector(e);t&&renderMathInElement(t,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})})</script></article><aside class=related-content--wrapper><h2 class=section-title>相关文章</h2><div class=related-content><div class="flex article-list--tile"><article class=has-image><a href=/p/topol-8/><div class=article-image><img src=/p/topol-8/cover.b178c490eb6ad8f3865286f0e86a3f93_hu_97f8b5cad223511.jpg width=250 height=150 loading=lazy alt="Featured image of post 商空间与商拓扑" data-key=topol-8 data-hash="md5-sXjEkOtq2POGUobw6Go/kw=="></div><div class=article-details><h2 class=article-title>商空间与商拓扑</h2></div></a></article><article class=has-image><a href=/p/topol-7/><div class=article-image><img src=/p/topol-7/cover.30eb22b8ba1bf0fed1e48530ed02a36f_hu_c5437b482a335cc2.jpg width=250 height=150 loading=lazy alt="Featured image of post 连通性" data-key=topol-7 data-hash="md5-MOsiuLob8P7R5IUw7QKjbw=="></div><div class=article-details><h2 class=article-title>连通性</h2></div></a></article><article class=has-image><a href=/p/topol-5/><div class=article-image><img src=/p/topol-5/cover.a185263f51a9a0bad4152607e4fff8d4_hu_35d4ee4251022e7b.jpg width=250 height=150 loading=lazy alt="Featured image of post 分离性与可数性" data-key=topol-5 data-hash="md5-oYUmP1GpoLrUFSYH5P/41A=="></div><div class=article-details><h2 class=article-title>分离性与可数性</h2></div></a></article><article class=has-image><a href=/p/topol-4/><div class=article-image><img src=/p/topol-4/cover.adcb864440c1accd968e2c534d3d1f79_hu_4af52b31baba4906.jpg width=250 height=150 loading=lazy alt="Featured image of post 连续映射、同胚与拓扑性质" data-key=topol-4 data-hash="md5-rcuGREDBrM2WjixTTT0feQ=="></div><div class=article-details><h2 class=article-title>连续映射、同胚与拓扑性质</h2></div></a></article><article class=has-image><a href=/p/topol-3/><div class=article-image><img src=/p/topol-3/cover.536cf64d1788c9680b4afe80d56a2e16_hu_d1f6a02639bad5f9.jpg width=250 height=150 loading=lazy alt="Featured image of post 内点、闭包、边界点" data-key=topol-3 data-hash="md5-U2z2TReIyWgLSv6A1WouFg=="></div><div class=article-details><h2 class=article-title>内点、闭包、边界点</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//alanz.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2025 -
+2026 Alan Zhou</section><section class=powerby>使用 <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a> 构建<br>主题 <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.33.0>Stack</a></b> 由 <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a> 设计</section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.c922af694cc257bf1ecc41c0dd7b0430f9114ec280ccf67cd2c6ad55f5316c4e.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
