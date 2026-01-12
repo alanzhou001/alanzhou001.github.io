@@ -280,9 +280,9 @@ $\forall y_1, y_2 \in Y$，且 $y_1 \neq y_2$。
 设 $X, Y$ 是拓扑空间 (topol. spaces)。
 $f: X \rightarrow Y$ 是一个**嵌入** (embedding)
 $$\iff$$
-$f$ 是**内射** (injective)，**连续** (continuous) 且**开映射** (open)
+$f$ 是**单射** (injective)，**连续** (continuous) 且**开映射** (open)
 $$\iff$$
-$f$ 是**内射** (injective)，**连续** (continuous) 且**闭映射** (closed)
+$f$ 是**单射** (injective)，**连续** (continuous) 且**闭映射** (closed)
 
 **(注：)** 这里的“开映射”和“闭映射”是指 $f: X \rightarrow f(X)$（视 $f(X)$ 为 $Y$ 的子空间）是开映射或闭映射。
 
