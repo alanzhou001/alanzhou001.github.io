@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Example Category on Alan Zhou</title><link>https://cxzhou.com/categories/example-category/</link><description>Recent content in Example Category on Alan Zhou</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 22 Jun 2025 20:00:00 +0800</lastBuildDate><atom:link href="https://cxzhou.com/categories/example-category/index.xml" rel="self" type="application/rss+xml"/><item><title>Hello World</title><link>https://cxzhou.com/p/hello-world/</link><pubDate>Sun, 22 Jun 2025 20:00:00 +0800</pubDate><guid>https://cxzhou.com/p/hello-world/</guid><description>&lt;img src="https://cxzhou.com/p/hello-world/cover.jpg" alt="Featured image of post Hello World" /&gt;&lt;p&gt;Hello World! This is my first post.&lt;/p&gt;
+&lt;p&gt;This will be kept as an template.&lt;/p&gt;
+&lt;p&gt;公式展示：$e^{it}=cost+i \cdot sint$&lt;/p&gt;
+$$
+F(t)=\int_0^t f(x)dx
+$$&lt;p&gt;For more information about this theme, check the documentation: &lt;a class="link" href="https://stack.jimmycai.com/" target="_blank" rel="noopener"
+&gt;https://stack.jimmycai.com/&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Photo by &lt;a class="link" href="https://unsplash.com/@pawel_czerwinski" target="_blank" rel="noopener"
+&gt;Pawel Czerwinski&lt;/a&gt; on &lt;a class="link" href="https://unsplash.com/" target="_blank" rel="noopener"
+&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</description></item></channel></rss>
