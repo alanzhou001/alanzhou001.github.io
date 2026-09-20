@@ -14,10 +14,10 @@ comments: false
 {{< links >}}
 - title: wmgg的Blog
   website: https://yevzh.gitHub.io
-  description: "最爱的wmgg，SJTU CS硕士研究生在读"
+  description: "wmgg，SJTU CS硕士在读"
 - title: Yixiao's Blog
   website: https://wangyixiao.top
-  description: "优秀！交大SE本科在读"
+  description: "优秀！交大SE博士在读"
 - title: 豆芽酱的网站
   website: https://dyas.top
   description: "豆芽酱，很厉害的电院同学"
@@ -35,9 +35,6 @@ comments: false
 - title: GitHub
   website: https://github.com
   description: "全球最大的~代码托管~男性交友平台。"
-- title: Google Gemini
-  website: https://gemini.google.com
-  description: "好用的ai"
 - title: ChatGPT
   website: https://chatgpt.com/
   description: "好用的ai"
@@ -50,7 +47,7 @@ comments: false
 {{< /links >}}
 
 
-## 🌸 ecy蒸鹅心
+## 🌸 ecy？！
 
 {{< links >}}
 - title: Bilibili
@@ -59,6 +56,9 @@ comments: false
 - title: Pixiv
   website: https://www.pixiv.net
   description: "一个以插图、漫画和小说艺术为中心的社交网络服务。"
+- title: Ani
+  website: https://ani.girigirilove.com
+  description: "看番好去处"
 - title: Bangumi
   website: https://bgm.tv/
   description: "ecy资料库"

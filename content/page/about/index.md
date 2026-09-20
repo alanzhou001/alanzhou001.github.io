@@ -73,7 +73,7 @@ menu:
 聚焦硬科技风险投资，开展技术拆解、竞争格局分析与成本测算，并分析系统架构和商业化拐点。
 {{< /timeline-item >}}
 
-{{< timeline-item title="上海交通大学一站式学生社区" subtitle="《概率论与数理统计》朋辈学业导师" date="2026年3月—2027年3月" >}}
+{{< timeline-item title="上海交通大学一站式学生社区" subtitle="《概率论与数理统计》学科营辅导员" date="2026年3月—2027年3月" >}}
 {{< /timeline-item >}}
 
 {{< /timeline >}}
