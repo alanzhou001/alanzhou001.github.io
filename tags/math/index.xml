@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Math on Alan Zhou</title><link>https://cxzhou.com/tags/math/</link><description>Recent content in Math on Alan Zhou</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Thu, 01 Jan 2026 23:06:00 +0800</lastBuildDate><atom:link href="https://cxzhou.com/tags/math/index.xml" rel="self" type="application/rss+xml"/><item><title>K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）</title><link>https://cxzhou.com/p/konsistency/</link><pubDate>Thu, 01 Jan 2026 23:06:00 +0800</pubDate><guid>https://cxzhou.com/p/konsistency/</guid><description>&lt;img src="https://cxzhou.com/p/konsistency/cover.jpg" alt="Featured image of post K连贯性方法(Konsistency)及其在六度分隔问题中的探索性研究（待补完）" /&gt;&lt;p&gt;封面画师：&lt;a class="link" href="https://www.pixiv.net/artworks/60752234" target="_blank" rel="noopener"
+&gt;wukloo&lt;/a&gt;&lt;/p&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 1（图与邻接）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+设 $G=(V,E)$ 为有限简单无向图，其中 $V$ 为顶点集，$E\subseteq{{u,v}:u,v\in V, u\neq v}$ 为边集。若 ${u,v}\in E$，则称 $u$ 与 $v$ 相邻，记为$u\sim v$。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 2（闭邻域）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对任意顶点 $k\in V$，定义其闭邻域为
+&lt;/p&gt;
+$$
+N[k] := {k}\cup{v\in V:\ v\sim k}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 3（支配集）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;集合 $K\subseteq V$ 称为图 $G$ 的一个支配集，若满足
+&lt;/p&gt;
+$$
+\forall v\in V,\quad \exists k\in K \text{ 使得 } v\in N[k].
+$$&lt;p&gt;
+即，图中每一个顶点要么属于 $K$，要么与 $K$ 中的某个顶点相邻。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 4（划分）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;称一族非空集合 ${S_k}_{k\in I}$ 为 $V$ 的一个划分，若满足：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$S_k\neq\varnothing$，对所有 $k\in I$；&lt;/li&gt;
+&lt;li&gt;$S_{k_1}\cap S_{k_2}=\varnothing$，对所有 $k_1\neq k_2$；&lt;/li&gt;
+&lt;li&gt;$\bigcup_{k\in I} S_k = V$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定义 5（k-星型中心）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $S\subseteq V$ 为非空集合。若存在 $k\in S$ 使得
+&lt;/p&gt;
+$$
+\forall v\in S\setminus{k},\quad k\sim v,
+$$&lt;p&gt;
+则称 k 为集合 S 的一个 &lt;strong&gt;k-星型中心&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理 1（由支配集诱导的 k-中心星型划分）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $G=(V,E)$ 为有限简单无向图，且 $K\subseteq V$ 为其一个支配集。则存在一个映射
+&lt;/p&gt;
+$$
+f:V\to K
+$$&lt;p&gt;
+满足
+&lt;/p&gt;
+$$
+\forall v\in V,\quad v\in N[f(v)].
+$$&lt;p&gt;
+令
+&lt;/p&gt;
+$$
+S_k := {v\in V:\ f(v)=k},\qquad k\in K,
+$$&lt;p&gt;
+并定义
+&lt;/p&gt;
+$$
+K' := {k\in K:\ S_k\neq\varnothing}.
+$$&lt;p&gt;
+则集合族 ${S_k}_{k\in K'}$ 构成 $V$ 的一个划分，且对每个 $k\in K'$，顶点 $k$ 是子集 $S_k$ 的 k-星型中心。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由于 $K$ 是 $G$ 的支配集，按定义对任意 $v\in V$，存在至少一个 $k\in K$ 使得 $v\in N[k]$。据此，对每个 $v\in V$ 任取一个满足上述条件的顶点 $k\in K$，并定义映射
+&lt;/p&gt;
+$$
+f(v)=k.
+$$&lt;p&gt;
+由构造立即可得
+&lt;/p&gt;
+$$
+\forall v\in V,\quad v\in N[f(v)].
+$$&lt;p&gt;接下来验证集合族 ${S_k}_{k\in K'}$ 的性质。&lt;/p&gt;
+&lt;p&gt;首先，对任意$v\in V$，由 $f(v)\in K$ 且 $v\in S_{f(v)}$，可得
+&lt;/p&gt;
+$$
+V=\bigcup_{k\in K}S_k=\bigcup_{k\in K'}S_k,
+$$&lt;p&gt;
+从而覆盖性成立。&lt;/p&gt;
+&lt;p&gt;其次，由于 $f$ 为函数，对任意不同的 $k_1,k_2\in K$，有
+&lt;/p&gt;
+$$
+S_{k_1}\cap S_{k_2}
+={v\in V:\ f(v)=k_1 \text{ 且 } f(v)=k_2}
+=\varnothing,
+$$&lt;p&gt;
+故集合两两不交。&lt;/p&gt;
+&lt;p&gt;再次，由 $K'$ 的定义可知，对所有$k\in K'$，均有$S_k\neq\varnothing$。因此 ${S_k}_{k\in K'}$ 构成 $V$ 的一个划分。&lt;/p&gt;
+&lt;p&gt;最后，取任意 $k\in K'$ 及任意$v\in S_k$。由 $S_k$ 的定义，有 $f(v)=k$。结合映射 $f$ 的构造性质，得
+&lt;/p&gt;
+$$
+v\in N[k],
+$$&lt;p&gt;
+即要么 $v=k$，要么 $v\sim k$。因此，对所有$v\in S_k\setminus{k}$，均有 $k\sim v$，从而 $k$ 为 $S_k$ 的 k-星型中心。&lt;/p&gt;
+&lt;p&gt;定理得证。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="minmax-星型中心划分的优化建模"&gt;Min–max 星型中心划分的优化建模
+&lt;/h2&gt;&lt;h3 id="1-预备定义与符号"&gt;1. 预备定义与符号
+&lt;/h3&gt;&lt;p&gt;设 \(G=(V,E)\) 为有限简单无向图，\(|V|=n\)。定义邻接指示函数
+&lt;/p&gt;
+\[
+a_{vk} =
+\begin{cases}
+1, &amp; v = k \text{ 或 } \{v,k\} \in E, \\
+0, &amp; \text{否则}.
+\end{cases}
+\]&lt;p&gt;
+注意 \(a_{vk}=1\) 当且仅当 \(v \in N[k]\)，即顶点 \(v\) 与顶点 \(k\) 至多一跳可达（允许 \(v=k\)）。&lt;/p&gt;
+&lt;p&gt;称顶点 \(k\) 为集合 \(S \subseteq V\) 的 &lt;strong&gt;\(k\)-星型中心&lt;/strong&gt;，若对任意 \(v \in S \setminus \{k\}\)，均有 \(\{v,k\} \in E\)。等价地，
+&lt;/p&gt;
+\[
+\forall v \in S,\quad a_{vk}=1.
+\]&lt;hr&gt;
+&lt;h3 id="2-minmax-优化问题的原始形式"&gt;2. Min–max 优化问题的原始形式
+&lt;/h3&gt;&lt;p&gt;给定一个正整数 \(m\)（中心数或子群体数的预算），考虑如下问题：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;问题 \((\mathcal{P}_m)\)：Min–max 星型中心划分&lt;/strong&gt;
+&lt;/p&gt;
+\[
+\min_{\{S_k\},\,K}\ \max_{k \in K} |S_k|
+\]&lt;p&gt;
+满足
+&lt;/p&gt;
+\[
+\begin{aligned}
+&amp;K \subseteq V,\quad |K| \le m, \\
+&amp;\{S_k\}_{k \in K} \text{ 构成 } V \text{ 的一个划分}, \\
+&amp;k \in S_k \quad \forall k \in K, \\
+&amp;S_k \subseteq N[k] \quad \forall k \in K.
+\end{aligned}
+\]&lt;/blockquote&gt;
+&lt;p&gt;其中约束 \(S_k \subseteq N[k]\) 保证每个子群体 \(S_k\) 以 \(k\) 为中心，且所有成员与 \(k\) 至多一跳相邻。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;说明&lt;/strong&gt;&lt;br&gt;
+若不对 \(|K|\) 加以限制，则可取 \(K=V\)、\(S_k=\{k\}\)，使目标值恒为 1，从而问题退化。因此中心数预算 \(m\) 是获得非平凡解的必要条件。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id="3-01-变量的-minmax-指派模型"&gt;3. 0–1 变量的 Min–max 指派模型
+&lt;/h3&gt;&lt;p&gt;引入如下决策变量：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;\(y_k \in \{0,1\}\)：若 \(y_k=1\)，则选择顶点 \(k\) 作为某一子群体的中心；&lt;/li&gt;
+&lt;li&gt;\(x_{vk} \in \{0,1\}\)：若 \(x_{vk}=1\)，则将顶点 \(v\) 分配给中心 \(k\)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;定义中心 \(k\) 的群体规模（负载）为
+&lt;/p&gt;
+\[
+L_k(x) := \sum_{v \in V} x_{vk}.
+\]&lt;p&gt;则问题 \((\mathcal{P}_m)\) 等价地可表述为如下 min–max 整数优化问题：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;问题 \((\mathcal{IP}_m)\)：Min–max 星型指派模型&lt;/strong&gt;
+&lt;/p&gt;
+\[
+\min_{x,y}\ \max_{k \in V} L_k(x)
+\]&lt;p&gt;
+满足
+&lt;/p&gt;
+\[
+\begin{aligned}
+&amp;\sum_{k \in V} x_{vk} = 1
+&amp;&amp; \forall v \in V
+&amp;&amp; \text{(每个顶点恰分配给一个中心)} \\
+&amp;x_{vk} \le a_{vk}
+&amp;&amp; \forall v,k \in V
+&amp;&amp; \text{(一跳可达 / 星型约束)} \\
+&amp;x_{vk} \le y_k
+&amp;&amp; \forall v,k \in V
+&amp;&amp; \text{(只能分配给被选中的中心)} \\
+&amp;\sum_{k \in V} y_k \le m
+&amp;&amp;
+&amp;&amp; \text{(中心数预算)} \\
+&amp;x_{kk} = y_k
+&amp;&amp; \forall k \in V
+&amp;&amp; \text{(选中心则中心属于其群体)} \\
+&amp;x_{vk} \in \{0,1\},\ y_k \in \{0,1\}
+&amp;&amp; \forall v,k \in V.
+\end{aligned}
+\]&lt;/blockquote&gt;
+&lt;p&gt;在该模型中，对每个满足 \(y_k=1\) 的顶点 \(k\)，集合
+&lt;/p&gt;
+\[
+S_k := \{v \in V : x_{vk}=1\}
+\]&lt;p&gt;
+构成一个非空子群体，且由约束 \(x_{vk} \le a_{vk}\) 可知 \(S_k \subseteq N[k]\)，因此 \(k\) 是 \(S_k\) 的 \(k\)-星型中心。由 \(\sum_k x_{vk}=1\) 可知这些子群体构成 \(V\) 的一个划分（忽略空集）。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="4-minmax-的标准线性化形式"&gt;4. Min–max 的标准线性化形式
+&lt;/h3&gt;&lt;p&gt;引入一个标量上界变量 \(T\) 将 min–max 目标转化为等价形式：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;等价形式 \((\mathcal{IP}_m^T)\)&lt;/strong&gt;
+&lt;/p&gt;
+\[
+\min_{x,y,T}\ T
+\]&lt;p&gt;
+满足问题 \((\mathcal{IP}_m)\) 的全部约束，并额外加入
+&lt;/p&gt;
+\[
+\sum_{v \in V} x_{vk} \le T \quad \forall k \in V.
+\]&lt;p&gt;在最优解处，有
+&lt;/p&gt;
+\[
+T^\star = \min_{x,y}\ \max_{k \in V} L_k(x),
+\]&lt;p&gt;
+从而该模型与原 min–max 目标等价。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="基于小世界模型的--方法六度分隔定理推导"&gt;基于小世界模型的 \(k\)-方法六度分隔定理推导
+&lt;/h2&gt;&lt;p&gt;本节在前述 &lt;strong&gt;定义 1–5、定理 1&lt;/strong&gt; 以及 &lt;strong&gt;Min–max 星型中心模型&lt;/strong&gt; 的基础上，&lt;br&gt;
+&lt;strong&gt;保持此前给出的足够条件不变&lt;/strong&gt;，在 &lt;strong&gt;Newman–Watts 小世界模型&lt;/strong&gt; 下，&lt;br&gt;
+以 &lt;strong&gt;完全展开的概率不等式（Chernoff 界 + 并集界）&lt;/strong&gt; 形式，给出“六度分隔”的推导。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="newmanwatts-小世界模型"&gt;Newman–Watts 小世界模型
+&lt;/h2&gt;&lt;p&gt;设顶点集
+&lt;/p&gt;
+\[
+V=\{0,1,\dots,n-1\}
+\]&lt;p&gt;
+按模 \(n\) 排列成环，定义环距离
+&lt;/p&gt;
+\[
+\mathrm{dist}_{\mathrm{ring}}(u,v)=\min\{|u-v|,\,n-|u-v|\}.
+\]&lt;p&gt;给定参数 \(r\in\mathbb{N}\)、\(p\in(0,1)\)，随机图
+&lt;/p&gt;
+\[
+G\sim \mathrm{NW}(n,r,p)
+\]&lt;p&gt;
+按如下规则生成：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;局部边（确定性）&lt;/strong&gt;&lt;br&gt;
+若 \(\mathrm{dist}_{\mathrm{ring}}(u,v)\le r\) 且 \(u\neq v\)，则加入边 \(\{u,v\}\)；
+此时每个顶点局部度为 \(2r\)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;长程边（随机）&lt;/strong&gt;&lt;br&gt;
+对所有尚未相连的顶点对 \(\{u,v\}\)，独立地以概率 \(p\) 加入边。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="第一层-确定性星型划分"&gt;第一层 \(k\)：确定性星型划分
+&lt;/h2&gt;&lt;p&gt;设
+&lt;/p&gt;
+\[
+s := 2r+1, \qquad m := \left\lceil \frac{n}{s} \right\rceil .
+\]&lt;p&gt;将环按顺序划分为 \(m\) 个连续区块
+&lt;/p&gt;
+\[
+B_1,\dots,B_m,
+\quad |B_i|\le s.
+\]&lt;p&gt;
+在每个区块 \(B_i\) 中选取一个中心 \(k_i\)，定义
+&lt;/p&gt;
+\[
+K_1 := \{k_1,\dots,k_m\}.
+\]
+&lt;div class="math-block math-block--lemma" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理 7.1（块内星型支配）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对任意 \(i\)，有
+&lt;/p&gt;
+\[
+B_i \subseteq N_G[k_i].
+\]
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由于 \(|B_i|\le 2r+1\)，且 \(k_i\) 取块中点，任意 \(v\in B_i\) 满足
+&lt;/p&gt;
+\[
+\mathrm{dist}_{\mathrm{ring}}(v,k_i)\le r,
+\]&lt;p&gt;
+从而 \(\{v,k_i\}\in E\)。证毕。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;因此
+&lt;/p&gt;
+\[
+\forall v\in V,\quad \mathrm{dist}_G(v,K_1)\le 1.
+\]&lt;hr&gt;
+&lt;h2 id="群体图的构造与边概率下界"&gt;群体图的构造与边概率下界
+&lt;/h2&gt;&lt;p&gt;定义 &lt;strong&gt;群体图&lt;/strong&gt;
+&lt;/p&gt;
+\[
+H=(V_H,E_H),
+\quad V_H := K_1.
+\]&lt;p&gt;若原图中存在 \(u\in B_i, v\in B_j\) 使得 \(\{u,v\}\in E(G)\)，则在 \(H\) 中加入边 \(\{k_i,k_j\}\)。&lt;/p&gt;
+&lt;hr&gt;
+&lt;div class="math-block math-block--lemma" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;引理 7.2（群体图边概率下界）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设
+&lt;/p&gt;
+\[
+p' := 1-(1-p)^{(s-1)^2}.
+\]&lt;p&gt;
+则对任意 \(i\neq j\)，有
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\{k_i,k_j\}\in E_H\big) \ge p'.
+\]
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;区块 \(B_i,B_j\) 至少包含 \((s-1)^2\) 对&amp;quot;非局部相邻&amp;quot;的顶点对。&lt;br&gt;
+每一对以概率 \(p\) 独立连边，因此
+&lt;/p&gt;
+\[
+\mathbb{P}(\text{无任何跨块边})
+=(1-p)^{|B_i||B_j|}
+\le (1-p)^{(s-1)^2}.
+\]&lt;p&gt;
+取补事件即得结论。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="群体图上的扩张性分析"&gt;群体图上的扩张性分析
+&lt;/h2&gt;&lt;p&gt;以下分析在 &lt;strong&gt;Erdős–Rényi 下界模型&lt;/strong&gt;
+&lt;/p&gt;
+\[
+\widetilde H \sim G(m,p')
+\]&lt;p&gt;
+中进行；由于“直径 \(\le 4\)”是单调递增事件，&lt;br&gt;
+由耦合原理可将结论转移到真实群体图 \(H\)。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="度集中性chernoff-界"&gt;度集中性（Chernoff 界）
+&lt;/h3&gt;&lt;p&gt;令
+&lt;/p&gt;
+\[
+d := (m-1)p'.
+\]&lt;p&gt;对任意固定顶点 \(x\in V(\widetilde H)\)，其度
+&lt;/p&gt;
+\[
+\deg(x)\sim \mathrm{Bin}(m-1,p').
+\]&lt;p&gt;对任意 \(0&lt;\delta&lt;1\)，Chernoff 界给出
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\deg(x)\le (1-\delta)d\big)
+\le \exp\!\left(-\frac{\delta^2 d}{2}\right).
+\]&lt;p&gt;取 \(\delta=\tfrac12\)，得
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\deg(x)\le d/2\big)
+\le \exp\!\left(-\frac{d}{8}\right).
+\]&lt;p&gt;若
+&lt;/p&gt;
+\[
+d \ge 16\log m,
+\]&lt;p&gt;
+则
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\deg(x)\le d/2\big)\le m^{-2}.
+\]&lt;p&gt;由并集界，
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\exists x:\deg(x)\le d/2\big)
+\le m\cdot m^{-2}=m^{-1}.
+\]&lt;p&gt;&lt;strong&gt;结论：&lt;/strong&gt; 以概率至少 \(1-m^{-1}\)，
+&lt;/p&gt;
+\[
+\delta(\widetilde H)\ge d/2.
+\]&lt;hr&gt;
+&lt;h3 id="两步球的期望增长"&gt;两步球的期望增长
+&lt;/h3&gt;&lt;p&gt;固定顶点 \(x\)，在事件 \(\deg(x)\ge d/2\) 上考虑
+&lt;/p&gt;
+\[
+\Gamma_1(x) := \{x\}\cup N(x),
+\quad |\Gamma_1(x)|\ge d/2.
+\]&lt;p&gt;对任意顶点 \(y\notin \Gamma_1(x)\)，其不与 \(\Gamma_1(x)\) 中任意点相连的概率为
+&lt;/p&gt;
+\[
+\mathbb{P}\big(y\notin \Gamma_2(x)\mid \Gamma_1(x)\big)
+=(1-p')^{|\Gamma_1(x)|}
+\le \exp\!\left(-p'|\Gamma_1(x)|\right)
+\le \exp\!\left(-\frac{p'd}{2}\right).
+\]&lt;p&gt;因此
+&lt;/p&gt;
+\[
+\mathbb{E}\big[m-|\Gamma_2(x)|\mid \deg(x)\ge d/2\big]
+\le m\exp\!\left(-\frac{p'd}{2}\right).
+\]&lt;hr&gt;
+&lt;h3 id="两步球达到--的概率下界"&gt;两步球达到 \(m^{2/3}\) 的概率下界
+&lt;/h3&gt;&lt;p&gt;设足够条件
+&lt;/p&gt;
+\[
+d \ge C\, m^{1/3}\log m
+\quad (C&gt;0\ \text{充分大}),
+\]&lt;p&gt;
+注意
+&lt;/p&gt;
+\[
+p'd \asymp \frac{d^2}{m}.
+\]&lt;p&gt;则
+&lt;/p&gt;
+\[
+\frac{p'd}{2}
+\ge \frac{C^2}{2}\, m^{-1/3}\log^2 m.
+\]&lt;p&gt;于是
+&lt;/p&gt;
+\[
+m\exp\!\left(-\frac{p'd}{2}\right)
+\le m\exp\!\left(-\tfrac{C^2}{2}m^{-1/3}\log^2 m\right)
+\le m^{-10}
+\]&lt;p&gt;
+当 \(C\) 充分大时成立。&lt;/p&gt;
+&lt;p&gt;由 Markov 不等式，
+&lt;/p&gt;
+\[
+\mathbb{P}\big(|\Gamma_2(x)|\le m^{2/3}\big)
+\le \mathbb{P}\big(m-|\Gamma_2(x)|\ge m-m^{2/3}\big)
+\le \frac{m^{-10}}{m^{1/3}}
+\le m^{-9}.
+\]&lt;hr&gt;
+&lt;h3 id="第三步覆盖全图"&gt;第三步覆盖全图
+&lt;/h3&gt;&lt;p&gt;在事件 \(|\Gamma_2(x)|\ge m^{2/3}\) 上，对任意顶点 \(z\notin \Gamma_2(x)\)，
+&lt;/p&gt;
+\[
+\mathbb{P}\big(z\notin \Gamma_3(x)\big)
+=(1-p')^{|\Gamma_2(x)|}
+\le \exp\!\left(-p'm^{2/3}\right).
+\]&lt;p&gt;而
+&lt;/p&gt;
+\[
+p'm^{2/3}
+\asymp \frac{d}{m}\cdot m^{2/3}
+=d\,m^{-1/3}
+\ge C\log m.
+\]&lt;p&gt;因此
+&lt;/p&gt;
+\[
+\mathbb{P}\big(z\notin \Gamma_3(x)\big)\le m^{-C}.
+\]&lt;p&gt;再用并集界：
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\Gamma_3(x)\neq V\big)
+\le m\cdot m^{-C}
+= m^{1-C}.
+\]&lt;p&gt;取 \(C\ge 12\)，得
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\Gamma_3(x)=V\big)\ge 1-m^{-11}.
+\]&lt;hr&gt;
+&lt;h3 id="群体图直径界"&gt;群体图直径界
+&lt;/h3&gt;&lt;p&gt;对所有 \(x\in V(\widetilde H)\) 再次使用并集界，
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\exists x:\Gamma_3(x)\neq V\big)
+\le m\cdot m^{-11}
+= m^{-10}.
+\]&lt;p&gt;因此，以概率至少 \(1-m^{-10}\)，
+&lt;/p&gt;
+\[
+\operatorname{rad}(\widetilde H)\le 3
+\quad\Rightarrow\quad
+\operatorname{diam}(\widetilde H)\le 6.
+\]&lt;p&gt;进一步，采用“两点各自两步球相交”的标准估计（同上步骤 8.3–8.4），
+可将直径改进为
+&lt;/p&gt;
+\[
+\operatorname{diam}(\widetilde H)\le 4
+\]&lt;p&gt;
+仍以多项式高概率成立。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="回推到原图六度分隔"&gt;回推到原图：六度分隔
+&lt;/h2&gt;&lt;p&gt;由于
+&lt;/p&gt;
+\[
+\forall v\in V,\quad \mathrm{dist}_G(v,K_1)\le 1,
+\]&lt;p&gt;
+且以高概率
+&lt;/p&gt;
+\[
+\operatorname{diam}(H)\le 4,
+\]&lt;p&gt;
+对任意 \(u,v\in V\)，记其块中心为 \(k(u),k(v)\)，则
+&lt;/p&gt;
+\[
+\mathrm{dist}_G(u,v)
+\le
+\mathrm{dist}_G(u,k(u))
++\mathrm{dist}_H(k(u),k(v))
++\mathrm{dist}_G(k(v),v)
+\le 1+4+1=6.
+\]&lt;hr&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;定理（小世界模型中的六度分隔，k-收缩证明）&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设
+&lt;/p&gt;
+\[
+G\sim \mathrm{NW}(n,r,p),
+\quad s=2r+1,\quad m=\left\lceil\frac{n}{s}\right\rceil,
+\quad p'=1-(1-p)^{(s-1)^2}.
+\]&lt;p&gt;
+若存在常数 \(C&gt;0\) 使得
+&lt;/p&gt;
+\[
+(m-1)p' \ge C\, m^{1/3}\log m,
+\]&lt;p&gt;
+则存在常数 \(c&gt;0\)，使得
+&lt;/p&gt;
+\[
+\mathbb{P}\big(\operatorname{diam}(G)\le 6\big)
+\ge 1-m^{-c}.
+\]&lt;p&gt;等价地：在该参数区间内，以高概率任意两点之间存在一条长度不超过 \(6\) 的路径，即中间 \(k\)-节点链条长度最多为 \(5\)。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="讨论与局限性discussion-and-limitations"&gt;讨论与局限性（Discussion and Limitations）
+&lt;/h2&gt;&lt;p&gt;本文所得到的充分条件
+&lt;/p&gt;
+$$
+(m-1)p' \ge Cm^{1/3}\log m
+$$&lt;p&gt;
+在定量意义上是较强的，尤其是在将其还原为 Newman–Watts 小世界模型的原始参数 $(n,r,p)$ 后可以看到，该条件对局部连接半径 (r) 与长程边概率 (p) 的协同作用提出了较高要求。与已有文献中关于小世界网络“平均距离”或“典型节点对距离”为 $O(\log n)$ 的结果相比，本文的条件并非最优，且在某些参数区间内明显偏保守。&lt;/p&gt;
+&lt;p&gt;然而，这种条件的“偏强”本质上源于本文目标命题的严格性。本文所证明的并非平均意义或概率意义下的距离界，而是以高概率成立的&lt;strong&gt;全局直径上界&lt;/strong&gt;，即保证任意两点之间的最短路径长度不超过 6。众所周知，相较于平均距离或随机选点对的距离估计，直径这样的最坏情形指标通常需要显著更强的结构假设，因此该结果在逻辑上是合理且一致的。&lt;/p&gt;
+&lt;p&gt;从方法论角度看，本文的主要优势在于其结构化与可解释性。证明全过程严格基于 k-星型中心的支配划分与图收缩操作，避免了对谱方法、分支过程近似或渐近距离公式的依赖。每一层收缩都对应一个清晰的网络操作：局部星型支配、群体级压缩以及在压缩图上的快速扩张。这种分层机制直观地揭示了小世界网络中“局部高聚类 + 稀疏长程随机边”如何通过层级化结构转化为全局的短路径性质。&lt;/p&gt;
+&lt;p&gt;此外，k-收缩框架与本文给出的 min–max 优化模型在形式上高度一致，使得该理论不仅具有概率论意义，也具备潜在的算法与优化解释。这种统一视角为网络分层建模、群体抽象、以及大规模网络的多尺度分析提供了新的可能性。&lt;/p&gt;
+&lt;p&gt;需要强调的是，本文给出的参数阈值应被视为一种“可证明的充分条件”，而非刻画六度分隔现象的精确边界。通过更精细的概率估计、更弱的目标结论（例如只约束典型距离而非直径），或在其他小世界模型与度分布假设下，本文所采用的 k-中心收缩思路仍有较大的改进空间。因此，本文的结果更适合作为一种概念性与方法论上的证明范式，展示六度分隔现象如何在明确的层级支配结构中被严格推出，而非对现实社会网络的参数进行最终刻画。&lt;/p&gt;
+&lt;p&gt;尽管&lt;strong&gt;支配集&lt;/strong&gt;、&lt;strong&gt;图收缩（graph coarsening）&lt;strong&gt;以及&lt;/strong&gt;小世界网络的距离性质分析&lt;/strong&gt;均已在现有文献中得到广泛研究，但&lt;strong&gt;通过反复的星型中心支配与收缩来推导统一的常数级直径上界&lt;/strong&gt;这一做法，在现有研究中尚未出现。本文提出的 &lt;strong&gt;k-收缩框架&lt;/strong&gt;可被视为一种统一性的视角，它将&lt;strong&gt;基于支配的覆盖结构&lt;/strong&gt;与&lt;strong&gt;多层次图收缩方法&lt;/strong&gt;相结合，同时保持了对&lt;strong&gt;路径长度的显式、可解释刻画&lt;/strong&gt;。&lt;/p&gt;</description></item></channel></rss>

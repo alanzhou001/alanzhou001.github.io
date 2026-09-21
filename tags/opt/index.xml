@@ -1,0 +1,2770 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OPT on Alan Zhou</title><link>https://cxzhou.com/tags/opt/</link><description>Recent content in OPT on Alan Zhou</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 20 Sep 2026 23:20:00 +0800</lastBuildDate><atom:link href="https://cxzhou.com/tags/opt/index.xml" rel="self" type="application/rss+xml"/><item><title>OPT学习笔记-5：线性规划对偶</title><link>https://cxzhou.com/p/opt-notes-5/</link><pubDate>Sun, 20 Sep 2026 23:13:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-5/</guid><description>&lt;p&gt;对偶理论把“求一个最小值”转化为“寻找尽可能大的下界”。在线性规划中，这些下界可以通过对原约束作非负加权得到。&lt;/p&gt;
+&lt;h2 id="从有效不等式出发"&gt;从有效不等式出发
+&lt;/h2&gt;&lt;p&gt;考虑原问题&lt;/p&gt;
+$$
+\begin{aligned}
+p^*=\min_x\quad&amp;c^\top x\\
+\text{s.t.}\quad&amp;Ax\ge b.
+\end{aligned}
+\tag{P}
+$$
+&lt;div class="math-block math-block--definition" id="def-valid-inequality"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;有效不等式&lt;/strong&gt;&lt;a href="#def-valid-inequality" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若对集合 $S$ 中所有 $x$ 都有&lt;/p&gt;
+$$
+\alpha^\top x\ge\beta,
+$$&lt;p&gt;则称该不等式是 $S$ 的有效不等式。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;把 $Ax\ge b$ 的各行乘以非负权重 $\lambda_i$ 后相加，得到&lt;/p&gt;
+$$
+(A^\top\lambda)^\top x\ge b^\top\lambda,
+\qquad\lambda\ge0.
+$$&lt;p&gt;如果进一步要求 $A^\top\lambda=c$，则对每个原问题可行点都有&lt;/p&gt;
+$$
+c^\top x\ge b^\top\lambda.
+$$&lt;p&gt;因此 $b^\top\lambda$ 是原问题最优值的下界。寻找这类下界中最大的一个，就得到对偶问题&lt;/p&gt;
+$$
+\begin{aligned}
+d^*=\max_\lambda\quad&amp;b^\top\lambda\\
+\text{s.t.}\quad&amp;A^\top\lambda=c,\\
+&amp;\lambda\ge0.
+\end{aligned}
+\tag{D}
+$$&lt;h2 id="弱对偶"&gt;弱对偶
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-weak-duality-lp"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;弱对偶定理&lt;/strong&gt;&lt;a href="#thm-weak-duality-lp" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若 $x$ 是原问题可行解，$\lambda$ 是对偶问题可行解，则&lt;/p&gt;
+$$
+c^\top x\ge b^\top\lambda.
+$$&lt;p&gt;因此 $p^*\ge d^*$。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由 $A^\top\lambda=c$、$Ax\ge b$ 和 $\lambda\ge0$，&lt;/p&gt;
+$$
+c^\top x
+=(A^\top\lambda)^\top x
+=\lambda^\top Ax
+\ge\lambda^\top b
+=b^\top\lambda.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;弱对偶立即给出：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若原问题无界到 $-\infty$，对偶问题必不可行；&lt;/li&gt;
+&lt;li&gt;若对偶问题无界到 $+\infty$，原问题必不可行；&lt;/li&gt;
+&lt;li&gt;任一原可行解与对偶可行解的目标值之差&lt;/li&gt;
+&lt;/ul&gt;
+$$
+c^\top x-b^\top\lambda\ge0
+$$&lt;p&gt;称为&lt;strong&gt;对偶间隙（duality gap）&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id="farkas-引理"&gt;Farkas 引理
+&lt;/h2&gt;&lt;p&gt;强对偶的关键是：如果目标下界在最优点处有效，那么它可以由紧约束的非负组合生成。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-farkas"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Farkas 引理的一种形式&lt;/strong&gt;&lt;a href="#thm-farkas" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;给定向量 $a_1,\ldots,a_m,c\in\mathbb{R}^n$，下列两者恰有一个成立：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;存在 $\lambda\ge0$ 使 $c=\sum_i\lambda_i a_i$；&lt;/li&gt;
+&lt;li&gt;存在 $d\in\mathbb{R}^n$ 使 $a_i^\top d\ge0$ 对所有 $i$ 成立，但 $c^\top d&lt;0$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;令&lt;/p&gt;
+$$
+K=\left\{\sum_i\lambda_i a_i:\lambda_i\ge0\right\}.
+$$&lt;p&gt;$K$ 是闭凸锥。若 $c\notin K$，由点与闭凸集的分离定理，存在 $d$ 将 $c$ 与 $K$ 严格分离。因为 $K$ 是锥且包含 $0$，分离关系可以归一化为&lt;/p&gt;
+$$
+d^\top z\ge0,\quad\forall z\in K,
+\qquad d^\top c&lt;0.
+$$&lt;p&gt;特别地 $a_i\in K$，所以 $a_i^\top d\ge0$。反之，若两种情况同时成立，则&lt;/p&gt;
+$$
+c^\top d=\sum_i\lambda_i a_i^\top d\ge0,
+$$&lt;p&gt;与 $c^\top d&lt;0$ 矛盾。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="强对偶"&gt;强对偶
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-strong-duality-lp"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;线性规划强对偶定理&lt;/strong&gt;&lt;a href="#thm-strong-duality-lp" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若原问题 $(P)$ 存在最优解，则对偶问题 $(D)$ 也存在最优解，并且&lt;/p&gt;
+$$
+p^*=d^*.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;设 $x^*$ 是原问题最优解，令紧约束指标集为&lt;/p&gt;
+$$
+I=\{i:a_i^\top x^*=b_i\}.
+$$&lt;p&gt;先证明 $c$ 属于紧约束法向量生成的锥。否则由 Farkas 引理，存在 $d$ 使&lt;/p&gt;
+$$
+a_i^\top d\ge0\quad(i\in I),
+\qquad c^\top d&lt;0.
+$$&lt;p&gt;对 $i\notin I$，约束在 $x^*$ 处有严格余量，因此取足够小的 $\varepsilon&gt;0$ 后，$x^*+\varepsilon d$ 仍满足所有约束；而&lt;/p&gt;
+$$
+c^\top(x^*+\varepsilon d)&lt;c^\top x^*,
+$$&lt;p&gt;与 $x^*$ 最优矛盾。&lt;/p&gt;
+&lt;p&gt;因此存在 $\lambda_i^*\ge0$（$i\in I$）使 $c=\sum_{i\in I}\lambda_i^*a_i$。对 $i\notin I$ 令 $\lambda_i^*=0$，则 $\lambda^*$ 对偶可行，且&lt;/p&gt;
+$$
+\begin{aligned}
+b^\top\lambda^*
+&amp;=\sum_{i\in I}b_i\lambda_i^*\\
+&amp;=\sum_{i\in I}(a_i^\top x^*)\lambda_i^*\\
+&amp;=c^\top x^*=p^*.
+\end{aligned}
+$$&lt;p&gt;弱对偶又给出 $d^*\le p^*$，故 $d^*=p^*$，且 $\lambda^*$ 为对偶最优解。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;强对偶说明，只要找到原、对偶可行解并验证目标值相等，就同时获得两边的最优性证书。&lt;/p&gt;
+&lt;h2 id="互补松弛"&gt;互补松弛
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-complementary-slackness"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;互补松弛&lt;/strong&gt;&lt;a href="#thm-complementary-slackness" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $x^*$ 和 $\lambda^*$ 分别是 $(P)$ 与 $(D)$ 的可行解。二者同时最优，当且仅当&lt;/p&gt;
+$$
+\lambda_i^*(a_i^\top x^*-b_i)=0,
+\qquad i=1,\ldots,m.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;原、对偶目标值之差为&lt;/p&gt;
+$$
+\begin{aligned}
+c^\top x^*-b^\top\lambda^*
+&amp;=(A^\top\lambda^*)^\top x^*-b^\top\lambda^*\\
+&amp;=\sum_i\lambda_i^*(a_i^\top x^*-b_i).
+\end{aligned}
+$$&lt;p&gt;每一项都非负，因此总和为零当且仅当每一项都为零。由强对偶，零对偶间隙又等价于两边同时最优。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;互补松弛的含义是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若第 $i$ 个原约束有严格余量，则对应对偶变量必须为零；&lt;/li&gt;
+&lt;li&gt;若第 $i$ 个对偶变量严格为正，则对应原约束必须紧。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="一般符号规则"&gt;一般符号规则
+&lt;/h2&gt;&lt;p&gt;对最小化原问题，约束方向决定对偶变量符号：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原约束 $a_i^\top x\ge b_i$ 对应 $\lambda_i\ge0$；&lt;/li&gt;
+&lt;li&gt;原约束 $a_i^\top x\le b_i$ 对应 $\lambda_i\le0$；&lt;/li&gt;
+&lt;li&gt;原约束 $a_i^\top x=b_i$ 对应自由对偶变量。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;类似地，原变量的符号限制决定对偶约束是等式还是不等式。最稳妥的推导方式不是死记表格，而是重新执行“约束聚合并匹配目标系数”这一步。&lt;/p&gt;
+&lt;h2 id="总结"&gt;总结
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;对偶变量是原约束的聚合权重；&lt;/li&gt;
+&lt;li&gt;弱对偶给出任何原、对偶可行解之间的目标值界；&lt;/li&gt;
+&lt;li&gt;Farkas 引理保证最优有效不等式可以由紧约束生成；&lt;/li&gt;
+&lt;li&gt;强对偶在线性规划中消除了最优对偶间隙；&lt;/li&gt;
+&lt;li&gt;互补松弛将原约束余量与对偶变量联系起来，并提供最优性证书。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="参考资料"&gt;参考资料
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Arkadi Nemirovski, &lt;em&gt;Lectures on Modern Convex Optimization&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Taotao He, &lt;em&gt;ECON200 Optimization Methods, Lecture 7&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>OPT学习笔记-4：线性规划的表示与几何</title><link>https://cxzhou.com/p/opt-notes-4/</link><pubDate>Sun, 20 Sep 2026 23:12:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-4/</guid><description>&lt;p&gt;线性规划（linear programming, LP）在线性目标下优化一个多面体。本篇从等价表示出发，说明为什么 LP 的最优解可以在“顶点”中寻找。&lt;/p&gt;
+&lt;h2 id="一般型与标准型"&gt;一般型与标准型
+&lt;/h2&gt;&lt;p&gt;一般形式可写为&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad &amp;c^\top x\\
+\text{s.t.}\quad &amp;Ax\le b,\\
+&amp;Dx=d.
+\end{aligned}
+$$&lt;p&gt;其可行域是有限个半空间与超平面的交，因此是多面体。&lt;/p&gt;
+&lt;div class="math-block math-block--definition" id="def-lp-standard"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;线性规划标准型&lt;/strong&gt;&lt;a href="#def-lp-standard" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;标准型线性规划为&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad &amp;c^\top x\\
+\text{s.t.}\quad &amp;Ax=b,\\
+&amp;x\ge0.
+\end{aligned}
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;一般型可以通过两步转成标准型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;自由变量写成 $x_j=x_j^+-x_j^-$，其中 $x_j^+,x_j^-\ge0$；&lt;/li&gt;
+&lt;li&gt;不等式 $a_i^\top x\le b_i$ 加入松弛变量 $s_i\ge0$，改写为 $a_i^\top x+s_i=b_i$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这种变换保持最优值，并可在两个问题的最优解之间相互转换。&lt;/p&gt;
+&lt;h2 id="线性规划建模"&gt;线性规划建模
+&lt;/h2&gt;&lt;h3 id="分段线性函数"&gt;分段线性函数
+&lt;/h3&gt;&lt;p&gt;若&lt;/p&gt;
+$$
+f(x)=\max_{j\in J}(a_j^\top x+b_j),
+$$&lt;p&gt;则最小化 $f$ 可以引入上境变量 $t$：&lt;/p&gt;
+$$
+\begin{aligned}
+\min_{x,t}\quad&amp;t\\
+\text{s.t.}\quad&amp;a_j^\top x+b_j\le t,\quad j\in J.
+\end{aligned}
+$$&lt;p&gt;若约束函数也是若干仿射函数的最大值，同样可拆成有限组线性不等式。&lt;/p&gt;
+&lt;h3 id="现金流匹配"&gt;现金流匹配
+&lt;/h3&gt;&lt;p&gt;设 $x_j$ 为第 $j$ 种债券的购买量，$p_j$ 为价格，$a_{tj}$ 为第 $t$ 年现金流，$L_t$ 为第 $t$ 年负债。若允许无息结转余额 $s_t$，可建立&lt;/p&gt;
+$$
+\begin{aligned}
+\min_{x,s}\quad &amp;\sum_jp_jx_j\\
+\text{s.t.}\quad&amp;s_{t-1}+\sum_ja_{tj}x_j-L_t=s_t,\\
+&amp;x\ge0,\quad s\ge0,
+\end{aligned}
+$$&lt;p&gt;其中 $s_0=0$。这说明许多跨期配置问题可以直接写成 LP。&lt;/p&gt;
+&lt;h2 id="极点与基本可行解"&gt;极点与基本可行解
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-extreme-point"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;极点&lt;/strong&gt;&lt;a href="#def-extreme-point" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $C$ 为凸集。若 $x\in C$ 不能写成两个不同点 $y,z\in C$ 的非平凡凸组合&lt;/p&gt;
+$$
+x=\lambda y+(1-\lambda)z,
+\qquad 0&lt;\lambda&lt;1,
+$$&lt;p&gt;则称 $x$ 是 $C$ 的极点。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;考虑多面体&lt;/p&gt;
+$$
+P=\{x\in\mathbb{R}^n:a_i^\top x\le b_i,\ i=1,\ldots,m\}.
+$$&lt;p&gt;若 $a_i^\top x=b_i$，称第 $i$ 个约束在 $x$ 处是&lt;strong&gt;紧的（active/tight）&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class="math-block math-block--definition" id="def-bfs"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;基本可行解&lt;/strong&gt;&lt;a href="#def-bfs" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+若 $x\in P$，并且在 $x$ 处至少有 $n$ 个法向量线性无关的紧约束，则称 $x$ 为基本可行解（basic feasible solution, BFS）。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-extreme-bfs"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;极点与基本可行解等价&lt;/strong&gt;&lt;a href="#thm-extreme-bfs" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+对非空多面体 $P\subseteq\mathbb{R}^n$，点 $x\in P$ 是极点，当且仅当它是基本可行解。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;先设 $x$ 是 BFS。取 $n$ 个线性无关的紧约束组成矩阵 $A_I$，则 $A_Ix=b_I$ 有唯一解。若&lt;/p&gt;
+$$
+x=\lambda y+(1-\lambda)z,
+\quad y,z\in P,
+\quad0&lt;\lambda&lt;1,
+$$&lt;p&gt;则 $A_Iy\le b_I$、$A_Iz\le b_I$，而二者的凸组合等于 $b_I$，因此只能有 $A_Iy=A_Iz=b_I$。由唯一性，$y=z=x$，故 $x$ 是极点。&lt;/p&gt;
+&lt;p&gt;反之，若 $x$ 处紧约束的法向量不能张成 $\mathbb{R}^n$，则存在非零 $d$ 与所有紧约束法向量正交。对不紧约束，由于存在严格余量，可取充分小的 $\varepsilon&gt;0$，使 $x\pm\varepsilon d$ 都仍可行。于是&lt;/p&gt;
+$$
+x=\frac12(x+\varepsilon d)+\frac12(x-\varepsilon d),
+$$&lt;p&gt;且两端点不同，与 $x$ 为极点矛盾。因此紧约束中必有 $n$ 个线性无关的法向量，$x$ 是 BFS。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;因为每个 BFS 可由 $m$ 个约束中选取 $n$ 个并求解得到，多面体的极点数至多为 $\binom{m}{n}$，因而是有限的。&lt;/p&gt;
+&lt;h2 id="多面体中的直线"&gt;多面体中的直线
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-polyhedron-line"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;多面体包含直线&lt;/strong&gt;&lt;a href="#def-polyhedron-line" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若存在 $x\in P$ 和非零 $d$，使得&lt;/p&gt;
+$$
+x+td\in P,
+\qquad\forall t\in\mathbb{R},
+$$&lt;p&gt;则称多面体 $P$ 包含一条直线。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-extreme-existence"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;极点存在性&lt;/strong&gt;&lt;a href="#thm-extreme-existence" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+非空多面体 $P$ 不包含直线，当且仅当 $P$ 至少有一个极点。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $P$ 包含直线，则对该直线上的任一点 $x+td$，都有&lt;/p&gt;
+$$
+x+td=\frac12(x+(t-1)d)+\frac12(x+(t+1)d),
+$$&lt;p&gt;故直线上的点都不是极点；对 $P$ 中任意点也可沿该直线方向作同样分解，因此 $P$ 没有极点。&lt;/p&gt;
+&lt;p&gt;反之，从 $P$ 中任选一点，并在所有可行点中选择一个使线性无关紧约束数最大的点 $x$。若不足 $n$ 个，则存在非零方向 $d$ 与所有紧约束法向量正交。沿 $d$ 或 $-d$ 移动时，原紧约束保持等式。若两个方向都可无限移动，$P$ 就包含直线；否则至少一个方向会首次碰到新的约束，得到一个紧约束秩更高的可行点，与 $x$ 的选择矛盾。故 $x$ 是 BFS，也就是极点。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;标准型可行域 $\{x:Ax=b,x\ge0\}$ 不包含直线：若 $x+td\ge0$ 对所有实数 $t$ 成立，只能有 $d=0$。因此非空标准型可行域一定有极点。&lt;/p&gt;
+&lt;h2 id="线性规划基本定理"&gt;线性规划基本定理
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-fundamental-lp"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;线性规划基本定理&lt;/strong&gt;&lt;a href="#thm-fundamental-lp" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;考虑&lt;/p&gt;
+$$
+\min_{x\in P}c^\top x.
+$$&lt;p&gt;若 $P$ 至少有一个极点，并且问题存在最优解，则至少有一个最优解是 $P$ 的极点。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;最优解集合&lt;/p&gt;
+$$
+F=\{x\in P:c^\top x=p^*\}
+$$&lt;p&gt;是多面体 $P$ 的一个面。若最优点 $x$ 不是极点，则在保持目标值不变的最优面内沿某个可行方向移动，直到碰到新的线性无关紧约束。每次移动都会增加紧约束的秩；这个过程至多进行 $n$ 次，最终得到一个仍然最优的 BFS，也就是极点。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;该定理并不是说每个最优解都是极点：当目标等值超平面与多面体的一条边或一个面重合时，整条边或整个面都可能最优。但至少可以选择其中一个极点作为最优解。&lt;/p&gt;
+&lt;h2 id="单纯形法的几何思想"&gt;单纯形法的几何思想
+&lt;/h2&gt;&lt;p&gt;两个极点若共享 $n-1$ 个线性无关紧约束，称为相邻极点。单纯形法的基本过程是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;从一个基本可行解开始；&lt;/li&gt;
+&lt;li&gt;寻找目标值更优的相邻极点；&lt;/li&gt;
+&lt;li&gt;沿边移动到该极点；&lt;/li&gt;
+&lt;li&gt;当不存在改进方向时停止。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;线性规划基本定理保证了在存在最优解时，可以在有限的极点集合中寻找答案；具体的换基规则则决定单纯形算法如何选择下一相邻点。&lt;/p&gt;
+&lt;h2 id="总结"&gt;总结
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;一般 LP 可通过变量拆分和松弛变量转为标准型；&lt;/li&gt;
+&lt;li&gt;多面体的极点与基本可行解完全等价；&lt;/li&gt;
+&lt;li&gt;不含直线的非空多面体存在极点；&lt;/li&gt;
+&lt;li&gt;若 LP 有最优解且可行域有极点，则存在极点最优解；&lt;/li&gt;
+&lt;li&gt;单纯形法就是沿多面体边在相邻极点之间改进目标值。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="参考资料"&gt;参考资料
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Dimitris Bertsimas and John Tsitsiklis, &lt;em&gt;Introduction to Linear Optimization&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;Taotao He, &lt;em&gt;ECON200 Optimization Methods, Lecture 6&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>OPT学习笔记-3：凸优化与凸性判别</title><link>https://cxzhou.com/p/opt-notes-3/</link><pubDate>Sun, 20 Sep 2026 23:11:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-3/</guid><description>&lt;p&gt;凸性最重要的意义，是把局部信息提升为全局结论。本篇讨论凸优化的基本性质、凸包以及判断函数凸性的常用方法。&lt;/p&gt;
+&lt;h2 id="从局部最优到全局最优"&gt;从局部最优到全局最优
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-local-global"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸优化中的局部最优即全局最优&lt;/strong&gt;&lt;a href="#thm-local-global" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;考虑&lt;/p&gt;
+$$
+\min_{x\in X}f(x).
+$$&lt;p&gt;若 $X$ 是凸集、$f$ 在 $X$ 上是凸函数，则任意局部极小值点都是全局极小值点；最优解集合也是凸集。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;设 $x^*$ 是局部极小值点。若它不是全局极小值点，则存在 $y\in X$ 使 $f(y)&lt;f(x^*)$。由 $X$ 的凸性，对任意 $t\in(0,1)$，&lt;/p&gt;
+$$
+x_t=(1-t)x^*+ty\in X.
+$$&lt;p&gt;当 $t$ 足够小时，$x_t$ 位于 $x^*$ 的局部邻域内；但由凸性，&lt;/p&gt;
+$$
+f(x_t)\le(1-t)f(x^*)+tf(y)&lt;f(x^*),
+$$&lt;p&gt;与局部最优性矛盾。&lt;/p&gt;
+&lt;p&gt;再设 $x_1,x_2$ 均为全局最优解，最优值为 $p^*$。对任意 $t\in[0,1]$，&lt;/p&gt;
+$$
+f((1-t)x_1+tx_2)
+\le(1-t)p^*+tp^*=p^*.
+$$&lt;p&gt;由于 $p^*$ 已是最小值，只能取等号，故最优解集合凸。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="一阶凸性判别"&gt;一阶凸性判别
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-first-order-convexity"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;全局线性下估计&lt;/strong&gt;&lt;a href="#thm-first-order-convexity" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f$ 在开凸集 $C$ 上可微。则 $f$ 在 $C$ 上凸，当且仅当对所有 $x,y\in C$，&lt;/p&gt;
+$$
+f(y)\ge f(x)+\nabla f(x)^\top(y-x).
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这说明凸函数在任一点的切平面都是函数的全局下界。&lt;/p&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $f$ 凸，固定 $x,y$ 并令 $g(t)=f(x+t(y-x))$。对 $t\in(0,1]$，凸性给出&lt;/p&gt;
+$$
+g(t)\le(1-t)g(0)+tg(1),
+$$&lt;p&gt;即&lt;/p&gt;
+$$
+\frac{g(t)-g(0)}{t}\le g(1)-g(0).
+$$&lt;p&gt;令 $t\downarrow0$，得到 $\nabla f(x)^\top(y-x)\le f(y)-f(x)$。&lt;/p&gt;
+&lt;p&gt;反之，假设一阶不等式成立。令 $z=(1-t)x+ty$。分别在 $z$ 处对 $x$ 和 $y$ 应用该不等式：&lt;/p&gt;
+$$
+\begin{aligned}
+f(x)&amp;\ge f(z)+\nabla f(z)^\top(x-z),\\
+f(y)&amp;\ge f(z)+\nabla f(z)^\top(y-z).
+\end{aligned}
+$$&lt;p&gt;第一式乘以 $1-t$，第二式乘以 $t$ 后相加。由于&lt;/p&gt;
+$$
+(1-t)(x-z)+t(y-z)=0,
+$$&lt;p&gt;得到 $(1-t)f(x)+tf(y)\ge f(z)$，故 $f$ 凸。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-convex-stationary"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸函数的驻点判别&lt;/strong&gt;&lt;a href="#thm-convex-stationary" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若 $f$ 可微且凸，则&lt;/p&gt;
+$$
+\nabla f(x^*)=0
+$$&lt;p&gt;当且仅当 $x^*$ 是全局极小值点。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;必要性来自无约束优化的一阶必要条件。若 $\nabla f(x^*)=0$，则对任意 $y$，由全局线性下估计，&lt;/p&gt;
+$$
+f(y)\ge f(x^*)+\nabla f(x^*)^\top(y-x^*)=f(x^*),
+$$&lt;p&gt;故 $x^*$ 全局最优。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="凸包"&gt;凸包
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-convex-hull"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸包&lt;/strong&gt;&lt;a href="#def-convex-hull" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;集合 $S\subseteq\mathbb{R}^n$ 的凸包定义为所有有限凸组合组成的集合：&lt;/p&gt;
+$$
+\operatorname{conv}(S)
+=\left\{\sum_{i=1}^m\lambda_i x_i:
+x_i\in S,\ \lambda_i\ge0,\ \sum_{i=1}^m\lambda_i=1\right\}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-smallest-convex"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸包的最小性&lt;/strong&gt;&lt;a href="#thm-smallest-convex" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$\operatorname{conv}(S)$ 是包含 $S$ 的最小凸集。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;单点本身是凸组合，所以 $S\subseteq\operatorname{conv}(S)$。两个有限凸组合的凸组合仍可合并成一个有限凸组合，故 $\operatorname{conv}(S)$ 凸。&lt;/p&gt;
+&lt;p&gt;若凸集 $C$ 包含 $S$，则由凸性，$S$ 中任意有限个点的凸组合也属于 $C$，所以 $\operatorname{conv}(S)\subseteq C$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-linear-convex-hull"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;线性优化在凸包上保持最优值&lt;/strong&gt;&lt;a href="#thm-linear-convex-hull" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对任意 $a\in\mathbb{R}^n$，&lt;/p&gt;
+$$
+\inf_{x\in S}a^\top x
+=\inf_{x\in\operatorname{conv}(S)}a^\top x.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;因为 $S\subseteq\operatorname{conv}(S)$，右侧不大于左侧。反过来，任取&lt;/p&gt;
+$$
+x=\sum_i\lambda_i x_i\in\operatorname{conv}(S),
+$$&lt;p&gt;则&lt;/p&gt;
+$$
+a^\top x=\sum_i\lambda_i a^\top x_i
+\ge\inf_{z\in S}a^\top z.
+$$&lt;p&gt;对凸包中所有 $x$ 取下确界即可得到反向不等式。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;理论上，任意优化问题都可先做上境图变换，再对可行上境图取凸包，从而变成线性目标下的凸问题。但凸包通常难以显式描述，因此这并不意味着一般非凸问题都容易求解。&lt;/p&gt;
+&lt;h2 id="凸优化问题的标准形式"&gt;凸优化问题的标准形式
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-convex-program"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸优化问题&lt;/strong&gt;&lt;a href="#def-convex-program" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;标准凸优化问题写作&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad &amp;f_0(x)\\
+\text{s.t.}\quad &amp;f_i(x)\le0,\quad i=1,\ldots,m,\\
+&amp;h_j(x)=0,\quad j=1,\ldots,p,
+\end{aligned}
+$$&lt;p&gt;其中 $f_0,f_1,\ldots,f_m$ 为凸函数，$h_1,\ldots,h_p$ 为仿射函数。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;每个不等式约束定义一个凸下水平集，每个等式约束定义一个仿射集，因此可行域是凸集。反过来，一个问题即使可行域碰巧是凸的，也不一定以可识别、可计算的凸形式给出。&lt;/p&gt;
+&lt;h2 id="保持凸性的运算"&gt;保持凸性的运算
+&lt;/h2&gt;&lt;p&gt;下列规则可用来快速构造凸函数。&lt;/p&gt;
+&lt;h3 id="非负加权和"&gt;非负加权和
+&lt;/h3&gt;&lt;p&gt;若 $f_i$ 凸且 $\alpha_i\ge0$，则&lt;/p&gt;
+$$
+f(x)=\sum_i\alpha_i f_i(x)
+$$&lt;p&gt;凸。证明直接对每个 $f_i$ 使用凸性不等式并加权求和。&lt;/p&gt;
+&lt;h3 id="仿射复合"&gt;仿射复合
+&lt;/h3&gt;&lt;p&gt;若 $f$ 凸，则 $g(x)=f(Ax+b)$ 凸，因为仿射映射保持凸组合：&lt;/p&gt;
+$$
+A((1-t)x+ty)+b=(1-t)(Ax+b)+t(Ay+b).
+$$&lt;h3 id="逐点上确界"&gt;逐点上确界
+&lt;/h3&gt;&lt;p&gt;若每个 $f_\alpha$ 都凸，则&lt;/p&gt;
+$$
+f(x)=\sup_\alpha f_\alpha(x)
+$$&lt;p&gt;凸。其上境图满足&lt;/p&gt;
+$$
+\operatorname{epi}(f)=\bigcap_\alpha\operatorname{epi}(f_\alpha),
+$$&lt;p&gt;而凸集的任意交仍凸。&lt;/p&gt;
+&lt;h3 id="单调凸复合"&gt;单调凸复合
+&lt;/h3&gt;&lt;p&gt;若 $h:\mathbb{R}^k\to\mathbb{R}$ 凸且对每个分量单调不减，$g_i$ 均凸，则&lt;/p&gt;
+$$
+f(x)=h(g_1(x),\ldots,g_k(x))
+$$&lt;p&gt;凸。先由各 $g_i$ 的凸性得到逐分量上界，再依次使用 $h$ 的单调性和凸性即可证明。&lt;/p&gt;
+&lt;h2 id="二阶凸性判别"&gt;二阶凸性判别
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-hessian-convexity"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Hessian 判别&lt;/strong&gt;&lt;a href="#thm-hessian-convexity" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f$ 在开凸集 $C$ 上二阶连续可微，则&lt;/p&gt;
+$$
+f\text{ 在 }C\text{ 上凸}
+\quad\Longleftrightarrow\quad
+\nabla^2f(x)\succeq0,\quad\forall x\in C.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $f$ 凸，固定 $x\in C$ 和任意方向 $d$，令 $g(t)=f(x+td)$。$g$ 是一元凸函数，因此&lt;/p&gt;
+$$
+g''(0)=d^\top\nabla^2f(x)d\ge0.
+$$&lt;p&gt;故 Hessian 半正定。&lt;/p&gt;
+&lt;p&gt;反之，假设 Hessian 处处半正定。固定 $x,y\in C$，令 $d=y-x$、$g(t)=f(x+td)$。则&lt;/p&gt;
+$$
+g''(t)=d^\top\nabla^2f(x+td)d\ge0,
+$$&lt;p&gt;所以 $g$ 在 $[0,1]$ 上凸，从而&lt;/p&gt;
+$$
+f((1-t)x+ty)=g(t)\le(1-t)g(0)+tg(1).
+$$&lt;p&gt;故 $f$ 凸。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;由此立即得到：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;二次函数 $f(x)=x^\top Qx+a^\top x+b$ 在 $Q$ 对称时凸，当且仅当 $Q\succeq0$；&lt;/li&gt;
+&lt;li&gt;椭球 $\{x:x^\top Qx\le r\}$（$Q\succ0$）是凸集；&lt;/li&gt;
+&lt;li&gt;最小二乘目标 $\lVert Ax-b\rVert_2^2$ 的 Hessian 为 $2A^\top A\succeq0$，所以任意驻点都是全局最优解。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="总结"&gt;总结
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;凸问题中局部极小值就是全局极小值；&lt;/li&gt;
+&lt;li&gt;可微凸函数等价于其切平面处处为全局下估计；&lt;/li&gt;
+&lt;li&gt;对可微凸函数，驻点与全局极小值点等价；&lt;/li&gt;
+&lt;li&gt;凸包不会改变线性目标的最优值，但未必容易描述；&lt;/li&gt;
+&lt;li&gt;非负加权和、仿射复合、逐点上确界和单调凸复合保持凸性；&lt;/li&gt;
+&lt;li&gt;二阶连续可微函数可用 Hessian 的半正定性判别凸性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="参考资料"&gt;参考资料
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Stephen Boyd and Lieven Vandenberghe, &lt;em&gt;Convex Optimization&lt;/em&gt;, Cambridge University Press, 2004.&lt;/li&gt;
+&lt;li&gt;Taotao He, &lt;em&gt;ECON200 Optimization Methods, Lecture 5&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>OPT学习笔记-2：仿射集、凸集与凸函数</title><link>https://cxzhou.com/p/opt-notes-2/</link><pubDate>Sun, 20 Sep 2026 23:10:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-2/</guid><description>&lt;p&gt;本篇整理仿射几何与凸性中的基本对象。它们是后续凸优化、线性规划和对偶理论的共同语言。&lt;/p&gt;
+&lt;h2 id="三种组合"&gt;三种组合
+&lt;/h2&gt;&lt;p&gt;给定 $x_1,\ldots,x_m\in\mathbb{R}^n$，向量&lt;/p&gt;
+$$
+\sum_{i=1}^m\lambda_i x_i
+$$&lt;p&gt;称为：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;线性组合&lt;/strong&gt;：$\lambda_i\in\mathbb{R}$；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仿射组合&lt;/strong&gt;：$\sum_i\lambda_i=1$；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;凸组合&lt;/strong&gt;：$\sum_i\lambda_i=1$ 且 $\lambda_i\ge0$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;限制条件逐步增强，因此凸组合一定是仿射组合，仿射组合一定是线性组合。&lt;/p&gt;
+&lt;h2 id="仿射集"&gt;仿射集
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-affine-set"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;仿射集&lt;/strong&gt;&lt;a href="#def-affine-set" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;集合 $M\subseteq\mathbb{R}^n$ 称为仿射集，如果对任意 $x,y\in M$ 和 $\lambda\in\mathbb{R}$，都有&lt;/p&gt;
+$$
+(1-\lambda)x+\lambda y\in M.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;仿射集包含任意两点之间的整条直线。线性子空间必须经过原点，而仿射集可以看作线性子空间的平移。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-affine-translation"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;仿射集的平移表示&lt;/strong&gt;&lt;a href="#thm-affine-translation" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;每个非空仿射集 $M$ 都可唯一写成&lt;/p&gt;
+$$
+M=a+L:=\{a+v:v\in L\},
+$$&lt;p&gt;其中 $a\in M$，$L$ 是线性子空间，并且&lt;/p&gt;
+$$
+L=M-M:=\{x-y:x,y\in M\}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;固定 $a\in M$，令 $L=M-a$。显然 $0\in L$。若 $u=x-a$、$v=y-a\in L$，则由仿射性，&lt;/p&gt;
+$$
+a+u+v=-a+x+y=(1-(-1))\frac{x+y}{2}+(-1)a\in M,
+$$&lt;p&gt;故 $u+v\in L$。对任意 $t\in\mathbb{R}$，&lt;/p&gt;
+$$
+a+tu=(1-t)a+tx\in M,
+$$&lt;p&gt;故 $tu\in L$。因此 $L$ 是线性子空间，且 $M=a+L$。&lt;/p&gt;
+&lt;p&gt;又因为 $M=a+L$，任意 $x-y\in M-M$ 都属于 $L$；反过来任意 $v\in L$ 可写成 $(a+v)-a$，所以 $L=M-M$。这一表达只由 $M$ 决定，故 $L$ 唯一。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;仿射集的维数定义为与其平行的线性子空间 $L$ 的维数。$\mathbb{R}^n$ 中的 $(n-1)$ 维仿射集称为&lt;strong&gt;超平面&lt;/strong&gt;。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-hyperplane"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;超平面与线性方程&lt;/strong&gt;&lt;a href="#thm-hyperplane" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若 $a\in\mathbb{R}^n\setminus\{0\}$、$b\in\mathbb{R}$，则&lt;/p&gt;
+$$
+H=\{x\in\mathbb{R}^n:a^\top x=b\}
+$$&lt;p&gt;是一个超平面；反之，每个超平面都可写成这种形式。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $x_0\in H$，则&lt;/p&gt;
+$$
+H=x_0+\operatorname{Null}(a^\top).
+$$&lt;p&gt;由于 $a\ne0$，$\operatorname{Null}(a^\top)$ 的维数为 $n-1$，故 $H$ 是超平面。&lt;/p&gt;
+&lt;p&gt;反之，任意超平面可写成 $x_0+L$，其中 $\dim L=n-1$。于是 $L^\perp$ 为一维空间，取非零 $a\in L^\perp$ 并令 $b=a^\top x_0$，即可得到 $H=\{x:a^\top x=b\}$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;更一般地，线性方程组的解集&lt;/p&gt;
+$$
+M=\{x\in\mathbb{R}^n:Ax=b\}
+$$&lt;p&gt;若非空，则对任意特解 $x_0$ 有 $M=x_0+\operatorname{Null}(A)$，因而是仿射集。&lt;/p&gt;
+&lt;h2 id="凸集"&gt;凸集
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-convex-set"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸集&lt;/strong&gt;&lt;a href="#def-convex-set" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;集合 $C\subseteq\mathbb{R}^n$ 称为凸集，如果对任意 $x,y\in C$ 和 $\lambda\in[0,1]$，都有&lt;/p&gt;
+$$
+(1-\lambda)x+\lambda y\in C.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;几何上，这表示集合中任意两点之间的线段仍完全位于集合中。仿射集、半空间、欧氏球和椭球都是凸集。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-convex-intersection"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸集对任意交封闭&lt;/strong&gt;&lt;a href="#thm-convex-intersection" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+任意一族凸集的交集仍是凸集。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;设 $C=\bigcap_{\alpha\in I}C_\alpha$，任取 $x,y\in C$。则对每个 $\alpha$ 都有 $x,y\in C_\alpha$。由 $C_\alpha$ 的凸性，对任意 $\lambda\in[0,1]$，&lt;/p&gt;
+$$
+(1-\lambda)x+\lambda y\in C_\alpha.
+$$&lt;p&gt;因此该点属于所有 $C_\alpha$，也就属于 $C$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;有限个闭半空间的交称为&lt;strong&gt;多面体（polyhedron）&lt;/strong&gt;：&lt;/p&gt;
+$$
+P=\{x\in\mathbb{R}^n:Ax\le b\}.
+$$&lt;p&gt;线性规划的可行域正是多面体。与交集不同，凸集的并集一般不凸。&lt;/p&gt;
+&lt;h2 id="分离超平面"&gt;分离超平面
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-separation"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;点与闭凸集的分离定理&lt;/strong&gt;&lt;a href="#thm-separation" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $C\subseteq\mathbb{R}^n$ 非空、闭且凸，$x_0\notin C$。则存在 $a\ne0$ 和 $b\in\mathbb{R}$，使得&lt;/p&gt;
+$$
+a^\top x\le b&lt;a^\top x_0,
+\qquad \forall x\in C.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由于 $C$ 闭且 $x_0\notin C$，距离最小化问题&lt;/p&gt;
+$$
+\min_{x\in C}\lVert x-x_0\rVert_2
+$$&lt;p&gt;存在最优解 $p\in C$。令 $a=x_0-p\ne0$。对任意 $x\in C$，由凸性知 $p+t(x-p)\in C$（$t\in[0,1]$）。函数&lt;/p&gt;
+$$
+\phi(t)=\lVert x_0-p-t(x-p)\rVert_2^2
+$$&lt;p&gt;在 $t=0$ 处取得区间 $[0,1]$ 上的最小值，因此 $\phi'(0)\ge0$，即&lt;/p&gt;
+$$
+a^\top(x-p)\le0.
+$$&lt;p&gt;所以 $a^\top x\le a^\top p$。取&lt;/p&gt;
+$$
+b=\frac{a^\top p+a^\top x_0}{2},
+$$&lt;p&gt;由于 $a^\top x_0-a^\top p=\lVert x_0-p\rVert_2^2&gt;0$，便有&lt;/p&gt;
+$$
+a^\top x\le a^\top p&lt;b&lt;a^\top x_0.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;分离定理说明：每个闭凸集都可以表示为一族包含它的闭半空间的交。&lt;/p&gt;
+&lt;h2 id="凸函数"&gt;凸函数
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-convex-function"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸函数与凹函数&lt;/strong&gt;&lt;a href="#def-convex-function" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $\operatorname{dom}f$ 为凸集。若对任意 $x,y\in\operatorname{dom}f$ 和 $\lambda\in[0,1]$，&lt;/p&gt;
+$$
+f((1-\lambda)x+\lambda y)
+\le(1-\lambda)f(x)+\lambda f(y),
+$$&lt;p&gt;则称 $f$ 为凸函数。若不等号反向，则称 $f$ 为凹函数。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;$f$ 为凹函数当且仅当 $-f$ 为凸函数；同时凸且凹的函数恰为仿射函数。&lt;/p&gt;
+&lt;p&gt;常见凸函数包括 $e^{ax}$、$-\log x$、$x\log x$、范数以及支撑函数&lt;/p&gt;
+$$
+\sigma_C(z)=\sup_{x\in C}z^\top x.
+$$&lt;p&gt;范数的凸性来自三角不等式；支撑函数的凸性则来自上确界运算：&lt;/p&gt;
+$$
+\sigma_C((1-\lambda)z_1+\lambda z_2)
+\le(1-\lambda)\sigma_C(z_1)+\lambda\sigma_C(z_2).
+$$&lt;h2 id="上境图与下水平集"&gt;上境图与下水平集
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-epigraph"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;上境图&lt;/strong&gt;&lt;a href="#def-epigraph" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;函数 $f:S\to\mathbb{R}$ 的上境图定义为&lt;/p&gt;
+$$
+\operatorname{epi}(f)
+=\{(x,t)\in\mathbb{R}^{n+1}:x\in S,\ t\ge f(x)\}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-epigraph"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;上境图刻画&lt;/strong&gt;&lt;a href="#thm-epigraph" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$f$ 是凸函数，当且仅当 $\operatorname{epi}(f)$ 是凸集。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $f$ 凸，任取 $(x,s),(y,t)\in\operatorname{epi}(f)$，则 $s\ge f(x)$、$t\ge f(y)$。对 $\lambda\in[0,1]$，&lt;/p&gt;
+$$
+f((1-\lambda)x+\lambda y)
+\le(1-\lambda)f(x)+\lambda f(y)
+\le(1-\lambda)s+\lambda t,
+$$&lt;p&gt;故上境图凸。&lt;/p&gt;
+&lt;p&gt;反之，若上境图凸，则 $(x,f(x))$ 和 $(y,f(y))$ 的凸组合仍在上境图中，立即得到凸函数定义中的不等式。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;函数的 $\alpha$-下水平集为&lt;/p&gt;
+$$
+L_\alpha(f)=\{x\in\operatorname{dom}f:f(x)\le\alpha\}.
+$$
+&lt;div class="math-block math-block--theorem" id="thm-sublevel"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸函数的下水平集&lt;/strong&gt;&lt;a href="#thm-sublevel" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+若 $f$ 为凸函数，则每个下水平集 $L_\alpha(f)$ 都是凸集。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;任取 $x,y\in L_\alpha(f)$，则 $f(x),f(y)\le\alpha$。于是&lt;/p&gt;
+$$
+f((1-\lambda)x+\lambda y)
+\le(1-\lambda)f(x)+\lambda f(y)
+\le\alpha,
+$$&lt;p&gt;所以 $(1-\lambda)x+\lambda y\in L_\alpha(f)$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;反命题不成立。所有下水平集均凸的函数称为&lt;strong&gt;拟凸函数（quasiconvex function）&lt;/strong&gt;，拟凸性弱于凸性。&lt;/p&gt;
+&lt;h2 id="总结"&gt;总结
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;仿射集是线性子空间的平移，凸集只要求包含两点之间的线段；&lt;/li&gt;
+&lt;li&gt;凸集对任意交封闭，多面体是有限个半空间的交；&lt;/li&gt;
+&lt;li&gt;分离定理把闭凸集与外部点用超平面分开；&lt;/li&gt;
+&lt;li&gt;凸函数等价于上境图为凸集，并且其下水平集一定凸。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="参考资料"&gt;参考资料
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Stephen Boyd and Lieven Vandenberghe, &lt;em&gt;Convex Optimization&lt;/em&gt;, Cambridge University Press, 2004.&lt;/li&gt;
+&lt;li&gt;Taotao He, &lt;em&gt;ECON200 Optimization Methods, Lecture 4&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>OPT学习笔记-1：无约束优化与最优性条件</title><link>https://cxzhou.com/p/opt-notes-1/</link><pubDate>Sun, 20 Sep 2026 23:00:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-1/</guid><description>&lt;p&gt;本篇承接 &lt;a class="link" href="https://cxzhou.com/p/opt-notes-0/" &gt;OPT学习笔记-0&lt;/a&gt;。在已经了解优化问题、全局最优解和局部最优解等基本概念后，我们进一步讨论三个问题：最优解何时存在，如何利用局部微分信息判断一个点是否为局部极小值，以及这些条件如何应用于最小二乘问题。&lt;/p&gt;
+&lt;h2 id="最优解的存在性"&gt;最优解的存在性
+&lt;/h2&gt;&lt;p&gt;考虑优化问题&lt;/p&gt;
+$$
+\begin{aligned}
+\min_{x}\quad &amp; f(x)\\
+\text{s.t.}\quad &amp; x\in X,
+\end{aligned}
+$$&lt;p&gt;其中 $f:\mathbb{R}^n\to\mathbb{R}$ 是目标函数，$X\subseteq\mathbb{R}^n$ 是可行域。&lt;/p&gt;
+&lt;p&gt;一个优化问题可能因为以下三种原因没有最优解：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;不可行（infeasible）&lt;/strong&gt;：$X=\varnothing$；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;无界（unbounded）&lt;/strong&gt;：存在可行序列 $\{x^k\}\subseteq X$，使得 $f(x^k)\to-\infty$；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;下确界无法取得（not attained）&lt;/strong&gt;：$\inf_{x\in X}f(x)$ 有限，但不存在 $x^*\in X$ 使 $f(x^*)=\inf_{x\in X}f(x)$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;例如，在 $x&gt;0$ 上：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\min 1/x$ 的下确界为 $0$，但任何可行点都不能取得它；&lt;/li&gt;
+&lt;li&gt;$\min(-\log x)$ 无界，因为 $x\to+\infty$ 时 $-\log x\to-\infty$；&lt;/li&gt;
+&lt;li&gt;$\min x\log x$ 在 $x=e^{-1}$ 处取得唯一最优值 $-e^{-1}$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="math-block math-block--theorem" id="thm-weierstrass"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Weierstrass 极值定理&lt;/strong&gt;&lt;a href="#thm-weierstrass" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $X\subseteq\mathbb{R}^n$ 非空且紧，函数 $f:X\to\mathbb{R}$ 连续，则存在 $x^*\in X$，使得&lt;/p&gt;
+$$
+f(x^*)=\min_{x\in X}f(x).
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;记&lt;/p&gt;
+$$
+f^*=\inf_{x\in X}f(x).
+$$&lt;p&gt;先证明 $f^*&gt;-\infty$。若 $f^*=-\infty$，则存在序列 $\{x^k\}\subseteq X$ 使 $f(x^k)\to-\infty$。由于 $X$ 紧，$\{x^k\}$ 存在收敛子列 $x^{k_j}\to\bar{x}\in X$。由 $f$ 的连续性，&lt;/p&gt;
+$$
+f(x^{k_j})\to f(\bar{x})\in\mathbb{R},
+$$&lt;p&gt;这与 $f(x^{k_j})\to-\infty$ 矛盾，因此 $f^*$ 有限。&lt;/p&gt;
+&lt;p&gt;根据下确界的定义，对每个正整数 $k$，存在 $x^k\in X$ 使得&lt;/p&gt;
+$$
+f^*\le f(x^k)&lt;f^*+\frac{1}{k}.
+$$&lt;p&gt;仍由紧性，存在子列 $x^{k_j}\to x^*\in X$。连续性给出&lt;/p&gt;
+$$
+f(x^*)=\lim_{j\to\infty}f(x^{k_j})=f^*.
+$$&lt;p&gt;故 $x^*$ 是全局最优解。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;紧性与连续性都是重要条件。若可行域不闭，例如 $X=(0,1)$、$f(x)=x$，则下确界 $0$ 无法取得；若可行域不有界，例如 $X=\mathbb{R}$、$f(x)=e^{-x}$，也可能出现相同问题。&lt;/p&gt;
+&lt;h3 id="最大化与最小化"&gt;最大化与最小化
+&lt;/h3&gt;&lt;p&gt;最大化问题总能改写为最小化问题：&lt;/p&gt;
+$$
+\max_{x\in X}f(x)=-\min_{x\in X}\bigl(-f(x)\bigr).
+$$&lt;p&gt;因此，只要对目标函数取负号，最小化问题的结论就可以直接用于最大化问题。&lt;/p&gt;
+&lt;h3 id="经济学中的一个应用"&gt;经济学中的一个应用
+&lt;/h3&gt;&lt;p&gt;若消费者偏好可以由连续效用函数 $u:X\to\mathbb{R}$ 表示，且预算集 $X$ 非空且紧，则由 Weierstrass 极值定理，存在 $x^*\in X$ 使得&lt;/p&gt;
+$$
+u(x^*)=\max_{x\in X}u(x).
+$$&lt;p&gt;也就是说，在这些条件下消费者的最优选择集合非空。&lt;/p&gt;
+&lt;h2 id="无约束优化"&gt;无约束优化
+&lt;/h2&gt;&lt;p&gt;无约束优化问题写作&lt;/p&gt;
+$$
+\min_{x\in\mathbb{R}^n}f(x).
+$$&lt;p&gt;由于可行域是整个 $\mathbb{R}^n$，任意方向的小幅移动都是可行的，因此可以利用梯度和 Hessian 矩阵刻画局部最优性。&lt;/p&gt;
+&lt;div class="math-block math-block--definition" id="def-local-minimum"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;局部极小值与严格局部极小值&lt;/strong&gt;&lt;a href="#def-local-minimum" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若存在 $\delta&gt;0$，使得对所有满足 $\lVert x-\bar{x}\rVert_2&lt;\delta$ 的 $x$ 都有&lt;/p&gt;
+$$
+f(\bar{x})\le f(x),
+$$&lt;p&gt;则称 $\bar{x}$ 为 $f$ 的一个&lt;strong&gt;局部极小值点&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;若进一步对所有 $x\ne\bar{x}$ 都有&lt;/p&gt;
+$$
+f(\bar{x})&lt;f(x),
+$$&lt;p&gt;则称 $\bar{x}$ 为&lt;strong&gt;严格局部极小值点&lt;/strong&gt;。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="必要条件与充分条件"&gt;必要条件与充分条件
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;必要条件&lt;/strong&gt;：如果 $\bar{x}$ 是局部极小值点，那么该条件必须成立；但满足条件的点未必是局部极小值点。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;充分条件&lt;/strong&gt;：如果某点满足该条件，那么它一定是局部极小值点；但局部极小值点未必都满足该条件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;局部且可验证的条件十分重要：一方面，它们可以缩小最优解候选点的范围；另一方面，它们也是设计算法终止准则和搜索方向的基础。&lt;/p&gt;
+&lt;h2 id="一阶必要条件"&gt;一阶必要条件
+&lt;/h2&gt;
+&lt;div class="math-block math-block--theorem" id="thm-fonc"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;一阶必要条件（FONC）&lt;/strong&gt;&lt;a href="#thm-fonc" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f:\mathbb{R}^n\to\mathbb{R}$ 在 $\bar{x}$ 处可微。若 $\bar{x}$ 是 $f$ 的局部极小值点，则&lt;/p&gt;
+$$
+\nabla f(\bar{x})=0.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;任取方向 $d\in\mathbb{R}^n$，定义一元函数&lt;/p&gt;
+$$
+g(t)=f(\bar{x}+td).
+$$&lt;p&gt;由于 $\bar{x}$ 是 $f$ 的局部极小值点，$t=0$ 是 $g$ 的局部极小值点，故&lt;/p&gt;
+$$
+g'(0)=0.
+$$&lt;p&gt;由链式法则，&lt;/p&gt;
+$$
+g'(0)=\nabla f(\bar{x})^\top d.
+$$&lt;p&gt;因此对任意 $d\in\mathbb{R}^n$ 都有 $\nabla f(\bar{x})^\top d=0$。特别地，取 $d=\nabla f(\bar{x})$，得到&lt;/p&gt;
+$$
+\lVert\nabla f(\bar{x})\rVert_2^2=0,
+$$&lt;p&gt;从而 $\nabla f(\bar{x})=0$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;满足 $\nabla f(\bar{x})=0$ 的点称为&lt;strong&gt;驻点（stationary point）&lt;/strong&gt;。驻点可能是局部极小值点、局部极大值点或鞍点。例如，$f(x)=x^3$ 在 $x=0$ 处满足 $f'(0)=0$，但 $0$ 不是局部极小值点，因此一阶条件并不充分。&lt;/p&gt;
+&lt;h2 id="二阶必要条件"&gt;二阶必要条件
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-psd"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;正定与半正定矩阵&lt;/strong&gt;&lt;a href="#def-psd" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $Q\in\mathbb{R}^{n\times n}$ 为对称矩阵：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;若对任意 $d\in\mathbb{R}^n$ 都有 $d^\top Qd\ge0$，则称 $Q$ &lt;strong&gt;半正定&lt;/strong&gt;，记作 $Q\succeq0$；&lt;/li&gt;
+&lt;li&gt;若对任意非零 $d\in\mathbb{R}^n$ 都有 $d^\top Qd&gt;0$，则称 $Q$ &lt;strong&gt;正定&lt;/strong&gt;，记作 $Q\succ0$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-sonc"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;二阶必要条件（SONC）&lt;/strong&gt;&lt;a href="#thm-sonc" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f:\mathbb{R}^n\to\mathbb{R}$ 在 $\bar{x}$ 的邻域内二阶连续可微。若 $\bar{x}$ 是 $f$ 的局部极小值点，则&lt;/p&gt;
+$$
+\nabla f(\bar{x})=0,
+\qquad
+\nabla^2 f(\bar{x})\succeq0.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;一阶必要条件已经给出 $\nabla f(\bar{x})=0$。&lt;/p&gt;
+&lt;p&gt;任取 $d\in\mathbb{R}^n$，令 $g(t)=f(\bar{x}+td)$。由于 $t=0$ 是 $g$ 的局部极小值点，一元函数的二阶必要条件给出 $g''(0)\ge0$。由链式法则，&lt;/p&gt;
+$$
+g''(0)=d^\top\nabla^2f(\bar{x})d.
+$$&lt;p&gt;因此对任意 $d$ 都有&lt;/p&gt;
+$$
+d^\top\nabla^2f(\bar{x})d\ge0,
+$$&lt;p&gt;即 $\nabla^2f(\bar{x})\succeq0$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;二阶必要条件仍然不充分。例如 $f(x)=x^3$ 在 $x=0$ 处满足&lt;/p&gt;
+$$
+f'(0)=0,
+\qquad
+f''(0)=0,
+$$&lt;p&gt;但 $0$ 不是局部极小值点。&lt;/p&gt;
+&lt;h2 id="二阶充分条件"&gt;二阶充分条件
+&lt;/h2&gt;&lt;p&gt;在给出二阶充分条件前，需要先说明正定性与特征值之间的关系。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-eigenvalue-test"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;对称矩阵的特征值判别&lt;/strong&gt;&lt;a href="#thm-eigenvalue-test" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $Q\in\mathbb{R}^{n\times n}$ 为实对称矩阵，则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$Q\succeq0$ 当且仅当 $Q$ 的所有特征值均非负；&lt;/li&gt;
+&lt;li&gt;$Q\succ0$ 当且仅当 $Q$ 的所有特征值均为正。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;若 $Q\succ0$，并记其最小特征值为 $\lambda_{\min}&gt;0$，则对任意 $d\in\mathbb{R}^n$，&lt;/p&gt;
+$$
+d^\top Qd\ge\lambda_{\min}\lVert d\rVert_2^2.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由实对称矩阵的谱定理，存在正交矩阵 $U$ 和实对角矩阵&lt;/p&gt;
+$$
+\Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_n)
+$$&lt;p&gt;使得 $Q=U\Lambda U^\top$。对任意 $d$，令 $z=U^\top d$，则&lt;/p&gt;
+$$
+d^\top Qd
+=d^\top U\Lambda U^\top d
+=z^\top\Lambda z
+=\sum_{i=1}^n\lambda_i z_i^2.
+$$&lt;p&gt;若所有 $\lambda_i\ge0$，则上式对任意 $d$ 非负，故 $Q\succeq0$。反之，若某个 $\lambda_j&lt;0$，取对应的单位特征向量 $u_j$，则&lt;/p&gt;
+$$
+u_j^\top Qu_j=\lambda_j&lt;0,
+$$&lt;p&gt;与 $Q\succeq0$ 矛盾。正定情形同理。&lt;/p&gt;
+&lt;p&gt;当 $Q\succ0$ 时，&lt;/p&gt;
+$$
+d^\top Qd
+=\sum_{i=1}^n\lambda_i z_i^2
+\ge\lambda_{\min}\sum_{i=1}^n z_i^2
+=\lambda_{\min}\lVert d\rVert_2^2,
+$$&lt;p&gt;其中最后一个等号利用了正交变换保持欧氏范数。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-sosc"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;二阶充分条件（SOSC）&lt;/strong&gt;&lt;a href="#thm-sosc" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $f:\mathbb{R}^n\to\mathbb{R}$ 在 $\bar{x}$ 的邻域内二阶连续可微。若&lt;/p&gt;
+$$
+\nabla f(\bar{x})=0,
+\qquad
+\nabla^2f(\bar{x})\succ0,
+$$&lt;p&gt;则 $\bar{x}$ 是 $f$ 的严格局部极小值点。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;记 $H=\nabla^2f(\bar{x})$，并设 $H$ 的最小特征值为 $\lambda_{\min}&gt;0$。对充分小的 $h$，Taylor 展开给出&lt;/p&gt;
+$$
+f(\bar{x}+h)-f(\bar{x})
+=\nabla f(\bar{x})^\top h
++\frac12h^\top Hh
++o(\lVert h\rVert_2^2).
+$$&lt;p&gt;由于 $\nabla f(\bar{x})=0$ 且 $H\succ0$，有&lt;/p&gt;
+$$
+f(\bar{x}+h)-f(\bar{x})
+\ge\frac12\lambda_{\min}\lVert h\rVert_2^2
++o(\lVert h\rVert_2^2).
+$$&lt;p&gt;根据小 $o$ 项的定义，存在 $\delta&gt;0$，使得当 $0&lt;\lVert h\rVert_2&lt;\delta$ 时，&lt;/p&gt;
+$$
+\left|o(\lVert h\rVert_2^2)\right|
+\le\frac14\lambda_{\min}\lVert h\rVert_2^2.
+$$&lt;p&gt;因此&lt;/p&gt;
+$$
+f(\bar{x}+h)-f(\bar{x})
+\ge\frac14\lambda_{\min}\lVert h\rVert_2^2&gt;0.
+$$&lt;p&gt;故 $\bar{x}$ 是严格局部极小值点。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;二阶充分条件不是必要条件。例如 $f(x)=x^4$ 在 $x=0$ 处有严格局部极小值，但&lt;/p&gt;
+$$
+f'(0)=0,
+\qquad
+f''(0)=0,
+$$&lt;p&gt;Hessian 并不正定。&lt;/p&gt;
+&lt;h2 id="最小二乘问题"&gt;最小二乘问题
+&lt;/h2&gt;&lt;p&gt;给定矩阵 $A\in\mathbb{R}^{m\times n}$ 和向量 $b\in\mathbb{R}^m$，最小二乘问题为&lt;/p&gt;
+$$
+\min_{x\in\mathbb{R}^n}F(x)
+=\min_{x\in\mathbb{R}^n}\lVert Ax-b\rVert_2^2.
+$$&lt;p&gt;它常见于数据拟合和线性预测。展开目标函数可得&lt;/p&gt;
+$$
+F(x)=x^\top A^\top Ax-2b^\top Ax+b^\top b,
+$$&lt;p&gt;因此&lt;/p&gt;
+$$
+\nabla F(x)=2A^\top(Ax-b),
+\qquad
+\nabla^2F(x)=2A^\top A\succeq0.
+$$&lt;p&gt;一阶必要条件给出正规方程&lt;/p&gt;
+$$
+A^\top A\bar{x}=A^\top b.
+$$
+&lt;div class="math-block math-block--theorem" id="thm-least-squares"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;满列秩最小二乘解&lt;/strong&gt;&lt;a href="#thm-least-squares" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若 $A$ 的列向量线性无关，则 $A^\top A\succ0$，最小二乘问题存在唯一全局最优解&lt;/p&gt;
+$$
+x^*=(A^\top A)^{-1}A^\top b.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;对任意非零向量 $d$，由 $A$ 满列秩可知 $Ad\ne0$，因此&lt;/p&gt;
+$$
+d^\top A^\top Ad=\lVert Ad\rVert_2^2&gt;0.
+$$&lt;p&gt;故 $A^\top A\succ0$，从而可逆，正规方程有唯一解&lt;/p&gt;
+$$
+x^*=(A^\top A)^{-1}A^\top b.
+$$&lt;p&gt;令残差 $r=b-Ax^*$。由正规方程，$A^\top r=0$，所以 $r$ 与 $A$ 的列空间正交。对任意 $x$，&lt;/p&gt;
+$$
+Ax-b=A(x-x^*)-r.
+$$&lt;p&gt;利用正交性，&lt;/p&gt;
+$$
+\begin{aligned}
+\lVert Ax-b\rVert_2^2
+&amp;=\lVert A(x-x^*)-r\rVert_2^2\\
+&amp;=\lVert A(x-x^*)\rVert_2^2+\lVert r\rVert_2^2\\
+&amp;\ge\lVert r\rVert_2^2
+=\lVert Ax^*-b\rVert_2^2.
+\end{aligned}
+$$&lt;p&gt;因此 $x^*$ 是全局最优解。又因为 $A$ 满列秩，仅当 $x=x^*$ 时 $A(x-x^*)=0$，故最优解唯一。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="一个二元函数的例子"&gt;一个二元函数的例子
+&lt;/h2&gt;&lt;p&gt;考虑&lt;/p&gt;
+$$
+f(x_1,x_2)
+=\frac12x_1^2+x_1x_2+2x_2^2-4x_1-4x_2-x_2^3.
+$$&lt;p&gt;梯度为&lt;/p&gt;
+$$
+\nabla f(x_1,x_2)
+=\begin{pmatrix}
+x_1+x_2-4\\
+x_1+4x_2-4-3x_2^2
+\end{pmatrix}.
+$$&lt;p&gt;令梯度为零。由第一行得 $x_1=4-x_2$，代入第二行：&lt;/p&gt;
+$$
+3x_2-3x_2^2=3x_2(1-x_2)=0.
+$$&lt;p&gt;因此驻点为 $(4,0)$ 和 $(3,1)$。Hessian 矩阵为&lt;/p&gt;
+$$
+\nabla^2f(x_1,x_2)
+=\begin{pmatrix}
+1&amp;1\\
+1&amp;4-6x_2
+\end{pmatrix}.
+$$&lt;p&gt;在 $(4,0)$ 处，&lt;/p&gt;
+$$
+\nabla^2f(4,0)
+=\begin{pmatrix}1&amp;1\\1&amp;4\end{pmatrix}\succ0,
+$$&lt;p&gt;所以 $(4,0)$ 是严格局部极小值点。在 $(3,1)$ 处，Hessian 的行列式为 $-3&lt;0$，故 Hessian 不定，$(3,1)$ 是鞍点。因此，$f$ 只有一个局部极小值点 $(4,0)$。&lt;/p&gt;
+&lt;h2 id="三类最优性条件之间的关系"&gt;三类最优性条件之间的关系
+&lt;/h2&gt;&lt;p&gt;记：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$X_{\mathrm{FONC}}$：满足一阶必要条件的点集；&lt;/li&gt;
+&lt;li&gt;$X_{\mathrm{SONC}}$：满足二阶必要条件的点集；&lt;/li&gt;
+&lt;li&gt;$X_{\mathrm{LO}}$：局部极小值点集；&lt;/li&gt;
+&lt;li&gt;$X_{\mathrm{SOSC}}$：满足二阶充分条件的点集。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;则有&lt;/p&gt;
+$$
+X_{\mathrm{FONC}}
+\supset
+X_{\mathrm{SONC}}
+\supset
+X_{\mathrm{LO}}
+\supset
+X_{\mathrm{SOSC}}.
+$$&lt;p&gt;这些包含关系一般都是严格的：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$f(x)=-x^2$ 在 $0$ 处满足 FONC，但不满足 SONC；&lt;/li&gt;
+&lt;li&gt;$f(x)=x^3$ 在 $0$ 处满足 SONC，但不是局部极小值点；&lt;/li&gt;
+&lt;li&gt;$f(x)=x^4$ 在 $0$ 处是严格局部极小值点，但不满足 SOSC。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;需要注意，这些条件只利用某一点附近的微分信息。对一般非凸函数而言，它们不能单独保证全局最优；后续讨论凸函数时会看到，在凸性条件下，局部信息可以转化为全局结论。&lt;/p&gt;
+&lt;h2 id="总结"&gt;总结
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;连续函数在非空紧集上一定能取得全局最优值；&lt;/li&gt;
+&lt;li&gt;无约束可微函数的局部极小值点必须满足 $\nabla f(\bar{x})=0$；&lt;/li&gt;
+&lt;li&gt;二阶可微时，局部极小值点还必须满足 $\nabla^2f(\bar{x})\succeq0$；&lt;/li&gt;
+&lt;li&gt;若驻点处 Hessian 正定，则该点是严格局部极小值点；&lt;/li&gt;
+&lt;li&gt;满列秩最小二乘问题具有唯一全局最优解 $(A^\top A)^{-1}A^\top b$。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="参考资料"&gt;参考资料
+&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Stephen Boyd and Lieven Vandenberghe, &lt;em&gt;Convex Optimization&lt;/em&gt;, Cambridge University Press, 2004.&lt;/li&gt;
+&lt;li&gt;Taotao He, &lt;em&gt;ECON200 Optimization Methods, Lecture 3&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>OPT学习笔记-0</title><link>https://cxzhou.com/p/opt-notes-0/</link><pubDate>Mon, 23 Jun 2025 20:00:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-0/</guid><description>&lt;img src="https://cxzhou.com/p/opt-notes-0/cover.jpg" alt="Featured image of post OPT学习笔记-0" /&gt;&lt;h2 id="basic-definition"&gt;Basic Definition
+&lt;/h2&gt;&lt;p&gt;OPT is short for Optimization, and an optimization problem is defined as follow:&lt;/p&gt;
+&lt;div class="math-block math-block--definition" id="def-opt"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 0: optimization problem&lt;/strong&gt;&lt;a href="#def-opt" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$$
+\min \space f(x) \\
+s.t. \space x\in X
+$$&lt;p&gt;
+where $f: \mathbb{R}^n \to \mathbb{R}$ is called the &lt;em&gt;objective function (决策函数)&lt;/em&gt;, $x$ is the &lt;em&gt;decision variable (决策变量)&lt;/em&gt;， and $X$ is the &lt;em&gt;feasible region (可行域)&lt;/em&gt; . Moreover, $min$ for &lt;em&gt;minimize&lt;/em&gt; and $s.t.$ for &lt;em&gt;subject to&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-optimal"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 1: 全局最优解及最优值 (global) optimal solution &amp;amp; optimal value&lt;/strong&gt;&lt;a href="#def-optimal" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;$x^\*$ is an optimal solution of &lt;a class="link" href="#def-opt" &gt;1&lt;/a&gt;
+&lt;em&gt;iff.&lt;/em&gt; $ \space x^\* \in X, f(x^\*)\leq f(x), \forall x\in X$
+where $f(x^\*)$ is the optimal value of &lt;a class="link" href="#def-opt" &gt;1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Some special cases:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;infeasible(不可行)：&lt;/em&gt; $X = \emptyset$;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;unbounded(无界)：&lt;/em&gt;$(x^n)_{n=1}^{\infin}\in X$, $f(x^n)\to \infty$;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;not achieved(无法取得):&lt;/em&gt; not exist $ x^* \in X $, so that $ f(x^*)=inf\{f(x)|x\in X\} $&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-min"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 2: 局部极小值点&lt;/strong&gt;&lt;a href="#def-min" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;$\bar{x}$ is a &lt;em&gt;local minimum(局部极小值点)&lt;/em&gt; of function $f$, if there exists $\delta&gt;0$ such that
+&lt;/p&gt;
+$$f(\bar{x})\leq f(x), \forall x\in X, ||x-\bar{x}||_2&lt;\delta$$&lt;p&gt;
+$\bar{x}$ is a &lt;em&gt;strict local minimum&lt;/em&gt; of function $f$, if there exists $\delta&gt;0$ such that
+&lt;/p&gt;
+$$f(\bar{x})&lt; f(x), \forall x\in X, ||x-\bar{x}||_2&lt;\delta\space and\space x\neq \bar{x}$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="mathematical-foundations"&gt;Mathematical Foundations
+&lt;/h2&gt;&lt;h3 id="linear-algebra"&gt;Linear Algebra
+&lt;/h3&gt;&lt;h4 id="the-space"&gt;The space $\mathbb{R}^n$
+&lt;/h4&gt;&lt;p&gt;A &lt;strong&gt;vector&lt;/strong&gt; (or point) $x$ in $\mathbb{R}^n$ is an ordered collection of $n$ real numbers, which can be given as $x=(x_1,x_2,x_3,\cdots,x_n)$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;scalar multiplication(数乘)&lt;/strong&gt; $a\in \mathbb{R}, x \in \mathbb{R}^n, ax=(ax_1,ax_2,\cdots,ax_n)$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;addition(向量加法)&lt;/strong&gt; $x\in\mathbb{R}^n, y\in\mathbb{R}^n, x+y=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)$&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;linear subspace(线性子空间)&lt;/strong&gt; A nonempty subset $S$ of $\mathbb{R}^n$ is a &lt;em&gt;linear subspace&lt;/em&gt; &lt;em&gt;iff.&lt;/em&gt;
+&lt;/p&gt;
+$$
+x,y\in S, x+y\in S;x\in S,a\in \mathbb{R},ax\in S
+$$&lt;p&gt;
+(对加法和数乘封闭)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;linear combinations(线性组合) &amp;amp; span(线性生成空间)&lt;/strong&gt;
+&lt;/p&gt;
+$$
+\mathcal{V}=\{v_1,v_2,\cdots,v_m\}\in \mathbb{R}^n, a_1,a_2,\cdots,a_m\in\mathbb{R}
+$$&lt;p&gt;$\sum_{i=1}^ma_iv_i$ is a &lt;em&gt;linear combination&lt;/em&gt;;&lt;/p&gt;
+$$
+span(\mathcal{V}):=\{ a_1v_1+a_2v_2+\cdots+a_mv_m \mid a_1,a_2,\cdots,a_m\in\mathbb{R} \}
+$$&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;linear independent(线性无关) &amp;amp; linear dependent(线性相关)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;linear independent:&lt;/em&gt; $v=a_1v_1+a_2v_2+\cdots+a_mv_m=\mathbf{0}$ &lt;em&gt;iff.&lt;/em&gt; $a_1=a_2=\cdots=a_m=0$&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;linear dependent:&lt;/em&gt; exists a non-zero ${a_k}$, such that $v=\mathbf{0}$.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Basis(基)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\mathcal{V}$ is a &lt;em&gt;basis&lt;/em&gt; of linear subspace $S$ of $\mathbb{R}^n$, if $span(\mathcal{V})=S$ and $\mathcal{V}$ is linear independent&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Some useful facts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The span of $\mathcal{V}$ is a linear subspace of $\mathbb{R}^n$;&lt;/li&gt;
+&lt;li&gt;$\mathcal{V}$ is linear independent if and only if every $v\in span(\mathcal{V})$ can be uniquely represented as a linear combination of $\mathcal{V}$;&lt;/li&gt;
+&lt;li&gt;$\mathcal{V}$ is linear independent. If $v\notin span(\mathcal{V})$ the $\mathcal{V}\cup v$ is linear independent;&lt;/li&gt;
+&lt;li&gt;If $\mathcal{V}$ is linear dependent, there exists a nonzero vector $v\in\mathcal{V}$ such that $v\in span(\mathcal{V\backslash v}), span(\mathcal{V})=span(\mathcal{V\backslash v})$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="math-block math-block--theorem" id="theo-basis"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Theorem 1 (基扩充/缩减定理)&lt;/strong&gt;&lt;a href="#theo-basis" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+Every linear independent subset of $\mathcal{V}$ can be extended to a basis of $span(\mathcal{V})$. The set of $\mathcal{V}$ can be reduced to a basis of $span(\mathcal{V})$.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;(重复加入/减去线性无关向量直到构成基)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Proposition 1&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+Let $\mathcal{W}$ be a vector space spanned by a finite set $\mathcal{V}$, i.e., $\mathcal{W}=span(\mathcal{V})$. Any linearly independent subset of $\mathcal{W}$ can be extended to form a basis for $\mathcal{W}$ .
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;Let $L=\{v_1,v_2,…,v_k\}$ be a linearly independent set of vectors in W. We want to find a set of vectors ${u_1,u_2,…,u_m}\subseteq \mathcal{V}$ such that the combined set $B=L∪\{u_1,…,u_m\}$ is a basis for $\mathcal{W}$ .&lt;/p&gt;
+&lt;p&gt;We proceed with the following algorithm:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Check if&lt;/strong&gt; $L$ &lt;strong&gt;spans&lt;/strong&gt; $\mathcal{W}$ .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If $span(L)=\mathcal{W}$, then $L$ is a linearly independent spanning set, which means $L$ is already a basis for $\mathcal{W}$. The proof is complete.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;If&lt;/strong&gt; $L$ &lt;strong&gt;does not span&lt;/strong&gt; $\mathcal{W}$ &lt;strong&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If $span(L)\neq\mathcal{W} $, then there must exist at least one vector in $\mathcal{W}$ that is not in the span of $L$. Since $\mathcal{W}=span(\mathcal{V})$, there must be a vector $u_1∈\mathcal{V}$ such that $u_1\notin span(\mathcal{V})$.&lt;/li&gt;
+&lt;li&gt;Let&amp;rsquo;s form a new set $L_1=L∪\{u_1\}=\{v_1,…,v_k,u_1\}$. We claim this new set is also linearly independent.&lt;/li&gt;
+&lt;li&gt;To prove this, consider the equation:
+$c_1v_1+c_2v_2+⋯+c_kv_k+d_1u_1=0$&lt;/li&gt;
+&lt;li&gt;Case 1: If $d1\neq 0$, we could rearrange the equation to express u1 as a linear combination of the vectors in $L$:
+$u_1=−d_{11}(c_1v_1+⋯+c_kv_k)$
+This would imply that $u1\in span(L)$, which contradicts our choice of u1.&lt;/li&gt;
+&lt;li&gt;Case 2: Therefore, we must have $d_1=0$. The equation simplifies to:
+$c_1v_1+c_2v_2+⋯+c_kv_k=0$
+Since $L$ is a linearly independent set, the only solution to this equation is $c_1=c_2=⋯+c_k=0$.&lt;/li&gt;
+&lt;li&gt;Thus, the only solution is that all coefficients ($c_i$ and $d_1$) are zero. This proves that the set $L_1$ is linearly independent.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Repeat the process.&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We now repeat the procedure with $L_1$. If $span(L_1)=\mathcal{W}$, we have found our basis. If not, we find another vector $u_2\in V$ such that $u_2\notin span(L_1)$ and form the larger, linearly independent set $L_2=L_1∪\{u_2\}$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Since W is spanned by a finite set V, it is a finite-dimensional space. Let $dim(\mathcal{W})=n$. Any linearly independent set in $\mathcal{W}$ can contain at most n vectors. Our process starts with a set of k vectors and adds one vector at a time, maintaining linear independence at each step. Therefore, the process is guaranteed to terminate in at most n−k steps, at which point we have a set $B$ that is linearly independent and spans $\mathcal{W}$. By definition, $B$ is a basis for $\mathcal{W}$ that contains the original set $L$.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Proposition 2&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+Any finite set $\mathcal{V}$ that spans a vector space W can be reduced to a basis for $\mathcal{W}$ by removing some of its vectors.
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;Let $\mathcal{V}=\{v_1,v_2,\cdots,v_m\}$ be a set that spans $\mathcal{W}$, i.e., $\mathcal{W}=span(\mathcal{V})$. We want to find a subset $B\subseteq \mathcal{V}$ that is a basis for $\mathcal{W}$.&lt;/p&gt;
+&lt;p&gt;We can construct the basis $B$ using the following &amp;ldquo;sifting&amp;rdquo; algorithm:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Initialize an empty set, $B=\empty$.&lt;/li&gt;
+&lt;li&gt;Iterate through each vector $v_i$ in $\mathcal{V}$ for $i=1,\cdots,m$.&lt;/li&gt;
+&lt;li&gt;For each $v_i$, check if it is a linear combination of the vectors already in $B$. That is, check if $v_i\in span(B)$.
+&lt;ul&gt;
+&lt;li&gt;If &lt;strong&gt;NO&lt;/strong&gt;, then $v_i$ is linearly independent of the vectors in $B$. Add $v_i$ to $B$.&lt;/li&gt;
+&lt;li&gt;If &lt;strong&gt;YES&lt;/strong&gt;, then vi is a redundant vector (it depends linearly on other vectors). Discard $v_i$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The final set $B$ produced by this algorithm is a basis for $\mathcal{W}$. We must prove two properties: that $B$ is linearly independent and that it spans $\mathcal{W}$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Linear Independence:&lt;/strong&gt; By construction, a vector is only added to $B$ if it is not in the span of the vectors already in $B$. This condition directly ensures that the resulting set $B$ is linearly independent. If $B=\{b_1,\cdots,b_k\}$ were linearly dependent, then by the properties of linear dependence, some vector $b_j$ would be a linear combination of the preceding vectors, $b_j\in span(\{b_1,…,b_{j−1}\})$. But this contradicts the very rule we used to add $b_j$ to the set. Therefore, $B$ must be linearly independent.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Spanning Property:&lt;/strong&gt; We need to show that $span(B)=span(\mathcal{V})$.
+&lt;ul&gt;
+&lt;li&gt;Since $B\subseteq\mathcal{V}$, it is clear that $span(B)\subseteq span(V)$.&lt;/li&gt;
+&lt;li&gt;To show $span(V)\subseteq span(B)$, we must show that every vector $v_i\in \mathcal{V}$ is in $span(B)$.
+&lt;ul&gt;
+&lt;li&gt;If a vector $v_i$ was added to $B$, then $v_i∈B$, so it is trivially in $span(B)$.&lt;/li&gt;
+&lt;li&gt;If a vector $v_i$ was discarded, it was because at the moment of its consideration, it was already a linear combination of the vectors in the current version of $B$. Since the final set $B$ contains all these vectors, it follows that $v_i\in span(B)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Since every vector in the original spanning set $\mathcal{V}$ can be expressed as a linear combination of vectors in $B$, the span of $\mathcal{V}$ cannot be larger than the span of $B$. Thus, $span(\mathcal{V})\subseteq span(B)$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Combining the two inclusions, we have $span(B)=span(\mathcal{V})=\mathcal{W}$.&lt;/p&gt;
+&lt;p&gt;Since $B$ is a linearly independent set that spans $\mathcal{W}$, it is a basis for $\mathcal{W}$.&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id="euclidean-inner-product-euclidean-norm-orthogonal"&gt;Euclidean inner product, Euclidean norm, orthogonal
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Euclidean inner product&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="math-block math-block--definition" id="def-product"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 3: Euclidean inner product(欧氏内积)&lt;/strong&gt;&lt;a href="#def-product" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;Given two vectors $x, y \in \mathbb{R}^n$, their &lt;strong&gt;Euclidean inner product&lt;/strong&gt; is defined as&lt;br&gt;
+&lt;/p&gt;
+$$
+\langle x, y \rangle=\sum_{i=1}^n x_i y_i
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Properties of the inner product&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;bi-linearity(双线性性):&lt;/strong&gt; when $\bar{x}$ is a fixed vector in $\mathbb{R}^n$, the function $&lt;\bar{x}, y&gt;$ is linear in variable $y$; when $\bar{y}$ is a fixed vector in $\mathbb{R}^n$, the function $&lt;x, \bar{y}&gt;$ is linear in variable $x$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;symmetry(对称性):&lt;/strong&gt; $&lt;x, y&gt;=&lt;y, x&gt;, \forall x, y \in \mathbb{R}^n$;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;positive definiteness(正定性):&lt;/strong&gt; $\forall x \in \mathbb{R}^n, &lt;x, x&gt;\geq 0$, and is zero &lt;em&gt;iff.&lt;/em&gt; $x=\mathbf{0}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" &gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Definition 4: Linear function&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;A function $f: \mathbb{R}^n \to \mathbb{R}$ is linear if for every $ x,y \in \mathbb{R}^n $ and $ \alpha, \beta \in \mathbb{R} $,
+&lt;/p&gt;
+$$
+f(\alpha x+ \beta y)=\alpha f(x)+ \beta f(y)
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="theo-func"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Theorem 2 (线性函数可由向量内积唯一表示)&lt;/strong&gt;&lt;a href="#theo-func" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;Let $&lt;\cdot , \cdot&gt;$ be the &lt;em&gt;Euclidean inner product&lt;/em&gt; on $\mathbb{R}^n \to \mathbb{R}$.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For every vector $a \in \mathbb{R}^n$, $&lt;a,x&gt;$ is a linear function from $ \mathbb{R}^n \to \mathbb{R} $,&lt;/li&gt;
+&lt;li&gt;Let $f(x)$ be a linear function from $ \mathbb{R}^n \to \mathbb{R} $. Then, there exists a unique vector $a\in \mathbb{R}^n$ so that $f(x)=&lt;a, x&gt;$ for every $x\in \mathbb{R}^n$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;ol&gt;
+&lt;li&gt;Let $f(x)=&lt;a, x&gt;$, for every $x, y\in \mathbb{R}^n$ and $\alpha, \beta \in \mathbb{R}$
+$$
+\begin{align*}
+f(\alpha x+ \beta y) &amp;= \langle a, \alpha x+ \beta y \rangle \\
+&amp;= \alpha \langle a, x \rangle + \beta \langle a, y \rangle \\
+&amp;= \alpha f(x) + \beta f(y)
+\end{align*}
+$$
+$f(x)$ is a linear function;&lt;/li&gt;
+&lt;li&gt;Let $f(x)$ be a linear function,
+$$
+\begin{align*}
+f(x) &amp;=f(\sum x_ie_i) \\
+&amp;=\sum x_if(e_i) \\
+&amp;=\langle a, x \rangle
+\end{align*}
+$$
+in which $a=(f(e_1),\cdots,f(e_n))$.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Extending Theorem 2 from scalar-valued linear functions $f: \mathbb{R}^n \to \mathbb{R}$ to vector-valued linear functions $f: \mathbb{R}^n \to \mathbb{R}^m$, we derive the following corollary:&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="coro-3"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Corollary 3&lt;/strong&gt;&lt;a href="#coro-3" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ul&gt;
+&lt;li&gt;Let $A$ be a $m \times n$ matrix whose row vectors are $a_1^T,\cdots,a_m^T$. Then, $Ax$ is a linear function from $\mathbb{R}^n \to \mathbb{R}^m$;&lt;/li&gt;
+&lt;li&gt;Let $f(x)$ be a linear function from $\mathbb{R}^n \to \mathbb{R}^m$. Then there exists a unique $m \times n$ matrix $A$ such that $f(x)=Ax$.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ol start="2"&gt;
+&lt;li&gt;&lt;strong&gt;Euclidean norm&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="math-block math-block--definition" id="def-norm"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Euclidean norm(欧几里得范数)&lt;/strong&gt;&lt;a href="#def-norm" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The &lt;strong&gt;Euclidean norm&lt;/strong&gt; of $x\in \mathbb{R}^n$ is defined as
+&lt;/p&gt;
+$$
+||x||_2=\sqrt{\langle x,x \rangle}=\sqrt{\sum_{i=1}^n x_i^2}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;An important inequality: &lt;strong&gt;Cauchy-Schwarz inequality(柯西施瓦茨不等式)&lt;/strong&gt;
+&lt;/p&gt;
+$$
+|\langle x,y \rangle|\leq||x||_2\cdot ||y||_2.
+$$&lt;ol start="3"&gt;
+&lt;li&gt;&lt;strong&gt;orthogonal(正交)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;$x$ and $y$ are orthogonal &lt;em&gt;iff.&lt;/em&gt; $&lt;x,y&gt;=0$.&lt;/p&gt;
+&lt;h4 id="four-fundamental-subspaces"&gt;Four fundamental subspaces
+&lt;/h4&gt;
+&lt;div class="math-block math-block--definition" id="def-col"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Column Space&lt;/strong&gt;&lt;a href="#def-col" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The column space of matrix $ A $, denoted $ Col(A) $, is the subspace spanned by the linear combinations of its column vectors.
+&lt;/p&gt;
+$$
+Col(A) = \{ A\mathbf{x} \mid \mathbf{x} \in \mathbb{R}^n \}
+$$&lt;p&gt;
+where $ A $ is an $ m \times n $ matrix and $ \mathbf{x} $ is an $ n $-dimensional vector.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-row"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Row Space&lt;/strong&gt;&lt;a href="#def-row" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The row space of matrix $ A $, denoted $ \text{Row}(A) $, is the subspace spanned by the linear combinations of its row vectors.
+&lt;/p&gt;
+$$
+\text{Row}(A) = \{ \mathbf{y}^T A \mid \mathbf{y} \in \mathbb{R}^m \}
+$$&lt;p&gt;
+Equivalently, it is the column space of $ A^T $ ($ \text{Col}(A^T) $).&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-null"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Null Space&lt;/strong&gt;&lt;a href="#def-null" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The null space of matrix $ A $, denoted $ \text{Null}(A) $, is the set of all vectors $ \mathbf{x} $ such that $ A\mathbf{x} = \mathbf{0} $.
+&lt;/p&gt;
+$$
+\text{Null}(A) = \{ \mathbf{x} \in \mathbb{R}^n \mid A\mathbf{x} = \mathbf{0} \}
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--definition" id="def-null"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Left Null Space&lt;/strong&gt;&lt;a href="#def-null" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;The left null space of matrix $ A $, denoted $ \text{Null}(A^T) $, is the set of all vectors $ \mathbf{y} $ such that $ \mathbf{y}^T A = \mathbf{0} $.
+&lt;/p&gt;
+$$
+\text{Null}(A^T) = \{ \mathbf{y} \in \mathbb{R}^m \mid \mathbf{y}^T A = \mathbf{0} \}
+$$&lt;p&gt;
+This is equivalent to the null space of $ A^T $.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="subspaces"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Relationships Between the Subspaces&lt;/strong&gt;&lt;a href="#subspaces" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Orthogonality&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;The column space $ \text{Col}(A) $ is orthogonal to the left null space $ \text{Null}(A^T) $ (in $ \mathbb{R}^m $).&lt;/li&gt;
+&lt;li&gt;The row space $ \text{Row}(A) $ is orthogonal to the null space $ \text{Null}(A) $ (in $ \mathbb{R}^n $).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dimension Relationships&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;$ \text{rank}(A) = \dim(\text{Col}(A)) = \dim(\text{Row}(A)) $&lt;/li&gt;
+&lt;li&gt;$ \dim(\text{Null}(A)) = n - \text{rank}(A) $&lt;/li&gt;
+&lt;li&gt;$ \dim(\text{Null}(A^T)) = m - \text{rank}(A) $&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4 id="eigenvalues-and-eigenvectors"&gt;Eigenvalues and eigenvectors
+&lt;/h4&gt;</description></item><item><title>OPT学习笔记-6：线性规划对偶的博弈论应用</title><link>https://cxzhou.com/p/opt-notes-6/</link><pubDate>Sun, 20 Sep 2026 23:14:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-6/</guid><description>&lt;p&gt;上一篇讨论了线性规划对偶。本篇把强对偶用于两类博弈：在零和博弈中，它给出极小极大定理；在合作博弈中，它刻画核心非空的充要条件。&lt;/p&gt;
+&lt;h2 id="零和矩阵博弈"&gt;零和矩阵博弈
+&lt;/h2&gt;&lt;p&gt;设行玩家选择 $i\in\{1,\ldots,m\}$，列玩家选择 $j\in\{1,\ldots,n\}$。收益矩阵为 $P\in\mathbb{R}^{m\times n}$，$P_{ij}$ 是列玩家获得、行玩家支付的收益。因此行玩家希望最小化收益，列玩家希望最大化收益。&lt;/p&gt;
+&lt;p&gt;混合策略分别属于概率单纯形&lt;/p&gt;
+$$
+\Delta_m=\{x\in\mathbb{R}^m_+:\mathbf 1^\top x=1\},
+\qquad
+\Delta_n=\{y\in\mathbb{R}^n_+:\mathbf 1^\top y=1\}.
+$$&lt;p&gt;当双方采用 $x$ 与 $y$ 时，期望收益为 $x^\top Py$。行玩家能够保证的最坏收益为&lt;/p&gt;
+$$
+\min_{x\in\Delta_m}\max_{y\in\Delta_n}x^\top Py,
+$$&lt;p&gt;而列玩家能够保证的收益为&lt;/p&gt;
+$$
+\max_{y\in\Delta_n}\min_{x\in\Delta_m}x^\top Py.
+$$&lt;p&gt;对任意 $x,y$，线性函数在单纯形上的最值都在顶点取得，所以&lt;/p&gt;
+$$
+\max_{y\in\Delta_n}x^\top Py=\max_j(P^\top x)_j,
+\qquad
+\min_{x\in\Delta_m}x^\top Py=\min_i(Py)_i.
+$$&lt;p&gt;于是双方的问题分别写成&lt;/p&gt;
+$$
+\begin{aligned}
+\min_{x,v}\quad &amp;v\\
+\text{s.t.}\quad&amp;P^\top x\le v\mathbf 1,\\
+&amp;\mathbf 1^\top x=1,\quad x\ge0,
+\end{aligned}
+\tag{P}
+$$&lt;p&gt;和&lt;/p&gt;
+$$
+\begin{aligned}
+\max_{y,w}\quad&amp;w\\
+\text{s.t.}\quad&amp;Py\ge w\mathbf 1,\\
+&amp;\mathbf 1^\top y=1,\quad y\ge0.
+\end{aligned}
+\tag{D}
+$$
+&lt;div class="math-block math-block--theorem" id="thm-minimax"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;von Neumann 极小极大定理&lt;/strong&gt;&lt;a href="#thm-minimax" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;任意有限零和矩阵博弈都满足&lt;/p&gt;
+&lt;h1 id="min_xindelta_mmax_yindelta_nxtop-py"&gt;$$
+\min_{x\in\Delta_m}\max_{y\in\Delta_n}x^\top Py
+&lt;/h1&gt;&lt;p&gt;\max_{y\in\Delta_n}\min_{x\in\Delta_m}x^\top Py.
+$$&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+问题 $(P)$ 与 $(D)$ 互为线性规划对偶。两个单纯形均非空且紧，因此两边最优值有限并能取得。由线性规划强对偶，$(P)$ 与 $(D)$ 的最优值相等，这正是所需等式。
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;共同的最优值称为博弈的&lt;strong&gt;值&lt;/strong&gt;。若 $x^*$ 与 $y^*$ 分别为两个线性规划的最优解，则&lt;/p&gt;
+$$
+(x^*)^\top Py\le (x^*)^\top Py^*\le x^\top Py^*
+$$&lt;p&gt;对所有 $x\in\Delta_m,y\in\Delta_n$ 成立。因此任一方单独偏离都不会改善自己的收益，$(x^*,y^*)$ 构成 Nash 均衡；反之，每个 Nash 均衡都由双方的安全策略构成，并具有相同的博弈值。&lt;/p&gt;
+&lt;h2 id="合作博弈与核心"&gt;合作博弈与核心
+&lt;/h2&gt;&lt;p&gt;设玩家集合为 $N=\{1,\ldots,n\}$。特征函数&lt;/p&gt;
+$$
+v:2^N\to\mathbb{R},\qquad v(\varnothing)=0
+$$&lt;p&gt;给出每个联盟 $S\subseteq N$ 能够独立创造的价值。一个分配 $x\in\mathbb{R}^n$ 属于博弈的&lt;strong&gt;核心&lt;/strong&gt;，若&lt;/p&gt;
+$$
+\sum_{i\in N}x_i=v(N),
+\qquad
+\sum_{i\in S}x_i\ge v(S),\quad \forall S\subseteq N.
+$$&lt;p&gt;第一个条件要求全部价值被分完；第二个条件保证没有联盟愿意退出并自行合作。&lt;/p&gt;
+&lt;p&gt;称非负权重 $\{\lambda_S\}_{S\subseteq N}$ 是&lt;strong&gt;平衡的&lt;/strong&gt;，若每位玩家获得的总权重恰为 $1$：&lt;/p&gt;
+$$
+\sum_{S\ni i}\lambda_S=1,
+\qquad i\in N.
+$$
+&lt;div class="math-block math-block--theorem" id="thm-bondareva-shapley"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Bondareva--Shapley 定理&lt;/strong&gt;&lt;a href="#thm-bondareva-shapley" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;合作博弈 $(N,v)$ 的核心非空，当且仅当对每组平衡权重都有&lt;/p&gt;
+$$
+\sum_{S\subseteq N}\lambda_Sv(S)\le v(N).
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;考虑线性规划&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad&amp;\sum_{i\in N}x_i\\
+\text{s.t.}\quad&amp;\sum_{i\in S}x_i\ge v(S),\quad S\subseteq N.
+\end{aligned}
+\tag{P}
+$$&lt;p&gt;由于约束中包含 $S=N$，其最优值至少为 $v(N)$。核心非空恰好等价于该最优值等于 $v(N)$：若存在核心分配，它是目标值为 $v(N)$ 的可行解；反之，目标值为 $v(N)$ 的最优解满足核心的全部条件。&lt;/p&gt;
+&lt;p&gt;给每个联盟约束配置对偶变量 $\lambda_S\ge0$，得到&lt;/p&gt;
+$$
+\begin{aligned}
+\max_\lambda\quad&amp;\sum_{S\subseteq N}\lambda_Sv(S)\\
+\text{s.t.}\quad&amp;\sum_{S\ni i}\lambda_S=1,
+\quad i\in N,\\
+&amp;\lambda_S\ge0.
+\end{aligned}
+\tag{D}
+$$&lt;p&gt;对偶可行解正是平衡权重。由强对偶，原问题最优值等于所有平衡权重下 $\sum_S\lambda_Sv(S)$ 的最大值。因此原问题最优值为 $v(N)$，当且仅当每组平衡权重都满足题中的不等式。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="超模博弈与边际分配"&gt;超模博弈与边际分配
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-supermodular-game"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;超模博弈&lt;/strong&gt;&lt;a href="#def-supermodular-game" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若对任意 $A,B\subseteq N$ 都有&lt;/p&gt;
+$$
+v(A)+v(B)\le v(A\cup B)+v(A\cap B),
+$$&lt;p&gt;则称 $(N,v)$ 为超模博弈，也称凸合作博弈。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;超模性等价于边际收益递增：若 $A\subseteq B$ 且 $i\notin B$，则&lt;/p&gt;
+$$
+v(A\cup\{i\})-v(A)
+\le
+v(B\cup\{i\})-v(B).
+$$
+&lt;div class="math-block math-block--theorem" id="thm-supermodular-core"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;超模博弈的核心非空&lt;/strong&gt;&lt;a href="#thm-supermodular-core" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+每个超模合作博弈都有非空核心。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;任取玩家排列 $\pi$，记&lt;/p&gt;
+$$
+S_k=\{\pi(1),\ldots,\pi(k)\},\qquad S_0=\varnothing,
+$$&lt;p&gt;并定义边际分配&lt;/p&gt;
+$$
+x_{\pi(k)}=v(S_k)-v(S_{k-1}).
+$$&lt;p&gt;望远镜求和立即给出 $\sum_{i\in N}x_i=v(N)$。任取联盟 $T$，将其中玩家按 $\pi$ 中的顺序写作 $\pi(k_1),\ldots,\pi(k_r)$，并令 $T_\ell=\{\pi(k_1),\ldots,\pi(k_\ell)\}$。由于 $T_{\ell-1}\subseteq S_{k_\ell-1}$，边际收益递增给出&lt;/p&gt;
+$$
+x_{\pi(k_\ell)}
+=v(S_{k_\ell})-v(S_{k_\ell-1})
+\ge v(T_\ell)-v(T_{\ell-1}).
+$$&lt;p&gt;对 $\ell$ 求和得到&lt;/p&gt;
+$$
+\sum_{i\in T}x_i\ge v(T)-v(\varnothing)=v(T).
+$$&lt;p&gt;因此 $x$ 属于核心。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;边际分配还提供了核心上线性目标的显式最优解。若成本满足 $c_1\ge c_2\ge\cdots\ge c_n$，按 $1,2,\ldots,n$ 的顺序构造边际分配。对任意核心分配 $z$，分部求和得到&lt;/p&gt;
+$$
+c^\top z
+=c_n v(N)+\sum_{k=1}^{n-1}(c_k-c_{k+1})\sum_{i=1}^kz_i
+\ge c_n v(N)+\sum_{k=1}^{n-1}(c_k-c_{k+1})v(\{1,\ldots,k\}).
+$$&lt;p&gt;边际分配使每个前缀联盟的不等式取等号，所以它达到该下界，是 $\min\{c^\top z:z\in C(v,N)\}$ 的最优解。&lt;/p&gt;</description></item><item><title>OPT学习笔记-7：网络流与生成树多面体</title><link>https://cxzhou.com/p/opt-notes-7/</link><pubDate>Sun, 20 Sep 2026 23:15:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-7/</guid><description>&lt;p&gt;组合优化中的离散对象常常可以由线性不等式精确描述。本篇以最大流和最小生成树为例，说明线性规划为何能够直接给出整数解。&lt;/p&gt;
+&lt;h2 id="最大流问题"&gt;最大流问题
+&lt;/h2&gt;&lt;p&gt;设有向图 $G=(V,E)$，源点为 $s$，汇点为 $t$，每条弧 $e$ 的容量为 $u_e\ge0$。流 $x\in\mathbb{R}^E_+$ 满足容量约束&lt;/p&gt;
+$$
+0\le x_e\le u_e,
+$$&lt;p&gt;并在每个中间节点满足流量守恒：&lt;/p&gt;
+&lt;h1 id="sum_eindelta-vx_e"&gt;$$
+\sum_{e\in\delta^-(v)}x_e
+&lt;/h1&gt;&lt;p&gt;\sum_{e\in\delta^+(v)}x_e,
+\qquad v\in V\setminus{s,t}.
+$$&lt;/p&gt;
+&lt;p&gt;流的值为从源点净流出的总量&lt;/p&gt;
+$$
+|x|=\sum_{e\in\delta^+(s)}x_e-
+\sum_{e\in\delta^-(s)}x_e.
+$$&lt;p&gt;最大流问题就是在线性约束下最大化 $|x|$。&lt;/p&gt;
+&lt;h2 id="割与弱对偶"&gt;割与弱对偶
+&lt;/h2&gt;&lt;p&gt;一个 $s$-$t$ 割由集合 $S\subseteq V$ 确定，其中 $s\in S,t\notin S$。其容量为&lt;/p&gt;
+$$
+u(\delta^+(S))=\sum_{e\in\delta^+(S)}u_e.
+$$
+&lt;div class="math-block math-block--proposition" id="prop-flow-cut-weak"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;流不超过割容量&lt;/strong&gt;&lt;a href="#prop-flow-cut-weak" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对任意可行流 $x$ 与任意 $s$-$t$ 割 $S$，都有&lt;/p&gt;
+$$
+|x|\le u(\delta^+(S)).
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;将 $S\setminus\{s\}$ 中各节点的流量守恒式相加，并与源点的净流出量合并，$S$ 内部弧的贡献相互抵消，得到&lt;/p&gt;
+$$
+|x|=\sum_{e\in\delta^+(S)}x_e-
+\sum_{e\in\delta^-(S)}x_e.
+$$&lt;p&gt;因为 $x_e\ge0$ 且 $x_e\le u_e$，&lt;/p&gt;
+$$
+|x|\le\sum_{e\in\delta^+(S)}x_e
+\le\sum_{e\in\delta^+(S)}u_e.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这就是最大流与最小割之间的弱对偶。&lt;/p&gt;
+&lt;h2 id="增广路与最大流最小割"&gt;增广路与最大流最小割
+&lt;/h2&gt;&lt;p&gt;给定流 $x$，残量图中每条原弧 $(i,j)$ 有正向剩余容量 $u_{ij}-x_{ij}$，并有反向剩余容量 $x_{ij}$。若残量图中存在从 $s$ 到 $t$ 的路径，就可以沿路径增加流量。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-max-flow-min-cut"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;最大流最小割定理&lt;/strong&gt;&lt;a href="#thm-max-flow-min-cut" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+最大流的值等于最小 $s$-$t$ 割的容量。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;从零流开始反复沿残量图中的 $s$-$t$ 路径增广。算法停止时，令 $S$ 为残量图中从 $s$ 可达的节点集合。此时 $t\notin S$，所以 $S$ 是一个 $s$-$t$ 割。&lt;/p&gt;
+&lt;p&gt;若 $e\in\delta^+(S)$，则其正向剩余容量必须为零，否则终点也可达，故 $x_e=u_e$。若 $e\in\delta^-(S)$，则其反向剩余容量必须为零，否则可以从 $S$ 中的节点沿反向弧到达该弧的起点，故 $x_e=0$。因此&lt;/p&gt;
+&lt;h1 id="sum_eindelta-sx_e"&gt;$$
+|x|=
+\sum_{e\in\delta^+(S)}x_e-
+\sum_{e\in\delta^-(S)}x_e
+&lt;/h1&gt;&lt;p&gt;\sum_{e\in\delta^+(S)}u_e.
+$$&lt;/p&gt;
+&lt;p&gt;该流的值等于这个割的容量。结合任意流都不超过任意割容量的弱对偶，两者分别为最大流和最小割。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--corollary" id="cor-max-flow-integrality"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;最大流的整数性&lt;/strong&gt;&lt;a href="#cor-max-flow-integrality" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+若所有容量 $u_e$ 都是整数，则存在整数最大流。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+从整数零流出发。每次增广量是路径上剩余容量的最小值；只要当前流与容量为整数，所有剩余容量和增广量也都是整数。因此每次增广后仍得到整数流。流值每次至少增加 $1$，且受总容量限制，所以算法有限步终止；由最大流最小割定理，终止流是整数最大流。
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;从线性规划角度看，最小割可以用节点势 $y_v$ 和弧变量 $z_{ij}$ 表示：&lt;/p&gt;
+$$
+\begin{aligned}
+\min_{y,z}\quad&amp;\sum_{(i,j)\in E}u_{ij}z_{ij}\\
+\text{s.t.}\quad&amp;y_i-y_j\le z_{ij},\quad (i,j)\in E,\\
+&amp;y_s-y_t=1,\quad z\ge0.
+\end{aligned}
+$$&lt;p&gt;它与最大流线性规划互为对偶；最优的 $0$-$1$ 节点势对应一个割。&lt;/p&gt;
+&lt;h2 id="最小生成树"&gt;最小生成树
+&lt;/h2&gt;&lt;p&gt;现在令 $G=(V,E)$ 为连通无向图。生成树是连接所有节点且不含环的边集。每条边 $e$ 有成本 $c_e$，最小生成树问题为&lt;/p&gt;
+$$
+\min_{T\text{ 为生成树}}\sum_{e\in T}c_e.
+$$&lt;p&gt;记 $E(S)$ 为两个端点都在 $S\subseteq V$ 中的边集。&lt;/p&gt;
+&lt;div class="math-block math-block--proposition" id="prop-spanning-tree-characterization"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;生成树的刻画&lt;/strong&gt;&lt;a href="#prop-spanning-tree-characterization" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;边集 $T\subseteq E$ 是生成树，当且仅当&lt;/p&gt;
+$$
+|T|=|V|-1,
+\qquad
+|T\cap E(S)|\le |S|-1,quad
+\forall\varnothing\ne S\subseteq V.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $T$ 是生成树，则任意诱导子图 $(S,T\cap E(S))$ 都是森林。一个含 $|S|$ 个节点的森林至多有 $|S|-1$ 条边，故不等式成立；树本身有 $|V|-1$ 条边。&lt;/p&gt;
+&lt;p&gt;反之，约束排除了所有环：若 $T$ 含一个节点集为 $S$ 的环，则该环已在 $E(S)$ 中贡献 $|S|$ 条边，与不等式矛盾。因此 $(V,T)$ 是森林。含 $|V|$ 个节点且有 $|V|-1$ 条边的森林恰有一个连通分量，所以它是生成树。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;由此得到生成树多面体&lt;/p&gt;
+$$
+P_{\mathrm{ST}}=
+\left\{x\in\mathbb{R}^E_+:
+x(E)=|V|-1,
+\ x(E(S))\le |S|-1,
+\ \forall\varnothing\ne S\subsetneq V
+\right\}.
+$$
+&lt;div class="math-block math-block--theorem" id="thm-spanning-tree-polytope"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;生成树多面体的整数性&lt;/strong&gt;&lt;a href="#thm-spanning-tree-polytope" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;$P_{\mathrm{ST}}$ 的顶点恰好是生成树的示性向量。因此&lt;/p&gt;
+$$
+P_{\mathrm{ST}}=\operatorname{conv}
+\{\chi^T:T\text{ 为 }G\text{ 的生成树}\}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;先注意：对任意边集 $F\subseteq E$，令 $(V,F)$ 的连通分量节点集为 $S_1,\ldots,S_q$。由定义中的子图约束，&lt;/p&gt;
+$$
+x(F)\le\sum_{j=1}^qx(E(S_j))
+\le\sum_{j=1}^q(|S_j|-1)
+=|V|-q=:r(F).
+$$&lt;p&gt;$r(F)$ 正是图拟阵中 $F$ 的秩。&lt;/p&gt;
+&lt;p&gt;任取成本向量 $c$，按非降序排列边：$c_{e_1}\le\cdots\le c_{e_m}$，并记 $F_k=\{e_1,\ldots,e_k\}$。对任意 $x\in P_{\mathrm{ST}}$，分部求和给出&lt;/p&gt;
+$$
+c^\top x
+=c_{e_m}x(E)-
+\sum_{k=1}^{m-1}(c_{e_{k+1}}-c_{e_k})x(F_k)
+\ge
+c_{e_m}(|V|-1)-
+\sum_{k=1}^{m-1}(c_{e_{k+1}}-c_{e_k})r(F_k).
+$$&lt;p&gt;Kruskal 算法按这一顺序加入不产生环的边。算法结束所得生成树 $T$ 对每个 $k$ 都满足&lt;/p&gt;
+$$
+|T\cap F_k|=r(F_k),
+$$&lt;p&gt;因为算法在 $F_k$ 内恰好选出其一个极大森林。因此 $\chi^T$ 使上面的下界取等号：每个线性目标在 $P_{\mathrm{ST}}$ 上都有一个生成树示性向量作为最优解。&lt;/p&gt;
+&lt;p&gt;若 $P_{\mathrm{ST}}$ 存在非整数顶点 $\bar x$，可选择一个使 $\bar x$ 成为唯一最优解的线性目标。但上述论证又为同一目标给出一个整数的生成树最优解，产生矛盾。故所有顶点均为生成树示性向量，结论成立。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;该描述包含指数多个子集约束，但并不意味着它不可计算。若某个候选点违反约束，可以把寻找违反约束的问题转化为最小割问题；这正是分离算法与割平面方法的基本思想。&lt;/p&gt;</description></item><item><title>OPT学习笔记-8：匹配、多面体与稳定婚姻</title><link>https://cxzhou.com/p/opt-notes-8/</link><pubDate>Sun, 20 Sep 2026 23:16:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-8/</guid><description>&lt;p&gt;本篇继续讨论多面体组合优化。二分图匹配的线性规划松弛天然具有整数顶点；加入偏好后，稳定婚姻问题也存在稳定解，并可由 Gale&amp;ndash;Shapley 算法构造。&lt;/p&gt;
+&lt;h2 id="二分图完美匹配"&gt;二分图完美匹配
+&lt;/h2&gt;&lt;p&gt;设二分图 $G=(U,W,E)$，其中 $|U|=|W|=n$。完美匹配 $M\subseteq E$ 要求每个节点恰好与一条匹配边相连。令 $x_{ij}$ 表示边 $(i,j)$ 是否被选择，则最小成本完美匹配可写成&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad&amp;\sum_{(i,j)\in E}c_{ij}x_{ij}\\
+\text{s.t.}\quad&amp;\sum_{j:(i,j)\in E}x_{ij}=1,
+&amp;&amp;i\in U,\\
+&amp;\sum_{i:(i,j)\in E}x_{ij}=1,
+&amp;&amp;j\in W,\\
+&amp;x_{ij}\in\{0,1\}.
+\end{aligned}
+$$&lt;p&gt;在完全二分图中，把整数约束放松为 $x_{ij}\ge0$，得到双随机矩阵集合。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-birkhoff-von-neumann"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Birkhoff--von Neumann 定理&lt;/strong&gt;&lt;a href="#thm-birkhoff-von-neumann" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;双随机矩阵多面体&lt;/p&gt;
+$$
+\mathcal B_n=
+\left\{X\in\mathbb{R}^{n\times n}_+:
+X\mathbf 1=\mathbf 1,
+X^\top\mathbf 1=\mathbf 1
+\right\}
+$$&lt;p&gt;等于所有置换矩阵的凸包。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;任取 $X\in\mathcal B_n$，构造支撑二分图：当 $x_{ij}&gt;0$ 时连接行节点 $i$ 与列节点 $j$。对任意行节点集合 $S$，从这些行流出的总权重为 $|S|$；它们只能流入邻居集合 $N(S)$，而每一列接收的总权重为 $1$。因此&lt;/p&gt;
+$$
+|S|\le |N(S)|.
+$$&lt;p&gt;由 Hall 定理，支撑图中存在完美匹配 $M$。令&lt;/p&gt;
+$$
+\varepsilon=\min_{(i,j)\in M}x_{ij}&gt;0,
+$$&lt;p&gt;并记对应置换矩阵为 $P_M$。若 $\varepsilon=1$，则 $X=P_M$。否则&lt;/p&gt;
+$$
+X'=\frac{X-\varepsilon P_M}{1-\varepsilon}
+$$&lt;p&gt;仍是双随机矩阵，并且至少少一个正元素。对正元素个数归纳，$X'$ 是置换矩阵的凸组合，于是&lt;/p&gt;
+$$
+X=\varepsilon P_M+(1-\varepsilon)X'
+$$&lt;p&gt;也是置换矩阵的凸组合。反方向显然成立，因为置换矩阵以及它们的凸组合都是双随机矩阵。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;因此，二分图完美匹配的线性规划松弛总能取得整数最优解。&lt;/p&gt;
+&lt;h2 id="置换多面体"&gt;置换多面体
+&lt;/h2&gt;&lt;p&gt;给定向量 $a\in\mathbb{R}^n$，其所有坐标置换的凸包称为置换多面体：&lt;/p&gt;
+$$
+\operatorname{Perm}(a)
+=\operatorname{conv}\{Pa:P\text{ 为置换矩阵}\}.
+$$&lt;p&gt;由 Birkhoff&amp;ndash;von Neumann 定理，它也可以写成&lt;/p&gt;
+$$
+\operatorname{Perm}(a)=\{Xa:X\in\mathcal B_n\}.
+$$&lt;p&gt;这说明一个看似需要枚举 $n!$ 个排列的凸包，可以通过 $O(n^2)$ 个变量和约束的扩展表示来描述。&lt;/p&gt;
+&lt;h2 id="稳定婚姻问题"&gt;稳定婚姻问题
+&lt;/h2&gt;&lt;p&gt;设两侧参与者分别为 $M=\{m_1,\ldots,m_n\}$ 与 $W=\{w_1,\ldots,w_n\}$，每个人都对另一侧给出严格偏好顺序。完美匹配 $\mu$ 中，若存在未被匹配在一起的一对 $(m_i,w_j)$，且&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$m_i$ 更偏好 $w_j$ 而不是当前伴侣 $\mu(m_i)$；&lt;/li&gt;
+&lt;li&gt;$w_j$ 更偏好 $m_i$ 而不是当前伴侣 $\mu(w_j)$，&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;则称 $(m_i,w_j)$ 为&lt;strong&gt;阻挡对&lt;/strong&gt;。不存在阻挡对的匹配称为稳定匹配。&lt;/p&gt;
+&lt;h3 id="galeshapley-算法"&gt;Gale&amp;ndash;Shapley 算法
+&lt;/h3&gt;&lt;p&gt;采用 $M$ 方提出申请的版本：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;每个尚未匹配且仍有未申请对象的 $m_i$，向自己尚未申请过的最高偏好 $w_j$ 申请；&lt;/li&gt;
+&lt;li&gt;每个 $w_j$ 在当前暂留对象和新申请者中保留自己最偏好的一位，拒绝其余人；&lt;/li&gt;
+&lt;li&gt;重复以上过程，直到无人再能申请。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="math-block math-block--theorem" id="thm-gale-shapley"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Gale--Shapley 定理&lt;/strong&gt;&lt;a href="#thm-gale-shapley" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+Gale&amp;ndash;Shapley 算法有限步终止，并输出一个稳定完美匹配。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;每个 $m_i$ 至多向每个 $w_j$ 申请一次，所以申请总数至多为 $n^2$，算法必然有限步终止。&lt;/p&gt;
+&lt;p&gt;终止时不可能有人未匹配。否则存在未匹配的 $m_i$，他必已向所有 $w_j$ 申请并被拒绝。女性一旦收到申请，此后始终暂留某位申请者，因此每位女性都暂留一人；这将使所有男性均被匹配，与 $m_i$ 未匹配矛盾。故结果是完美匹配。&lt;/p&gt;
+&lt;p&gt;若最终存在阻挡对 $(m_i,w_j)$，则 $m_i$ 比起最终伴侣更偏好 $w_j$，所以他一定更早向 $w_j$ 申请过。$w_j$ 当时拒绝了 $m_i$，或后来为更偏好的申请者放弃了他；而她暂留对象的质量只会随算法进行而提高。因此最终 $w_j$ 更偏好自己的伴侣而不是 $m_i$，与阻挡对的定义矛盾。故输出匹配稳定。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;该版本还产生 $M$ 方最优的稳定匹配：每个 $m_i$ 得到自己在所有稳定匹配中可能得到的最佳伴侣；相应地，它对 $W$ 方是最差的稳定匹配。&lt;/p&gt;
+&lt;h2 id="稳定匹配多面体"&gt;稳定匹配多面体
+&lt;/h2&gt;&lt;p&gt;令 $x_{ij}$ 表示 $m_i$ 与 $w_j$ 的匹配权重。记&lt;/p&gt;
+$$
+W_i^-(j)=\{k:w_j\succ_i w_k\},
+\qquad
+M_j^-(i)=\{k:m_i\succ_j m_k\},
+$$&lt;p&gt;即双方眼中比当前对象更差的人。稳定匹配的示性向量满足&lt;/p&gt;
+$$
+\begin{aligned}
+&amp;\sum_jx_{ij}=1,\qquad \sum_ix_{ij}=1,\qquad x_{ij}\ge0,\\
+&amp;x_{ij}+\sum_{k\in W_i^-(j)}x_{ik}
++\sum_{k\in M_j^-(i)}x_{kj}\le1,
+\qquad \forall i,j.
+\end{aligned}
+\tag{SM}
+$$&lt;p&gt;最后一组不等式表达稳定性：若 $m_i$ 被分配给比 $w_j$ 更差的人，$w_j$ 就不能也被分配给比 $m_i$ 更差的人。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-stable-marriage-polytope"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;稳定匹配多面体的整数性&lt;/strong&gt;&lt;a href="#thm-stable-marriage-polytope" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+系统 $(SM)$ 描述的多面体等于所有稳定匹配示性向量的凸包。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;先验证每个稳定匹配的示性向量均满足 $(SM)$。若 $x_{ij}=1$，同行同列其余变量为零；若 $x_{ij}=0$，而前两个求和中同时各有一项为 $1$，则 $m_i$ 与 $w_j$ 都被分配给比对方更差的人，$(m_i,w_j)$ 会成为阻挡对。因此不等式有效。&lt;/p&gt;
+&lt;p&gt;反过来任取 $(SM)$ 的可行点 $x$。记&lt;/p&gt;
+$$
+A_{ij}=\sum_{k:w_k\succ_i w_j}x_{ik},
+\qquad
+B_{ij}=\sum_{k:m_k\succ_j m_i}x_{kj},
+$$&lt;p&gt;即双方分配给“比对方更好的人”的总权重。利用行列和为 $1$，$(SM)$ 的稳定性不等式等价于&lt;/p&gt;
+$$
+A_{ij}+B_{ij}+x_{ij}\ge1.
+\tag{1}
+$$&lt;p&gt;对每一行按偏好顺序展开交叉项，可得&lt;/p&gt;
+$$
+\sum_{i,j}x_{ij}A_{ij}
+=\frac12\left(n-\sum_{i,j}x_{ij}^2\right).
+$$&lt;p&gt;对每一列同理，$\sum_{i,j}x_{ij}B_{ij}$ 也等于右侧。因此&lt;/p&gt;
+$$
+\sum_{i,j}x_{ij}
+\bigl(A_{ij}+B_{ij}+x_{ij}-1\bigr)=0.
+$$&lt;p&gt;其中每一项都非负，所以只要 $x_{ij}&gt;0$，式 $(1)$ 必须取等号。&lt;/p&gt;
+&lt;p&gt;现在构造一个随机匹配。对每个 $m_i$，按他从最喜欢到最不喜欢的顺序，把 $[0,1)$ 划分成长度分别为 $x_{ij}$ 的区间；边 $(i,j)$ 对应的区间为&lt;/p&gt;
+$$
+I^M_{ij}=[A_{ij},A_{ij}+x_{ij}).
+$$&lt;p&gt;对每个 $w_j$，反过来按她从最不喜欢到最喜欢的顺序划分。令&lt;/p&gt;
+$$
+C_{ij}=\sum_{k:m_i\succ_j m_k}x_{kj}
+=1-B_{ij}-x_{ij},
+$$&lt;p&gt;则边 $(i,j)$ 对应 $I^W_{ij}=[C_{ij},C_{ij}+x_{ij})$。当 $x_{ij}&gt;0$ 时，前面的取等关系给出 $C_{ij}=A_{ij}$，故&lt;/p&gt;
+$$
+I^M_{ij}=I^W_{ij}.
+$$&lt;p&gt;从 $[0,1)$ 中均匀抽取一个不在区间端点上的数 $U$，并在 $U\in I^M_{ij}$ 时匹配 $m_i$ 与 $w_j$。每位男性的区间构成一个分割，所以他恰好匹配一人；相同区间也出现在女性一侧，而每位女性的区间同样构成分割，所以没有两位男性匹配同一位女性。由两侧人数相同，所得匹配是完美匹配。&lt;/p&gt;
+&lt;p&gt;它还是稳定的。若 $(m_i,w_j)$ 是阻挡对，设 $m_i$ 实际匹配到比 $w_j$ 更差的女性，则在男性从优到劣的区间顺序中&lt;/p&gt;
+$$
+U\ge A_{ij}+x_{ij}.
+$$&lt;p&gt;而 $w_j$ 实际匹配到比 $m_i$ 更差的男性，在女性从劣到优的区间顺序中&lt;/p&gt;
+$$
+U&lt;C_{ij}=1-B_{ij}-x_{ij}.
+$$&lt;p&gt;但式 $(1)$ 给出 $C_{ij}\le A_{ij}$，两式矛盾。因此随机生成的匹配稳定。&lt;/p&gt;
+&lt;p&gt;最后，边 $(i,j)$ 被选中的概率正是区间长度 $x_{ij}$。若随机匹配的示性向量为 $\chi^M$，则&lt;/p&gt;
+$$
+x=\mathbb E[\chi^M].
+$$&lt;p&gt;随机过程只会产生有限多个稳定匹配，所以上式就是稳定匹配示性向量的一个凸组合。于是 $(SM)$ 中每个点都属于稳定匹配凸包，结论成立。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这里的整数性比普通二分图匹配更精细：它不仅来自行列和结构，还依赖严格偏好诱导的稳定性不等式。若允许并列偏好或改变稳定性的定义，多面体描述也需要相应调整。&lt;/p&gt;</description></item><item><title>OPT学习笔记-9：锥规划、强对偶与半正定规划</title><link>https://cxzhou.com/p/opt-notes-9/</link><pubDate>Sun, 20 Sep 2026 23:17:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-9/</guid><description>&lt;p&gt;线性规划使用非负正交锥来解释向量不等式。把这个锥替换为更一般的凸锥，就得到锥规划；二阶锥规划和半正定规划都是其中的重要特例。&lt;/p&gt;
+&lt;h2 id="凸锥与锥诱导的偏序"&gt;凸锥与锥诱导的偏序
+&lt;/h2&gt;&lt;p&gt;若集合 $K\subseteq\mathbb{R}^m$ 对非负数乘封闭，即 $x\in K,\lambda\ge0$ 蕴含 $\lambda x\in K$，则称 $K$ 为锥。&lt;/p&gt;
+&lt;div class="math-block math-block--proposition" id="prop-convex-cone"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸锥的等价刻画&lt;/strong&gt;&lt;a href="#prop-convex-cone" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$K$ 是凸锥，当且仅当它对加法和非负数乘封闭。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $K$ 是凸锥，任取 $x,y\in K$。凸性给出 $(x+y)/2\in K$，再乘以 $2$ 得 $x+y\in K$；非负数乘封闭来自锥的定义。&lt;/p&gt;
+&lt;p&gt;反之，若 $K$ 对加法和非负数乘封闭，则对 $\theta\in[0,1]$ 有 $\theta x,(1-\theta)y\in K$，从而 $\theta x+(1-\theta)y\in K$，故 $K$ 是凸集，也是锥。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;凸锥 $K$ 在向量空间上诱导关系&lt;/p&gt;
+$$
+a\succeq_K b
+\quad\Longleftrightarrow\quad
+a-b\in K.
+$$&lt;p&gt;若 $K$ &lt;strong&gt;尖锐&lt;/strong&gt;，即 $K\cap(-K)=\{0\}$，上述关系满足反对称性，因而是偏序。一个闭、凸、尖锐且具有非空内部的锥称为&lt;strong&gt;适当锥&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id="lorentz-锥与二阶锥规划"&gt;Lorentz 锥与二阶锥规划
+&lt;/h2&gt;&lt;p&gt;$m+1$ 维 Lorentz 锥为&lt;/p&gt;
+$$
+\mathcal L^{m+1}
+=\{(x,t)\in\mathbb{R}^m\times\mathbb{R}:\|x\|_2\le t\}.
+$$
+&lt;div class="math-block math-block--proposition" id="prop-lorentz-proper"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Lorentz 锥是适当锥&lt;/strong&gt;&lt;a href="#prop-lorentz-proper" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+$\mathcal L^{m+1}$ 是闭、凸、尖锐且具有非空内部的锥。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;范数连续，所以 $\|x\|_2\le t$ 定义闭集。若 $(x,t),(y,s)$ 属于该锥且 $\alpha,\beta\ge0$，由三角不等式&lt;/p&gt;
+$$
+\|\alpha x+\beta y\|_2
+\le\alpha\|x\|_2+\beta\|y\|_2
+\le\alpha t+\beta s,
+$$&lt;p&gt;故它是凸锥。若 $(x,t)$ 与 $-(x,t)$ 都属于锥，则 $t\ge\|x\|_2$ 且 $-t\ge\|x\|_2$，只能有 $x=0,t=0$，所以锥尖锐。最后，$\{(x,t):\|x\|_2&lt;t\}$ 是其非空内部。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;形如&lt;/p&gt;
+$$
+\|A_ix-b_i\|_2\le c_i^\top x-d_i
+$$&lt;p&gt;的约束就是一个二阶锥约束。线性目标、若干二阶锥约束与仿射等式共同组成二阶锥规划（SOCP）。&lt;/p&gt;
+&lt;p&gt;若 $Q\succeq0$，取 $Q=R^\top R$，则凸二次目标可用旋转二阶锥表示。引入 $t$ 后，&lt;/p&gt;
+$$
+\frac12x^\top Qx\le t
+\quad\Longleftrightarrow\quad
+2t\cdot1\ge\|Rx\|_2^2,quad t\ge0.
+$$&lt;p&gt;因此凸二次规划可以改写为 SOCP。Markowitz 均值&amp;ndash;方差模型&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad&amp;x^\top Vx\\
+\text{s.t.}\quad&amp;\mu^\top x\ge\bar\mu,\\
+&amp;\mathbf1^\top x=1
+\end{aligned}
+$$&lt;p&gt;在协方差矩阵 $V\succeq0$ 时就是这一情形。&lt;/p&gt;
+&lt;h2 id="对偶锥与弱对偶"&gt;对偶锥与弱对偶
+&lt;/h2&gt;
+&lt;div class="math-block math-block--definition" id="def-dual-cone"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;对偶锥&lt;/strong&gt;&lt;a href="#def-dual-cone" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;集合 $K\subseteq\mathbb{R}^m$ 的对偶锥定义为&lt;/p&gt;
+$$
+K^*=\{\lambda\in\mathbb{R}^m:
+\langle\lambda,z\rangle\ge0,
+\ \forall z\in K\}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;$K^*$ 是经过原点的闭半空间的交，因此总是闭凸锥。若 $K$ 是闭凸锥，则双极定理给出 $(K^*)^*=K$。&lt;/p&gt;
+&lt;p&gt;考虑原问题与对偶问题&lt;/p&gt;
+$$
+\begin{aligned}
+(P)\quad \min_x\quad&amp;\langle c,x\rangle
+&amp;\text{s.t.}\quad&amp;Ax-b\in K,\\
+(D)\quad \max_\lambda\quad&amp;\langle b,\lambda\rangle
+&amp;\text{s.t.}\quad&amp;A^\top\lambda=c,\quad\lambda\in K^*.
+\end{aligned}
+$$
+&lt;div class="math-block math-block--theorem" id="thm-conic-weak-duality"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;锥规划弱对偶&lt;/strong&gt;&lt;a href="#thm-conic-weak-duality" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;任意原可行解 $x$ 与对偶可行解 $\lambda$ 都满足&lt;/p&gt;
+$$
+\langle b,\lambda\rangle\le\langle c,x\rangle.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;因为 $Ax-b\in K$ 且 $\lambda\in K^*$，&lt;/p&gt;
+$$
+0\le\langle\lambda,Ax-b\rangle
+=\langle A^\top\lambda,x\rangle-\langle\lambda,b\rangle
+=\langle c,x\rangle-\langle\lambda,b\rangle.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;与线性规划不同，一般锥规划即使最优值有限，也可能存在对偶间隙或最优值不被取得。常用的约束规范是 Slater 条件。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-conic-slater"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Slater 条件下的强锥对偶&lt;/strong&gt;&lt;a href="#thm-conic-slater" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $K$ 为适当锥。若原问题最优值有限，且存在严格可行点 $\hat x$ 使&lt;/p&gt;
+$$
+A\hat x-b\in\operatorname{int}K,
+$$&lt;p&gt;则原、对偶最优值相等，且对偶最优解可以取得。对偶严格可行时有对称结论。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;记原最优值为 $p^*$，考虑凸集&lt;/p&gt;
+$$
+\mathcal C=\{(b-Ax+s,p^*-\langle c,x\rangle-r):
+x\in\mathbb{R}^n, s\in K, r&gt;0\}.
+$$&lt;p&gt;由 $p^*$ 的定义，$(0,0)\notin\mathcal C$：第一分量为零意味着 $Ax-b=s\in K$，而第二分量为零又意味着 $\langle c,x\rangle=p^*-r&lt;p^*$，产生矛盾。严格可行性保证该集合在约束方向上具有内部点。由严格分离定理，存在非零 $(q,\alpha)$ 使得&lt;/p&gt;
+$$
+\langle q,b-Ax+s\rangle
++\alpha(p^*-\langle c,x\rangle-r)\ge0
+$$&lt;p&gt;对所有 $x,s,r$ 成立。让 $s$ 在 $K$ 中任意变化可得 $q\in K^*$；让 $r&gt;0$ 任意变化可得 $\alpha\le0$。严格可行性排除 $\alpha=0$，故可将分离向量归一化为 $\alpha=-1$。&lt;/p&gt;
+&lt;p&gt;由于 $x$ 可以任意取值，线性项必须消失，所以 $A^\top q=c$；其余常数项给出 $\langle b,q\rangle\ge p^*$。弱对偶又给出反向不等式，故 $\langle b,q\rangle=p^*$，且 $q$ 是对偶最优解。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;在强对偶成立时，原、对偶可行解最优等价于&lt;strong&gt;锥互补松弛&lt;/strong&gt;：&lt;/p&gt;
+$$
+\langle\lambda,Ax-b\rangle=0.
+$$&lt;h2 id="半正定锥与-sdp"&gt;半正定锥与 SDP
+&lt;/h2&gt;&lt;p&gt;在对称矩阵空间 $\mathbb S^m$ 上使用 Frobenius 内积&lt;/p&gt;
+$$
+\langle A,B\rangle=\operatorname{tr}(AB).
+$$&lt;p&gt;半正定锥为&lt;/p&gt;
+$$
+\mathbb S^m_+=\{X\in\mathbb S^m:X\succeq0\}.
+$$
+&lt;div class="math-block math-block--proposition" id="prop-psd-self-dual"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;半正定锥自对偶&lt;/strong&gt;&lt;a href="#prop-psd-self-dual" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;在 Frobenius 内积下，&lt;/p&gt;
+$$
+(\mathbb S^m_+)^*=\mathbb S^m_+.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $Y\succeq0$，写成 $Y=RR^\top$。对任意 $X\succeq0$，&lt;/p&gt;
+$$
+\langle X,Y\rangle
+=\operatorname{tr}(XRR^\top)
+=\operatorname{tr}(R^\top XR)\ge0,
+$$&lt;p&gt;所以 $Y$ 属于对偶锥。反之，若 $Y$ 属于对偶锥，则对每个 $v$，取 $X=vv^\top\succeq0$，得到&lt;/p&gt;
+$$
+v^\top Yv=\langle Y,vv^\top\rangle\ge0.
+$$&lt;p&gt;故 $Y\succeq0$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;给定 $A_1,\ldots,A_n,B\in\mathbb S^m$，半正定规划可写为&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad&amp;c^\top x\\
+\text{s.t.}\quad&amp;\sum_{i=1}^nx_iA_i-B\succeq0.
+\end{aligned}
+$$&lt;p&gt;由自对偶性，其对偶为&lt;/p&gt;
+$$
+\begin{aligned}
+\max_{\Lambda}\quad&amp;\langle B,\Lambda\rangle\\
+\text{s.t.}\quad&amp;\langle A_i,\Lambda\rangle=c_i,quad i=1,\ldots,n,\\
+&amp;\Lambda\succeq0.
+\end{aligned}
+$$&lt;p&gt;二阶锥约束还能写成线性矩阵不等式&lt;/p&gt;
+$$
+\|z\|_2\le t
+\quad\Longleftrightarrow\quad
+\begin{pmatrix}
+tI&amp;z\\
+z^\top&amp;t
+\end{pmatrix}\succeq0,
+$$&lt;p&gt;其等价性可由 Schur 补直接验证。因此 LP、SOCP 与 SDP 构成逐层扩展的凸优化模型族。&lt;/p&gt;</description></item><item><title>OPT学习笔记-10：锥规划应用与半正定松弛</title><link>https://cxzhou.com/p/opt-notes-10/</link><pubDate>Sun, 20 Sep 2026 23:18:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-10/</guid><description>&lt;p&gt;锥规划的价值不仅在于统一理论，还在于把许多看似非线性的约束转化为可计算的凸模型。本篇讨论指数锥建模、鲁棒线性规划和半正定松弛。&lt;/p&gt;
+&lt;h2 id="指数锥与逻辑回归"&gt;指数锥与逻辑回归
+&lt;/h2&gt;&lt;p&gt;指数锥定义为&lt;/p&gt;
+$$
+K_{\exp}=\operatorname{cl}
+\{(x,y,z):y&gt;0, y\exp(x/y)\le z\}.
+$$&lt;p&gt;给定样本 $(a_i,y_i)$，其中 $a_i\in\mathbb{R}^p$、$y_i\in\{-1,1\}$，带 $\ell_2$ 正则的逻辑回归为&lt;/p&gt;
+$$
+\min_\theta
+\sum_{i=1}^n\log\bigl(1+exp(-y_i a_i^\top\theta)\bigr)
++\lambda\|\theta\|_2.
+$$&lt;p&gt;令 $u_i=-y_i a_i^\top\theta$，并用 $t_i$ 表示第 $i$ 项损失。关系&lt;/p&gt;
+$$
+t_i\ge\log(1+e^{u_i})
+$$&lt;p&gt;等价于&lt;/p&gt;
+$$
+e^{-t_i}+e^{u_i-t_i}\le1.
+$$&lt;p&gt;引入 $z_{i1},z_{i2}\ge0$，可用两个指数锥约束表示：&lt;/p&gt;
+$$
+(-t_i,1,z_{i1})\in K_{\exp},
+\qquad
+(u_i-t_i,1,z_{i2})\in K_{\exp},
+\qquad
+z_{i1}+z_{i2}\le1.
+$$&lt;p&gt;再引入 $r\ge\|\theta\|_2$，原问题成为线性目标 $\sum_i t_i+\lambda r$ 下的指数锥与二阶锥规划。&lt;/p&gt;
+&lt;h2 id="鲁棒线性规划"&gt;鲁棒线性规划
+&lt;/h2&gt;&lt;p&gt;若第 $i$ 个约束的系数 $a_i$ 不确定，只知道 $a_i\in U_i$，鲁棒约束要求&lt;/p&gt;
+$$
+a_i^\top x\ge b_i,qquad \forall a_i\in U_i.
+$$&lt;p&gt;它等价于&lt;/p&gt;
+$$
+\min_{a_i\in U_i}a_i^\top x\ge b_i.
+$$&lt;p&gt;因此，关键是对内层最小化问题求一个可处理的表示。&lt;/p&gt;
+&lt;h3 id="椭球不确定集"&gt;椭球不确定集
+&lt;/h3&gt;&lt;p&gt;设&lt;/p&gt;
+$$
+U_i=\{\bar a_i+B_iv:\|v\|_2\le1\}.
+$$
+&lt;div class="math-block math-block--proposition" id="prop-ellipsoidal-robust"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;椭球鲁棒约束的 SOCP 表示&lt;/strong&gt;&lt;a href="#prop-ellipsoidal-robust" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;鲁棒约束 $a_i^\top x\ge b_i$ 对所有 $a_i\in U_i$ 成立，当且仅当&lt;/p&gt;
+$$
+\bar a_i^\top x-\|B_i^\top x\|_2\ge b_i.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;内层最小值为&lt;/p&gt;
+$$
+\bar a_i^\top x+min_{\|v\|_2\le1}v^\top B_i^\top x.
+$$&lt;p&gt;由 Cauchy&amp;ndash;Schwarz 不等式，后项不小于 $-\|B_i^\top x\|_2$。当 $B_i^\top x\ne0$ 时取&lt;/p&gt;
+$$
+v=-\frac{B_i^\top x}{\|B_i^\top x\|_2}
+$$&lt;p&gt;即可达到下界；为零时结论也成立。因此内层最小值恰为 $\bar a_i^\top x-\|B_i^\top x\|_2$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="多面体与锥不确定集"&gt;多面体与锥不确定集
+&lt;/h3&gt;&lt;p&gt;若&lt;/p&gt;
+$$
+U_i=\{a:D_ia\ge d_i\},
+$$&lt;p&gt;则内层问题及其线性规划对偶为&lt;/p&gt;
+&lt;h1 id="min_axtop-ad_iage-d_i"&gt;$$
+\min_a{x^\top a:D_ia\ge d_i}
+&lt;/h1&gt;&lt;p&gt;\max_{\lambda_i\ge0}
+{d_i^\top\lambda_i:D_i^\top\lambda_i=x}.
+$$&lt;/p&gt;
+&lt;p&gt;在内层问题满足强对偶时，鲁棒约束等价于存在 $\lambda_i\ge0$ 使&lt;/p&gt;
+$$
+D_i^\top\lambda_i=x,
+\qquad
+d_i^\top\lambda_i\ge b_i.
+$$&lt;p&gt;更一般地，若 $U_i=\{a:D_ia-d_i\in K_i\}$，则把 $\lambda_i\ge0$ 替换为 $\lambda_i\in K_i^*$，便得到相应的锥规划表示。这说明“对所有不确定参数成立”的无限约束，常能通过内层问题的对偶化变成有限个变量与约束。&lt;/p&gt;
+&lt;h2 id="qcqp-的矩阵提升"&gt;QCQP 的矩阵提升
+&lt;/h2&gt;&lt;p&gt;考虑一般二次约束二次规划&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad&amp;x^\top Cx+2c^\top x+d\\
+\text{s.t.}\quad&amp;x^\top A_ix+2a_i^\top x+b_i\ge0,
+\quad i=1,\ldots,m.
+\end{aligned}
+$$&lt;p&gt;令 $z=(1,x^\top)^\top$、$X=zz^\top$，并定义&lt;/p&gt;
+$$
+\widetilde C=
+\begin{pmatrix}d&amp;c^\top\\c&amp;C\end{pmatrix},
+\qquad
+\widetilde A_i=
+\begin{pmatrix}b_i&amp;a_i^\top\\a_i&amp;A_i\end{pmatrix}.
+$$&lt;p&gt;则目标与约束分别为 $\langle\widetilde C,X\rangle$ 与 $\langle\widetilde A_i,X\rangle$。&lt;/p&gt;
+&lt;div class="math-block math-block--lemma" id="lem-rank-one-lifting"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;秩一提升的刻画&lt;/strong&gt;&lt;a href="#lem-rank-one-lifting" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对称矩阵 $X$ 可写为&lt;/p&gt;
+$$
+X=\begin{pmatrix}1\\x\end{pmatrix}
+\begin{pmatrix}1\\x\end{pmatrix}^{\!\top}
+$$&lt;p&gt;当且仅当 $X\succeq0$、$\operatorname{rank}(X)=1$ 且 $X_{00}=1$。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+正向显然。反向若 $X\succeq0$ 且秩为 $1$，则存在向量 $z$ 使 $X=zz^\top$。由 $X_{00}=z_0^2=1$，可把 $z$ 的符号整体调整为 $z_0=1$，于是 $z=(1,x^\top)^\top$。
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;因此原 QCQP 等价于&lt;/p&gt;
+$$
+\begin{aligned}
+\min_X\quad&amp;\langle\widetilde C,X\rangle\\
+\text{s.t.}\quad&amp;\langle\widetilde A_i,X\rangle\ge0,quad i=1,\ldots,m,\\
+&amp;X\succeq0,quad X_{00}=1,quad\operatorname{rank}(X)=1.
+\end{aligned}
+$$&lt;p&gt;唯一非凸部分是秩一约束。删去它便得到 SDP 松弛；对最小化问题，松弛最优值给出原问题最优值的下界。&lt;/p&gt;
+&lt;h2 id="最大稳定集的-sdp-松弛"&gt;最大稳定集的 SDP 松弛
+&lt;/h2&gt;&lt;p&gt;图 $G=(V,E)$ 的稳定集是不含相邻节点的集合，最大稳定集大小记为 $\alpha(G)$。其整数模型为&lt;/p&gt;
+$$
+\begin{aligned}
+\alpha(G)=\max_x\quad&amp;\sum_{i\in V}x_i\\
+\text{s.t.}\quad&amp;x_i+x_j\le1,quad (i,j)\in E,\\
+&amp;x_i\in\{0,1\}.
+\end{aligned}
+$$&lt;p&gt;利用 $x_i^2=x_i$ 与边上 $x_ix_j=0$，得到 SDP 松弛&lt;/p&gt;
+$$
+\begin{aligned}
+\operatorname{SDP}(G)=\max_{x,X}\quad&amp;\sum_i x_i\\
+\text{s.t.}\quad&amp;X_{ij}=0,quad(i,j)\in E,\\
+&amp;X_{0i}=X_{i0}=X_{ii}=x_i,quad i\in V,\\
+&amp;X\succeq0,quad X_{00}=1.
+\end{aligned}
+$$
+&lt;div class="math-block math-block--theorem" id="thm-stable-set-bounds"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;稳定集界的强弱关系&lt;/strong&gt;&lt;a href="#thm-stable-set-bounds" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若 $\operatorname{LP}(G)$ 是上述整数模型的线性松弛，则&lt;/p&gt;
+$$
+\alpha(G)\le\operatorname{SDP}(G)\le\operatorname{LP}(G).
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;对任意稳定集示性向量 $x$，令 $X=(1,x^\top)^\top(1,x^\top)$。它满足全部 SDP 约束，因此 $\alpha(G)\le\operatorname{SDP}(G)$。&lt;/p&gt;
+&lt;p&gt;反过来，任取 SDP 可行解。半正定矩阵的对角元非负，所以 $x_i=X_{ii}\ge0$。主子矩阵&lt;/p&gt;
+$$
+\begin{pmatrix}1&amp;x_i\\x_i&amp;x_i\end{pmatrix}\succeq0
+$$&lt;p&gt;的行列式非负，给出 $x_i(1-x_i)\ge0$，故 $x_i\le1$。对每条边 $(i,j)$，相应主子矩阵为&lt;/p&gt;
+$$
+\begin{pmatrix}
+1&amp;x_i&amp;x_j\\
+x_i&amp;x_i&amp;0\\
+x_j&amp;0&amp;x_j
+\end{pmatrix}\succeq0.
+$$&lt;p&gt;其行列式为 $x_ix_j(1-x_i-x_j)\ge0$。当 $x_ix_j&gt;0$ 时得到 $x_i+x_j\le1$；有一项为零时该不等式也由另一项不超过 $1$ 得到。因此 $x$ 是 LP 松弛的可行解，目标值不超过 $\operatorname{LP}(G)$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;SDP 松弛保留了变量之间的二阶相关结构，因而通常比逐变量的 LP 松弛更紧；代价是模型和求解过程也更复杂。&lt;/p&gt;</description></item><item><title>OPT学习笔记-11：Lagrange 对偶与 KKT 条件</title><link>https://cxzhou.com/p/opt-notes-11/</link><pubDate>Sun, 20 Sep 2026 23:19:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-11/</guid><description>&lt;p&gt;锥对偶把约束写成锥中的向量不等式；Lagrange 对偶则直接从一般约束函数出发构造目标值下界。它不仅适用于凸问题，也能用于非凸问题，但强对偶与 KKT 条件需要额外假设。&lt;/p&gt;
+&lt;h2 id="lagrange-函数与对偶函数"&gt;Lagrange 函数与对偶函数
+&lt;/h2&gt;&lt;p&gt;考虑问题&lt;/p&gt;
+$$
+\begin{aligned}
+p^*=\min_x\quad&amp;f_0(x)\\
+\text{s.t.}\quad&amp;f_i(x)\le0,quad i=1,\ldots,m,\\
+&amp;h_j(x)=0,quad j=1,\ldots,p.
+\end{aligned}
+\tag{P}
+$$&lt;p&gt;Lagrange 函数定义为&lt;/p&gt;
+$$
+L(x,\lambda,\mu)
+=f_0(x)+\sum_{i=1}^m\lambda_i f_i(x)
++\sum_{j=1}^p\mu_j h_j(x),
+$$&lt;p&gt;其中不等式约束乘子满足 $\lambda\ge0$，等式约束乘子 $\mu$ 可取任意实数。&lt;/p&gt;
+&lt;p&gt;若 $x$ 原可行，则&lt;/p&gt;
+$$
+L(x,\lambda,\mu)\le f_0(x).
+$$&lt;p&gt;进一步对 $x$ 取下确界，得到对偶函数&lt;/p&gt;
+$$
+g(\lambda,\mu)=\inf_{x\in\mathbb{R}^n}L(x,\lambda,\mu).
+$$&lt;p&gt;对偶问题寻找其中最大的下界：&lt;/p&gt;
+$$
+d^*=\max_{\lambda,\mu}
+\{g(\lambda,\mu):\lambda\ge0\}.
+\tag{D}
+$$
+&lt;div class="math-block math-block--theorem" id="thm-lagrange-weak-duality"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Lagrange 弱对偶&lt;/strong&gt;&lt;a href="#thm-lagrange-weak-duality" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;无论原问题是否凸，都有&lt;/p&gt;
+$$
+d^*\le p^*.
+$$&lt;p&gt;而且 $g$ 是关于 $(\lambda,\mu)$ 的凹函数，所以对偶问题是凸优化问题。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;对任意原可行 $x$ 和 $\lambda\ge0$，&lt;/p&gt;
+$$
+g(\lambda,\mu)
+\le L(x,\lambda,\mu)
+\le f_0(x).
+$$&lt;p&gt;先对可行 $x$ 取下确界，再对对偶可行乘子取上确界，得到 $d^*\le p^*$。&lt;/p&gt;
+&lt;p&gt;对每个固定 $x$，$L(x,\lambda,\mu)$ 是 $(\lambda,\mu)$ 的仿射函数。对偶函数是这一族仿射函数的逐点下确界，因此为凹函数。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="slater-条件与强对偶"&gt;Slater 条件与强对偶
+&lt;/h2&gt;&lt;p&gt;以下考虑凸优化问题：$f_0,f_1,\ldots,f_m$ 为凸函数，等式约束写成 $Ax=b$。仿射不等式不要求严格满足；设前 $k$ 个 $f_i$ 为仿射函数。&lt;/p&gt;
+&lt;p&gt;Slater 条件要求存在 $\hat x$ 使&lt;/p&gt;
+$$
+f_i(\hat x)\le0,quad i=1,\ldots,k,
+$$$$
+f_i(\hat x)&lt;0,quad i=k+1,\ldots,m,
+\qquad
+A\hat x=b.
+$$
+&lt;div class="math-block math-block--theorem" id="thm-lagrange-slater"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;Slater 强对偶定理&lt;/strong&gt;&lt;a href="#thm-lagrange-slater" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;若凸问题 $(P)$ 的最优值有限且满足 Slater 条件，则&lt;/p&gt;
+$$
+p^*=d^*,
+$$&lt;p&gt;并且对偶最优解可以取得。&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;定义凸集&lt;/p&gt;
+$$
+\mathcal A=left\{(u,v,t):
+\begin{array}{l}
+\text{存在 }x\text{ 使 }f_i(x)\le u_i,\\
+Ax-b=v,\ f_0(x)\le t
+\end{array}
+ight\}.
+$$&lt;p&gt;$\mathcal A$ 的凸性来自 $f_i$ 的凸性与等式映射的仿射性。由原最优值定义，$(0,0,p^*)$ 位于 $\mathcal A$ 的边界，而&lt;/p&gt;
+$$
+\mathcal B=\{(0,0,t):t&lt;p^*\}
+$$&lt;p&gt;与 $\mathcal A$ 不相交。分离定理给出非零向量 $(\lambda,\mu,\nu)$，使&lt;/p&gt;
+$$
+\lambda^\top u+\mu^\top v+\nu t
+\ge \nu p^*,qquad (u,v,t)\in\mathcal A.
+$$&lt;p&gt;因为 $u$ 可以沿正方向任意增大，必须有 $\lambda\ge0$；因为 $t$ 可以沿正方向增大，必须有 $\nu\ge0$。Slater 条件排除 $\nu=0$：若 $\nu=0$，将严格可行点代入分离式，会迫使非仿射约束的乘子为零，再由等式与仿射约束的相对内部性质推出全部分离系数为零，矛盾。&lt;/p&gt;
+&lt;p&gt;故可将分离向量归一化为 $\nu=1$。对任意 $x$，点 $(f(x),Ax-b,f_0(x))$ 属于 $\mathcal A$，从而&lt;/p&gt;
+$$
+L(x,\lambda,\mu)
+=f_0(x)+\lambda^\top f(x)+\mu^\top(Ax-b)
+\ge p^*.
+$$&lt;p&gt;对 $x$ 取下确界得到 $g(\lambda,\mu)\ge p^*$。弱对偶给出 $g(\lambda,\mu)\le p^*$，因此两者相等，且该乘子达到对偶最优值。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;Slater 条件是充分而非必要条件。非凸问题通常可能存在对偶间隙，但对偶值仍然是有效下界。&lt;/p&gt;
+&lt;h2 id="互补松弛与鞍点"&gt;互补松弛与鞍点
+&lt;/h2&gt;
+&lt;div class="math-block math-block--proposition" id="prop-zero-gap"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;零对偶间隙的两个后果&lt;/strong&gt;&lt;a href="#prop-zero-gap" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;设 $x^*$ 原最优、$(\lambda^*,\mu^*)$ 对偶最优，且 $p^*=d^*$。则&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;$x^*$ 最小化 $L(x,\lambda^*,\mu^*)$；&lt;/li&gt;
+&lt;li&gt;$\lambda_i^*f_i(x^*)=0$，$i=1,\ldots,m$。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;由弱对偶推导中的不等式链，&lt;/p&gt;
+$$
+p^*=f_0(x^*)
+\ge L(x^*,\lambda^*,\mu^*)
+\ge g(\lambda^*,\mu^*)=d^*=p^*.
+$$&lt;p&gt;所以两处不等式都取等。第二处取等说明 $x^*$ 达到 $L$ 的下确界；第一处取等与原可行性给出&lt;/p&gt;
+$$
+\sum_i\lambda_i^*f_i(x^*)=0.
+$$&lt;p&gt;每项都不大于零，因此每项必须为零。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="kkt-条件"&gt;KKT 条件
+&lt;/h2&gt;&lt;p&gt;若所有函数可微，Karush&amp;ndash;Kuhn&amp;ndash;Tucker 条件为&lt;/p&gt;
+$$
+\begin{aligned}
+&amp;f_i(x^*)\le0, &amp;&amp;i=1,\ldots,m,\\
+&amp;h_j(x^*)=0, &amp;&amp;j=1,\ldots,p,\\
+&amp;\lambda_i^*\ge0, &amp;&amp;i=1,\ldots,m,\\
+&amp;\lambda_i^*f_i(x^*)=0, &amp;&amp;i=1,\ldots,m,\\
+&amp;\nabla f_0(x^*)+
+\sum_{i=1}^m\lambda_i^*\nabla f_i(x^*)+
+\sum_{j=1}^p\mu_j^*\nabla h_j(x^*)=0.
+\end{aligned}
+$$&lt;p&gt;前两行是原可行性，第三行是对偶可行性，第四行是互补松弛，最后一行是 Lagrange 函数关于 $x$ 的驻点条件。&lt;/p&gt;
+&lt;div class="math-block math-block--theorem" id="thm-kkt-necessity"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;KKT 的必要性&lt;/strong&gt;&lt;a href="#thm-kkt-necessity" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+若可微问题存在原、对偶最优解且零对偶间隙成立，则这些解满足 KKT 条件。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;原、对偶可行性由定义得到，互补松弛由上一命题得到。上一命题还表明 $x^*$ 是 $L(\cdot,\lambda^*,\mu^*)$ 的全局极小点；由于该函数可微，一阶必要条件给出&lt;/p&gt;
+$$
+\nabla_xL(x^*,\lambda^*,\mu^*)=0,
+$$&lt;p&gt;即驻点条件。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--theorem" id="thm-kkt-sufficiency"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;凸问题中 KKT 的充分性&lt;/strong&gt;&lt;a href="#thm-kkt-sufficiency" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+若 $f_0,f_i$ 为凸可微函数，$h_j$ 为仿射函数，且 $(x^*,\lambda^*,\mu^*)$ 满足 KKT 条件，则 $x^*$ 原最优、$(\lambda^*,\mu^*)$ 对偶最优，并且零对偶间隙成立。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;$L(\cdot,\lambda^*,\mu^*)$ 是凸可微函数。驻点条件意味着 $x^*$ 是它的全局最小点，所以&lt;/p&gt;
+$$
+g(\lambda^*,\mu^*)
+=L(x^*,\lambda^*,\mu^*).
+$$&lt;p&gt;利用原可行性、等式约束和互补松弛，&lt;/p&gt;
+$$
+L(x^*,\lambda^*,\mu^*)=f_0(x^*).
+$$&lt;p&gt;于是对偶可行点的目标值等于原可行点的目标值。由弱对偶，两者必分别最优，且对偶间隙为零。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;因此，对满足 Slater 条件的可微凸问题，$x^*$ 最优当且仅当存在乘子使 KKT 条件成立。&lt;/p&gt;
+&lt;h2 id="等式约束凸二次规划"&gt;等式约束凸二次规划
+&lt;/h2&gt;&lt;p&gt;考虑&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad&amp;\frac12x^\top Qx+q^\top x+r\\
+\text{s.t.}\quad&amp;Ax=b,
+\end{aligned}
+$$&lt;p&gt;其中 $Q\succeq0$。KKT 条件化为线性系统&lt;/p&gt;
+&lt;h1 id="beginpmatrixxmuendpmatrix"&gt;$$
+\begin{pmatrix}
+Q&amp;amp;A^\top\
+A&amp;amp;0
+\end{pmatrix}
+\begin{pmatrix}x\\mu\end{pmatrix}
+&lt;/h1&gt;&lt;p&gt;\begin{pmatrix}-q\b\end{pmatrix}.
+$$&lt;/p&gt;
+&lt;p&gt;只要该系统存在解，解出的 $x$ 就是全局最优解；在适当的非退化条件下，KKT 矩阵可逆，最优解与乘子唯一。&lt;/p&gt;</description></item><item><title>OPT学习笔记-12：金融优化中的凸模型与整数模型</title><link>https://cxzhou.com/p/opt-notes-12/</link><pubDate>Sun, 20 Sep 2026 23:20:00 +0800</pubDate><guid>https://cxzhou.com/p/opt-notes-12/</guid><description>&lt;p&gt;投资组合问题把本系列中的多种模型连接起来：均值&amp;ndash;方差模型是凸二次规划，协方差估计与风险界定可写成 SDP，分散化与换手约束可线性化，而持仓数量和多空状态则需要整数变量。&lt;/p&gt;
+&lt;h2 id="均值方差模型"&gt;均值&amp;ndash;方差模型
+&lt;/h2&gt;&lt;p&gt;设随机收益向量为 $r\in\mathbb{R}^n$，其期望和协方差分别为&lt;/p&gt;
+$$
+\mu=\mathbb E[r],
+\qquad
+V=\mathbb E[(r-\mu)(r-\mu)^\top].
+$$&lt;p&gt;投资权重为 $x$ 时，期望收益是 $\mu^\top x$，方差是 $x^\top Vx$。禁止卖空的基本模型为&lt;/p&gt;
+$$
+\begin{aligned}
+\min_x\quad&amp;x^\top Vx\\
+\text{s.t.}\quad&amp;\mu^\top x\ge\bar\mu,\\
+&amp;\mathbf1^\top x=1,\quad x\ge0.
+\end{aligned}
+$$
+&lt;div class="math-block math-block--lemma" id="lem-covariance-psd"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;协方差矩阵的刻画&lt;/strong&gt;&lt;a href="#lem-covariance-psd" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+矩阵 $V$ 是某个随机向量的协方差矩阵，当且仅当 $V$ 对称半正定。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若 $V$ 是随机向量 $r$ 的协方差矩阵，则对任意 $z$，&lt;/p&gt;
+$$
+z^\top Vz
+=\mathbb E\bigl[(z^\top(r-\mu))^2\bigr]\ge0,
+$$&lt;p&gt;且定义直接给出 $V=V^\top$。&lt;/p&gt;
+&lt;p&gt;反之，若 $V\succeq0$，可取矩阵平方根 $V^{1/2}$。令 $Z$ 为均值为零、协方差为单位矩阵的随机向量，并令 $r=V^{1/2}Z$，则&lt;/p&gt;
+$$
+\operatorname{Cov}(r)
+=V^{1/2}I(V^{1/2})^\top=V.
+$$
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这个结论保证了风险目标是凸函数。&lt;/p&gt;
+&lt;h2 id="最近协方差矩阵"&gt;最近协方差矩阵
+&lt;/h2&gt;&lt;p&gt;样本噪声或不完整估计可能产生一个并非半正定的矩阵 $\widehat V$。可寻找与它最接近的合法协方差矩阵：&lt;/p&gt;
+$$
+\min_{X\succeq0}\|X-\widehat V\|_F.
+$$&lt;p&gt;引入上界变量 $t$，模型可写为&lt;/p&gt;
+$$
+\begin{aligned}
+\min_{X,t}\quad&amp;t\\
+\text{s.t.}\quad&amp;X\succeq0,\\
+&amp;\|\operatorname{vec}(X-\widehat V)\|_2\le t.
+\end{aligned}
+$$&lt;p&gt;它同时使用半正定锥与二阶锥，是一个凸锥规划。&lt;/p&gt;
+&lt;h2 id="不完整信息下的最坏风险"&gt;不完整信息下的最坏风险
+&lt;/h2&gt;&lt;p&gt;若投资组合 $\bar x$ 已知，但协方差矩阵只知道部分信息，可以在所有候选矩阵中最大化其风险：&lt;/p&gt;
+$$
+\begin{aligned}
+\max_V\quad&amp;\bar x^\top V\bar x
+=\langle\bar x\bar x^\top,V\rangle\\
+\text{s.t.}\quad&amp;L_{ij}\le V_{ij}\le U_{ij},\\
+&amp;V\succeq0.
+\end{aligned}
+$$&lt;p&gt;目标关于 $V$ 是线性的，元素上下界也是线性的，所以这是 SDP。其他凸先验也可以直接加入，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;已知某些组合的方差：$\langle y_ky_k^\top,V\rangle=\sigma_k^2$；&lt;/li&gt;
+&lt;li&gt;因子模型：$V=FV_{\mathrm{factor}}F^\top+D$，其中 $V_{\mathrm{factor}}\succeq0$、$D$ 为非负对角矩阵；&lt;/li&gt;
+&lt;li&gt;已知边际方差与相关系数区间时，对 $V_{ij}$ 加线性上下界。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;模型的最优值给出与全部已知信息相容的最坏情形风险上界。&lt;/p&gt;
+&lt;h2 id="分散化约束"&gt;分散化约束
+&lt;/h2&gt;&lt;p&gt;令 $x_{(1)}\ge\cdots\ge x_{(n)}$ 为 $x$ 的降序排列，并定义前 $r$ 大分量之和&lt;/p&gt;
+$$
+F_r(x)=\sum_{i=1}^r x_{(i)}.
+$$&lt;p&gt;“任意 $r$ 个资产的投资总额不超过 $\alpha$”可写为 $F_r(x)\le\alpha$，但直接枚举子集会产生大量约束。&lt;/p&gt;
+&lt;div class="math-block math-block--proposition" id="prop-top-r-lp"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;前 r 大分量之和的 LP 表示&lt;/strong&gt;&lt;a href="#prop-top-r-lp" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+&lt;p&gt;对任意 $x\in\mathbb{R}^n$，&lt;/p&gt;
+$$
+F_r(x)=
+\max_y\left\{x^\top y:
+0\le y\le1,
+\ \mathbf1^\top y=r\right\}.
+$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+&lt;p&gt;若一个可行解中存在 $x_i&gt;x_j$、$y_i&lt;1$ 且 $y_j&gt;0$，则把&lt;/p&gt;
+$$
+\varepsilon=\min\{1-y_i,y_j\}
+$$&lt;p&gt;的权重从 $j$ 移到 $i$，可行性不变，而目标增加 $\varepsilon(x_i-x_j)&gt;0$。反复交换后，存在最优解在最大的 $r$ 个分量上取 $y_i=1$，其余取零，目标值恰为 $F_r(x)$。&lt;/p&gt;
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;这个 LP 的对偶为&lt;/p&gt;
+$$
+F_r(x)=
+\min_{t,u}
+\left\{rt+\sum_{i=1}^nu_i:
+t+u_i\ge x_i,
+\ u_i\ge0\right\},
+$$&lt;p&gt;其中 $t$ 为自由变量。因此 $F_r(x)\le\alpha$ 当且仅当存在 $t,u$ 使&lt;/p&gt;
+$$
+rt+\sum_i u_i\le\alpha,
+\qquad
+t+u_i\ge x_i,
+\qquad
+u_i\ge0.
+$$&lt;p&gt;原本指数规模的分散化约束由此变成 $O(n)$ 个线性约束。&lt;/p&gt;
+&lt;h2 id="换手约束"&gt;换手约束
+&lt;/h2&gt;&lt;p&gt;设当前持仓为 $x^0$，总换手上限为 $\alpha$：&lt;/p&gt;
+$$
+\sum_{i=1}^n|x_i-x_i^0|\le\alpha.
+$$&lt;p&gt;引入 $u_i\ge0$ 后，可精确线性化为&lt;/p&gt;
+$$
+u_i\ge x_i-x_i^0,
+\qquad
+u_i\ge x_i^0-x_i,
+\qquad
+\sum_i u_i\le\alpha.
+$$&lt;p&gt;存在绝对值并不意味着必须使用整数变量；分段线性的凸绝对值可以直接用辅助变量建模。&lt;/p&gt;
+&lt;h2 id="分支定界法"&gt;分支定界法
+&lt;/h2&gt;&lt;p&gt;考虑混合整数线性规划&lt;/p&gt;
+$$
+\begin{aligned}
+\min_{x,y}\quad&amp;c^\top x+d^\top y\\
+\text{s.t.}\quad&amp;Ax+Gy\ge b,\\
+&amp;x\in\mathbb Z_+^n,quad y\in\mathbb R_+^p.
+\end{aligned}
+$$&lt;p&gt;去掉 $x$ 的整数要求得到 LP 松弛。对最小化问题，松弛最优值是整数问题的下界；任一整数可行解的目标值则给出上界。&lt;/p&gt;
+&lt;p&gt;若 LP 解中 $x_j^0$ 为分数，分支成&lt;/p&gt;
+$$
+x_j\le\lfloor x_j^0\rfloor
+\qquad\text{或}\qquad
+x_j\ge\lceil x_j^0\rceil.
+$$&lt;p&gt;每个整数解必属于其中一个分支。搜索树中的节点可在三种情况下剪枝：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;松弛不可行；&lt;/li&gt;
+&lt;li&gt;松弛下界不优于当前最好整数解；&lt;/li&gt;
+&lt;li&gt;松弛解已经整数，从而得到该节点的最优整数解。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="math-block math-block--proposition" id="prop-branch-bound-correctness"&gt;
+&lt;div class="math-block-title"&gt;
+&lt;strong&gt;分支定界的正确性&lt;/strong&gt;&lt;a href="#prop-branch-bound-correctness" class="math-block-anchor" aria-label="直接链接到此"&gt;¶&lt;/a&gt;&lt;/div&gt;
+&lt;div class="math-block-content"&gt;
+若整数变量的可行取值有界，并且算法最终处理或剪去每个活跃节点，则返回的 incumbent 是全局最优整数解。
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="math-block math-block--proof" &gt;
+&lt;div class="math-block-content"&gt;
+&lt;em&gt;&lt;strong&gt;证明.&lt;/strong&gt;&lt;/em&gt;&amp;nbsp;
+每次分支把当前节点中的全部整数可行解无遗漏地划分到两个子节点。不可行节点不含候选解；按界剪去的节点不可能包含优于 incumbent 的解；整数松弛解同时达到该节点的下界，因而已是节点内最优整数解。有限有界的整数取值使分支树有限。算法结束时，所有可能优于 incumbent 的整数解都已被检查或被有效界排除，所以 incumbent 全局最优。
+&lt;span class="qed-symbol"&gt;□&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id="投资组合中的二元变量"&gt;投资组合中的二元变量
+&lt;/h2&gt;&lt;p&gt;若最多允许持有 $K$ 个资产，可引入 $z_i\in\{0,1\}$：&lt;/p&gt;
+$$
+0\le x_i\le u_i z_i,
+\qquad
+\sum_i z_i\le K.
+$$&lt;p&gt;在多空组合中，写作&lt;/p&gt;
+$$
+x_i=x_i^+-x_i^-,
+$$&lt;p&gt;并使用二元变量防止同一资产同时做多和做空：&lt;/p&gt;
+$$
+0\le x_i^+\le u_i^+z_i^+,
+\qquad
+0\le x_i^-\le u_i^-z_i^-,
+\qquad
+z_i^++z_i^-\le1.
+$$&lt;p&gt;固定交易成本、最小持仓规模和整手交易等要求也可以用类似的联动约束表达。此时模型成为混合整数凸规划；连续松弛越紧，分支定界通常越容易在早期剪去节点。&lt;/p&gt;</description></item></channel></rss>
